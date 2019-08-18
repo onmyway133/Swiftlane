@@ -61,6 +61,10 @@ func testDrive() {
         ArchiveTask(options: archiveOptions),
         ExportArchiveTask(options: exportArchiveOptions, exportPlist: exportPlist)
     ])
+
+    run {
+        SetVersionNumberTask(options: SetVersionNumberTask.Options(buildNumber: ""))
+    }
 }
 
 testDrive()
