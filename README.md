@@ -60,9 +60,9 @@ run {
 - Puma and its dependencies are written in pure Swift, making it easy to read and contribute.
 - Use latest Swift 5.1 features like function builder to enable declarative syntax
 - Type safe. All required and optional arguments are clear.
-- No configuration file. Your swift script is your definition.
+- No configuration file. Your Swift script is your definition.
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
-- Reuse awesome swift scripting dependencies from Swift community
+- Reuse awesome Swift scripting dependencies from Swift community
 
 ## Road map
 
@@ -71,6 +71,7 @@ run {
 - [ ] Post to chat services like Slack
 - [ ] Interact with the new Appstore Connect API
 - [ ] Integrate with services like Firebase
+- [ ] Capture screenshots
 
 ## Contributing
 
