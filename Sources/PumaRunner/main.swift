@@ -13,52 +13,41 @@ func testDrive() {
         signing: .auto(automaticSigning),
         usesModernBuildSystem: true
     )
-    
-    let buildOptions = BuildTask.Options(
-        buildOptions: xcodebuildOptions,
-        buildsForTesting: true
-    )
-    
-    let testOptions = TestTask.Options(
-        buildOptions: xcodebuildOptions,
-        destination: Destination(
-            platform: Destination.Platform.iOSSimulator,
-            name: Destination.Name.iPhoneXr,
-            os: Destination.OS.os12_2
-        )
-    )
-    
-    let archiveOptions = ArchiveTask.Options(
-        buildOptions: xcodebuildOptions,
-        archivePath: recommendedArchiveOptions.archivePath
-    )
-    
-    let versionNumberOptions = SetVersionNumberTask.Options(
-        buildNumber: "1.1"
-    )
-    
-    let buildNumberOptions = SetBuildNumberTask.Options(
-        buildNumber: "2"
-    )
-    
-    let exportArchiveOptions = ExportArchiveTask.Options(
-        exportOptionsPlist: nil,
-        archivePath: recommendedArchiveOptions.archivePath,
-        exportPath: recommendedArchiveOptions.exportPath
-    )
-    
-    let exportPlist = ExportArchiveTask.ExportPlist(
-        teamId: "T78DK947F2",
-        method: ExportMethod.development
-    )
 
     run {
-        SetVersionNumberTask(options: versionNumberOptions)
-        SetBuildNumberTask(options: buildNumberOptions)
-        BuildTask(options: buildOptions)
-        TestTask(options: testOptions)
-        ArchiveTask(options: archiveOptions)
-        ExportArchiveTask(options: exportArchiveOptions, exportPlist: exportPlist)
+        SetVersionNumberTask(options: .init(buildNumber: "1.1"))
+        SetBuildNumberTask(options: .init(buildNumber: "2"))
+
+        BuildTask(options: .init(
+            buildOptions: xcodebuildOptions,
+            buildsForTesting: true)
+        )
+
+        TestTask(options: .init(
+            buildOptions: xcodebuildOptions,
+            destination: Destination(
+                platform: Destination.Platform.iOSSimulator,
+                name: Destination.Name.iPhoneXr,
+                os: Destination.OS.os12_2
+            )
+        ))
+
+        ArchiveTask(options: .init(
+            buildOptions: xcodebuildOptions,
+            archivePath: recommendedArchiveOptions.archivePath
+        ))
+
+        ExportArchiveTask(
+            options: .init(
+                exportOptionsPlist: nil,
+                archivePath: recommendedArchiveOptions.archivePath,
+                exportPath: recommendedArchiveOptions.exportPath
+            ),
+            exportPlist: .init(
+                teamId: "T78DK947F2",
+                method: ExportMethod.development
+            )
+        )
     }
 }
 
