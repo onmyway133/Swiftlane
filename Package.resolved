@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Colorizer",
+        "repositoryURL": "https://github.com/getGuaka/Colorizer",
+        "state": {
+          "branch": null,
+          "revision": "2ccc99bf1715e73c4139e8d40b6e6b30be975586",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "Files",
+        "repositoryURL": "https://github.com/JohnSundell/Files.git",
+        "state": {
+          "branch": null,
+          "revision": "92b57bea0e737e7d92b5ff281f46ec2b59faf91c",
+          "version": "3.1.0"
+        }
+      },
+      {
+        "package": "Guaka",
+        "repositoryURL": "https://github.com/nsomar/Guaka.git",
+        "state": {
+          "branch": null,
+          "revision": "6fb29b2378166a30d72120980e1c099c664598de",
+          "version": "0.4.1"
+        }
+      },
+      {
+        "package": "StringScanner",
+        "repositoryURL": "https://github.com/getGuaka/StringScanner.git",
+        "state": {
+          "branch": null,
+          "revision": "de1685ad202cb586d626ed52d6de904dd34189f3",
+          "version": "0.4.1"
+        }
+      },
+      {
+        "package": "xcbeautify",
+        "repositoryURL": "https://github.com/thii/xcbeautify.git",
+        "state": {
+          "branch": null,
+          "revision": "8cffdcedfa9776f8d9ad45ea55e547f51316f3d5",
+          "version": "0.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
