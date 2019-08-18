@@ -61,7 +61,6 @@
 		OBJ_212 /* TaskBuiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* TaskBuiler.swift */; };
 		OBJ_213 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Command.swift */; };
 		OBJ_214 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Data+Extensions.swift */; };
-		OBJ_215 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Dictionary+Extensions.swift */; };
 		OBJ_217 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Log.swift */; };
 		OBJ_218 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Process.swift */; };
 		OBJ_219 /* ProcessHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* ProcessHandler.swift */; };
@@ -316,7 +315,6 @@
 		OBJ_16 /* TaskBuiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBuiler.swift; sourceTree = "<group>"; };
 		OBJ_17 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		OBJ_18 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_19 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_21 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		OBJ_22 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		OBJ_23 /* ProcessHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessHandler.swift; sourceTree = "<group>"; };
@@ -492,7 +490,6 @@
 				OBJ_13 /* BeforeSummarizer.swift */,
 				OBJ_17 /* Command.swift */,
 				OBJ_18 /* Data+Extensions.swift */,
-				OBJ_19 /* Dictionary+Extensions.swift */,
 				OBJ_21 /* Log.swift */,
 				OBJ_22 /* Process.swift */,
 				OBJ_23 /* ProcessHandler.swift */,
@@ -1170,7 +1167,6 @@
 				OBJ_212 /* TaskBuiler.swift in Sources */,
 				OBJ_213 /* Command.swift in Sources */,
 				OBJ_214 /* Data+Extensions.swift in Sources */,
-				OBJ_215 /* Dictionary+Extensions.swift in Sources */,
 				OBJ_217 /* Log.swift in Sources */,
 				OBJ_218 /* Process.swift in Sources */,
 				OBJ_219 /* ProcessHandler.swift in Sources */,
