@@ -51,19 +51,14 @@ func testDrive() {
         teamId: "T78DK947F2",
         method: ExportMethod.development
     )
-    
-    let puma = Puma()
-    puma.run(tasks: [
-        SetVersionNumberTask(options: versionNumberOptions),
-        SetBuildNumberTask(options: buildNumberOptions),
-        BuildTask(options: buildOptions),
-        TestTask(options: testOptions),
-        ArchiveTask(options: archiveOptions),
-        ExportArchiveTask(options: exportArchiveOptions, exportPlist: exportPlist)
-    ])
 
     run {
-        SetVersionNumberTask(options: SetVersionNumberTask.Options(buildNumber: ""))
+        SetVersionNumberTask(options: versionNumberOptions)
+        SetBuildNumberTask(options: buildNumberOptions)
+        BuildTask(options: buildOptions)
+        TestTask(options: testOptions)
+        ArchiveTask(options: archiveOptions)
+        ExportArchiveTask(options: exportArchiveOptions, exportPlist: exportPlist)
     }
 }
 

@@ -13,11 +13,3 @@ public struct TaskBuilder {
         tasks
     }
 }
-
-public func run(@TaskBuilder builder: () -> [Task]) {
-    Puma().run(tasks: builder())
-}
-
-public func run(@TaskBuilder builder: () -> Task) {
-    Puma().run(tasks: [builder()])
-}

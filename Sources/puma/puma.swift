@@ -7,7 +7,15 @@
 
 import Foundation
 
-public struct Puma {
+public func run(@TaskBuilder builder: () -> [Task]) {
+    Workflow().run(tasks: builder())
+}
+
+public func run(@TaskBuilder builder: () -> Task) {
+    Workflow().run(tasks: [builder()])
+}
+
+public struct Workflow {
     public init() {}
 
     public func run(tasks: [Task]) {
