@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ArchiveTask {
+public struct Archive {
     public let options: Options
     
     public init(options: Options) {
@@ -16,7 +16,7 @@ public struct ArchiveTask {
     }
 }
 
-extension ArchiveTask: Task {
+extension Archive: Task {
     public var name: String {
         return "Archive"
     }
@@ -32,7 +32,7 @@ extension ArchiveTask: Task {
     }
 }
 
-public extension ArchiveTask {
+public extension Archive {
     struct Options {
         public let buildOptions: Xcodebuild.Options
         
@@ -47,7 +47,7 @@ public extension ArchiveTask {
     }
 }
 
-public extension ArchiveTask.Options {
+public extension Archive.Options {
     func toArguments() -> [String?] {
         return buildOptions.toArguments() + [
             archivePath.map { "-archivePath \($0.surroundingWithQuotes())" }

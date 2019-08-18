@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Puma::Puma"
-               BuildableName = "Puma.framework"
-               BlueprintName = "Puma"
+               BlueprintIdentifier = "Puma::PumaRunner"
+               BuildableName = "PumaRunner"
+               BlueprintName = "PumaRunner"
                ReferencedContainer = "container:puma.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Puma::PumaRunner"
-               BuildableName = "PumaRunner"
-               BlueprintName = "PumaRunner"
+               BlueprintIdentifier = "Puma::Puma"
+               BuildableName = "Puma.framework"
+               BlueprintName = "Puma"
                ReferencedContainer = "container:puma.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

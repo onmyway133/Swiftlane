@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TestTask {
+public struct Test {
     public let options: Options
     
     public init(options: Options) {
@@ -15,7 +15,7 @@ public struct TestTask {
     }
 }
 
-extension TestTask: Task {
+extension Test: Task {
     public var name: String {
         return "Test"
     }
@@ -31,7 +31,7 @@ extension TestTask: Task {
     }
 }
 
-public extension TestTask {
+public extension Test {
     struct Options {
         public let buildOptions: Xcodebuild.Options
         /// use the destination described by
@@ -51,7 +51,7 @@ public extension TestTask {
     }
 }
 
-public extension TestTask.Options {
+public extension Test.Options {
     func toArguments() -> [String?] {
         return buildOptions.toArguments() + [
             "-destination \(destination.toString())",

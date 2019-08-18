@@ -1,5 +1,5 @@
 //
-//  SetVersionNumberTask.swift
+//  SetVersionNumber.swift
 //  Puma
 //
 //  Created by khoa on 15/04/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SetVersionNumberTask {
+public struct SetVersionNumber {
     public let options: Options
     
     public init(options: Options) {
@@ -16,7 +16,7 @@ public struct SetVersionNumberTask {
     }
 }
 
-public extension SetVersionNumberTask {
+public extension SetVersionNumber {
     struct Options {
         public let buildNumber: String
         
@@ -26,7 +26,7 @@ public extension SetVersionNumberTask {
     }
 }
 
-extension SetVersionNumberTask: Task {
+extension SetVersionNumber: Task {
     public var name: String {
         return "Set version number"
     }

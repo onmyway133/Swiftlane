@@ -8,7 +8,7 @@
 import Foundation
 import Files
 
-public struct ExportArchiveTask {
+public struct ExportArchive {
     public let options: Options
     public let exportPlist: ExportPlist
     
@@ -18,7 +18,7 @@ public struct ExportArchiveTask {
     }
 }
 
-extension ExportArchiveTask: Task {
+extension ExportArchive: Task {
     public var name: String {
         return "Export archive to ipa"
     }
@@ -31,7 +31,7 @@ extension ExportArchiveTask: Task {
     }
 }
 
-public extension ExportArchiveTask {
+public extension ExportArchive {
     struct Options {
         /// specifies a path to a plist file that configures archive exporting
         public let exportOptionsPlist: String?
@@ -68,7 +68,7 @@ public extension ExportArchiveTask {
     }
 }
 
-extension ExportArchiveTask {
+extension ExportArchive {
     public func makeExportPlistIfAny() throws {
         guard options.exportOptionsPlist == nil else {
             return

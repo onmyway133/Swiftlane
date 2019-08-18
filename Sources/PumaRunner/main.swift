@@ -15,15 +15,15 @@ func testDrive() {
     )
 
     run {
-        SetVersionNumberTask(options: .init(buildNumber: "1.1"))
-        SetBuildNumberTask(options: .init(buildNumber: "2"))
+        SetVersionNumber(options: .init(buildNumber: "1.1"))
+        SetBuildNumber(options: .init(buildNumber: "2"))
 
-        BuildTask(options: .init(
+        Build(options: .init(
             buildOptions: xcodebuildOptions,
             buildsForTesting: true)
         )
 
-        TestTask(options: .init(
+        Test(options: .init(
             buildOptions: xcodebuildOptions,
             destination: Destination(
                 platform: Destination.Platform.iOSSimulator,
@@ -32,12 +32,12 @@ func testDrive() {
             )
         ))
 
-        ArchiveTask(options: .init(
+        Archive(options: .init(
             buildOptions: xcodebuildOptions,
             archivePath: recommendedArchiveOptions.archivePath
         ))
 
-        ExportArchiveTask(
+        ExportArchive(
             options: .init(
                 exportOptionsPlist: nil,
                 archivePath: recommendedArchiveOptions.archivePath,

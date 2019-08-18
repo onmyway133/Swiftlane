@@ -1,6 +1,6 @@
 import Foundation
 
-public struct BuildTask {
+public struct Build {
     public let options: Options
     
     public init(options: Options) {
@@ -8,7 +8,7 @@ public struct BuildTask {
     }
 }
 
-extension BuildTask: Task {
+extension Build: Task {
     public var name: String {
         return "Build"
     }
@@ -24,7 +24,7 @@ extension BuildTask: Task {
     }
 }
 
-public extension BuildTask {
+public extension Build {
     struct Options {
         let buildOptions: Xcodebuild.Options
         let buildsForTesting: Bool
@@ -36,7 +36,7 @@ public extension BuildTask {
     }
 }
 
-public extension BuildTask.Options {
+public extension Build.Options {
     func toArguments() -> [String?] {
         return buildOptions.toArguments() + [
             buildsForTesting ? "build-for-testing" : nil

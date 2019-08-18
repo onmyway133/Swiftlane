@@ -1,5 +1,5 @@
 //
-//  SetBuildNumberTask.swift
+//  SetBuildNumber.swift
 //  Puma
 //
 //  Created by khoa on 15/04/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SetBuildNumberTask {
+public struct SetBuildNumber {
     public let options: Options
     
     public init(options: Options) {
@@ -16,7 +16,7 @@ public struct SetBuildNumberTask {
     }
 }
 
-public extension SetBuildNumberTask {
+public extension SetBuildNumber {
     struct Options {
         public let buildNumber: String
         
@@ -26,7 +26,7 @@ public extension SetBuildNumberTask {
     }
 }
 
-extension SetBuildNumberTask: Task {
+extension SetBuildNumber: Task {
     public var name: String {
         return "Set build number"
     }
