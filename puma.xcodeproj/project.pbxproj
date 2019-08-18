@@ -489,9 +489,9 @@
 		OBJ_11 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_16 /* TaskBuiler.swift */,
 				OBJ_12 /* AfterSummarizer.swift */,
 				OBJ_13 /* BeforeSummarizer.swift */,
-				OBJ_15 /* Builder */,
 				OBJ_17 /* Command.swift */,
 				OBJ_18 /* Data+Extensions.swift */,
 				OBJ_19 /* Dictionary+Extensions.swift */,
@@ -551,14 +551,6 @@
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		OBJ_15 /* Builder */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_16 /* TaskBuiler.swift */,
-			);
-			path = Builder;
-			sourceTree = "<group>";
 		};
 		OBJ_28 /* iOS */ = {
 			isa = PBXGroup;
