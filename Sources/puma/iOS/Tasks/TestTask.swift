@@ -9,11 +9,9 @@ import Foundation
 
 public struct TestTask {
     public let options: Options
-    public let extend: Extend
     
-    public init(options: Options, extend: Extend = Extend()) {
+    public init(options: Options) {
         self.options = options
-        self.extend = extend
     }
 }
 
@@ -27,10 +25,9 @@ extension TestTask: Task {
     }
     
     public func run() throws {
-        let arguments = buildArgument(options.toArguments(), extend: extend.argument)
-        let command = buildCommand("xcodebuild \(arguments) test", extend: extend.command)
+        let command = "xcodebuild \(toString(arguments: options.toArguments())) test"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }
 
@@ -40,7 +37,6 @@ public extension TestTask {
         /// use the destination described by
         /// DESTINATIONSPECIFIER (a comma-separated set of key=value pairs describing the destination to use)
         public let destination: Destination
-        
         public let testsWithoutBuilding: Bool
         
         public init(
@@ -56,12 +52,10 @@ public extension TestTask {
 }
 
 public extension TestTask.Options {
-    func toArguments() -> [String: String?] {
-        return buildOptions
-            .toArguments()
-            .simpleMerging([
-                "-destination ": "'\(destination.toString())'",
-                "test-without-building": testsWithoutBuilding ? "" : nil
-            ])
+    func toArguments() -> [String?] {
+        return buildOptions.toArguments() + [
+            "-destination \(destination.toString())",
+            testsWithoutBuilding ? "test-without-building" : nil
+        ]
     }
 }

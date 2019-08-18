@@ -34,6 +34,6 @@ extension SetBuildNumberTask: Task {
     public func run() throws {
         let command = "agvtool new-version -all \(options.buildNumber)"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }

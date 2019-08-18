@@ -34,6 +34,6 @@ extension SetVersionNumberTask: Task {
     public func run() throws {
         let command = "agvtool new-marketing-version \(options.buildNumber)"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }

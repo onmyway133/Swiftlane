@@ -19,6 +19,6 @@ extension IncreaseBuildNumberTask: Task {
     public func run() throws {
         let command = "agvtool next-version -all"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }

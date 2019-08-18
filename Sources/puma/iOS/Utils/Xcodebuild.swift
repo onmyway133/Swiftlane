@@ -43,17 +43,15 @@ public struct Xcodebuild {
 }
 
 extension Xcodebuild.Options {
-    func toArguments() -> [String: String?] {
-        let arguments = [
-            "-workspace ": workspace.map({ $0.addingFileExtension("xcworkspace") }),
-            "-project ": project.addingFileExtension("xcodeproj"),
-            "-scheme ": scheme,
-            "-configuration ": configuration,
-            "-sdk ": sdk,
-            "-UseModernBuildSystem=": usesModernBuildSystem ? "YES": "NO"
+    func toArguments() -> [String?] {
+        return [
+            workspace.map{ "-workspace \($0.addingFileExtension("xcworkspace"))" },
+            "-project \(project.addingFileExtension("xcodeproj"))",
+            "-scheme \(scheme)",
+            "-configuration \(configuration)",
+            sdk.map { "-sdk \($0)" },
+            "-UseModernBuildSystem=\(usesModernBuildSystem ? "YES": "NO")"
+
         ]
-        
-        return arguments
-            .simpleMerging(signing?.toArguments())
     }
 }

@@ -10,11 +10,9 @@ import Foundation
 
 public struct ArchiveTask {
     public let options: Options
-    public let extend: Extend
     
-    public init(options: Options, extend: Extend = Extend()) {
+    public init(options: Options) {
         self.options = options
-        self.extend = extend
     }
 }
 
@@ -28,10 +26,9 @@ extension ArchiveTask: Task {
     }
     
     public func run() throws {
-        let arguments = buildArgument(options.toArguments(), extend: extend.argument)
-        let command = buildCommand("xcodebuild \(arguments) archive", extend: extend.command)
+        let command = "xcodebuild \(toString(arguments: options.toArguments())) archive"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }
 
@@ -51,11 +48,9 @@ public extension ArchiveTask {
 }
 
 public extension ArchiveTask.Options {
-    func toArguments() -> [String: String?] {
-        return buildOptions
-            .toArguments()
-            .simpleMerging([
-                "-archivePath ": archivePath?.surroundingWithQuotes()
-            ])
+    func toArguments() -> [String?] {
+        return buildOptions.toArguments() + [
+            archivePath.map { "-archivePath \($0.surroundingWithQuotes())" }
+        ]
     }
 }

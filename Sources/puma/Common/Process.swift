@@ -10,7 +10,10 @@ import Foundation
 // Based on https://github.com/JohnSundell/ShellOut
 
 public extension Process {
-    @discardableResult func run(command: String, processHandler: ProcessHandler) throws -> String {
+    @discardableResult func run(
+        command: String,
+        processHandler: ProcessHandler = DefaultProcessHandler()) throws -> String {
+
         launchPath = "/bin/bash"
         arguments = ["-c", command]
         

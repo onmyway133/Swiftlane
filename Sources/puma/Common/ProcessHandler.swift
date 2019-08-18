@@ -14,6 +14,8 @@ public protocol ProcessHandler {
 }
 
 public struct DefaultProcessHandler: ProcessHandler {
+    public init() {}
+
     public func handle(output data: Data) {
         show(data: data)
     }

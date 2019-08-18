@@ -2,11 +2,9 @@ import Foundation
 
 public struct BuildTask {
     public let options: Options
-    public let extend: Extend
     
-    public init(options: Options, extend: Extend = Extend()) {
+    public init(options: Options) {
         self.options = options
-        self.extend = extend
     }
 }
 
@@ -20,10 +18,9 @@ extension BuildTask: Task {
     }
     
     public func run() throws {
-        let arguments = buildArgument(options.toArguments(), extend: extend.argument)
-        let command = buildCommand("xcodebuild \(arguments) build", extend: extend.command)
+        let command = "xcodebuild \(toString(arguments: options.toArguments())) build"
         Log.command(command)
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }
 
@@ -40,12 +37,9 @@ public extension BuildTask {
 }
 
 public extension BuildTask.Options {
-    func toArguments() -> [String: String?] {
-        let arguments = buildOptions.toArguments()
-        
-        return arguments
-            .simpleMerging([
-                "build-for-testing": buildsForTesting ? "": nil
-            ])
+    func toArguments() -> [String?] {
+        return buildOptions.toArguments() + [
+            buildsForTesting ? "build-for-testing" : nil
+        ]
     }
 }

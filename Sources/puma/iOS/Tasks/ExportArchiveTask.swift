@@ -10,13 +10,11 @@ import Files
 
 public struct ExportArchiveTask {
     public let options: Options
-    public let extend: Extend
     public let exportPlist: ExportPlist
     
-    public init(options: Options, exportPlist: ExportPlist, extend: Extend = Extend()) {
+    public init(options: Options, exportPlist: ExportPlist) {
         self.options = options
         self.exportPlist = exportPlist
-        self.extend = extend
     }
 }
 
@@ -26,11 +24,10 @@ extension ExportArchiveTask: Task {
     }
     
     public func run() throws {
-        let arguments = buildArgument(toArguments(), extend: extend.argument)
-        let command = buildCommand("xcodebuild \(arguments)", extend: extend.command)
+        let command = "xcodebuild \(toString(arguments: toArguments()))"
         Log.command(command)
         try makeExportPlistIfAny()
-        _ = try Process().run(command: command, processHandler: DefaultProcessHandler())
+        _ = try Process().run(command: command)
     }
 }
 
@@ -99,12 +96,12 @@ extension ExportArchiveTask {
         return "ExportOptions.plist"
     }
     
-    func toArguments() -> [String: String?] {
+    func toArguments() -> [String?] {
         return [
-            "-exportArchive": "",
-            "-exportOptionsPlist ": options.exportOptionsPlist?.addingFileExtension("plist") ?? generatedPlistFileName() ,
-            "-archivePath ": options.archivePath.surroundingWithQuotes(),
-            "-exportPath ": options.exportPath?.surroundingWithQuotes()
+            "-exportArchive",
+            "-archivePath \(options.archivePath.surroundingWithQuotes())",
+            options.exportPath.map { "-exportPath \($0.surroundingWithQuotes())" },
+            options.exportOptionsPlist.map { "-exportOptionsPlist \($0.addingFileExtension("plist"))" } ?? generatedPlistFileName()
         ]
     }
 }
