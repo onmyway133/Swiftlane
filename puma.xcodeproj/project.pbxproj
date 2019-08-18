@@ -84,7 +84,6 @@
 		OBJ_236 /* Signing.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* Signing.swift */; };
 		OBJ_237 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Validator.swift */; };
 		OBJ_238 /* Xcodebuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* Xcodebuild.swift */; };
-		OBJ_239 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* utils.swift */; };
 		OBJ_241 /* Files.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Files::Files::Product" /* Files.framework */; };
 		OBJ_242 /* XcbeautifyLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "xcbeautify::XcbeautifyLib::Product" /* XcbeautifyLib.framework */; };
 		OBJ_243 /* Colorizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Colorizer::Colorizer::Product" /* Colorizer.framework */; };
@@ -340,7 +339,6 @@
 		OBJ_43 /* Signing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signing.swift; sourceTree = "<group>"; };
 		OBJ_44 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		OBJ_45 /* Xcodebuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xcodebuild.swift; sourceTree = "<group>"; };
-		OBJ_46 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		OBJ_48 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_51 /* PumaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumaTests.swift; sourceTree = "<group>"; };
 		OBJ_52 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
@@ -586,7 +584,6 @@
 				OBJ_43 /* Signing.swift */,
 				OBJ_44 /* Validator.swift */,
 				OBJ_45 /* Xcodebuild.swift */,
-				OBJ_46 /* utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1196,7 +1193,6 @@
 				OBJ_236 /* Signing.swift in Sources */,
 				OBJ_237 /* Validator.swift in Sources */,
 				OBJ_238 /* Xcodebuild.swift in Sources */,
-				OBJ_239 /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
