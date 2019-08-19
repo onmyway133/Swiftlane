@@ -76,6 +76,12 @@ run {
 - [ ] Integrate with services like Firebase
 - [ ] Capture screenshots
 
+## Dependencies
+
+- [xcbeautify](https://github.com/thii/xcbeautify) A little beautifier tool for xcodebuild
+- [Colorizer](https://github.com/getGuaka/Colorizer) A Swift package that helps adding colors to strings written to the terminal.
+- [Files](https://github.com/JohnSundell/Files) A nicer way to handle files & folders in Swift
+ 
 ## Contributing
 
 Puma is in its early development, we need your help.
