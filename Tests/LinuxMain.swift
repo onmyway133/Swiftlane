@@ -1,7 +1,7 @@
 import XCTest
 
-import pumaTests
+import PumaTests
 
 var tests = [XCTestCaseEntry]()
-tests += pumaTests.allTests()
+tests += PumaTests.allTests()
 XCTMain(tests)
