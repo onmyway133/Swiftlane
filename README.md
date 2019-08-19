@@ -27,8 +27,8 @@ run {
     SetBuildNumber(options: .init(buildNumber: "2
     Build(options: .init(
         buildOptions: xcodebuildOptions,
-        buildsForTesting: true)
-    )
+        buildsForTesting: true
+    ))
     
     Test(options: .init(
         buildOptions: xcodebuildOptions,
@@ -37,12 +37,12 @@ run {
             name: Destination.Name.iPhoneXr,
             os: Destination.OS.os12_2
         )
-    )
+    ))
    
     Archive(options: .init(
         buildOptions: xcodebuildOptions,
-        archivePath: recommendedArchiveOptions.archivePath)
-    )
+        archivePath: recommendedArchiveOptions.archivePath
+    ))
    
     ExportArchive(
         options: .init(
