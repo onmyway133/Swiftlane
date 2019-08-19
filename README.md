@@ -24,7 +24,7 @@ let xcodebuildOptions = Xcodebuild.Options(
 
 run {
     SetVersionNumber(options: .init(buildNumber: "1.1"))
-    SetBuildNumber(options: .init(buildNumber: "2
+    SetBuildNumber(options: .init(buildNumber: "2))
     Build(options: .init(
         buildOptions: xcodebuildOptions,
         buildsForTesting: true
