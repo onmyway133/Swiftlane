@@ -1,0 +1,19 @@
+# About
+module: Puma
+author: Puma Swift
+author_url: https://github.com/pumaswift
+readme: README.md
+copyright: '© All rights reserved 2019 Puma Swift'
+
+# URLs
+github_url: https://github.com/pumaswift/Puma
+root_url: https://github.com/pumaswift
+github_file_prefix: https://github.com/pumaswift/Puma/blob/master
+
+# Generation
+clean: true
+output: Docs
+clean: true
+min_acl: public
+hide_documentation_coverage: false
+skip_undocumented: true
