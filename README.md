@@ -90,7 +90,7 @@ Starting from our internal need to automate some small tasts, we hope to extend 
 
 ### Why Swift
 
-Swift is a type safe language. The compiler guides you through completing all the required parameters, which means it clear which are needed information for which task. There is no automatic detector, assumptions and asking us at runtime. No user interaction should be required when running.
+Swift is a type-safe language. The compiler guides you through completing all the required parameters, which means it clear which are needed information for which task. There is no automatic detector, assumptions and asking us at runtime. No user interaction should be required when running.
 
 The project is not just for a declarative Swift syntax shell. The code is in pure Swift, which helps contributors to easily reason about the code.
 
