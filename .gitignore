@@ -37,3 +37,4 @@ Carthage
 .build/
 puma.xcproj/
 Puma.xcproj/
+/.swiftpm
