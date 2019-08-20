@@ -34,3 +34,5 @@ Carthage
 
 # SPM
 .build/
+puma.xcproj/
+Puma.xcproj/
