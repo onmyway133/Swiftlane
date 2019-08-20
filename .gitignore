@@ -33,6 +33,7 @@ Pods
 Carthage
 
 # SPM
+/*.xcodeproj
 .build/
 puma.xcproj/
 Puma.xcproj/
