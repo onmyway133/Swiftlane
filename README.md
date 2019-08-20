@@ -4,7 +4,7 @@ Puma is a set of build utilities to automate mobile application development and 
 
 - Puma and its dependencies are written in pure Swift, making it easy to read and contribute.
 - Use latest Swift 5.1 features like function builder to enable declarative syntax
-- Type safe. All required and optional arguments are clear.
+- Type-safe. All required and optional arguments are clear.
 - No configuration file. Your Swift script is your definition.
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
 - Reuse awesome Swift scripting dependencies from Swift community
@@ -90,7 +90,7 @@ Starting from our internal need to automate some small tasts, we hope to extend 
 
 ### Why Swift
 
-Swift is a type-safe language. The compiler guides you through completing all the required parameters, which means it clear which are needed information for which task. There is no automatic detector, assumptions and asking us at runtime. No user interaction should be required when running.
+Swift is a type-safe language. The compiler guides you through completing all the required parameters, which makes it clear what information are needed for a specific task. There is no automatic detector, assumptions and asking us at runtime. No user interaction should be required when running.
 
 The project is not just for a declarative Swift syntax shell. The code is in pure Swift, which helps contributors to easily reason about the code.
 
