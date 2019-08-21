@@ -77,6 +77,8 @@ run {
 
 Head over to [Swift Package Manager usage](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) to create an executable.
 
+There's an already created [ManualCompile](https://github.com/pumaswift/Puma/tree/develop/Example/TestApp/ManualCompile) for your reference.
+
 Step 1: In your project folder, run these to create Swift Package Manager structure. Create another folder called, for example ManulCompile to keep our script.
 
 ```sh
@@ -125,7 +127,7 @@ cp -f ./.build/debug/ManualCompile ../puma
 
 Now we should have the executable `puma` in our project folder.
 
-Step 4: In our project folder, run `./puma` to see Puma in action.
+Step 4: In our project folder, run `./puma` to see Puma in action
 
 ```
 ./puma
