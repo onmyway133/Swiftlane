@@ -83,6 +83,7 @@ Step 1: In your project folder, run these to create Swift Package Manager struct
 
 ```sh
 mkdir ManualCompile
+cd ManualCompile
 swift package init --type executable
 ```
 
