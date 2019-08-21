@@ -9,9 +9,17 @@ Puma is a set of build utilities to automate mobile application development and 
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
 - Reuse awesome Swift scripting dependencies from Swift community
 
+Puma is intended to be used as a Swift library. Just import in your Swift script file and run. There's no additional configuration file, your Swift script file is the source of truth. 
+
 ## How to
 
-Puma is intended to be used as a Swift library. Just import in your Swift script file and run. Here's an example using [Marathon](https://github.com/JohnSundell/Marathon)
+To see Puma in action, head over to [TestApp](https://github.com/pumaswift/Puma/tree/develop/Example/TestApp), there is a TestApp project with a `script.swift`. The name of this file does not matter.
+
+You need to tweak the `teamId` and options according to your project.
+
+### Use Marathon
+
+For simplicity, we can use  [Marathon](https://github.com/JohnSundell/Marathon) which simplifies fetching dependencies, compiling and running the script.
 
 ```swift
 import Puma // marathon:https://github.com/pumaswift/Puma.git
@@ -64,6 +72,62 @@ run {
     )
 }
 ```
+
+### Manual compile
+
+Head over to [Swift Package Manager usage](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) to create an executable.
+
+Step 1: In your project folder, run these to create Swift Package Manager structure. Create another folder called, for example ManulCompile to keep our script.
+
+```sh
+mkdir ManualCompile
+swift package init --type executable
+```
+
+Step 2: Edit the newly generated `Package.swift` to include Puma
+
+```swift
+// swift-tools-version:5.1
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "ManualCompile",
+    dependencies: [
+        .package(
+            url: "https://github.com/pumaSwift/Puma.git",
+            .upToNextMajor(from: "0.0.1")
+        ),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "ManualCompile",
+            dependencies: []),
+        .testTarget(
+            name: "ManualCompileTests",
+            dependencies: ["ManualCompile"]),
+    ]
+)
+```
+
+Step 3: Run `swift build`, this will fetches dependencies and build our executable.
+Step 4: Copy the built ManualCompile executable from `Example/TestApp/ManualCompile/.build/debug/ManualCompile` to our `TestApp` folder
+
+```sh
+cp -f ./.build/debug/ManualCompile ../puma
+```
+
+Now we should have the executable `puma` in our project folder.
+
+Step 4: In our project folder, run `./puma` to see Puma in action.
+
+```
+./puma
+```
+
 
 ## Road map
 
