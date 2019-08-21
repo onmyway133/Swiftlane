@@ -6,7 +6,6 @@ let package = Package(
     name: "Puma",
     platforms: [.macOS("10.15")],
     products: [
-        .executable(name: "PumaRunner", targets: ["PumaRunner"]),
         .library(name: "Puma", targets: ["Puma"])
     ],
     dependencies: [
@@ -24,12 +23,6 @@ let package = Package(
         )
     ],
     targets: [
-        .target(
-            name: "PumaRunner",
-            dependencies: [
-                "Puma"
-            ]
-        ),
         .target(
             name: "Puma",
             dependencies: [
