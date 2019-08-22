@@ -12,4 +12,4 @@ workflows:
   version: 2.1
   primary:
     jobs:
-      build
+      - build
