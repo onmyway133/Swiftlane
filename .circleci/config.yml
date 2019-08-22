@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build:
+    macos:
+      xcode: "11.0.0"
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: make build
+
+workflows:
+  version: 2.1
+  primary:
+    jobs:
+      build
