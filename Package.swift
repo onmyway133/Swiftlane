@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Puma",
-    platforms: [.macOS("10.15")],
+    platforms: [.macOS("10.14")],
     products: [
         .library(name: "Puma", targets: ["Puma"])
     ],
