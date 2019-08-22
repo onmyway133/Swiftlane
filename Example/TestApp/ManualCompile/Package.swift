@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "ManualCompile",
+    platforms: [.macOS("10.14")],
     dependencies: [
         .package(
             url: "https://github.com/pumaSwift/Puma.git",
