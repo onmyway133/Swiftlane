@@ -120,7 +120,9 @@ let package = Package(
 )
 ```
 
-Step 3: Run 
+Step 3: Go to ManualCompile/Sources/ManualCompile/main.swift, import Puma and declare the tasks. 
+
+Step 4: Run 
 
 ```
 swift build
@@ -128,7 +130,7 @@ swift build
 
 This will fetch dependencies and build our executable.
 
-Step 4: Copy the built ManualCompile executable from `Example/TestApp/ManualCompile/.build/debug/ManualCompile` to our `TestApp` folder
+Step 5: Copy the built ManualCompile executable from `Example/TestApp/ManualCompile/.build/debug/ManualCompile` to our `TestApp` folder
 
 ```sh
 cp -f ./.build/debug/ManualCompile ../puma
@@ -136,7 +138,7 @@ cp -f ./.build/debug/ManualCompile ../puma
 
 Now we should have the executable `puma` in our project folder.
 
-Step 4: In our project folder, run `./puma` to see Puma in action
+Step 6: In our project folder, run `./puma` to see Puma in action
 
 ```
 ./puma
