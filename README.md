@@ -97,6 +97,7 @@ import PackageDescription
 
 let package = Package(
     name: "ManualCompile",
+    platforms: [.macOS("10.14")],
     dependencies: [
         .package(
             url: "https://github.com/pumaSwift/Puma.git",
@@ -119,7 +120,14 @@ let package = Package(
 )
 ```
 
-Step 3: Run `swift build`, this will fetches dependencies and build our executable.
+Step 3: Run 
+
+```
+swift build
+```
+
+This will fetch dependencies and build our executable.
+
 Step 4: Copy the built ManualCompile executable from `Example/TestApp/ManualCompile/.build/debug/ManualCompile` to our `TestApp` folder
 
 ```sh
