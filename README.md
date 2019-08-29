@@ -166,7 +166,7 @@ Step 6: In our project folder, run `./puma` to see Puma in action
 
 The idea for making scripts to automate things is not new. Some other tools are battled tested and deal with edge cases, and of course more awesome than Puma.
 
-Starting from our internal need to automate some small tasts, we hope to extend Puma to deal with more common mobile application development and deployment use cases. There are existing Xcode commands like xcodebuild, instruments, avgtool and other awesome scriptings from Swift community, our job is to connect things up and make them a little bit nicer.
+Starting from our internal need to automate some small tasks, we hope to extend Puma to deal with more common mobile application development and deployment use cases. There are existing Xcode commands like xcodebuild, instruments, avgtool and other awesome scriptings from Swift community, our job is to connect things up and make them a little bit nicer.
 
 ### Why Swift
 
