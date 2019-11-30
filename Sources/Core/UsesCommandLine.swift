@@ -9,6 +9,14 @@ import Foundation
 
 /// Any task that uses command line
 public protocol UsesCommandLine: AnyObject {
-    var command: String { get }
+    var program: String { get }
     var arguments: Set<String> { get set }
+}
+
+public extension UsesCommandLine {
+    func run() throws {
+        let command = "\(program) \(arguments.joined(separator: " "))"
+        Log.command(command)
+        _ = try Process().run(command: command)
+    }
 }

@@ -9,18 +9,10 @@ import Foundation
 import PumaCore
 
 /// Any task that uses xcodebuild
-public protocol UsesXcodeBuild: UsesCommandLine {
-    func project(project: String, scheme: String)
-    func project(_ name: String)
-    func scheme(_ name: String)
-    func workspace(_ name: String)
-    func configuration(_ configuration: String)
-    func sdk(_ sdk: String)
-    func usesModernBuildSystem(enabled: Bool)
-}
+public protocol UsesXcodeBuild: UsesCommandLine {}
 
 public extension UsesXcodeBuild {
-    var command: String { "xcodebuild" }
+    var program: String { "xcodebuild" }
 
     func `default`(project: String, scheme: String) {
         self.project(project)

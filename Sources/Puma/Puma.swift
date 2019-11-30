@@ -28,7 +28,6 @@ public struct Workflow {
         do {
             try tasks.forEach({ task in
                 Log.task(task.name)
-                try task.validate()
                 
                 afterSummarizer.beforeRun(name: task.name)
                 try task.run()

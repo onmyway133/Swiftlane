@@ -1,11 +1,11 @@
 import Foundation
 import PumaCore
 
-public struct Build {
-    public let options: Options
+public class Build: UsesXcodeBuild {
+    public var arguments = Set<String>()
     
-    public init(options: Options) {
-        self.options = options
+    public init(_ closure: (Build) -> Void) {
+        closure(self)
     }
 }
 
@@ -13,34 +13,19 @@ extension Build: Task {
     public var name: String {
         return "Build"
     }
-    
-    public func validate() throws {
-        try Validator.deviceBuildMustHaveCodeSign(options: options.buildOptions)
-    }
-    
+
     public func run() throws {
-        let command = "xcodebuild \(toString(arguments: options.toArguments())) build"
-        Log.command(command)
-        _ = try Process().run(command: command)
+        arguments.insert("build")
+        try (self as UsesCommandLine).run()
     }
 }
 
 public extension Build {
-    struct Options {
-        let buildOptions: Xcodebuild.Options
-        let buildsForTesting: Bool
-        
-        public init(buildOptions: Xcodebuild.Options, buildsForTesting: Bool = true) {
-            self.buildOptions = buildOptions
-            self.buildsForTesting = buildsForTesting
+    func buildsForTesting(enabled: Bool) {
+        if enabled {
+            arguments.insert("build-for-testing")
+        } else {
+            arguments.remove("build-for-testing")
         }
-    }
-}
-
-public extension Build.Options {
-    func toArguments() -> [String?] {
-        return buildOptions.toArguments() + [
-            buildsForTesting ? "build-for-testing" : nil
-        ]
     }
 }
