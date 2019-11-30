@@ -33,6 +33,6 @@ public struct DefaultProcessHandler: ProcessHandler {
                 return
         }
         
-        Log.plain(line)
+        Deps.console.text(line)
     }
 }

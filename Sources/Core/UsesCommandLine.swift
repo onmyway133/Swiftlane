@@ -17,7 +17,7 @@ public extension UsesCommandLine {
     func run() throws {
         let argumentsAsString = Array(arguments).sorted().joined(separator: " ")
         let command = "\(program) \(argumentsAsString)"
-        Log.command(command)
+        Deps.console.title(command)
         _ = try Process().run(command: command)
     }
 }

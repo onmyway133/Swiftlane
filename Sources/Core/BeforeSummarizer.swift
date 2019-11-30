@@ -10,11 +10,11 @@ import Foundation
 public struct BeforeSummarizer {
     public init() {}
     public func on(tasks: [Task]) {
-        Log.beforeSummary("Tasks to run")
+        Deps.console.title("Tasks to run")
         tasks.enumerated().forEach({ tuple in
-            Log.plain("  \(tuple.offset + 1). \(tuple.element.name)")
+            Deps.console.text("  \(tuple.offset + 1). \(tuple.element.name)")
         })
         
-        Log.newLine()
+        Deps.console.newLine()
     }
 }

@@ -27,36 +27,36 @@ public struct Workflow {
         
         do {
             try tasks.forEach({ task in
-                Log.task(task.name)
+                Deps.console.title(task.name)
                 
                 afterSummarizer.beforeRun(name: task.name)
                 try task.run()
                 afterSummarizer.afterRun()
                 
-                Log.newLine()
+                Deps.console.newLine()
             })
         } catch {
             afterSummarizer.afterRun()
             handle(error: error)
         }
         
-        Log.newLine()
+        Deps.console.newLine()
         afterSummarizer.show()
     }
     
     public func handle(error: Error) {
         guard let pumaError = error as? PumaError else {
-            Log.error(error.localizedDescription)
+            Deps.console.error(error.localizedDescription)
             return
         }
         
         switch pumaError {
         case .process(let terminationStatus, let output, let error):
             let _ = output
-            Log.error("code \(terminationStatus)")
-            Log.error(error)
+            Deps.console.error("code \(terminationStatus)")
+            Deps.console.error(error)
         default:
-            Log.error(error.localizedDescription)
+            Deps.console.error(error.localizedDescription)
         }
     }
 }
