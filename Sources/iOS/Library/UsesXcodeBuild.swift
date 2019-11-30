@@ -9,7 +9,7 @@ import Foundation
 import PumaCore
 
 /// Any task that uses xcodebuild
-public protocol XcodeBuildAware: CommandLineAware {
+public protocol UsesXcodeBuild: UsesCommandLine {
     func project(project: String, scheme: String)
     func project(_ name: String)
     func scheme(_ name: String)
@@ -19,7 +19,7 @@ public protocol XcodeBuildAware: CommandLineAware {
     func usesModernBuildSystem(enabled: Bool)
 }
 
-public extension XcodeBuildAware {
+public extension UsesXcodeBuild {
     var command: String { "xcodebuild" }
 
     func `default`(project: String, scheme: String) {

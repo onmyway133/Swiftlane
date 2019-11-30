@@ -8,7 +8,7 @@
 import Foundation
 
 /// Any task that uses command line
-public protocol CommandLineAware: AnyObject {
+public protocol UsesCommandLine: AnyObject {
     var command: String { get }
     var arguments: Set<String> { get set }
 }
