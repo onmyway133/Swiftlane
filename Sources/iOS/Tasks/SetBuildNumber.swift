@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PumaCore
 
 public struct SetBuildNumber {
     public let options: Options

@@ -8,6 +8,7 @@
 import Foundation
 
 public struct BeforeSummarizer {
+    public init() {}
     public func on(tasks: [Task]) {
         Log.beforeSummary("Tasks to run")
         tasks.enumerated().forEach({ tuple in

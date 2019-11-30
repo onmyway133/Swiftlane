@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PumaCore
 
 public struct Test {
     public let options: Options

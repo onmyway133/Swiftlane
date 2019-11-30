@@ -1,4 +1,5 @@
 import Foundation
+import PumaCore
 
 public struct Build {
     public let options: Options

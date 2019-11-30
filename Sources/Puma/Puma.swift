@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PumaCore
 
 public func run(@TaskBuilder builder: () -> [Task]) {
     Workflow().run(tasks: builder())
