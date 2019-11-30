@@ -10,15 +10,25 @@ import PumaCore
 
 /// Any task that uses xcodebuild
 public protocol XcodeBuildAware: CommandLineAware {
-    func project(_ projectName: String, scheme: String)
+    func project(project: String, scheme: String)
     func project(_ name: String)
     func scheme(_ name: String)
     func workspace(_ name: String)
-    func configuration()
+    func configuration(_ configuration: String)
+    func sdk(_ sdk: String)
+    func usesModernBuildSystem(enabled: Bool)
 }
 
 public extension XcodeBuildAware {
     var command: String { "xcodebuild" }
+
+    func `default`(project: String, scheme: String) {
+        self.project(project)
+        self.scheme(scheme)
+        self.configuration(Configuration.debug)
+        self.sdk(Sdk.iPhoneSimulator)
+        self.usesModernBuildSystem(enabled: true)
+    }
 
     func project(_ name: String) {
         arguments.insert("-project \(name.addingFileExtension("xcodeproj"))")
@@ -32,8 +42,15 @@ public extension XcodeBuildAware {
         arguments.insert("-scheme \(name)")
     }
 
-    func project(_ projectName: String, scheme: String) {
-        self.project(projectName)
-        self.scheme(scheme)
+    func configuration(_ configuration: String) {
+        arguments.insert("-configuration \(configuration)")
+    }
+
+    func sdk(_ sdk: String) {
+        arguments.insert("-sdk \(sdk)")
+    }
+
+    func usesModernBuildSystem(enabled: Bool) {
+        arguments.insert("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
     }
 }
