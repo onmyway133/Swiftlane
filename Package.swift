@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Puma",
-    platforms: [.macOS("10.14")],
+    platforms: [.macOS("10.15")],
     products: [
         .library(name: "Puma", targets: ["Puma"])
     ],
@@ -26,10 +26,33 @@ let package = Package(
         .target(
             name: "Puma",
             dependencies: [
+                "PumaiOS",
+                "PumaAndroid",
+            ],
+            path: "Sources/Puma"
+        ),
+        .target(
+            name: "PumaCore",
+            dependencies: [
                 "XcbeautifyLib",
                 "Colorizer",
                 "Files"
-            ]
+            ],
+            path: "Sources/Core"
+        ),
+        .target(
+            name: "PumaiOS",
+            dependencies: [
+                "PumaCore"
+            ],
+            path: "Sources/iOS"
+        ),
+        .target(
+            name: "PumaAndroid",
+            dependencies: [
+                "PumaCore"
+            ],
+            path: "Sources/Android"
         ),
         .testTarget(
             name: "PumaTests",
