@@ -82,6 +82,13 @@
 			remoteGlobalIDString = "xcbeautify::XcbeautifyLib::Product";
 			remoteInfo = XcbeautifyLib;
 		};
+		D29016CA2393243B005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "Puma::Puma";
+			remoteInfo = Puma;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -178,6 +185,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D29016CB2393243B005B4779 /* PBXTargetDependency */,
 			);
 			name = TestPuma;
 			productName = TestPuma;
@@ -306,6 +314,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D29016CB2393243B005B4779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Puma;
+			targetProxy = D29016CA2393243B005B4779 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D2901691239318D3005B4779 /* Debug */ = {
