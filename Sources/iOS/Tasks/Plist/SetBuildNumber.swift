@@ -9,32 +9,23 @@
 import Foundation
 import PumaCore
 
-public struct SetBuildNumber {
-    public let options: Options
-    
-    public init(options: Options) {
-        self.options = options
-    }
-}
+public class SetBuildNumber: UsesCommandLine {
+    public var program: String { "agvtool" }
+    public var arguments = Set<String>()
 
-public extension SetBuildNumber {
-    struct Options {
-        public let buildNumber: String
-        
-        public init(buildNumber: String) {
-            self.buildNumber = buildNumber
-        }
+    public init(_ closure: (SetBuildNumber) -> Void) {
+        closure(self)
     }
 }
 
 extension SetBuildNumber: Task {
-    public var name: String {
-        return "Set build number"
-    }
-    
-    public func run() throws {
-        let command = "agvtool new-version -all \(options.buildNumber)"
-        Log.command(command)
-        _ = try Process().run(command: command)
+    public var name: String { "Set build number" }
+}
+
+public extension SetBuildNumber {
+    func buildNumberForAllTarget(_ number: String) {
+        arguments.insert("new-version")
+        arguments.insert("-all")
+        arguments.insert(number)
     }
 }
