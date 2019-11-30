@@ -23,15 +23,24 @@ public extension UsesXcodeBuild {
     }
 
     func project(_ name: String) {
-        arguments.insert("-project \(name.addingFileExtension("xcodeproj"))")
+        let normalizedName = name
+            .addingFileExtension("xcodeproj")
+            .surroundingWithQuotes()
+        arguments.insert("-project \(normalizedName)")
     }
 
     func workspace(_ name: String) {
-        arguments.insert("-workspace \(name.addingFileExtension("xcworkspace"))")
+        let normalizedName = name
+            .addingFileExtension("xcworkspace")
+            .surroundingWithQuotes()
+
+        arguments.insert("-workspace \(normalizedName)")
     }
 
     func scheme(_ name: String) {
-        arguments.insert("-scheme \(name)")
+        let normalizedName = name
+            .surroundingWithQuotes()
+        arguments.insert("-scheme \(normalizedName)")
     }
 
     func configuration(_ configuration: String) {
