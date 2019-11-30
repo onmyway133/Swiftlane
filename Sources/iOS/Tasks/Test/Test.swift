@@ -17,9 +17,7 @@ public class Test: UsesXcodeBuild {
 }
 
 extension Test: Task {
-    public var name: String {
-        return "Test"
-    }
+    public var name: String { "Test" }
 
     public func run() throws {
         arguments.insert("test")

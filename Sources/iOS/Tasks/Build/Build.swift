@@ -10,9 +10,7 @@ public class Build: UsesXcodeBuild {
 }
 
 extension Build: Task {
-    public var name: String {
-        return "Build"
-    }
+    public var name: String { "Build" }
 
     public func run() throws {
         arguments.insert("build")

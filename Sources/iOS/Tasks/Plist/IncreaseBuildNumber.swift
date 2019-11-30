@@ -8,18 +8,22 @@
 import Foundation
 import PumaCore
 
-public struct IncreaseBuildNumberTask {
-    public init() {}
+public class IncreaseBuildNumber: UsesCommandLine {
+    public var program: String { "agvtool" }
+    public var arguments = Set<String>()
+
+    public init(_ closure: (IncreaseBuildNumber) -> Void) {
+        closure(self)
+    }
 }
 
-extension IncreaseBuildNumberTask: Task {
-    public var name: String {
-        return "Increase build number"
-    }
-    
-    public func run() throws {
-        let command = "agvtool next-version -all"
-        Log.command(command)
-        _ = try Process().run(command: command)
+extension IncreaseBuildNumber: Task {
+    public var name: String { "Increase build number" }
+}
+
+public extension IncreaseBuildNumber {
+    func nextVersionForAllTargets() {
+        arguments.insert("next-version")
+        arguments.insert("-all")
     }
 }
