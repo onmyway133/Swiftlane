@@ -15,7 +15,8 @@ public protocol UsesCommandLine: AnyObject {
 
 public extension UsesCommandLine {
     func run() throws {
-        let command = "\(program) \(arguments.joined(separator: " "))"
+        let argumentsAsString = Array(arguments).sorted().joined(separator: " ")
+        let command = "\(program) \(argumentsAsString)"
         Log.command(command)
         _ = try Process().run(command: command)
     }
