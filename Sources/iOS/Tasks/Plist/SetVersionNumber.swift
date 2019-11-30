@@ -23,7 +23,7 @@ extension SetVersionNumber: Task {
 }
 
 public extension SetVersionNumber {
-    func buildNumberForAllTarget(_ number: String) {
+    func versionNumberForAllTargets(_ number: String) {
         arguments.insert("new-marketing-version")
         arguments.insert(number)
     }

@@ -13,67 +13,43 @@ Puma is intended to be used as a Swift library. Just import in your Swift script
 
 ## How to
 
-To see Puma in action, head over to [TestApp](https://github.com/pumaswift/Puma/tree/develop/Example/TestApp), there is a TestApp project with a `script.swift`. The name of this file does not matter.
+### Test drive Puma
+
+To see Puma in action, head over to [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), there is a TestPuma Command Line Tool macOS project with a `main.swift`.
 
 You need to tweak the `teamId` and options according to your project.
 
-### Use Marathon
-
-For simplicity, we can use  [Marathon](https://github.com/JohnSundell/Marathon) which simplifies fetching dependencies, compiling and running the script.
-
 ```swift
-import Puma // marathon:https://github.com/pumaswift/Puma.git
-
-let automaticSigning = AutomaticSigning(teamId: "T78DK947F2")
-let recommendedArchiveOptions = OptionFactory().makeArchiveOptions(name: "TestApp")
-
-let xcodebuildOptions = Xcodebuild.Options(
-    workspace: nil,
-    project: "TestApp",
-    scheme: "TestApp",
-    configuration: Configuration.release,
-    sdk: Sdk.iPhone,
-    signing: .auto(automaticSigning),
-    usesModernBuildSystem: true
-)
+import Puma
+import PumaiOS
 
 run {
-    SetVersionNumber(options: .init(buildNumber: "1.1"))
-    SetBuildNumber(options: .init(buildNumber: "2"))
-    Build(options: .init(
-        buildOptions: xcodebuildOptions,
-        buildsForTesting: true
-    ))
+    SetVersionNumber {
+        $0.versionNumberForAllTargets("1.1")
+    }
     
-    Test(options: .init(
-        buildOptions: xcodebuildOptions,
-        destination: Destination(
+    SetBuildNumber {
+        $0.buildNumberForAllTargets("2")
+    }
+    
+    Build {
+        $0.default(project: "TestApp", scheme: "TestApp")
+        $0.buildsForTesting(enabled: true)
+    }
+    
+    Test {
+        $0.default(project: "TestApp", scheme: "TestApp")
+        $0.testsWithoutBuilding(enabled: true)
+        $0.destination(Destination(
             platform: Destination.Platform.iOSSimulator,
             name: Destination.Name.iPhoneXr,
             os: Destination.OS.os12_2
-        )
-    ))
-   
-    Archive(options: .init(
-        buildOptions: xcodebuildOptions,
-        archivePath: recommendedArchiveOptions.archivePath
-    ))
-   
-    ExportArchive(
-        options: .init(
-            exportOptionsPlist: nil,
-            archivePath: recommendedArchiveOptions.archivePath,
-            exportPath: recommendedArchiveOptions.exportPath
-        ),
-        exportPlist: .init(
-            teamId: "T78DK947F2",
-            method: ExportMethod.development
-        )
-    )
+        ))
+    }
 }
 ```
 
-### Manual compile
+### Compile Puma
 
 Head over to [Swift Package Manager usage](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) to create an executable.
 

@@ -23,7 +23,7 @@ extension SetBuildNumber: Task {
 }
 
 public extension SetBuildNumber {
-    func buildNumberForAllTarget(_ number: String) {
+    func buildNumberForAllTargets(_ number: String) {
         arguments.insert("new-version")
         arguments.insert("-all")
         arguments.insert(number)
