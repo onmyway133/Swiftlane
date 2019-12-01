@@ -78,3 +78,11 @@ public extension Process {
         }
     }
 }
+
+public extension Process {
+    func apply(workflow: Workflow?) {
+        if let workflow = workflow {
+            currentDirectoryPath = workflow.workingDirectory
+        }
+    }
+}

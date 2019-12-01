@@ -13,13 +13,14 @@ public protocol UsesCommandLine: AnyObject {
     var arguments: [String] { get set }
 }
 
-public extension UsesCommandLine {
-    func run() throws {
+public extension UsesCommandLine where Self: Task {
+    func runCommand() throws {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
         Deps.console.command(command)
 
         let process = Process()
+        process.apply(workflow: workflow)
         process.launchPath = "/bin/bash"
         process.arguments = ["-c", command]
         

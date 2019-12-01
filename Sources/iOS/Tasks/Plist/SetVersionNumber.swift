@@ -12,6 +12,7 @@ import PumaCore
 public class SetVersionNumber: UsesCommandLine {
     public var program: String { "agvtool" }
     public var arguments = [String]()
+    public weak var workflow: Workflow?
 
     public init(_ closure: (SetVersionNumber) -> Void = { _ in }) {
         closure(self)
@@ -20,6 +21,10 @@ public class SetVersionNumber: UsesCommandLine {
 
 extension SetVersionNumber: Task {
     public var name: String { "Set version number" }
+
+    public func run() throws {
+        try runCommand()
+    }
 }
 
 public extension SetVersionNumber {

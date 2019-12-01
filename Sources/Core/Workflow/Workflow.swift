@@ -9,10 +9,14 @@ import Foundation
 
 /// Workflow is a group of tasks
 public class Workflow {
+    public var workingDirectory: String = "."
     public let tasks: [Task]
 
     public init(tasks: [Task]) {
         self.tasks = tasks
+        self.tasks.forEach { task in
+            task.workflow = self
+        }
     }
 
     public func run() {

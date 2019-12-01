@@ -10,6 +10,7 @@ import PumaCore
 
 public class Test: UsesXcodeBuild {
     public var arguments = [String]()
+    public weak var workflow: Workflow?
 
     public init(_ closure: (Test) -> Void = { _ in }) {
         closure(self)
@@ -21,7 +22,7 @@ extension Test: Task {
 
     public func run() throws {
         arguments.append("test")
-        try (self as UsesCommandLine).run()
+        try runCommand()
     }
 }
 

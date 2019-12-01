@@ -7,7 +7,8 @@
 
 import Foundation
 
-public protocol Task {
+public protocol Task: AnyObject {
     var name: String { get }
+    var workflow: Workflow? { get set }
     func run() throws
 }
