@@ -26,7 +26,7 @@ public extension UsesXcodeBuild {
         let normalizedName = name
             .addingFileExtension("xcodeproj")
             .surroundingWithQuotes()
-        arguments.insert("-project \(normalizedName)")
+        arguments.append("-project \(normalizedName)")
     }
 
     func workspace(_ name: String) {
@@ -34,24 +34,24 @@ public extension UsesXcodeBuild {
             .addingFileExtension("xcworkspace")
             .surroundingWithQuotes()
 
-        arguments.insert("-workspace \(normalizedName)")
+        arguments.append("-workspace \(normalizedName)")
     }
 
     func scheme(_ name: String) {
         let normalizedName = name
             .surroundingWithQuotes()
-        arguments.insert("-scheme \(normalizedName)")
+        arguments.append("-scheme \(normalizedName)")
     }
 
     func configuration(_ configuration: String) {
-        arguments.insert("-configuration \(configuration)")
+        arguments.append("-configuration \(configuration)")
     }
 
     func sdk(_ sdk: String) {
-        arguments.insert("-sdk \(sdk)")
+        arguments.append("-sdk \(sdk)")
     }
 
     func usesModernBuildSystem(enabled: Bool) {
-        arguments.insert("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
+        arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
     }
 }

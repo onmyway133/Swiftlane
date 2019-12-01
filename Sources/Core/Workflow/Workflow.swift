@@ -23,7 +23,7 @@ public class Workflow {
 
         do {
             try tasks.forEach({ task in
-                Deps.console.title(task.name)
+                Deps.console.task(task.name)
 
                 afterSummarizer.beforeRun(name: task.name)
                 try task.run()

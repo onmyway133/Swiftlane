@@ -29,8 +29,8 @@ public struct DefaultProcessHandler: ProcessHandler {
             !data.isEmpty,
             let line = XcbeautifyLib.Parser().parse(line: data.normalizeString()),
             !line.isEmpty
-            else {
-                return
+        else {
+            return
         }
         
         Deps.console.text(line)

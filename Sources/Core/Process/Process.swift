@@ -11,12 +11,9 @@ import Foundation
 
 public extension Process {
     @discardableResult func run(
-        command: String,
-        processHandler: ProcessHandler = DefaultProcessHandler()) throws -> String {
+        processHandler: ProcessHandler = DefaultProcessHandler()
+    ) throws -> String {
 
-        launchPath = "/bin/bash"
-        arguments = ["-c", command]
-        
         // Because FileHandle's readabilityHandler might be called from a
         // different queue from the calling queue, avoid a data race by
         // protecting reads and writes to outputData and errorData on

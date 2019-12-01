@@ -8,10 +8,13 @@
 
 import Foundation
 import Puma
+import PumaCore
 import PumaiOS
 
 func testDrive() {
     run {
+        WorkingDirectory()
+
         SetVersionNumber {
             $0.versionNumberForAllTargets("1.1")
         }

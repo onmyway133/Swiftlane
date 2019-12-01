@@ -10,7 +10,7 @@ import PumaCore
 
 public class IncreaseBuildNumber: UsesCommandLine {
     public var program: String { "agvtool" }
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
     public init(_ closure: (IncreaseBuildNumber) -> Void) {
         closure(self)
@@ -23,7 +23,7 @@ extension IncreaseBuildNumber: Task {
 
 public extension IncreaseBuildNumber {
     func nextVersionForAllTargets() {
-        arguments.insert("next-version")
-        arguments.insert("-all")
+        arguments.append("next-version")
+        arguments.append("-all")
     }
 }

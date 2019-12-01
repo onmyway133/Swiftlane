@@ -11,7 +11,7 @@ import PumaCore
 
 public class SetVersionNumber: UsesCommandLine {
     public var program: String { "agvtool" }
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
     public init(_ closure: (SetVersionNumber) -> Void) {
         closure(self)
@@ -24,8 +24,8 @@ extension SetVersionNumber: Task {
 
 public extension SetVersionNumber {
     func versionNumberForAllTargets(_ number: String) {
-        arguments.insert("new-marketing-version")
-        arguments.insert(number)
+        arguments.append("new-marketing-version")
+        arguments.append(number)
     }
 }
 

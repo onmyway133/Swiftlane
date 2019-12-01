@@ -35,7 +35,7 @@ public class AfterSummerizer {
     }
     
     public func show() {
-        Deps.console.title("Summary")
+        Deps.console.header("Summary")
 
         entries.enumerated().forEach({ tuple in
             let timeString = parse(seconds: tuple.element.duration)

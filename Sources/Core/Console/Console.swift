@@ -13,12 +13,12 @@ open class Console {
 
     open func header(_ text: String) {
         print(String(repeating: "=", count: 60).foreground.Cyan)
-        print(text.style.Bold.foreground.Yellow)
+        print(text.style.Bold.foreground.Yellow.style.Bold)
         print(String(repeating: "=", count: 60).foreground.Cyan)
     }
 
     open func title(_ text: String) {
-        print(text.foreground.Yellow)
+        print(text.foreground.Yellow.style.Bold)
     }
 
     open func text(_ text: String) {
@@ -31,5 +31,13 @@ open class Console {
 
     open func newLine() {
         print("\n")
+    }
+
+    open func task(_ text: String) {
+        title("🚀 \(text)")
+    }
+
+    open func command(_ text: String) {
+        print(text.foreground.Green)
     }
 }

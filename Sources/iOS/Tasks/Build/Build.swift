@@ -2,7 +2,7 @@ import Foundation
 import PumaCore
 
 public class Build: UsesXcodeBuild {
-    public var arguments = Set<String>()
+    public var arguments = [String]()
     
     public init(_ closure: (Build) -> Void) {
         closure(self)
@@ -13,7 +13,7 @@ extension Build: Task {
     public var name: String { "Build" }
 
     public func run() throws {
-        arguments.insert("build")
+        arguments.append("build")
         try (self as UsesCommandLine).run()
     }
 }
@@ -21,7 +21,7 @@ extension Build: Task {
 public extension Build {
     func buildsForTesting(enabled: Bool) {
         if enabled {
-            arguments.insert("build-for-testing")
+            arguments.append("build-for-testing")
         } else {
             arguments.remove("build-for-testing")
         }

@@ -9,7 +9,7 @@ import Foundation
 import PumaCore
 
 public class Test: UsesXcodeBuild {
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
     public init(_ closure: (Test) -> Void) {
         closure(self)
@@ -20,19 +20,19 @@ extension Test: Task {
     public var name: String { "Test" }
 
     public func run() throws {
-        arguments.insert("test")
+        arguments.append("test")
         try (self as UsesCommandLine).run()
     }
 }
 
 public extension Test {
     func destination(_ destination: Destination) {
-        arguments.insert("-destination \(destination.toString())")
+        arguments.append("-destination \(destination.toString())")
     }
 
     func testsWithoutBuilding(enabled: Bool) {
         if enabled {
-            arguments.insert("test-without-building")
+            arguments.append("test-without-building")
         } else {
             arguments.remove("test-without-building")
         }
