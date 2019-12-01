@@ -12,8 +12,15 @@ public class Workflow {
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
-    public init(tasks: [Task]) {
-        self.tasks = tasks
+    public init(@TaskBuilder builder: () -> [Task]) {
+        self.tasks = builder()
+        self.tasks.forEach { task in
+            task.workflow = self
+        }
+    }
+
+    public init(@TaskBuilder builder: () -> Task) {
+        self.tasks = [builder()]
         self.tasks.forEach { task in
             task.workflow = self
         }

@@ -27,9 +27,3 @@ public class WorkingDirectory: UsesCommandLine {
 extension WorkingDirectory: Task {
     public var name: String { "Working directory" }
 }
-
-public extension WorkingDirectory {
-    func change(_ workingDirectory: String) {
-        workflow?.workingDirectory = workingDirectory
-    }
-}

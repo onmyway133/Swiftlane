@@ -9,11 +9,11 @@ import Foundation
 import PumaCore
 
 public func run(@TaskBuilder builder: () -> [Task]) {
-    let workflow = Workflow(tasks: builder())
+    let workflow = Workflow(builder: builder)
     workflow.run()
 }
 
 public func run(@TaskBuilder builder: () -> Task) {
-    let workflow = Workflow(tasks: [builder()])
+    let workflow = Workflow(builder: builder)
     workflow.run()
 }
