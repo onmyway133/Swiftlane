@@ -9,7 +9,7 @@ import Foundation
 
 /// Workflow is a group of tasks
 public class Workflow {
-    public let tasks:  [Task]
+    public let tasks: [Task]
 
     public init(tasks: [Task]) {
         self.tasks = tasks

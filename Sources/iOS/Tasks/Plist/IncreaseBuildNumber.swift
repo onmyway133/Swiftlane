@@ -12,7 +12,7 @@ public class IncreaseBuildNumber: UsesCommandLine {
     public var program: String { "agvtool" }
     public var arguments = [String]()
 
-    public init(_ closure: (IncreaseBuildNumber) -> Void) {
+    public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {
         closure(self)
     }
 }

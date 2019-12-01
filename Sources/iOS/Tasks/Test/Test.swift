@@ -11,7 +11,7 @@ import PumaCore
 public class Test: UsesXcodeBuild {
     public var arguments = [String]()
 
-    public init(_ closure: (Test) -> Void) {
+    public init(_ closure: (Test) -> Void = { _ in }) {
         closure(self)
     }
 }

@@ -4,7 +4,7 @@ import PumaCore
 public class Build: UsesXcodeBuild {
     public var arguments = [String]()
     
-    public init(_ closure: (Build) -> Void) {
+    public init(_ closure: (Build) -> Void = { _ in }) {
         closure(self)
     }
 }
