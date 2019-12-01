@@ -18,9 +18,9 @@ public class WorkingDirectory: UsesCommandLine {
 
     public func run() throws {
         let process = Process()
-        process.launchPath = "/bin/pwd"
+        process.launchPath = "/bin/\(program)"
 
-        try process.run()
+        try run(process: process)
     }
 }
 

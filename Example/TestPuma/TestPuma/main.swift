@@ -13,7 +13,9 @@ import PumaiOS
 
 func testDrive() {
     run {
-        WorkingDirectory()
+        WorkingDirectory {
+            $0.change("/Users/khoa/XcodeProject2/Puma/Example/TestApp")
+        }
 
         SetVersionNumber {
             $0.versionNumberForAllTargets("1.1")
