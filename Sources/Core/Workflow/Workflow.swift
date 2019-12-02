@@ -14,16 +14,10 @@ public class Workflow {
 
     public init(@TaskBuilder builder: () -> [Task]) {
         self.tasks = builder()
-        self.tasks.forEach { task in
-            task.workflow = self
-        }
     }
 
     public init(@TaskBuilder builder: () -> Task) {
         self.tasks = [builder()]
-        self.tasks.forEach { task in
-            task.workflow = self
-        }
     }
 
     public func run() {
@@ -37,7 +31,7 @@ public class Workflow {
                 Deps.console.task(task.name)
 
                 afterSummarizer.beforeRun(name: task.name)
-                try task.run()
+                try task.run(workflow: self)
                 afterSummarizer.afterRun()
 
                 Deps.console.newLine()

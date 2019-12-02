@@ -26,7 +26,7 @@ public extension UsesCommandLine where Self: Task {
     }
 
     func run(process: Process) throws {
-        process.apply(workflow: workflow)
-        try process.run()
+//        process.apply(workflow: workflow)
+//        try process.run()
     }
 }

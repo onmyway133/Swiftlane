@@ -11,13 +11,12 @@ import PumaCore
 public class IncreaseBuildNumber: UsesCommandLine {
     public var program: String { "agvtool" }
     public var arguments = [String]()
-    public weak var workflow: Workflow?
 
     public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {
         closure(self)
     }
 
-    public func run() throws {
+    public func run(workflow: Workflow) throws {
         try runCommand()
     }
 }

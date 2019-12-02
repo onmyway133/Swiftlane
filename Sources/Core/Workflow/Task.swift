@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import Combine
 
 public protocol Task: AnyObject {
     var name: String { get }
-    var workflow: Workflow? { get set }
-    func run() throws
+    func run(workflow: Workflow) throws
 }

@@ -10,13 +10,12 @@ import Foundation
 public class WorkingDirectory: UsesCommandLine {
     public var program: String { "pwd" }
     public var arguments = [String]()
-    public weak var workflow: Workflow?
 
     public init(_ closure: (WorkingDirectory) -> Void = { _ in }) {
         closure(self)
     }
 
-    public func run() throws {
+    public func run(workflow: Workflow) throws {
         let process = Process()
         process.launchPath = "/bin/\(program)"
 
