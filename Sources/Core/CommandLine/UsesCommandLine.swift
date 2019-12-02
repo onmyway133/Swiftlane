@@ -20,11 +20,10 @@ public extension UsesCommandLine {
         Deps.console.command(command)
 
         let process = Process()
-        process.apply(workflow: workflow)
         process.launchPath = "/bin/bash"
         process.arguments = ["-c", command]
 
-        try process.run(processHandler: processHandler)
+        try run(process: process, workflow: workflow, processHandler: processHandler)
     }
 
     func run(process: Process, workflow: Workflow, processHandler: ProcessHandler) throws {
