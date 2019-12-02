@@ -27,9 +27,9 @@ public class Workflow {
         self.tasks = [builder()]
     }
 
-    public func run(completion: WorkflowCompletion) {
+    public func run(completion: WorkflowCompletion = { _ in }) {
         beforeSummarizer.on(tasks: tasks)
-        runFirst(tasks: tasks)
+        runFirst(tasks: tasks, workflowCompletion: completion)
     }
 
     public func handle(error: Error) {
@@ -48,10 +48,11 @@ public class Workflow {
         }
     }
 
-    private func runFirst(tasks: [Task]) {
+    private func runFirst(tasks: [Task], workflowCompletion: WorkflowCompletion) {
         guard let first = tasks.first else {
             Deps.console.newLine()
             afterSummarizer.show()
+            workflowCompletion(.success(()))
             return
         }
 
@@ -66,9 +67,10 @@ public class Workflow {
             case .success:
                 var tasks = tasks
                 tasks.removeFirst()
-                self.runFirst(tasks: tasks)
+                self.runFirst(tasks: tasks, workflowCompletion: workflowCompletion)
             case .failure(let error):
                 self.handle(error: error)
+                workflowCompletion(.failure(error))
             }
         })
     }
