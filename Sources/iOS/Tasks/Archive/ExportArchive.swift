@@ -7,6 +7,7 @@
 
 import Foundation
 import Files
+import PumaCore
 
 public struct ExportArchive {
     public let options: Options

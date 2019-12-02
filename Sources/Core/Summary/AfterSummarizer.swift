@@ -35,13 +35,14 @@ public class AfterSummerizer {
     }
     
     public func show() {
-        Log.afterSummary("Summary")
+        Deps.console.title("Summary")
+
         entries.enumerated().forEach({ tuple in
             let timeString = parse(seconds: tuple.element.duration)
-            Log.plain("  \(tuple.offset + 1). \(tuple.element.name) (\(timeString))")
+            Deps.console.text("  \(tuple.offset + 1). \(tuple.element.name) (\(timeString))")
         })
         
-        Log.newLine()
+        Deps.console.newLine()
     }
     
     public func parse(seconds: TimeInterval) -> String {

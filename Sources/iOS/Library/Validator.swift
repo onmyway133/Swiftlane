@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PumaCore
 
 public struct Validator {
     public static func deviceBuildMustHaveCodeSign(options: Xcodebuild.Options) throws {

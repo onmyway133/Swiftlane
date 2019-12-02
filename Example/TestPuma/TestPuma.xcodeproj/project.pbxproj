@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2901690239318D3005B4779 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290168F239318D3005B4779 /* main.swift */; };
+		D29016C223931AEC005B4779 /* Puma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29016B1239318D9005B4779 /* Puma.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D29016AA239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Colorizer::Colorizer::Product";
+			remoteInfo = Colorizer;
+		};
+		D29016AC239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Files::Files::Product";
+			remoteInfo = Files;
+		};
+		D29016AE239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Guaka::Guaka::Product";
+			remoteInfo = Guaka;
+		};
+		D29016B0239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::Puma::Product";
+			remoteInfo = Puma;
+		};
+		D29016B2239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaAndroid::Product";
+			remoteInfo = PumaAndroid;
+		};
+		D29016B4239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaCore::Product";
+			remoteInfo = PumaCore;
+		};
+		D29016B6239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaTests::Product";
+			remoteInfo = PumaTests;
+		};
+		D29016B8239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaiOS::Product";
+			remoteInfo = PumaiOS;
+		};
+		D29016BA239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "StringScanner::StringScanner::Product";
+			remoteInfo = StringScanner;
+		};
+		D29016BC239318D9005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "xcbeautify::XcbeautifyLib::Product";
+			remoteInfo = XcbeautifyLib;
+		};
+		D29016CA2393243B005B4779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "Puma::Puma";
+			remoteInfo = Puma;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D290168A239318D3005B4779 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D290168C239318D3005B4779 /* TestPuma */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPuma; sourceTree = BUILT_PRODUCTS_DIR; };
+		D290168F239318D3005B4779 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D2901696239318D9005B4779 /* Puma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Puma.xcodeproj; path = ../../Puma.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2901689239318D3005B4779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29016C223931AEC005B4779 /* Puma.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2901683239318D3005B4779 = {
+			isa = PBXGroup;
+			children = (
+				D2901696239318D9005B4779 /* Puma.xcodeproj */,
+				D290168E239318D3005B4779 /* TestPuma */,
+				D290168D239318D3005B4779 /* Products */,
+				D29016C0239318F8005B4779 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D290168D239318D3005B4779 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D290168C239318D3005B4779 /* TestPuma */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D290168E239318D3005B4779 /* TestPuma */ = {
+			isa = PBXGroup;
+			children = (
+				D290168F239318D3005B4779 /* main.swift */,
+			);
+			path = TestPuma;
+			sourceTree = "<group>";
+		};
+		D2901697239318D9005B4779 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D29016AB239318D9005B4779 /* Colorizer.framework */,
+				D29016AD239318D9005B4779 /* Files.framework */,
+				D29016AF239318D9005B4779 /* Guaka.framework */,
+				D29016B1239318D9005B4779 /* Puma.framework */,
+				D29016B3239318D9005B4779 /* PumaAndroid.framework */,
+				D29016B5239318D9005B4779 /* PumaCore.framework */,
+				D29016B7239318D9005B4779 /* PumaTests.xctest */,
+				D29016B9239318D9005B4779 /* PumaiOS.framework */,
+				D29016BB239318D9005B4779 /* StringScanner.framework */,
+				D29016BD239318D9005B4779 /* XcbeautifyLib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D29016C0239318F8005B4779 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D290168B239318D3005B4779 /* TestPuma */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2901693239318D3005B4779 /* Build configuration list for PBXNativeTarget "TestPuma" */;
+			buildPhases = (
+				D2901688239318D3005B4779 /* Sources */,
+				D2901689239318D3005B4779 /* Frameworks */,
+				D290168A239318D3005B4779 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D29016CB2393243B005B4779 /* PBXTargetDependency */,
+			);
+			name = TestPuma;
+			productName = TestPuma;
+			productReference = D290168C239318D3005B4779 /* TestPuma */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2901684239318D3005B4779 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Khoa Pham";
+				TargetAttributes = {
+					D290168B239318D3005B4779 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = D2901687239318D3005B4779 /* Build configuration list for PBXProject "TestPuma" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2901683239318D3005B4779;
+			productRefGroup = D290168D239318D3005B4779 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D2901697239318D9005B4779 /* Products */;
+					ProjectRef = D2901696239318D9005B4779 /* Puma.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D290168B239318D3005B4779 /* TestPuma */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D29016AB239318D9005B4779 /* Colorizer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Colorizer.framework;
+			remoteRef = D29016AA239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016AD239318D9005B4779 /* Files.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Files.framework;
+			remoteRef = D29016AC239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016AF239318D9005B4779 /* Guaka.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Guaka.framework;
+			remoteRef = D29016AE239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016B1239318D9005B4779 /* Puma.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Puma.framework;
+			remoteRef = D29016B0239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016B3239318D9005B4779 /* PumaAndroid.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaAndroid.framework;
+			remoteRef = D29016B2239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016B5239318D9005B4779 /* PumaCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaCore.framework;
+			remoteRef = D29016B4239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016B7239318D9005B4779 /* PumaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = PumaTests.xctest;
+			remoteRef = D29016B6239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016B9239318D9005B4779 /* PumaiOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaiOS.framework;
+			remoteRef = D29016B8239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016BB239318D9005B4779 /* StringScanner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = StringScanner.framework;
+			remoteRef = D29016BA239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D29016BD239318D9005B4779 /* XcbeautifyLib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcbeautifyLib.framework;
+			remoteRef = D29016BC239318D9005B4779 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2901688239318D3005B4779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2901690239318D3005B4779 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D29016CB2393243B005B4779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Puma;
+			targetProxy = D29016CA2393243B005B4779 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D2901691239318D3005B4779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2901692239318D3005B4779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D2901694239318D3005B4779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78DK947F2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D2901695239318D3005B4779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T78DK947F2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2901687239318D3005B4779 /* Build configuration list for PBXProject "TestPuma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2901691239318D3005B4779 /* Debug */,
+				D2901692239318D3005B4779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2901693239318D3005B4779 /* Build configuration list for PBXNativeTarget "TestPuma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2901694239318D3005B4779 /* Debug */,
+				D2901695239318D3005B4779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2901684239318D3005B4779 /* Project object */;
+}
