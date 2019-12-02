@@ -10,9 +10,7 @@ import Foundation
 // Based on https://github.com/JohnSundell/ShellOut
 
 public extension Process {
-    @discardableResult func run(
-        processHandler: ProcessHandler = DefaultProcessHandler()
-    ) throws -> String {
+    @discardableResult func run(processHandler: ProcessHandler) throws -> String {
 
         // Because FileHandle's readabilityHandler might be called from a
         // different queue from the calling queue, avoid a data race by

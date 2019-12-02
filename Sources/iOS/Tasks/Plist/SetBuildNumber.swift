@@ -19,7 +19,7 @@ public class SetBuildNumber: UsesCommandLine {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
-            try runCommand()
+            try runBash(workflow: workflow)
         })
     }
 }

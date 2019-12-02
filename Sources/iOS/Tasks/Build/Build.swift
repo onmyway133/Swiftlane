@@ -15,7 +15,7 @@ extension Build: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
             arguments.append("build")
-            try runCommand()
+            try runXcodeBuild(workflow: workflow)
         })
     }
 }

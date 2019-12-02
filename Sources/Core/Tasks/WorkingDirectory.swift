@@ -20,7 +20,7 @@ public class WorkingDirectory: UsesCommandLine {
             let process = Process()
             process.launchPath = "/bin/\(program)"
 
-            try run(process: process)
+            try run(process: process, workflow: workflow, processHandler: DefaultProcessHandler())
         })
     }
 }

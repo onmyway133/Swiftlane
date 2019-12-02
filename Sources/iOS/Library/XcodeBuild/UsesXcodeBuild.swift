@@ -55,3 +55,9 @@ public extension UsesXcodeBuild {
         arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
     }
 }
+
+public extension UsesXcodeBuild {
+    func runXcodeBuild(workflow: Workflow) throws {
+        try runBash(workflow: workflow, processHandler: XcodeBuildProcessHandler())
+    }
+}

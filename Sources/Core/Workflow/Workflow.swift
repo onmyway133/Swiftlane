@@ -52,8 +52,10 @@ public class Workflow {
             return
         }
 
-        Deps.console.task(first.name)
         afterSummarizer.beforeRun(name: first.name)
+        Deps.console.newLine()
+        Deps.console.task(first.name)
+
         first.run(workflow: self, completion: { result in
             afterSummarizer.afterRun()
 

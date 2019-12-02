@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import XcbeautifyLib
 
 public protocol ProcessHandler {
     func handle(output data: Data)
@@ -25,14 +24,9 @@ public struct DefaultProcessHandler: ProcessHandler {
     }
     
     private func show(data: Data) {
-        guard
-            !data.isEmpty,
-            let line = XcbeautifyLib.Parser().parse(line: data.normalizeString()),
-            !line.isEmpty
-        else {
-            return
+        let text = data.normalizeString()
+        if !text.isEmpty {
+            Deps.console.text(text)
         }
-        
-        Deps.console.text(line)
     }
 }
