@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 public protocol Task: AnyObject {
     var name: String { get }
@@ -14,12 +13,6 @@ public protocol Task: AnyObject {
 }
 
 public extension Task {
-    func asPublisher(workflow: Workflow) -> AnyPublisher<(), Error> {
-        return Future({ completion in
-            self.run(workflow: workflow, completion: completion)
-        }).eraseToAnyPublisher()
-    }
-
     func run(workflow: Workflow, completion: TaskCompletion, job: () throws -> Void) {
         do {
             try job()

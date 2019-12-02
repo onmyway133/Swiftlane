@@ -6,11 +6,15 @@
 //
 
 import Foundation
+import Combine
 
 /// Workflow is a group of tasks
 public class Workflow {
     public var workingDirectory: String = "."
     public let tasks: [Task]
+
+    private let beforeSummarizer = BeforeSummarizer()
+    private let afterSummarizer = AfterSummerizer()
 
     public init(@TaskBuilder builder: () -> [Task]) {
         self.tasks = builder()
@@ -21,28 +25,8 @@ public class Workflow {
     }
 
     public func run() {
-        let beforeSummarizer = BeforeSummarizer()
         beforeSummarizer.on(tasks: tasks)
-
-        let afterSummarizer = AfterSummerizer()
-
-        do {
-            try tasks.forEach({ task in
-                Deps.console.task(task.name)
-
-                afterSummarizer.beforeRun(name: task.name)
-                task.run(workflow: self, completion: { _ in })
-                afterSummarizer.afterRun()
-
-                Deps.console.newLine()
-            })
-        } catch {
-            afterSummarizer.afterRun()
-            handle(error: error)
-        }
-
-        Deps.console.newLine()
-        afterSummarizer.show()
+        runFirst(tasks: tasks)
     }
 
     public func handle(error: Error) {
@@ -59,5 +43,28 @@ public class Workflow {
         default:
             Deps.console.error(error.localizedDescription)
         }
+    }
+
+    private func runFirst(tasks: [Task]) {
+        guard let first = tasks.first else {
+            Deps.console.newLine()
+            afterSummarizer.show()
+            return
+        }
+
+        Deps.console.task(first.name)
+        afterSummarizer.beforeRun(name: first.name)
+        first.run(workflow: self, completion: { result in
+            afterSummarizer.afterRun()
+
+            switch result {
+            case .success:
+                var tasks = tasks
+                tasks.removeFirst()
+                self.runFirst(tasks: tasks)
+            case .failure(let error):
+                self.handle(error: error)
+            }
+        })
     }
 }
