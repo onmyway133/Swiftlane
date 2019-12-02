@@ -12,9 +12,11 @@ public class Build: UsesXcodeBuild {
 extension Build: Task {
     public var name: String { "Build" }
 
-    public func run(workflow: Workflow) throws {
-        arguments.append("build")
-        try runCommand()
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            arguments.append("build")
+            try runCommand()
+        })
     }
 }
 

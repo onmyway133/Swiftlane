@@ -15,11 +15,13 @@ public class WorkingDirectory: UsesCommandLine {
         closure(self)
     }
 
-    public func run(workflow: Workflow) throws {
-        let process = Process()
-        process.launchPath = "/bin/\(program)"
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            let process = Process()
+            process.launchPath = "/bin/\(program)"
 
-        try run(process: process)
+            try run(process: process)
+        })
     }
 }
 

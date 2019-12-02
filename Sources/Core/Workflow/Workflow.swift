@@ -31,7 +31,7 @@ public class Workflow {
                 Deps.console.task(task.name)
 
                 afterSummarizer.beforeRun(name: task.name)
-                try task.run(workflow: self)
+                task.run(workflow: self, completion: { _ in })
                 afterSummarizer.afterRun()
 
                 Deps.console.newLine()

@@ -16,8 +16,10 @@ public class IncreaseBuildNumber: UsesCommandLine {
         closure(self)
     }
 
-    public func run(workflow: Workflow) throws {
-        try runCommand()
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            try runCommand()
+        })
     }
 }
 

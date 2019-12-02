@@ -21,8 +21,10 @@ public class SetVersionNumber: UsesCommandLine {
 extension SetVersionNumber: Task {
     public var name: String { "Set version number" }
 
-    public func run(workflow: Workflow) throws {
-        try runCommand()
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            try runCommand()
+        })
     }
 }
 

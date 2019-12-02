@@ -10,5 +10,22 @@ import Combine
 
 public protocol Task: AnyObject {
     var name: String { get }
-    func run(workflow: Workflow) throws
+    func run(workflow: Workflow, completion: TaskCompletion)
+}
+
+public extension Task {
+    func asPublisher(workflow: Workflow) -> AnyPublisher<(), Error> {
+        return Future({ completion in
+            self.run(workflow: workflow, completion: completion)
+        }).eraseToAnyPublisher()
+    }
+
+    func run(workflow: Workflow, completion: TaskCompletion, job: () throws -> Void) {
+        do {
+            try job()
+            completion(.success(()))
+        } catch {
+            completion(.failure(error))
+        }
+    }
 }

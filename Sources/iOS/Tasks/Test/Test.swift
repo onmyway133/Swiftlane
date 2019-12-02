@@ -20,9 +20,11 @@ public class Test: UsesXcodeBuild {
 extension Test: Task {
     public var name: String { "Test" }
 
-    public func run(workflow: Workflow) throws {
-        arguments.append("test")
-        try runCommand()
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            arguments.append("test")
+            try runCommand()
+        })
     }
 }
 
