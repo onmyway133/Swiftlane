@@ -10,21 +10,24 @@ import Combine
 
 /// Workflow is a group of tasks
 public class Workflow {
+    public let name: String
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
     private let beforeSummarizer = BeforeSummarizer()
     private let afterSummarizer = AfterSummerizer()
 
-    public init(@TaskBuilder builder: () -> [Task]) {
+    public init(name: String, @TaskBuilder builder: () -> [Task]) {
+        self.name = name
         self.tasks = builder()
     }
 
-    public init(@TaskBuilder builder: () -> Task) {
+    public init(name: String, @TaskBuilder builder: () -> Task) {
+        self.name = name
         self.tasks = [builder()]
     }
 
-    public func run() {
+    public func run(completion: WorkflowCompletion) {
         beforeSummarizer.on(tasks: tasks)
         runFirst(tasks: tasks)
     }

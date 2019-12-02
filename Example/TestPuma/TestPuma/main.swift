@@ -12,7 +12,7 @@ import PumaCore
 import PumaiOS
 
 func testDrive() {
-    let workflow = Workflow {
+    let workflow = Workflow(name: "TestApp") {
         WorkingDirectory()
 
         SetVersionNumber {
@@ -40,7 +40,7 @@ func testDrive() {
     }
 
     workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
-    workflow.run()
+    workflow.run(completion: { _ in })
 }
 
 testDrive()

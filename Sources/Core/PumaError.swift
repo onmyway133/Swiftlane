@@ -13,4 +13,5 @@ public enum PumaError: Error {
     case process(terminationStatus: Int32, output: String, error: String)
 }
 
+public typealias WorkflowCompletion = (Result<(), Error>) -> Void
 public typealias TaskCompletion = (Result<(), Error>) -> Void
