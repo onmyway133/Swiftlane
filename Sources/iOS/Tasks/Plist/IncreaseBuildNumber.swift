@@ -10,10 +10,16 @@ import PumaCore
 
 public class IncreaseBuildNumber: UsesCommandLine {
     public var program: String { "agvtool" }
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
-    public init(_ closure: (IncreaseBuildNumber) -> Void) {
+    public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {
         closure(self)
+    }
+
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            try runBash(workflow: workflow)
+        })
     }
 }
 
@@ -23,7 +29,7 @@ extension IncreaseBuildNumber: Task {
 
 public extension IncreaseBuildNumber {
     func nextVersionForAllTargets() {
-        arguments.insert("next-version")
-        arguments.insert("-all")
+        arguments.append("next-version")
+        arguments.append("-all")
     }
 }

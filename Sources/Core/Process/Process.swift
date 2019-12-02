@@ -10,13 +10,8 @@ import Foundation
 // Based on https://github.com/JohnSundell/ShellOut
 
 public extension Process {
-    @discardableResult func run(
-        command: String,
-        processHandler: ProcessHandler = DefaultProcessHandler()) throws -> String {
+    @discardableResult func run(processHandler: ProcessHandler) throws -> String {
 
-        launchPath = "/bin/bash"
-        arguments = ["-c", command]
-        
         // Because FileHandle's readabilityHandler might be called from a
         // different queue from the calling queue, avoid a data race by
         // protecting reads and writes to outputData and errorData on
@@ -78,6 +73,14 @@ public extension Process {
             }
             
             return outputData.normalizeString()
+        }
+    }
+}
+
+public extension Process {
+    func apply(workflow: Workflow?) {
+        if let workflow = workflow {
+            currentDirectoryPath = workflow.workingDirectory
         }
     }
 }

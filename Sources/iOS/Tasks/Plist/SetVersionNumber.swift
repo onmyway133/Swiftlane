@@ -11,21 +11,27 @@ import PumaCore
 
 public class SetVersionNumber: UsesCommandLine {
     public var program: String { "agvtool" }
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
-    public init(_ closure: (SetVersionNumber) -> Void) {
+    public init(_ closure: (SetVersionNumber) -> Void = { _ in }) {
         closure(self)
     }
 }
 
 extension SetVersionNumber: Task {
     public var name: String { "Set version number" }
+
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            try runBash(workflow: workflow)
+        })
+    }
 }
 
 public extension SetVersionNumber {
     func versionNumberForAllTargets(_ number: String) {
-        arguments.insert("new-marketing-version")
-        arguments.insert(number)
+        arguments.append("new-marketing-version")
+        arguments.append(number)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
     func normalizeString() -> String {
         guard let output = String(data: self, encoding: .utf8) else {
             return ""

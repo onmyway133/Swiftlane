@@ -8,10 +8,13 @@
 
 import Foundation
 import Puma
+import PumaCore
 import PumaiOS
 
 func testDrive() {
-    run {
+    let workflow = Workflow(name: "TestApp") {
+        WorkingDirectory()
+
         SetVersionNumber {
             $0.versionNumberForAllTargets("1.1")
         }
@@ -35,6 +38,9 @@ func testDrive() {
             ))
         }
     }
+
+    workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
+    workflow.run(completion: { _ in })
 }
 
 testDrive()

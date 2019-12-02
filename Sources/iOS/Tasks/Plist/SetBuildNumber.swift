@@ -11,10 +11,16 @@ import PumaCore
 
 public class SetBuildNumber: UsesCommandLine {
     public var program: String { "agvtool" }
-    public var arguments = Set<String>()
+    public var arguments = [String]()
 
-    public init(_ closure: (SetBuildNumber) -> Void) {
+    public init(_ closure: (SetBuildNumber) -> Void = { _ in }) {
         closure(self)
+    }
+
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        run(workflow: workflow, completion: completion, job: {
+            try runBash(workflow: workflow)
+        })
     }
 }
 
@@ -24,8 +30,8 @@ extension SetBuildNumber: Task {
 
 public extension SetBuildNumber {
     func buildNumberForAllTargets(_ number: String) {
-        arguments.insert("new-version")
-        arguments.insert("-all")
-        arguments.insert(number)
+        arguments.append("new-version")
+        arguments.append("-all")
+        arguments.append(number)
     }
 }
