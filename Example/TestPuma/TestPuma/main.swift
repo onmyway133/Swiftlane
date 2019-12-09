@@ -61,7 +61,7 @@ func testDrive() {
         }
     }
 
-    workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
+    workflow.workingDirectory = URL(fileURLWithPath: "/Users/khoa/XcodeProject2/Puma/Example/TestApp")
     workflow.run(completion: { _ in })
 }
 
