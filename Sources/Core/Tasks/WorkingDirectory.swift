@@ -8,9 +8,6 @@
 import Foundation
 
 public class WorkingDirectory: UsesCommandLine {
-    public var program: String { "pwd" }
-    public var arguments = [String]()
-
     public init(_ closure: (WorkingDirectory) -> Void = { _ in }) {
         closure(self)
     }
@@ -18,9 +15,9 @@ public class WorkingDirectory: UsesCommandLine {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
             let process = Process()
-            process.launchPath = "/bin/\(program)"
+            process.launchPath = "/bin/pwd"
 
-            try run(process: process, workflow: workflow, processHandler: DefaultProcessHandler())
+            try runProcess(process, workflow: workflow, processHandler: DefaultProcessHandler())
         })
     }
 }
