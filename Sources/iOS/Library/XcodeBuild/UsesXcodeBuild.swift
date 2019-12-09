@@ -16,6 +16,15 @@ public protocol UsesXcodeBuild: UsesCommandLine {
 public extension UsesXcodeBuild {
     func `default`(project: String, scheme: String) {
         self.project(project)
+        self.default(scheme: scheme)
+    }
+
+    func `default`(workspace: String, scheme: String) {
+        self.workspace(workspace)
+        self.default(scheme: scheme)
+    }
+
+    func `default`(scheme: String) {
         self.scheme(scheme)
         self.configuration(Configuration.debug)
         self.sdk(Sdk.iPhoneSimulator)
