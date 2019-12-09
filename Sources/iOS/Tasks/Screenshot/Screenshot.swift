@@ -10,6 +10,7 @@ import PumaCore
 
 public class Screenshot: UsesXcodeBuild {
     public var xcodebuildArguments = [String]()
+    public private(set) var scenarios = [Scenario]()
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -21,5 +22,11 @@ extension Screenshot: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         completion(.failure(PumaError.unknown))
+    }
+}
+
+public extension Screenshot {
+    func take(scenario: Scenario) {
+        self.scenarios.append(scenario)
     }
 }
