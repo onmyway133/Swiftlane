@@ -8,13 +8,15 @@
 import Foundation
 
 /// Any task that uses command line
-public protocol UsesCommandLine: AnyObject {
-    var program: String { get }
-    var arguments: [String] { get set }
-}
+public protocol UsesCommandLine: AnyObject {}
 
 public extension UsesCommandLine {
-    func runBash(workflow: Workflow, processHandler: ProcessHandler = DefaultProcessHandler()) throws {
+    func runBash(
+        workflow: Workflow,
+        program: String,
+        arguments: [String],
+        processHandler: ProcessHandler = DefaultProcessHandler()
+    ) throws {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
         Deps.console.command(command)

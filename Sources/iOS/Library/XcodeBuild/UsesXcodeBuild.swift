@@ -9,11 +9,11 @@ import Foundation
 import PumaCore
 
 /// Any task that uses xcodebuild
-public protocol UsesXcodeBuild: UsesCommandLine {}
+public protocol UsesXcodeBuild: UsesCommandLine {
+    var xcodebuildArguments: [String] { get set }
+}
 
 public extension UsesXcodeBuild {
-    var program: String { "xcodebuild" }
-
     func `default`(project: String, scheme: String) {
         self.project(project)
         self.scheme(scheme)
@@ -26,7 +26,7 @@ public extension UsesXcodeBuild {
         let normalizedName = name
             .addingFileExtension("xcodeproj")
             .surroundingWithQuotes()
-        arguments.append("-project \(normalizedName)")
+        xcodebuildArguments.append("-project \(normalizedName)")
     }
 
     func workspace(_ name: String) {
@@ -34,30 +34,35 @@ public extension UsesXcodeBuild {
             .addingFileExtension("xcworkspace")
             .surroundingWithQuotes()
 
-        arguments.append("-workspace \(normalizedName)")
+        xcodebuildArguments.append("-workspace \(normalizedName)")
     }
 
     func scheme(_ name: String) {
         let normalizedName = name
             .surroundingWithQuotes()
-        arguments.append("-scheme \(normalizedName)")
+        xcodebuildArguments.append("-scheme \(normalizedName)")
     }
 
     func configuration(_ configuration: String) {
-        arguments.append("-configuration \(configuration)")
+        xcodebuildArguments.append("-configuration \(configuration)")
     }
 
     func sdk(_ sdk: String) {
-        arguments.append("-sdk \(sdk)")
+        xcodebuildArguments.append("-sdk \(sdk)")
     }
 
     func usesModernBuildSystem(enabled: Bool) {
-        arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
+        xcodebuildArguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
     }
 }
 
 public extension UsesXcodeBuild {
     func runXcodeBuild(workflow: Workflow) throws {
-        try runBash(workflow: workflow, processHandler: XcodeBuildProcessHandler())
+        try runBash(
+            workflow: workflow,
+            program: "xcodebuild",
+            arguments: xcodebuildArguments,
+            processHandler: XcodeBuildProcessHandler()
+        )
     }
 }

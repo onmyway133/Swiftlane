@@ -9,9 +9,8 @@
 import Foundation
 import PumaCore
 
-public class SetVersionNumber: UsesCommandLine {
-    public var program: String { "agvtool" }
-    public var arguments = [String]()
+public class SetVersionNumber: UsesAgvtool {
+    public var agvtoolArguments = [String]()
 
     public init(_ closure: (SetVersionNumber) -> Void = { _ in }) {
         closure(self)
@@ -23,15 +22,15 @@ extension SetVersionNumber: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
-            try runBash(workflow: workflow)
+            try runAgvtool(workflow: workflow)
         })
     }
 }
 
 public extension SetVersionNumber {
     func versionNumberForAllTargets(_ number: String) {
-        arguments.append("new-marketing-version")
-        arguments.append(number)
+        agvtoolArguments.append("new-marketing-version")
+        agvtoolArguments.append(number)
     }
 }
 
