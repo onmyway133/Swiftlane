@@ -9,4 +9,5 @@ import Foundation
 
 public struct Language {
     public static let en_US = "en"
+    public static let ja = "ja"
 }

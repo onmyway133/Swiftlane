@@ -9,4 +9,5 @@ import Foundation
 
 public struct Locale {
     public static let en_US = "en_US"
+    public static let ja = "ja_JP"
 }
