@@ -31,7 +31,7 @@ func testDrive() {
         Test {
             $0.default(project: "TestApp", scheme: "TestApp")
             $0.testsWithoutBuilding(enabled: true)
-            $0.destination(Destination(
+            $0.destination(.init(
                 platform: Destination.Platform.iOSSimulator,
                 name: Destination.Name.iPhoneXr,
                 os: Destination.OS.os12_2
