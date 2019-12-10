@@ -14,18 +14,19 @@ public protocol UsesXcodeBuild: UsesCommandLine {
 }
 
 public extension UsesXcodeBuild {
-    func `default`(project: String, scheme: String) {
+    func on(project: String, scheme: String) {
         self.project(project)
-        self.default(scheme: scheme)
-    }
-
-    func `default`(workspace: String, scheme: String) {
-        self.workspace(workspace)
-        self.default(scheme: scheme)
-    }
-
-    func `default`(scheme: String) {
         self.scheme(scheme)
+        self.basicSettings()
+    }
+
+    func on(workspace: String, scheme: String) {
+        self.workspace(workspace)
+        self.scheme(scheme)
+        self.basicSettings()
+    }
+
+    func basicSettings() {
         self.configuration(Configuration.debug)
         self.sdk(Sdk.iPhoneSimulator)
         self.usesModernBuildSystem(enabled: true)
@@ -62,6 +63,13 @@ public extension UsesXcodeBuild {
 
     func usesModernBuildSystem(enabled: Bool) {
         xcodebuild.arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
+    }
+
+    func destination(_ destination: Destination) {
+        let string = destination
+            .toString()
+            .surroundingWithQuotes()
+        xcodebuild.arguments.append("-destination \(string)")
     }
 }
 

@@ -20,11 +20,13 @@ public struct Destination {
         public static let iPhoneX = "iPhone X"
         public static let iPhoneXsMas = "iPhone Xs Max"
         public static let iPhoneXr = "iPhone Xʀ"
+         public static let iPhone11 = "iPhone 11"
     }
     
     public struct OS {
-        public static let os12_2 = "12.2"
-        public static let os13_1 = "13.1"
+        public static let iOS12_2 = "12.2"
+        public static let iOS13_1 = "13.1"
+        public static let iOS13_2_2 = "13.2.2"
     }
     
     public init(

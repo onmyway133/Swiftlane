@@ -24,26 +24,27 @@ func testDrive() {
         }
 
         Build {
-            $0.default(project: "TestApp", scheme: "TestApp")
+            $0.on(project: "TestApp", scheme: "TestApp")
             $0.buildsForTesting(enabled: true)
         }
 
         Test {
-            $0.default(project: "TestApp", scheme: "TestApp")
+            $0.on(project: "TestApp", scheme: "TestApp")
             $0.testsWithoutBuilding(enabled: true)
             $0.destination(.init(
                 platform: Destination.Platform.iOSSimulator,
-                name: Destination.Name.iPhoneXr,
-                os: Destination.OS.os12_2
+                name: Destination.Name.iPhone11,
+                os: Destination.OS.iOS13_2_2
             ))
         }
 
         Screenshot {
+            $0.on(project: "TestApp", scheme: "TestAppUITests")
             $0.take(scenario: .init(
                 destination: .init(
                     platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhoneX,
-                    os: Destination.OS.os12_2
+                    name: Destination.Name.iPhone11,
+                    os: Destination.OS.iOS13_2_2
                 ),
                 language: Language.en_US,
                 locale: Locale.en_US)
@@ -52,8 +53,8 @@ func testDrive() {
             $0.take(scenario: .init(
                 destination: .init(
                     platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhoneX,
-                    os: Destination.OS.os12_2
+                    name: Destination.Name.iPhone11,
+                    os: Destination.OS.iOS13_2_2
                 ),
                 language: Language.ja,
                 locale: Locale.ja)

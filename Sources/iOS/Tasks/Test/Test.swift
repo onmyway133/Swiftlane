@@ -29,10 +29,6 @@ extension Test: Task {
 }
 
 public extension Test {
-    func destination(_ destination: Destination) {
-        xcodebuild.arguments.append("-destination \(destination.toString())")
-    }
-
     func testsWithoutBuilding(enabled: Bool) {
         if enabled {
             xcodebuild.arguments.append("test-without-building")
