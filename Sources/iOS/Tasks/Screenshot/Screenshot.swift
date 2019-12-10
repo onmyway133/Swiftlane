@@ -23,7 +23,6 @@ extension Screenshot: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
-        Deps.console.note("Remember to set `app.launchArguments += ProcessInfo().arguments` in your UITest")
 
         with(completion) {
             guard let scenario = scenarios.last else {
@@ -31,8 +30,8 @@ extension Screenshot: Task {
             }
 
             self.destination(scenario.destination)
-            xcodebuild.arguments.append("-AppleLanguages=\(scenario.language)")
-            xcodebuild.arguments.append("-AppleLocales=\(scenario.locale)")
+            xcodebuild.arguments.append("-testLanguage \(scenario.language)")
+            xcodebuild.arguments.append("-testRegion \(scenario.locale)")
             xcodebuild.arguments.append("test")
 
             try runXcodeBuild(workflow: workflow)
