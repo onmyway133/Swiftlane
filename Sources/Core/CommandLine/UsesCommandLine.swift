@@ -19,7 +19,7 @@ public extension UsesCommandLine {
     ) throws {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
-        Deps.console.command(command)
+        Deps.console.highlight(command)
 
         let process = Process()
         process.launchPath = "/bin/bash"

@@ -8,6 +8,7 @@
 import Foundation
 
 public class RunScript: UsesCommandLine {
+    public var isEnabled = true
     public var script: String?
 
     public init(_ closure: (RunScript) -> Void = { _ in }) {

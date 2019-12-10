@@ -10,6 +10,7 @@ import PumaCore
 import Combine
 
 public class Test: UsesXcodeBuild {
+    public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
     public init(_ closure: (Test) -> Void = { _ in }) {

@@ -9,6 +9,7 @@ import Foundation
 import PumaCore
 
 public class IncreaseBuildNumber: UsesAgvtool {
+    public var isEnabled = true
     public var agvtool = Agvtool()
 
     public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {

@@ -9,6 +9,7 @@ import Foundation
 import PumaCore
 
 public class Screenshot: UsesXcodeBuild {
+    public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public private(set) var scenarios = [Scenario]()
 
@@ -21,6 +22,8 @@ extension Screenshot: Task {
     public var name: String { "Screenshot" }
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
+        Deps.console.note("Please use UITest scheme")
+        Deps.console.note("Remember to set `app.launchArguments += NSProcessInfo().arguments` in your UITest")
         completion(.failure(PumaError.unknown))
     }
 }

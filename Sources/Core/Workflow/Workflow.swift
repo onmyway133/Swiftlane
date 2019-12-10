@@ -58,7 +58,7 @@ public class Workflow {
 
         afterSummarizer.beforeRun(name: first.name)
         Deps.console.newLine()
-        Deps.console.task(first.name)
+        Deps.console.title("🚀 \(first.name)")
 
         first.run(workflow: self, completion: { result in
             afterSummarizer.afterRun()

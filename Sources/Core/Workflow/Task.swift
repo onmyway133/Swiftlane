@@ -9,6 +9,7 @@ import Foundation
 
 public protocol Task: AnyObject {
     var name: String { get }
+    var isEnabled: Bool { get set }
     func run(workflow: Workflow, completion: TaskCompletion)
 }
 

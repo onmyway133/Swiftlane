@@ -10,6 +10,7 @@ import Foundation
 import PumaCore
 
 public class SetBuildNumber: UsesAgvtool {
+    public var isEnabled = true
     public var agvtool = Agvtool()
 
     public init(_ closure: (SetBuildNumber) -> Void = { _ in }) {

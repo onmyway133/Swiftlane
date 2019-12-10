@@ -8,6 +8,8 @@
 import Foundation
 
 public class PrintWorkingDirectory: UsesCommandLine {
+    public var isEnabled = true
+
     public init(_ closure: (PrintWorkingDirectory) -> Void = { _ in }) {
         closure(self)
     }

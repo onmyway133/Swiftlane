@@ -2,6 +2,7 @@ import Foundation
 import PumaCore
 
 public class Build: UsesXcodeBuild {
+    public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     
     public init(_ closure: (Build) -> Void = { _ in }) {

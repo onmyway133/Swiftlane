@@ -29,15 +29,19 @@ open class Console {
         print("❌ \(text)".foreground.Red)
     }
 
+    open func warn(_ text: String) {
+        print("⚠️ \(text)".foreground.Magenta)
+    }
+
+    open func note(_ text: String) {
+        print("👋 \(text)".foreground.Magenta)
+    }
+
     open func newLine() {
         print("\n")
     }
 
-    open func task(_ text: String) {
-        title("🚀 \(text)")
-    }
-
-    open func command(_ text: String) {
+    open func highlight(_ text: String) {
         print(text.foreground.Green)
     }
 }
