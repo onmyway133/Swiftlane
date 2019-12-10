@@ -10,7 +10,7 @@ import PumaCore
 import Combine
 
 public class Test: UsesXcodeBuild {
-    public var arguments = [String]()
+    public var xcodebuildArguments = [String]()
 
     public init(_ closure: (Test) -> Void = { _ in }) {
         closure(self)
@@ -22,7 +22,7 @@ extension Test: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
-            arguments.append("test")
+            xcodebuildArguments.append("test")
             try runXcodeBuild(workflow: workflow)
         })
     }
@@ -30,14 +30,14 @@ extension Test: Task {
 
 public extension Test {
     func destination(_ destination: Destination) {
-        arguments.append("-destination \(destination.toString())")
+        xcodebuildArguments.append("-destination \(destination.toString())")
     }
 
     func testsWithoutBuilding(enabled: Bool) {
         if enabled {
-            arguments.append("test-without-building")
+            xcodebuildArguments.append("test-without-building")
         } else {
-            arguments.remove("test-without-building")
+            xcodebuildArguments.remove("test-without-building")
         }
     }
 }

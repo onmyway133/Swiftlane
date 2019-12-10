@@ -24,6 +24,7 @@ public struct Destination {
     
     public struct OS {
         public static let os12_2 = "12.2"
+        public static let os13_1 = "13.1"
     }
     
     public init(

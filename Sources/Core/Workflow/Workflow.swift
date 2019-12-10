@@ -11,7 +11,7 @@ import Combine
 /// Workflow is a group of tasks
 public class Workflow {
     public let name: String
-    public var workingDirectory: String = "."
+    public var workingDirectory: URL = URL(fileURLWithPath: ".")
     public let tasks: [Task]
 
     private let beforeSummarizer = BeforeSummarizer()

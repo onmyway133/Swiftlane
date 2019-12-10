@@ -9,8 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.locale) var locale: Locale
+
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Text(LocalizedStringKey("hello"))
+                .font(.largeTitle)
+            Text(flag(from: locale.regionCode!))
+                .font(.largeTitle)
+        }
+    }
+
+    private func flag(from country: String) -> String {
+        let base : UInt32 = 127397
+        var s = ""
+        for v in country.uppercased().unicodeScalars {
+            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
+        }
+        return s
     }
 }
 
