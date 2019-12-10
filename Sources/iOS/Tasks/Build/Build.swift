@@ -13,10 +13,10 @@ extension Build: Task {
     public var name: String { "Build" }
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        run(workflow: workflow, completion: completion, job: {
+        with(completion) {
             xcodebuild.arguments.append("build")
             try runXcodeBuild(workflow: workflow)
-        })
+        }
     }
 }
 

@@ -13,7 +13,7 @@ public protocol Task: AnyObject {
 }
 
 public extension Task {
-    func run(workflow: Workflow, completion: TaskCompletion, job: () throws -> Void) {
+    func with(_ completion: TaskCompletion, _ job: () throws -> Void) {
         do {
             try job()
             completion(.success(()))

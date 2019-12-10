@@ -13,12 +13,12 @@ public class WorkingDirectory: UsesCommandLine {
     }
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        run(workflow: workflow, completion: completion, job: {
+        with(completion) {
             let process = Process()
             process.launchPath = "/bin/pwd"
 
             try runProcess(process, workflow: workflow, processHandler: DefaultProcessHandler())
-        })
+        }
     }
 }
 
