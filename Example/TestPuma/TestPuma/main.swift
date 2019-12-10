@@ -13,7 +13,11 @@ import PumaiOS
 
 func testDrive() {
     let workflow = Workflow(name: "TestApp") {
-        WorkingDirectory()
+        PrintWorkingDirectory()
+
+        RunScript {
+            $0.script = "echo 'Hello Puma'"
+        }
 
         SetVersionNumber {
             $0.versionNumberForAllTargets("1.1")

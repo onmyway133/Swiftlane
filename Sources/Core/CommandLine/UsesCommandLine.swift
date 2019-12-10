@@ -28,7 +28,11 @@ public extension UsesCommandLine {
         try runProcess(process, workflow: workflow, processHandler: processHandler)
     }
 
-    func runProcess(_ process: Process, workflow: Workflow, processHandler: ProcessHandler) throws {
+    func runProcess(
+        _ process: Process,
+        workflow: Workflow,
+        processHandler: ProcessHandler = DefaultProcessHandler()
+    ) throws {
         process.apply(workflow: workflow)
         try process.run(processHandler: processHandler)
     }
