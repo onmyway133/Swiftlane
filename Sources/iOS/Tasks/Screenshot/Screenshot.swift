@@ -31,6 +31,8 @@ extension Screenshot: Task {
             }
 
             self.destination(scenario.destination)
+            xcodebuild.arguments.append("-AppleLanguages=\(scenario.language)")
+            xcodebuild.arguments.append("-AppleLocales=\(scenario.locale)")
             xcodebuild.arguments.append("test")
 
             try runXcodeBuild(workflow: workflow)
