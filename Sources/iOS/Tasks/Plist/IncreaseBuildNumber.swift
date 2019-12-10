@@ -9,7 +9,7 @@ import Foundation
 import PumaCore
 
 public class IncreaseBuildNumber: UsesAgvtool {
-    public var agvtoolArguments = [String]()
+    public var agvtool = Agvtool()
 
     public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {
         closure(self)
@@ -28,7 +28,9 @@ extension IncreaseBuildNumber: Task {
 
 public extension IncreaseBuildNumber {
     func nextVersionForAllTargets() {
-        agvtoolArguments.append("next-version")
-        agvtoolArguments.append("-all")
+        agvtool.arguments.append(contentsOf: [
+            "next-version",
+            "-all"
+        ])
     }
 }

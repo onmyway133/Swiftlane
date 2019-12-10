@@ -10,7 +10,7 @@ import PumaCore
 
 /// Any task that uses xcodebuild
 public protocol UsesXcodeBuild: UsesCommandLine {
-    var xcodebuildArguments: [String] { get set }
+    var xcodebuild: Xcodebuild { get set }
 }
 
 public extension UsesXcodeBuild {
@@ -35,7 +35,7 @@ public extension UsesXcodeBuild {
         let normalizedName = name
             .addingFileExtension("xcodeproj")
             .surroundingWithQuotes()
-        xcodebuildArguments.append("-project \(normalizedName)")
+        xcodebuild.arguments.append("-project \(normalizedName)")
     }
 
     func workspace(_ name: String) {
@@ -43,25 +43,25 @@ public extension UsesXcodeBuild {
             .addingFileExtension("xcworkspace")
             .surroundingWithQuotes()
 
-        xcodebuildArguments.append("-workspace \(normalizedName)")
+        xcodebuild.arguments.append("-workspace \(normalizedName)")
     }
 
     func scheme(_ name: String) {
         let normalizedName = name
             .surroundingWithQuotes()
-        xcodebuildArguments.append("-scheme \(normalizedName)")
+        xcodebuild.arguments.append("-scheme \(normalizedName)")
     }
 
     func configuration(_ configuration: String) {
-        xcodebuildArguments.append("-configuration \(configuration)")
+        xcodebuild.arguments.append("-configuration \(configuration)")
     }
 
     func sdk(_ sdk: String) {
-        xcodebuildArguments.append("-sdk \(sdk)")
+        xcodebuild.arguments.append("-sdk \(sdk)")
     }
 
     func usesModernBuildSystem(enabled: Bool) {
-        xcodebuildArguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
+        xcodebuild.arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
     }
 }
 
@@ -70,7 +70,7 @@ public extension UsesXcodeBuild {
         try runBash(
             workflow: workflow,
             program: "xcodebuild",
-            arguments: xcodebuildArguments,
+            arguments: xcodebuild.arguments,
             processHandler: XcodeBuildProcessHandler()
         )
     }

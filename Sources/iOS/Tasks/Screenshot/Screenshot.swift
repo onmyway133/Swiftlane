@@ -9,7 +9,7 @@ import Foundation
 import PumaCore
 
 public class Screenshot: UsesXcodeBuild {
-    public var xcodebuildArguments = [String]()
+    public var xcodebuild = Xcodebuild()
     public private(set) var scenarios = [Scenario]()
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {

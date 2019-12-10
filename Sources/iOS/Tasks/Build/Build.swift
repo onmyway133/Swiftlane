@@ -2,7 +2,7 @@ import Foundation
 import PumaCore
 
 public class Build: UsesXcodeBuild {
-    public var xcodebuildArguments = [String]()
+    public var xcodebuild = Xcodebuild()
     
     public init(_ closure: (Build) -> Void = { _ in }) {
         closure(self)
@@ -14,7 +14,7 @@ extension Build: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         run(workflow: workflow, completion: completion, job: {
-            xcodebuildArguments.append("build")
+            xcodebuild.arguments.append("build")
             try runXcodeBuild(workflow: workflow)
         })
     }
@@ -23,9 +23,9 @@ extension Build: Task {
 public extension Build {
     func buildsForTesting(enabled: Bool) {
         if enabled {
-            xcodebuildArguments.append("build-for-testing")
+            xcodebuild.arguments.append("build-for-testing")
         } else {
-            xcodebuildArguments.remove("build-for-testing")
+            xcodebuild.arguments.remove("build-for-testing")
         }
     }
 }
