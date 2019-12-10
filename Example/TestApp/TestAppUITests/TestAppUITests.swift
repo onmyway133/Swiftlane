@@ -11,6 +11,7 @@ import XCTest
 class TestAppUITests: XCTestCase {
     func testFirstScreen() {
         let app = XCUIApplication()
+        app.launchArguments += ProcessInfo().arguments
         app.launch()
     }
 }

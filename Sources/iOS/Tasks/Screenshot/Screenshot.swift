@@ -23,8 +23,18 @@ extension Screenshot: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
-        Deps.console.note("Remember to set `app.launchArguments += NSProcessInfo().arguments` in your UITest")
-        completion(.failure(PumaError.unknown))
+        Deps.console.note("Remember to set `app.launchArguments += ProcessInfo().arguments` in your UITest")
+
+        with(completion) {
+            guard let scenario = scenarios.last else {
+                return
+            }
+
+            self.destination(scenario.destination)
+            xcodebuild.arguments.append("test")
+
+            try runXcodeBuild(workflow: workflow)
+        }
     }
 }
 

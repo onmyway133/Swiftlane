@@ -20,19 +20,23 @@ func testDrive() {
         }
 
         SetVersionNumber {
+            $0.isEnabled = false
             $0.versionNumberForAllTargets("1.1")
         }
 
         SetBuildNumber {
+            $0.isEnabled = false
             $0.buildNumberForAllTargets("2")
         }
 
         Build {
+            $0.isEnabled = false
             $0.on(project: "TestApp", scheme: "TestApp")
             $0.buildsForTesting(enabled: true)
         }
 
         Test {
+            $0.isEnabled = false
             $0.on(project: "TestApp", scheme: "TestApp")
             $0.testsWithoutBuilding(enabled: true)
             $0.destination(.init(
