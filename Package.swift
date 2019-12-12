@@ -34,7 +34,6 @@ let package = Package(
         .target(
             name: "PumaCore",
             dependencies: [
-                "XcbeautifyLib",
                 "Colorizer",
                 "Files"
             ],
@@ -43,7 +42,8 @@ let package = Package(
         .target(
             name: "PumaiOS",
             dependencies: [
-                "PumaCore"
+                "PumaCore",
+                "XcbeautifyLib"
             ],
             path: "Sources/iOS"
         ),
