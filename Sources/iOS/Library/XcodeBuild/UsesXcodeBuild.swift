@@ -75,6 +75,11 @@ public extension UsesXcodeBuild {
     func derivedDataPath(_ url: URL) {
         xcodebuild.arguments.append("-derivedDataPath \(url.path)")
     }
+
+    func testPlan(_ url: URL) {
+        let path = url.path.removingFileExtension("xctestplan")
+        xcodebuild.arguments.append("-testplan \(path)")
+    }
 }
 
 public extension UsesXcodeBuild {
