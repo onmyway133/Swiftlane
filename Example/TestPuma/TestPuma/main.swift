@@ -48,25 +48,26 @@ func testDrive() {
 
         Screenshot {
             $0.on(project: "TestApp", scheme: "TestAppUITests")
-            $0.take(scenario: .init(
-                destination: .init(
-                    platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhone11,
-                    os: Destination.OS.iOS13_2_2
+            $0.add(scenarios: [
+                .init(
+                    destination: .init(
+                        platform: Destination.Platform.iOSSimulator,
+                        name: Destination.Name.iPhone11,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.en_US,
+                    locale: Locale.en_US
                 ),
-                language: Language.en_US,
-                locale: Locale.en_US)
-            )
-
-            $0.take(scenario: .init(
-                destination: .init(
-                    platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhone11,
-                    os: Destination.OS.iOS13_2_2
-                ),
-                language: Language.ja,
-                locale: Locale.ja)
-            )
+                .init(
+                    destination: .init(
+                        platform: Destination.Platform.iOSSimulator,
+                        name: Destination.Name.iPhone11,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.ja,
+                    locale: Locale.ja
+                )
+            ])
         }
     }
 

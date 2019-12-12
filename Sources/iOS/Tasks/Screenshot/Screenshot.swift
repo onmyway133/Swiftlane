@@ -40,7 +40,7 @@ extension Screenshot: Task {
 }
 
 public extension Screenshot {
-    func take(scenario: Scenario) {
-        self.scenarios.append(scenario)
+    func add(scenarios: [Scenario]) {
+        self.scenarios.append(contentsOf: scenarios)
     }
 }
