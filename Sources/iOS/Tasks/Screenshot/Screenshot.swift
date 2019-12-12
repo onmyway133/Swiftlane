@@ -25,8 +25,10 @@ extension Screenshot: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
 
-        let subTasks = scenarios.map({
-            SubTask(scenario: $0, xcodebuild: xcodebuild)
+        let subTasks: [SubTask] = scenarios.map({ scenario in
+            var xcodebuild = self.xcodebuild
+            xcodebuild.derivedDataPath(saveDirectory)
+            return SubTask(scenario: scenario, xcodebuild: xcodebuild)
         })
 
         Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)

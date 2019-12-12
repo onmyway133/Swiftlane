@@ -15,70 +15,41 @@ public protocol UsesXcodeBuild: UsesCommandLine {
 
 public extension UsesXcodeBuild {
     func on(project: String, scheme: String) {
-        self.project(project)
-        self.scheme(scheme)
+        self.xcodebuild.project(project)
+        self.xcodebuild.scheme(scheme)
         self.basicSettings()
     }
 
     func on(workspace: String, scheme: String) {
-        self.workspace(workspace)
-        self.scheme(scheme)
+        self.xcodebuild.workspace(workspace)
+        self.xcodebuild.scheme(scheme)
         self.basicSettings()
     }
 
     func basicSettings() {
-        self.configuration(Configuration.debug)
-        self.sdk(Sdk.iPhoneSimulator)
-        self.usesModernBuildSystem(enabled: true)
-    }
-
-    func project(_ name: String) {
-        let normalizedName = name
-            .addingFileExtension("xcodeproj")
-            .surroundingWithQuotes()
-        xcodebuild.arguments.append("-project \(normalizedName)")
-    }
-
-    func workspace(_ name: String) {
-        let normalizedName = name
-            .addingFileExtension("xcworkspace")
-            .surroundingWithQuotes()
-
-        xcodebuild.arguments.append("-workspace \(normalizedName)")
-    }
-
-    func scheme(_ name: String) {
-        let normalizedName = name
-            .surroundingWithQuotes()
-        xcodebuild.arguments.append("-scheme \(normalizedName)")
+        self.xcodebuild.configuration(Configuration.debug)
+        self.xcodebuild.sdk(Sdk.iPhoneSimulator)
+        self.xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
     func configuration(_ configuration: String) {
-        xcodebuild.arguments.append("-configuration \(configuration)")
+        self.xcodebuild.configuration(configuration)
     }
 
     func sdk(_ sdk: String) {
-        xcodebuild.arguments.append("-sdk \(sdk)")
+        self.xcodebuild.sdk(sdk)
     }
 
     func usesModernBuildSystem(enabled: Bool) {
-        xcodebuild.arguments.append("-UseModernBuildSystem=\(enabled ? "YES": "NO")")
+        self.xcodebuild.usesModernBuildSystem(enabled: enabled)
     }
 
     func destination(_ destination: Destination) {
-        let string = destination
-            .toString()
-            .surroundingWithQuotes()
-        xcodebuild.arguments.append("-destination \(string)")
-    }
-
-    func derivedDataPath(_ url: URL) {
-        xcodebuild.arguments.append("-derivedDataPath \(url.path)")
+        self.xcodebuild.destination(destination)
     }
 
     func testPlan(_ url: URL) {
-        let path = url.path.removingFileExtension("xctestplan")
-        xcodebuild.arguments.append("-testplan \(path)")
+        self.xcodebuild.testPlan(url)
     }
 }
 

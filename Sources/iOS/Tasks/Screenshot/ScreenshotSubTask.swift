@@ -26,8 +26,7 @@ public extension Screenshot {
 extension Screenshot.SubTask: Task, UsesXcodeBuild {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         with(completion) {
-            destination(scenario.destination)
-
+            xcodebuild.destination(scenario.destination)
             xcodebuild.arguments.append("-testLanguage \(scenario.language)")
             xcodebuild.arguments.append("-testRegion \(scenario.locale)")
             xcodebuild.arguments.append("test")
