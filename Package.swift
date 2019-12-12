@@ -20,6 +20,10 @@ let package = Package(
         .package(
             url: "https://github.com/JohnSundell/Files.git",
             .upToNextMajor(from : "3.1.0")
+        ),
+        .package(
+            url: "https://github.com/ChargePoint/xcparse",
+            .upToNextMajor(from : "2.1.0")
         )
     ],
     targets: [

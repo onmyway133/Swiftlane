@@ -13,7 +13,7 @@ class TestAppUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        takeScreenshot(name: "01 MainScreen")
+        takeScreenshot(name: "MainScreen")
     }
 
     func takeScreenshot(name: String) {
