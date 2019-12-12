@@ -11,6 +11,76 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D237157523A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Colorizer::Colorizer::Product";
+			remoteInfo = Colorizer;
+		};
+		D237157723A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Files::Files::Product";
+			remoteInfo = Files;
+		};
+		D237157923A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Guaka::Guaka::Product";
+			remoteInfo = Guaka;
+		};
+		D237157B23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::Puma::Product";
+			remoteInfo = Puma;
+		};
+		D237157D23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaAndroid::Product";
+			remoteInfo = PumaAndroid;
+		};
+		D237157F23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaCore::Product";
+			remoteInfo = PumaCore;
+		};
+		D237158123A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaTests::Product";
+			remoteInfo = PumaTests;
+		};
+		D237158323A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Puma::PumaiOS::Product";
+			remoteInfo = PumaiOS;
+		};
+		D237158523A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "StringScanner::StringScanner::Product";
+			remoteInfo = StringScanner;
+		};
+		D237158723A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "xcbeautify::XcbeautifyLib::Product";
+			remoteInfo = XcbeautifyLib;
+		};
 		D29121EE239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
@@ -117,6 +187,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D237155323A2F3F8001F0A2B /* Puma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Puma.xcodeproj; path = ../../Puma.xcodeproj; sourceTree = "<group>"; };
 		D290168C239318D3005B4779 /* TestPuma */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPuma; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168F239318D3005B4779 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Puma.xcodeproj; path = ../../Puma.xcodeproj; sourceTree = "<group>"; };
@@ -133,10 +204,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D237155423A2F3F8001F0A2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D237157623A2F3F8001F0A2B /* Colorizer.framework */,
+				D237157823A2F3F8001F0A2B /* Files.framework */,
+				D237157A23A2F3F8001F0A2B /* Guaka.framework */,
+				D237157C23A2F3F8001F0A2B /* Puma.framework */,
+				D237157E23A2F3F8001F0A2B /* PumaAndroid.framework */,
+				D237158023A2F3F8001F0A2B /* PumaCore.framework */,
+				D237158223A2F3F8001F0A2B /* PumaTests.xctest */,
+				D237158423A2F3F8001F0A2B /* PumaiOS.framework */,
+				D237158623A2F3F8001F0A2B /* StringScanner.framework */,
+				D237158823A2F3F8001F0A2B /* XcbeautifyLib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D2901683239318D3005B4779 = {
 			isa = PBXGroup;
 			children = (
 				D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */,
+				D237155323A2F3F8001F0A2B /* Puma.xcodeproj */,
 				D290168E239318D3005B4779 /* TestPuma */,
 				D290168D239318D3005B4779 /* Products */,
 				D29016C0239318F8005B4779 /* Frameworks */,
@@ -237,6 +326,10 @@
 					ProductGroup = D29121DB239EF79E0069E1C1 /* Products */;
 					ProjectRef = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
 				},
+				{
+					ProductGroup = D237155423A2F3F8001F0A2B /* Products */;
+					ProjectRef = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -246,6 +339,76 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D237157623A2F3F8001F0A2B /* Colorizer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Colorizer.framework;
+			remoteRef = D237157523A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237157823A2F3F8001F0A2B /* Files.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Files.framework;
+			remoteRef = D237157723A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237157A23A2F3F8001F0A2B /* Guaka.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Guaka.framework;
+			remoteRef = D237157923A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237157C23A2F3F8001F0A2B /* Puma.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Puma.framework;
+			remoteRef = D237157B23A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237157E23A2F3F8001F0A2B /* PumaAndroid.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaAndroid.framework;
+			remoteRef = D237157D23A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237158023A2F3F8001F0A2B /* PumaCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaCore.framework;
+			remoteRef = D237157F23A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237158223A2F3F8001F0A2B /* PumaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = PumaTests.xctest;
+			remoteRef = D237158123A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237158423A2F3F8001F0A2B /* PumaiOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PumaiOS.framework;
+			remoteRef = D237158323A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237158623A2F3F8001F0A2B /* StringScanner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = StringScanner.framework;
+			remoteRef = D237158523A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D237158823A2F3F8001F0A2B /* XcbeautifyLib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcbeautifyLib.framework;
+			remoteRef = D237158723A2F3F8001F0A2B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D29121EF239EF79F0069E1C1 /* Colorizer.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
