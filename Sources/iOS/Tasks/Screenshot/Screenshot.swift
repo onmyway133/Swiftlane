@@ -21,21 +21,14 @@ public class Screenshot: UsesXcodeBuild {
 extension Screenshot: Task {
     public var name: String { "Screenshot" }
 
-    public func run(workflow: Workflow, completion: TaskCompletion) {
+    public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
 
-        with(completion) {
-            guard let scenario = scenarios.last else {
-                return
-            }
+        let subTasks = scenarios.map({
+            SubTask(scenario: $0, xcodebuild: xcodebuild)
+        })
 
-            self.destination(scenario.destination)
-            xcodebuild.arguments.append("-testLanguage \(scenario.language)")
-            xcodebuild.arguments.append("-testRegion \(scenario.locale)")
-            xcodebuild.arguments.append("test")
-
-            try runXcodeBuild(workflow: workflow)
-        }
+        Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
     }
 }
 
