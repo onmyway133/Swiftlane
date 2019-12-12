@@ -10,7 +10,7 @@ import PumaCore
 
 /// Any task that uses avgtool
 public protocol UsesAgvtool: UsesCommandLine {
-    var agvtoolArguments: [String] { get set }
+    var agvtool: Agvtool { get set }
 }
 
 public extension UsesAgvtool {
@@ -18,7 +18,7 @@ public extension UsesAgvtool {
         try runBash(
             workflow: workflow,
             program: "agvtool",
-            arguments: agvtoolArguments
+            arguments: agvtool.arguments
         )
     }
 }

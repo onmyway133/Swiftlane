@@ -19,7 +19,7 @@ public extension UsesCommandLine {
     ) throws {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
-        Deps.console.command(command)
+        Deps.console.highlight(command)
 
         let process = Process()
         process.launchPath = "/bin/bash"
@@ -28,7 +28,11 @@ public extension UsesCommandLine {
         try runProcess(process, workflow: workflow, processHandler: processHandler)
     }
 
-    func runProcess(_ process: Process, workflow: Workflow, processHandler: ProcessHandler) throws {
+    func runProcess(
+        _ process: Process,
+        workflow: Workflow,
+        processHandler: ProcessHandler = DefaultProcessHandler()
+    ) throws {
         process.apply(workflow: workflow)
         try process.run(processHandler: processHandler)
     }

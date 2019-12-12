@@ -26,3 +26,11 @@ public extension Array where Element: Hashable {
         }
     }
 }
+
+public extension Array {
+    func firstRemoved() -> Array {
+        var array = self
+        array.removeFirst()
+        return array
+    }
+}

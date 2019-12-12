@@ -9,11 +9,12 @@ import Foundation
 
 public protocol Task: AnyObject {
     var name: String { get }
+    var isEnabled: Bool { get set }
     func run(workflow: Workflow, completion: TaskCompletion)
 }
 
 public extension Task {
-    func run(workflow: Workflow, completion: TaskCompletion, job: () throws -> Void) {
+    func with(_ completion: TaskCompletion, _ job: () throws -> Void) {
         do {
             try job()
             completion(.success(()))

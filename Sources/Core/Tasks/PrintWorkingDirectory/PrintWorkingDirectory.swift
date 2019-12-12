@@ -7,21 +7,23 @@
 
 import Foundation
 
-public class WorkingDirectory: UsesCommandLine {
-    public init(_ closure: (WorkingDirectory) -> Void = { _ in }) {
+public class PrintWorkingDirectory: UsesCommandLine {
+    public var isEnabled = true
+
+    public init(_ closure: (PrintWorkingDirectory) -> Void = { _ in }) {
         closure(self)
     }
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        run(workflow: workflow, completion: completion, job: {
+        with(completion) {
             let process = Process()
             process.launchPath = "/bin/pwd"
 
-            try runProcess(process, workflow: workflow, processHandler: DefaultProcessHandler())
-        })
+            try runProcess(process, workflow: workflow)
+        }
     }
 }
 
-extension WorkingDirectory: Task {
+extension PrintWorkingDirectory: Task {
     public var name: String { "Working directory" }
 }

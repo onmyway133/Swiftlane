@@ -56,18 +56,25 @@ public class Workflow {
             return
         }
 
+        guard first.isEnabled else {
+            self.runFirst(
+                tasks: tasks.firstRemoved(),
+                workflowCompletion: workflowCompletion
+            )
+
+            return
+        }
+
         afterSummarizer.beforeRun(name: first.name)
         Deps.console.newLine()
-        Deps.console.task(first.name)
+        Deps.console.title("🚀 \(first.name)")
 
         first.run(workflow: self, completion: { result in
             afterSummarizer.afterRun()
 
             switch result {
             case .success:
-                var tasks = tasks
-                tasks.removeFirst()
-                self.runFirst(tasks: tasks, workflowCompletion: workflowCompletion)
+                self.runFirst(tasks: tasks.firstRemoved(), workflowCompletion: workflowCompletion)
             case .failure(let error):
                 self.handle(error: error)
                 workflowCompletion(.failure(error))
