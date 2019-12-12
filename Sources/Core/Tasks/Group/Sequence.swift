@@ -38,7 +38,7 @@ public class Sequence: Task {
 
         guard first.isEnabled else {
             self.runFirst(
-                tasks: tasks.firstRemoved(),
+                tasks: tasks.removingFirst(),
                 workflow: workflow,
                 completion: completion
             )
@@ -53,7 +53,7 @@ public class Sequence: Task {
             switch result {
             case .success:
                 self.runFirst(
-                    tasks: tasks.firstRemoved(),
+                    tasks: tasks.removingFirst(),
                     workflow: workflow,
                     completion: completion
                 )
