@@ -48,6 +48,8 @@ func testDrive() {
 
         Screenshot {
             $0.on(project: "TestApp", scheme: "TestAppUITests")
+            $0.saveDirectory = URL(fileURLWithPath: "/Users/khoa/Downloads/TestAppScreenshots")
+
             $0.add(scenarios: [
                 .init(
                     destination: .init(

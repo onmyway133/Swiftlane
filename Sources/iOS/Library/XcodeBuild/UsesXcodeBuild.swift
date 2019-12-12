@@ -71,6 +71,10 @@ public extension UsesXcodeBuild {
             .surroundingWithQuotes()
         xcodebuild.arguments.append("-destination \(string)")
     }
+
+    func derivedDataPath(_ url: URL) {
+        xcodebuild.arguments.append("-derivedDataPath \(url.path)")
+    }
 }
 
 public extension UsesXcodeBuild {

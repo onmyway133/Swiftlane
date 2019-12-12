@@ -11,6 +11,7 @@ import PumaCore
 public class Screenshot: UsesXcodeBuild {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
+    public var saveDirectory: URL = URL(fileURLWithPath: ".")
     public private(set) var scenarios = [Scenario]()
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
