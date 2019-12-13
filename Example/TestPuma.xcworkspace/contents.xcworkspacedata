@@ -7,4 +7,10 @@
    <FileRef
       location = "group:TestPuma/TestPuma.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:TestApp.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:../Package.swift">
+   </FileRef>
 </Workspace>

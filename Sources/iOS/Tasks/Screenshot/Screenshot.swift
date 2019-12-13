@@ -11,6 +11,7 @@ import PumaCore
 public class Screenshot: UsesXcodeBuild {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
+    public var saveDirectory: URL = URL(fileURLWithPath: ".")
     public private(set) var scenarios = [Scenario]()
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
@@ -21,26 +22,21 @@ public class Screenshot: UsesXcodeBuild {
 extension Screenshot: Task {
     public var name: String { "Screenshot" }
 
-    public func run(workflow: Workflow, completion: TaskCompletion) {
+    public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
 
-        with(completion) {
-            guard let scenario = scenarios.last else {
-                return
-            }
+        let subTasks: [SubTask] = scenarios.map({ scenario in
+            var xcodebuild = self.xcodebuild
+            xcodebuild.derivedDataPath(saveDirectory)
+            return SubTask(scenario: scenario, xcodebuild: xcodebuild)
+        })
 
-            self.destination(scenario.destination)
-            xcodebuild.arguments.append("-testLanguage \(scenario.language)")
-            xcodebuild.arguments.append("-testRegion \(scenario.locale)")
-            xcodebuild.arguments.append("test")
-
-            try runXcodeBuild(workflow: workflow)
-        }
+        Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
     }
 }
 
 public extension Screenshot {
-    func take(scenario: Scenario) {
-        self.scenarios.append(scenario)
+    func add(scenarios: [Scenario]) {
+        self.scenarios.append(contentsOf: scenarios)
     }
 }

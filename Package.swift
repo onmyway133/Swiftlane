@@ -20,6 +20,10 @@ let package = Package(
         .package(
             url: "https://github.com/JohnSundell/Files.git",
             .upToNextMajor(from : "3.1.0")
+        ),
+        .package(
+            url: "https://github.com/ChargePoint/xcparse",
+            .upToNextMajor(from : "2.1.0")
         )
     ],
     targets: [
@@ -34,7 +38,6 @@ let package = Package(
         .target(
             name: "PumaCore",
             dependencies: [
-                "XcbeautifyLib",
                 "Colorizer",
                 "Files"
             ],
@@ -43,7 +46,8 @@ let package = Package(
         .target(
             name: "PumaiOS",
             dependencies: [
-                "PumaCore"
+                "PumaCore",
+                "XcbeautifyLib"
             ],
             path: "Sources/iOS"
         ),

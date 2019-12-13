@@ -11,9 +11,17 @@ public extension String {
     func addingFileExtension(_ fileExtension: String) -> String {
         if contains(fileExtension) {
             return self
+        } else {
+            return "\(self).\(fileExtension)"
         }
-        
-        return "\(self).\(fileExtension)"
+    }
+
+    func removingFileExtension(_ fileExtension: String) -> String {
+        if contains(fileExtension) {
+            return replacingOccurrences(of: ".\(fileExtension)", with: "")
+        } else {
+            return self
+        }
     }
     
     func surroundingWithQuotes() -> String {

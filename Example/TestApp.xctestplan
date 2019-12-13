@@ -1,0 +1,53 @@
+{
+  "configurations" : [
+    {
+      "id" : "607B9585-591C-4201-AC0D-A7E0CBD5E7AD",
+      "name" : "en",
+      "options" : {
+        "language" : "en",
+        "region" : "US",
+        "uiTestingScreenshotsLifetime" : "keepAlways",
+        "userAttachmentLifetime" : "keepAlways"
+      }
+    },
+    {
+      "id" : "93D1FCD6-3695-43DC-87E9-6E744F165648",
+      "name" : "ja",
+      "options" : {
+        "language" : "ja",
+        "region" : "JP",
+        "uiTestingScreenshotsLifetime" : "keepAlways",
+        "userAttachmentLifetime" : "keepAlways"
+      }
+    },
+    {
+      "id" : "D0B670A9-CEF5-4257-8E7E-82C9E6535BE4",
+      "name" : "no",
+      "options" : {
+        "language" : "nb",
+        "region" : "NO",
+        "uiTestingScreenshotsLifetime" : "keepAlways",
+        "userAttachmentLifetime" : "keepAlways"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "areLocalizationScreenshotsEnabled" : true,
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TestApp.xcodeproj",
+      "identifier" : "D2A3A1BD230D2B7C003F68E9",
+      "name" : "TestApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TestApp.xcodeproj",
+        "identifier" : "D2912212239EFB7F0069E1C1",
+        "name" : "TestAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

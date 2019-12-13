@@ -48,30 +48,33 @@ func testDrive() {
 
         Screenshot {
             $0.on(project: "TestApp", scheme: "TestAppUITests")
-            $0.take(scenario: .init(
-                destination: .init(
-                    platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhone11,
-                    os: Destination.OS.iOS13_2_2
-                ),
-                language: Language.en_US,
-                locale: Locale.en_US)
-            )
+            $0.saveDirectory = URL(fileURLWithPath: "/Users/khoa/Downloads/TestAppScreenshots")
 
-            $0.take(scenario: .init(
-                destination: .init(
-                    platform: Destination.Platform.iOSSimulator,
-                    name: Destination.Name.iPhone11,
-                    os: Destination.OS.iOS13_2_2
+            $0.add(scenarios: [
+                .init(
+                    destination: .init(
+                        platform: Destination.Platform.iOSSimulator,
+                        name: Destination.Name.iPhone11,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.en_US,
+                    locale: Locale.en_US
                 ),
-                language: Language.ja,
-                locale: Locale.ja)
-            )
+                .init(
+                    destination: .init(
+                        platform: Destination.Platform.iOSSimulator,
+                        name: Destination.Name.iPhone11,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.ja,
+                    locale: Locale.ja
+                )
+            ])
         }
     }
 
     workflow.workingDirectory = URL(fileURLWithPath: "/Users/khoa/XcodeProject2/Puma/Example/TestApp")
-    workflow.run(completion: { _ in })
+    workflow.run()
 }
 
 testDrive()

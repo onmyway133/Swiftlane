@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  TestApp
+
+  Created by khoa on 09/12/2019.
+  Copyright © 2019 PumaSwift. All rights reserved.
+*/
+
+"hello" = "hallo";

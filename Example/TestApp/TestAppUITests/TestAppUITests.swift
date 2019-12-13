@@ -12,5 +12,14 @@ class TestAppUITests: XCTestCase {
     func testFirstScreen() {
         let app = XCUIApplication()
         app.launch()
+
+        takeScreenshot(name: "MainScreen")
+    }
+
+    func takeScreenshot(name: String) {
+        let screenshot = XCUIScreen.main.screenshot()
+        let attach = XCTAttachment(screenshot: screenshot)
+        attach.lifetime = .keepAlways
+        add(attach)
     }
 }

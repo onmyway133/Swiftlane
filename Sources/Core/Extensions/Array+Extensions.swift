@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Array where Element: Hashable {
-    var removeDuplicates: Array {
+    var removingDuplicates: Array {
         var buffer = Array()
         var added = Set<Element>()
         for elem in self {
@@ -28,7 +28,7 @@ public extension Array where Element: Hashable {
 }
 
 public extension Array {
-    func firstRemoved() -> Array {
+    func removingFirst() -> Array {
         var array = self
         array.removeFirst()
         return array

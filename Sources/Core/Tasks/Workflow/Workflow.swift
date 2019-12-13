@@ -17,6 +17,11 @@ public class Workflow {
     private let beforeSummarizer = BeforeSummarizer()
     private let afterSummarizer = AfterSummerizer()
 
+    public init(name: String, tasks: [Task]) {
+        self.name = name
+        self.tasks = tasks
+    }
+
     public init(name: String, @TaskBuilder builder: () -> [Task]) {
         self.name = name
         self.tasks = builder()
@@ -27,9 +32,17 @@ public class Workflow {
         self.tasks = [builder()]
     }
 
-    public func run(completion: WorkflowCompletion = { _ in }) {
+    public func run(completion: @escaping TaskCompletion = { _ in }) {
         beforeSummarizer.on(tasks: tasks)
-        runFirst(tasks: tasks, workflowCompletion: completion)
+        Sequence(tasks: tasks).run(workflow: self, completion: { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                self.handle(error: error)
+                completion(.failure(error))
+            }
+        })
     }
 
     public func handle(error: Error) {
@@ -46,39 +59,5 @@ public class Workflow {
         default:
             Deps.console.error(error.localizedDescription)
         }
-    }
-
-    private func runFirst(tasks: [Task], workflowCompletion: WorkflowCompletion) {
-        guard let first = tasks.first else {
-            Deps.console.newLine()
-            afterSummarizer.show()
-            workflowCompletion(.success(()))
-            return
-        }
-
-        guard first.isEnabled else {
-            self.runFirst(
-                tasks: tasks.firstRemoved(),
-                workflowCompletion: workflowCompletion
-            )
-
-            return
-        }
-
-        afterSummarizer.beforeRun(name: first.name)
-        Deps.console.newLine()
-        Deps.console.title("🚀 \(first.name)")
-
-        first.run(workflow: self, completion: { result in
-            afterSummarizer.afterRun()
-
-            switch result {
-            case .success:
-                self.runFirst(tasks: tasks.firstRemoved(), workflowCompletion: workflowCompletion)
-            case .failure(let error):
-                self.handle(error: error)
-                workflowCompletion(.failure(error))
-            }
-        })
     }
 }

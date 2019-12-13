@@ -7,10 +7,12 @@
 
 import Foundation
 
+public typealias TaskCompletion = (Result<(), Error>) -> Void
+
 public protocol Task: AnyObject {
     var name: String { get }
     var isEnabled: Bool { get set }
-    func run(workflow: Workflow, completion: TaskCompletion)
+    func run(workflow: Workflow, completion: @escaping TaskCompletion)
 }
 
 public extension Task {

@@ -34,6 +34,10 @@
 		D2912213239EFB7F0069E1C1 /* TestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2912215239EFB7F0069E1C1 /* TestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppUITests.swift; sourceTree = "<group>"; };
 		D2912217239EFB7F0069E1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D291223323A2E9340069E1C1 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D291223423A2E9340069E1C1 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D291223523A2E96A0069E1C1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D291223623A2E96A0069E1C1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2A3A1BE230D2B7C003F68E9 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A3A1C1230D2B7C003F68E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2A3A1C3230D2B7C003F68E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				en,
 				Base,
 				ja,
+				nb,
+				es,
 			);
 			mainGroup = D2A3A1B5230D2B7B003F68E9;
 			productRefGroup = D2A3A1BF230D2B7C003F68E9 /* Products */;
@@ -245,6 +251,8 @@
 			children = (
 				D291220C239EF7FE0069E1C1 /* en */,
 				D291220E239EF8020069E1C1 /* ja */,
+				D291223423A2E9340069E1C1 /* nb */,
+				D291223623A2E96A0069E1C1 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -254,6 +262,8 @@
 			children = (
 				D2A3A1CD230D2B7D003F68E9 /* Base */,
 				D291220A239EF7F70069E1C1 /* ja */,
+				D291223323A2E9340069E1C1 /* nb */,
+				D291223523A2E96A0069E1C1 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

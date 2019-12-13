@@ -8,6 +8,7 @@
 import Foundation
 import PumaCore
 
+/*
 public struct Validator {
     public static func deviceBuildMustHaveCodeSign(options: Xcodebuild.Options) throws {
         if let sdk = options.sdk, sdk == Sdk.iPhone && options.signing == nil {
@@ -15,3 +16,4 @@ public struct Validator {
         }
     }
 }
+*/
