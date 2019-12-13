@@ -9,6 +9,7 @@ import Foundation
 
 public enum PumaError: Error {
     case unknown
+    case invalid
     case validate(String)
     case process(terminationStatus: Int32, output: String, error: String)
 }

@@ -25,16 +25,25 @@ extension Screenshot: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
 
-        let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
-        let buildSettings = try? getBuildSettings.run(workflow: workflow) ?? BuildSettings(map: [:])
+        do {
+            let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
+            let buildSettings = try getBuildSettings.run(workflow: workflow)
 
-        let subTasks: [SubTask] = scenarios.map({ scenario in
-            var xcodebuild = self.xcodebuild
-            xcodebuild.derivedDataPath(saveDirectory)
-            return SubTask(scenario: scenario, xcodebuild: xcodebuild)
-        })
+            guard let derivedDataDirectory = buildSettings.value(forKey: .derivedDataDirectory) else {
+                completion(.failure(PumaError.invalid))
+                return
+            }
 
-        Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
+            let subTasks: [SubTask] = scenarios.map({ scenario in
+                var xcodebuild = self.xcodebuild
+                xcodebuild.derivedDataPath(URL(fileURLWithPath: derivedDataDirectory))
+                return SubTask(scenario: scenario, xcodebuild: xcodebuild)
+            })
+
+            Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
     }
 }
 
