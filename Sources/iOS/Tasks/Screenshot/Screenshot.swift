@@ -34,10 +34,17 @@ extension Screenshot: Task {
                 return
             }
 
+            let derivedDataURL = URL(fileURLWithPath: derivedDataDirectory)
+
             let subTasks: [SubTask] = scenarios.map({ scenario in
                 var xcodebuild = self.xcodebuild
-                xcodebuild.derivedDataPath(URL(fileURLWithPath: derivedDataDirectory))
-                return SubTask(scenario: scenario, xcodebuild: xcodebuild)
+                xcodebuild.derivedDataPath(derivedDataURL)
+                return SubTask(
+                    scenario: scenario,
+                    xcodebuild: xcodebuild,
+                    derivedDataURL: derivedDataURL,
+                    saveURL: saveDirectory
+                )
             })
 
             Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)

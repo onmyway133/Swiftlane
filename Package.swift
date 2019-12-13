@@ -47,7 +47,8 @@ let package = Package(
             name: "PumaiOS",
             dependencies: [
                 "PumaCore",
-                "XcbeautifyLib"
+                "XcbeautifyLib",
+                "XCParseCore"
             ],
             path: "Sources/iOS"
         ),
@@ -58,9 +59,17 @@ let package = Package(
             ],
             path: "Sources/Android"
         ),
+        .target(
+            name: "XCParse",
+            dependencies: [
+                "XCParseCore"
+            ],
+            path: "Sources/Vendors/XCParse"
+        ),
         .testTarget(
             name: "PumaTests",
-            dependencies: ["Puma"
+            dependencies: [
+                "Puma"
             ]
         )
     ]
