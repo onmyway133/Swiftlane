@@ -54,8 +54,9 @@ public extension UsesXcodeBuild {
 }
 
 public extension UsesXcodeBuild {
-    func runXcodeBuild(workflow: Workflow) throws {
-        try runBash(
+    @discardableResult
+    func runXcodeBuild(workflow: Workflow) throws -> String {
+        return try runBash(
             workflow: workflow,
             program: "xcodebuild",
             arguments: xcodebuild.arguments,

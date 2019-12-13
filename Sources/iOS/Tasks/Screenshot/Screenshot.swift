@@ -25,6 +25,9 @@ extension Screenshot: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Deps.console.note("Please use UITest scheme")
 
+        let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
+        let buildSettings = try? getBuildSettings.run(workflow: workflow) ?? BuildSettings(map: [:])
+
         let subTasks: [SubTask] = scenarios.map({ scenario in
             var xcodebuild = self.xcodebuild
             xcodebuild.derivedDataPath(saveDirectory)
