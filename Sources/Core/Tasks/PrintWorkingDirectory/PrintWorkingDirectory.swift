@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PrintWorkingDirectory: UsesCommandLine {
+public class PrintWorkingDirectory {
     public var isEnabled = true
 
     public init(_ closure: (PrintWorkingDirectory) -> Void = { _ in }) {
@@ -19,7 +19,7 @@ public class PrintWorkingDirectory: UsesCommandLine {
             let process = Process()
             process.launchPath = "/bin/pwd"
 
-            try runProcess(process, workflow: workflow)
+            try CommandLine().runProcess(process, workflow: workflow)
         }
     }
 }

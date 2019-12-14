@@ -7,13 +7,11 @@
 
 import Foundation
 
-/// Any task that uses command line
-public protocol UsesCommandLine: AnyObject {}
-
-public extension UsesCommandLine {
+public struct CommandLine {
+    public init() {}
 
     @discardableResult
-    func runBash(
+    public func runBash(
         workflow: Workflow,
         program: String,
         arguments: [String],
@@ -31,7 +29,7 @@ public extension UsesCommandLine {
     }
 
     @discardableResult
-    func runProcess(
+    public func runProcess(
         _ process: Process,
         workflow: Workflow,
         processHandler: ProcessHandler = DefaultProcessHandler()

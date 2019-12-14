@@ -9,7 +9,7 @@
 import Foundation
 import PumaCore
 
-public class SetBuildNumber: UsesAgvtool {
+public class SetBuildNumber {
     public var isEnabled = true
     public var agvtool = Agvtool()
 
@@ -19,7 +19,7 @@ public class SetBuildNumber: UsesAgvtool {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            try runAgvtool(workflow: workflow)
+            try agvtool.run(workflow: workflow)
         }
     }
 }

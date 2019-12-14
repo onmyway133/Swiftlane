@@ -7,7 +7,7 @@
 
 import PumaCore
 
-public class GetBuildSettings: UsesXcodeBuild {
+public class GetBuildSettings {
     public var xcodebuild: Xcodebuild
 
     public init(xcodebuild: Xcodebuild) {
@@ -21,7 +21,7 @@ public class GetBuildSettings: UsesXcodeBuild {
         })
 
         xcodebuild.arguments.append("-showBuildSettings")
-        let string = try runXcodeBuild(workflow: workflow)
+        let string = try xcodebuild.run(workflow: workflow)
         return parse(string: string)
     }
 

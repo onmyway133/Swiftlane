@@ -9,7 +9,7 @@
 import Foundation
 import PumaCore
 
-public class SetVersionNumber: UsesAgvtool {
+public class SetVersionNumber {
     public var isEnabled = true
     public var agvtool = Agvtool()
 
@@ -23,7 +23,7 @@ extension SetVersionNumber: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            try runAgvtool(workflow: workflow)
+            try agvtool.run(workflow: workflow)
         }
     }
 }

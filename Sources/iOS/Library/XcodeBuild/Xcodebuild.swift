@@ -5,10 +5,20 @@
 //  Created by khoa on 10/12/2019.
 //
 
-import Foundation
+import PumaCore
 
 public struct Xcodebuild {
     var arguments: [String] = []
+
+    @discardableResult
+    func run(workflow: Workflow) throws -> String {
+        return try CommandLine().runBash(
+            workflow: workflow,
+            program: "xcodebuild",
+            arguments: arguments,
+            processHandler: XcodeBuildProcessHandler()
+        )
+    }
 }
 
 public extension Xcodebuild {

@@ -8,7 +8,7 @@
 import Foundation
 import PumaCore
 
-public class Screenshot: UsesXcodeBuild {
+public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public var saveDirectory: String = "."
@@ -53,6 +53,38 @@ extension Screenshot: Task {
 }
 
 public extension Screenshot {
+    func configure(
+        project: String,
+        scheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        xcodebuild.project(project)
+        xcodebuild.scheme(scheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
+    }
+
+    func configure(
+        workspace: String,
+        scheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        xcodebuild.workspace(workspace)
+        xcodebuild.scheme(scheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
+    }
+
+    func testPlan(_ path: String) {
+        xcodebuild.testPlan(path)
+    }
+
     func add(scenarios: [Scenario]) {
         self.scenarios.append(contentsOf: scenarios)
     }
