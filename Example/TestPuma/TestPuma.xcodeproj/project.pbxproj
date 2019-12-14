@@ -7,172 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D237170423A57ECD001F0A2B /* PumaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237170323A57ECD001F0A2B /* PumaCore.framework */; };
+		D237170623A57ECD001F0A2B /* PumaiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237170523A57ECD001F0A2B /* PumaiOS.framework */; };
+		D237170823A57EE7001F0A2B /* Puma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D237170723A57EE7001F0A2B /* Puma.framework */; };
 		D2901690239318D3005B4779 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290168F239318D3005B4779 /* main.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D237157523A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Colorizer::Colorizer::Product";
-			remoteInfo = Colorizer;
-		};
-		D237157723A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Files::Files::Product";
-			remoteInfo = Files;
-		};
-		D237157923A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Guaka::Guaka::Product";
-			remoteInfo = Guaka;
-		};
-		D237157B23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::Puma::Product";
-			remoteInfo = Puma;
-		};
-		D237157D23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaAndroid::Product";
-			remoteInfo = PumaAndroid;
-		};
-		D237157F23A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaCore::Product";
-			remoteInfo = PumaCore;
-		};
-		D237158123A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaTests::Product";
-			remoteInfo = PumaTests;
-		};
-		D237158323A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaiOS::Product";
-			remoteInfo = PumaiOS;
-		};
-		D237158523A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "StringScanner::StringScanner::Product";
-			remoteInfo = StringScanner;
-		};
-		D237158723A2F3F8001F0A2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "xcbeautify::XcbeautifyLib::Product";
-			remoteInfo = XcbeautifyLib;
-		};
-		D29121EE239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Colorizer::Colorizer::Product";
-			remoteInfo = Colorizer;
-		};
-		D29121F0239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Files::Files::Product";
-			remoteInfo = Files;
-		};
-		D29121F2239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Guaka::Guaka::Product";
-			remoteInfo = Guaka;
-		};
-		D29121F4239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::Puma::Product";
-			remoteInfo = Puma;
-		};
-		D29121F6239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaAndroid::Product";
-			remoteInfo = PumaAndroid;
-		};
-		D29121F8239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaCore::Product";
-			remoteInfo = PumaCore;
-		};
-		D29121FA239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaTests::Product";
-			remoteInfo = PumaTests;
-		};
-		D29121FC239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "Puma::PumaiOS::Product";
-			remoteInfo = PumaiOS;
-		};
-		D29121FE239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "StringScanner::StringScanner::Product";
-			remoteInfo = StringScanner;
-		};
-		D2912200239EF79F0069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "xcbeautify::XcbeautifyLib::Product";
-			remoteInfo = XcbeautifyLib;
-		};
-		D2912202239EF7B30069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Puma::Puma";
-			remoteInfo = Puma;
-		};
-		D2912204239EF7B30069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Puma::PumaCore";
-			remoteInfo = PumaCore;
-		};
-		D2912206239EF7B30069E1C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "Puma::PumaiOS";
-			remoteInfo = PumaiOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D290168A239318D3005B4779 /* CopyFiles */ = {
@@ -187,10 +26,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D237155323A2F3F8001F0A2B /* Puma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Puma.xcodeproj; path = ../../Puma.xcodeproj; sourceTree = "<group>"; };
+		D237170323A57ECD001F0A2B /* PumaCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PumaCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D237170523A57ECD001F0A2B /* PumaiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PumaiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D237170723A57EE7001F0A2B /* Puma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Puma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168C239318D3005B4779 /* TestPuma */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPuma; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168F239318D3005B4779 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Puma.xcodeproj; path = ../../Puma.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,34 +38,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D237170823A57EE7001F0A2B /* Puma.framework in Frameworks */,
+				D237170423A57ECD001F0A2B /* PumaCore.framework in Frameworks */,
+				D237170623A57ECD001F0A2B /* PumaiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D237155423A2F3F8001F0A2B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D237157623A2F3F8001F0A2B /* Colorizer.framework */,
-				D237157823A2F3F8001F0A2B /* Files.framework */,
-				D237157A23A2F3F8001F0A2B /* Guaka.framework */,
-				D237157C23A2F3F8001F0A2B /* Puma.framework */,
-				D237157E23A2F3F8001F0A2B /* PumaAndroid.framework */,
-				D237158023A2F3F8001F0A2B /* PumaCore.framework */,
-				D237158223A2F3F8001F0A2B /* PumaTests.xctest */,
-				D237158423A2F3F8001F0A2B /* PumaiOS.framework */,
-				D237158623A2F3F8001F0A2B /* StringScanner.framework */,
-				D237158823A2F3F8001F0A2B /* XcbeautifyLib.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D2901683239318D3005B4779 = {
 			isa = PBXGroup;
 			children = (
-				D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */,
-				D237155323A2F3F8001F0A2B /* Puma.xcodeproj */,
 				D290168E239318D3005B4779 /* TestPuma */,
 				D290168D239318D3005B4779 /* Products */,
 				D29016C0239318F8005B4779 /* Frameworks */,
@@ -251,25 +75,11 @@
 		D29016C0239318F8005B4779 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D237170723A57EE7001F0A2B /* Puma.framework */,
+				D237170323A57ECD001F0A2B /* PumaCore.framework */,
+				D237170523A57ECD001F0A2B /* PumaiOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D29121DB239EF79E0069E1C1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D29121EF239EF79F0069E1C1 /* Colorizer.framework */,
-				D29121F1239EF79F0069E1C1 /* Files.framework */,
-				D29121F3239EF79F0069E1C1 /* Guaka.framework */,
-				D29121F5239EF79F0069E1C1 /* Puma.framework */,
-				D29121F7239EF79F0069E1C1 /* PumaAndroid.framework */,
-				D29121F9239EF79F0069E1C1 /* PumaCore.framework */,
-				D29121FB239EF79F0069E1C1 /* PumaTests.xctest */,
-				D29121FD239EF79F0069E1C1 /* PumaiOS.framework */,
-				D29121FF239EF79F0069E1C1 /* StringScanner.framework */,
-				D2912201239EF79F0069E1C1 /* XcbeautifyLib.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +96,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D2912203239EF7B30069E1C1 /* PBXTargetDependency */,
-				D2912205239EF7B30069E1C1 /* PBXTargetDependency */,
-				D2912207239EF7B30069E1C1 /* PBXTargetDependency */,
 			);
 			name = TestPuma;
 			productName = TestPuma;
@@ -321,165 +128,12 @@
 			mainGroup = D2901683239318D3005B4779;
 			productRefGroup = D290168D239318D3005B4779 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D29121DB239EF79E0069E1C1 /* Products */;
-					ProjectRef = D29121DA239EF79E0069E1C1 /* Puma.xcodeproj */;
-				},
-				{
-					ProductGroup = D237155423A2F3F8001F0A2B /* Products */;
-					ProjectRef = D237155323A2F3F8001F0A2B /* Puma.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D290168B239318D3005B4779 /* TestPuma */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D237157623A2F3F8001F0A2B /* Colorizer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Colorizer.framework;
-			remoteRef = D237157523A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237157823A2F3F8001F0A2B /* Files.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Files.framework;
-			remoteRef = D237157723A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237157A23A2F3F8001F0A2B /* Guaka.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Guaka.framework;
-			remoteRef = D237157923A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237157C23A2F3F8001F0A2B /* Puma.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Puma.framework;
-			remoteRef = D237157B23A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237157E23A2F3F8001F0A2B /* PumaAndroid.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaAndroid.framework;
-			remoteRef = D237157D23A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237158023A2F3F8001F0A2B /* PumaCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaCore.framework;
-			remoteRef = D237157F23A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237158223A2F3F8001F0A2B /* PumaTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = PumaTests.xctest;
-			remoteRef = D237158123A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237158423A2F3F8001F0A2B /* PumaiOS.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaiOS.framework;
-			remoteRef = D237158323A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237158623A2F3F8001F0A2B /* StringScanner.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = StringScanner.framework;
-			remoteRef = D237158523A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D237158823A2F3F8001F0A2B /* XcbeautifyLib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XcbeautifyLib.framework;
-			remoteRef = D237158723A2F3F8001F0A2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121EF239EF79F0069E1C1 /* Colorizer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Colorizer.framework;
-			remoteRef = D29121EE239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121F1239EF79F0069E1C1 /* Files.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Files.framework;
-			remoteRef = D29121F0239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121F3239EF79F0069E1C1 /* Guaka.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Guaka.framework;
-			remoteRef = D29121F2239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121F5239EF79F0069E1C1 /* Puma.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Puma.framework;
-			remoteRef = D29121F4239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121F7239EF79F0069E1C1 /* PumaAndroid.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaAndroid.framework;
-			remoteRef = D29121F6239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121F9239EF79F0069E1C1 /* PumaCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaCore.framework;
-			remoteRef = D29121F8239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121FB239EF79F0069E1C1 /* PumaTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = PumaTests.xctest;
-			remoteRef = D29121FA239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121FD239EF79F0069E1C1 /* PumaiOS.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PumaiOS.framework;
-			remoteRef = D29121FC239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D29121FF239EF79F0069E1C1 /* StringScanner.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = StringScanner.framework;
-			remoteRef = D29121FE239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D2912201239EF79F0069E1C1 /* XcbeautifyLib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XcbeautifyLib.framework;
-			remoteRef = D2912200239EF79F0069E1C1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2901688239318D3005B4779 /* Sources */ = {
@@ -491,24 +145,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D2912203239EF7B30069E1C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Puma;
-			targetProxy = D2912202239EF7B30069E1C1 /* PBXContainerItemProxy */;
-		};
-		D2912205239EF7B30069E1C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PumaCore;
-			targetProxy = D2912204239EF7B30069E1C1 /* PBXContainerItemProxy */;
-		};
-		D2912207239EF7B30069E1C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PumaiOS;
-			targetProxy = D2912206239EF7B30069E1C1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D2901691239318D3005B4779 /* Debug */ = {
