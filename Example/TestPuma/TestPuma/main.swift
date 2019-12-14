@@ -31,13 +31,13 @@ func testDrive() {
 
         Build {
             $0.isEnabled = false
-            $0.on(project: "TestApp", scheme: "TestApp")
+            $0.configure(project: "TestApp", scheme: "TestApp")
             $0.buildsForTesting(enabled: true)
         }
 
         Test {
             $0.isEnabled = false
-            $0.on(project: "TestApp", scheme: "TestApp")
+            $0.configure(project: "TestApp", scheme: "TestApp")
             $0.testsWithoutBuilding(enabled: true)
             $0.destination(.init(
                 platform: Destination.Platform.iOSSimulator,
@@ -47,7 +47,7 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.on(project: "TestApp", scheme: "TestAppUITests")
+            $0.configure(project: "TestApp", scheme: "TestAppUITests")
             $0.saveDirectory = URL(fileURLWithPath: "/Users/khoa/Downloads/TestAppScreenshots")
 
             $0.add(scenarios: [

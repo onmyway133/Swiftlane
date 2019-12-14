@@ -14,34 +14,32 @@ public protocol UsesXcodeBuild: UsesCommandLine {
 }
 
 public extension UsesXcodeBuild {
-    func on(project: String, scheme: String) {
-        self.xcodebuild.project(project)
-        self.xcodebuild.scheme(scheme)
-        self.basicSettings()
+    func configure(
+        project: String,
+        scheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        xcodebuild.project(project)
+        xcodebuild.scheme(scheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
-    func on(workspace: String, scheme: String) {
-        self.xcodebuild.workspace(workspace)
-        self.xcodebuild.scheme(scheme)
-        self.basicSettings()
-    }
-
-    func basicSettings() {
-        self.xcodebuild.configuration(Configuration.debug)
-        self.xcodebuild.sdk(Sdk.iPhoneSimulator)
-        self.xcodebuild.usesModernBuildSystem(enabled: true)
-    }
-
-    func configuration(_ configuration: String) {
-        self.xcodebuild.configuration(configuration)
-    }
-
-    func sdk(_ sdk: String) {
-        self.xcodebuild.sdk(sdk)
-    }
-
-    func usesModernBuildSystem(enabled: Bool) {
-        self.xcodebuild.usesModernBuildSystem(enabled: enabled)
+    func configure(
+        workspace: String,
+        scheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        xcodebuild.workspace(workspace)
+        xcodebuild.scheme(scheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
     func destination(_ destination: Destination) {
