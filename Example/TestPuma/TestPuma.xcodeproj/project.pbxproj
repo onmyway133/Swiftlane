@@ -29,6 +29,8 @@
 		D237170323A57ECD001F0A2B /* PumaCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PumaCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237170523A57ECD001F0A2B /* PumaiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PumaiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237170723A57EE7001F0A2B /* Puma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Puma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D237170923A57FFF001F0A2B /* clibc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = clibc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D237170B23A5814D001F0A2B /* SPMLibc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SPMLibc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168C239318D3005B4779 /* TestPuma */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPuma; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168F239318D3005B4779 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,8 @@
 		D29016C0239318F8005B4779 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D237170B23A5814D001F0A2B /* SPMLibc.framework */,
+				D237170923A57FFF001F0A2B /* clibc.framework */,
 				D237170723A57EE7001F0A2B /* Puma.framework */,
 				D237170323A57ECD001F0A2B /* PumaCore.framework */,
 				D237170523A57ECD001F0A2B /* PumaiOS.framework */,
@@ -268,6 +272,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78DK947F2;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../.build/checkouts/swift-package-manager/Sources/clibc/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -279,6 +284,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78DK947F2;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../.build/checkouts/swift-package-manager/Sources/clibc/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
