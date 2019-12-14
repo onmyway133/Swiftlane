@@ -43,11 +43,11 @@ public extension UsesXcodeBuild {
     }
 
     func destination(_ destination: Destination) {
-        self.xcodebuild.destination(destination)
+        xcodebuild.destination(destination)
     }
 
-    func testPlan(_ url: URL) {
-        self.xcodebuild.testPlan(url)
+    func testPlan(_ path: String) {
+        xcodebuild.testPlan(path)
     }
 }
 

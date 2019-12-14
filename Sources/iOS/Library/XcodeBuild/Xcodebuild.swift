@@ -52,12 +52,12 @@ public extension Xcodebuild {
         arguments.append("-destination \(string)")
     }
 
-    mutating func derivedDataPath(_ url: URL) {
-        arguments.append("-derivedDataPath \(url.path)")
+    mutating func derivedData(_ path: String) {
+        arguments.append("-derivedDataPath \(path)")
     }
 
-    mutating func testPlan(_ url: URL) {
-        let path = url.path.removingFileExtension("xctestplan")
+    mutating func testPlan(_ path: String) {
+        let path = path.removingFileExtension("xctestplan")
         arguments.append("-testplan \(path)")
     }
 }

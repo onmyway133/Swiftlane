@@ -11,7 +11,7 @@ import PumaCore
 public class Screenshot: UsesXcodeBuild {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
-    public var saveDirectory: URL = URL(fileURLWithPath: ".")
+    public var saveDirectory: String = "."
     public private(set) var scenarios = [Scenario]()
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
@@ -34,16 +34,14 @@ extension Screenshot: Task {
                 return
             }
 
-            let derivedDataURL = URL(fileURLWithPath: derivedDataDirectory)
-
             let subTasks: [SubTask] = scenarios.map({ scenario in
                 var xcodebuild = self.xcodebuild
-                xcodebuild.derivedDataPath(derivedDataURL)
+                xcodebuild.derivedData(derivedDataDirectory)
                 return SubTask(
                     scenario: scenario,
                     xcodebuild: xcodebuild,
-                    derivedDataURL: derivedDataURL,
-                    saveURL: saveDirectory
+                    derivedDataPath: derivedDataDirectory,
+                    savePath: saveDirectory
                 )
             })
 

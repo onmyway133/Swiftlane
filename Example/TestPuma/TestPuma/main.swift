@@ -48,7 +48,7 @@ func testDrive() {
 
         Screenshot {
             $0.configure(project: "TestApp", scheme: "TestAppUITests")
-            $0.saveDirectory = URL(fileURLWithPath: "/Users/khoa/Downloads/TestAppScreenshots")
+            $0.saveDirectory = "/Users/khoa/Downloads/TestAppScreenshots"
 
             $0.add(scenarios: [
                 .init(
@@ -73,7 +73,7 @@ func testDrive() {
         }
     }
 
-    workflow.workingDirectory = URL(fileURLWithPath: "/Users/khoa/XcodeProject2/Puma/Example/TestApp")
+    workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
     workflow.run()
 }
 
