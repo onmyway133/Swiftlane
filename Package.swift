@@ -59,13 +59,6 @@ let package = Package(
             ],
             path: "Sources/Android"
         ),
-        .target(
-            name: "XCParse",
-            dependencies: [
-                "XCParseCore"
-            ],
-            path: "Sources/Vendors/XCParse"
-        ),
         .testTarget(
             name: "PumaTests",
             dependencies: [
