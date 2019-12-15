@@ -12,7 +12,9 @@ public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public var saveDirectory: String = "."
-    public private(set) var scenarios = [Scenario]()
+
+    private var scenarios = [Scenario]()
+    private var appScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -23,8 +25,6 @@ extension Screenshot: Task {
     public var name: String { "Screenshot" }
 
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        Deps.console.note("Please use UITest scheme")
-
         do {
             let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
             let buildSettings = try getBuildSettings.run(workflow: workflow)
@@ -35,8 +35,6 @@ extension Screenshot: Task {
             }
 
             let subTasks: [SubTask] = scenarios.map({ scenario in
-                var xcodebuild = self.xcodebuild
-                xcodebuild.derivedData(derivedDataDirectory)
                 return SubTask(
                     scenario: scenario,
                     xcodebuild: xcodebuild,
@@ -55,13 +53,16 @@ extension Screenshot: Task {
 public extension Screenshot {
     func configure(
         project: String,
-        scheme: String,
+        appScheme: String,
+        uiTestsScheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator,
         usesModernBuildSystem: Bool = true
     ) {
+        self.appScheme = appScheme
+
         xcodebuild.project(project)
-        xcodebuild.scheme(scheme)
+        xcodebuild.scheme(uiTestsScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
         xcodebuild.usesModernBuildSystem(enabled: true)
@@ -69,13 +70,16 @@ public extension Screenshot {
 
     func configure(
         workspace: String,
-        scheme: String,
+        appScheme: String,
+        uiTestsScheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator,
         usesModernBuildSystem: Bool = true
     ) {
+        self.appScheme = appScheme
+
         xcodebuild.workspace(workspace)
-        xcodebuild.scheme(scheme)
+        xcodebuild.scheme(uiTestsScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
         xcodebuild.usesModernBuildSystem(enabled: true)

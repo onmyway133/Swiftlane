@@ -47,7 +47,11 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.configure(project: "TestApp", scheme: "TestAppUITests")
+            $0.configure(
+                project: "TestApp",
+                appScheme: "TestApp",
+                uiTestsScheme: "TestAppUITests"
+            )
             $0.saveDirectory = "/Users/khoa/Downloads/TestAppScreenshots"
 
             $0.add(scenarios: [

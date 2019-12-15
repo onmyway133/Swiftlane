@@ -36,13 +36,16 @@ public extension Screenshot {
 extension Screenshot.SubTask: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         do {
+            if !xcodebuild.arguments.contains(prefix: "-testPlan") {
+                xcodebuild.arguments.append("-testLanguage \(scenario.language)")
+                xcodebuild.arguments.append("-testRegion \(scenario.locale)")
+            }
+
             xcodebuild.destination(scenario.destination)
-            xcodebuild.arguments.append("-testLanguage \(scenario.language)")
-            xcodebuild.arguments.append("-testRegion \(scenario.locale)")
             xcodebuild.arguments.append("test")
             try xcodebuild.run(workflow: workflow)
-
-
+            print(derivedDataPath)
+            
         } catch {
             completion(.failure(error))
         }

@@ -34,3 +34,9 @@ public extension Array {
         return array
     }
 }
+
+public extension Array where Element == String {
+    func contains(prefix: String) -> Bool {
+        return first(where: { $0.hasPrefix(prefix) }) != nil
+    }
+}

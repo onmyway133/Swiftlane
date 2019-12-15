@@ -25,6 +25,8 @@ public class GetBuildSettings {
         return parse(string: string)
     }
 
+    // MARK: - Private
+
     private func parse(string: String) -> BuildSettings {
         let lines = string
             .split(separator: "\n")
