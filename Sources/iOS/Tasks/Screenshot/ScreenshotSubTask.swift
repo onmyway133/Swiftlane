@@ -15,19 +15,19 @@ public extension Screenshot {
         public var isEnabled = true
         public let scenario: Scenario
         public var xcodebuild: Xcodebuild
-        public let derivedDataPath: String
+        public let buildSettings: BuildSettings
         public let savePath: String
 
         public init(
             scenario: Scenario,
             xcodebuild: Xcodebuild,
-            derivedDataPath: String,
+            buildSettings: BuildSettings,
             savePath: String)
         {
             self.name = "Screenshot language:\(scenario.language) locale:\(scenario.locale)"
             self.scenario = scenario
             self.xcodebuild = xcodebuild
-            self.derivedDataPath = derivedDataPath
+            self.buildSettings = buildSettings
             self.savePath = savePath
         }
     }
