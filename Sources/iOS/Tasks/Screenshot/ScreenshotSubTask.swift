@@ -8,27 +8,25 @@
 import Foundation
 import PumaCore
 import XCParseCore
+import Files
 
 public extension Screenshot {
     class SubTask {
         public let name: String
         public var isEnabled = true
         public let scenario: Scenario
-        public var xcodebuild: Xcodebuild
         public let buildSettings: BuildSettings
-        public let savePath: String
+        public let task: Screenshot
 
         public init(
             scenario: Scenario,
-            xcodebuild: Xcodebuild,
-            buildSettings: BuildSettings,
-            savePath: String)
-        {
+            task: Screenshot,
+            buildSettings: BuildSettings
+        ) {
             self.name = "Screenshot language:\(scenario.language) locale:\(scenario.locale)"
             self.scenario = scenario
-            self.xcodebuild = xcodebuild
+            self.task = task
             self.buildSettings = buildSettings
-            self.savePath = savePath
         }
     }
 }
@@ -46,6 +44,8 @@ extension Screenshot.SubTask: Task {
     // MARK: - Parse
 
     private func build(workflow: Workflow) throws {
+        var xcodebuild = task.xcodebuild
+
         if !xcodebuild.arguments.contains(prefix: "-testPlan") {
             xcodebuild.arguments.append("-testLanguage \(scenario.language)")
             xcodebuild.arguments.append("-testRegion \(scenario.locale)")
@@ -56,8 +56,6 @@ extension Screenshot.SubTask: Task {
     }
 
     private func parse() throws {
-        let testDirectory = try buildSettings.derivedDataTestDirectory()
-
         let options = AttachmentExportOptions(
             addTestScreenshotsDirectory: true,
             divideByTargetModel: true,
@@ -72,12 +70,25 @@ extension Screenshot.SubTask: Task {
             attachmentFilter: { _ in true }
         )
 
-        let xcresultPath = "/Users/khoa/XcodeProject2/Puma/Example/DerivedData/TestPuma/Logs/Test/Test-TestAppUITests-2019.12.15_21-02-11-+0100.xcresult"
-
         try XCPParser().extractAttachments(
-            xcresultPath: xcresultPath,
-            destination: savePath,
+            xcresultPath: xcresultPath(),
+            destination: task.saveDirectory,
             options: options
         )
+    }
+
+    private func xcresultPath() throws -> String {
+        let testDirectory = try buildSettings.derivedDataTestDirectory()
+        guard let folder = try Folder(path: testDirectory)
+            .subfolders.filter({ $0.name.contains(".xcresult") })
+            .sorted(by: { f1, f2 in
+                return try f1.file(named: "Info.plist").modificationDate > f2.file(named: "Info.plist").modificationDate
+            })
+            .first
+        else {
+            throw PumaError.invalid
+        }
+
+        return folder.path
     }
 }

@@ -15,6 +15,7 @@ public class Screenshot {
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
+    private var uiTestScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -32,9 +33,8 @@ extension Screenshot: Task {
             let subTasks: [SubTask] = scenarios.map({ scenario in
                 return SubTask(
                     scenario: scenario,
-                    xcodebuild: xcodebuild,
-                    buildSettings: buildSettings,
-                    savePath: saveDirectory
+                    task: self,
+                    buildSettings: buildSettings
                 )
             })
 
@@ -49,15 +49,16 @@ public extension Screenshot {
     func configure(
         project: String,
         appScheme: String,
-        uiTestsScheme: String,
+        uiTestScheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator,
         usesModernBuildSystem: Bool = true
     ) {
         self.appScheme = appScheme
+        self.uiTestScheme = uiTestScheme
 
         xcodebuild.project(project)
-        xcodebuild.scheme(uiTestsScheme)
+        xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
         xcodebuild.usesModernBuildSystem(enabled: true)
@@ -66,15 +67,16 @@ public extension Screenshot {
     func configure(
         workspace: String,
         appScheme: String,
-        uiTestsScheme: String,
+        uiTestScheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator,
         usesModernBuildSystem: Bool = true
     ) {
         self.appScheme = appScheme
+        self.uiTestScheme = uiTestScheme
 
         xcodebuild.workspace(workspace)
-        xcodebuild.scheme(uiTestsScheme)
+        xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
         xcodebuild.usesModernBuildSystem(enabled: true)

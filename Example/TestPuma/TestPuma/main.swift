@@ -50,7 +50,7 @@ func testDrive() {
             $0.configure(
                 project: "TestApp",
                 appScheme: "TestApp",
-                uiTestsScheme: "TestAppUITests"
+                uiTestScheme: "TestAppUITests"
             )
             $0.saveDirectory = "/Users/khoa/Downloads/TestAppScreenshots"
 
