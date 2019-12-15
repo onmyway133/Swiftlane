@@ -15,6 +15,7 @@ Puma is intended to be used as a Swift library. Just import in your Swift script
 
 - [Quickly try Puma](Documentation/TryPuma.md)
 - [Compile Puma from source](Documentation/Compile.md)
+- [Tasks in Puma](Documentation/Tasks/README.md)
 - [Dependencies](Documentation/Dependencies.md)
 - [FAQ](Documentation/FAQ.md)
 
