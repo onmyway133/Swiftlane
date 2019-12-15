@@ -39,4 +39,13 @@ public extension Array where Element == String {
     func contains(prefix: String) -> Bool {
         return first(where: { $0.hasPrefix(prefix) }) != nil
     }
+
+    mutating func replace(containingPrefix prefix: String, with string: String) {
+        guard let index = firstIndex(where: { $0.hasPrefix(prefix) }) else {
+            return
+        }
+
+        self.remove(at: index)
+        self.append("\(prefix) \(string)")
+    }
 }

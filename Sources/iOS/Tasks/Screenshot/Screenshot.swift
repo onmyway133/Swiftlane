@@ -27,7 +27,7 @@ extension Screenshot: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         do {
             let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
-            let buildSettings = try getBuildSettings.run(workflow: workflow)
+            let buildSettings = try getBuildSettings.run(workflow: workflow, appScheme: appScheme)
 
             guard let derivedDataDirectory = buildSettings.value(forKey: .derivedDataDirectory) else {
                 completion(.failure(PumaError.invalid))

@@ -14,12 +14,8 @@ public class GetBuildSettings {
         self.xcodebuild = xcodebuild
     }
 
-    public func run(workflow: Workflow) throws -> BuildSettings {
-        xcodebuild.arguments = xcodebuild.arguments.filter({ argument in
-            let projectInfos = ["-project", "-workspace"]
-            return projectInfos.first(where: { argument.hasPrefix($0) }) != nil
-        })
-
+    public func run(workflow: Workflow, appScheme: String) throws -> BuildSettings {
+        xcodebuild.arguments.replace(containingPrefix: "-scheme", with: appScheme)
         xcodebuild.arguments.append("-showBuildSettings")
         let string = try xcodebuild.run(workflow: workflow)
         return parse(string: string)
