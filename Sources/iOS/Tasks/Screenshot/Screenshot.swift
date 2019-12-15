@@ -29,7 +29,7 @@ extension Screenshot: Task {
             let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
             let buildSettings = try getBuildSettings.run(workflow: workflow, appScheme: appScheme)
 
-            guard let derivedDataDirectory = buildSettings.value(forKey: .derivedDataDirectory) else {
+            guard let derivedDataDirectory = buildSettings.derivedDataDirectory() else {
                 completion(.failure(PumaError.invalid))
                 return
             }
