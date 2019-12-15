@@ -43,9 +43,7 @@ extension Screenshot.SubTask: Task {
 
             xcodebuild.destination(scenario.destination)
             xcodebuild.arguments.append("test")
-            try xcodebuild.run(workflow: workflow)
-            print(derivedDataPath)
-            
+            try xcodebuild.run(workflow: workflow)            
         } catch {
             completion(.failure(error))
         }

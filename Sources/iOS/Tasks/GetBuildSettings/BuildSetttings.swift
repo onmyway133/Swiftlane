@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PumaCore
 
 public struct BuildSettings {
     public enum Key: String {
@@ -22,9 +23,9 @@ public struct BuildSettings {
         return map[key.rawValue]
     }
 
-    public func derivedDataDirectory() -> String? {
+    public func derivedDataDirectory() throws -> String {
         guard let buildDirectory = self.value(forKey: .buildDirectory) else {
-            return nil
+            throw PumaError.invalid
         }
 
         // project_name|workspace_name / Build / Products / Debug-iphonesimulator
@@ -35,13 +36,9 @@ public struct BuildSettings {
             .path
     }
 
-    public func derivedDataTestDirectory() -> String? {
-        guard let derivedDataDirectory = self.derivedDataDirectory() else {
-            return nil
-        }
-
+    public func derivedDataTestDirectory() throws -> String {
         // project_name|workspace_name / Logs / Test
-        return URL(fileURLWithPath: derivedDataDirectory)
+        return URL(fileURLWithPath: try derivedDataDirectory())
             .appendingPathComponent("Logs", isDirectory: true)
             .appendingPathComponent("Test", isDirectory: true)
             .path
