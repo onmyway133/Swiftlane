@@ -34,4 +34,16 @@ public struct BuildSettings {
             .deletingLastPathComponent()
             .path
     }
+
+    public func derivedDataTestDirectory() -> String? {
+        guard let derivedDataDirectory = self.derivedDataDirectory() else {
+            return nil
+        }
+
+        // project_name|workspace_name / Logs / Test
+        return URL(fileURLWithPath: derivedDataDirectory)
+            .appendingPathComponent("Logs", isDirectory: true)
+            .appendingPathComponent("Test", isDirectory: true)
+            .path
+    }
 }
