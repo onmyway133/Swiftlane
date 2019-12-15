@@ -15,7 +15,7 @@ public class Screenshot {
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
-    private var uiTestScheme: String = ""
+    internal var uiTestScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)

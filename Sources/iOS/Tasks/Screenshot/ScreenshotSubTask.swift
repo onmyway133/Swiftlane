@@ -80,7 +80,7 @@ extension Screenshot.SubTask: Task {
     private func xcresultPath() throws -> String {
         let testDirectory = try buildSettings.derivedDataTestDirectory()
         guard let folder = try Folder(path: testDirectory)
-            .subfolders.filter({ $0.name.contains(".xcresult") })
+            .subfolders.filter({ $0.name.contains(".xcresult") && $0.name.contains(task.uiTestScheme) })
             .sorted(by: { f1, f2 in
                 return try f1.file(named: "Info.plist").modificationDate > f2.file(named: "Info.plist").modificationDate
             })
