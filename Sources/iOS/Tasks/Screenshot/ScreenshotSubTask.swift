@@ -36,16 +36,48 @@ public extension Screenshot {
 extension Screenshot.SubTask: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         do {
-            if !xcodebuild.arguments.contains(prefix: "-testPlan") {
-                xcodebuild.arguments.append("-testLanguage \(scenario.language)")
-                xcodebuild.arguments.append("-testRegion \(scenario.locale)")
-            }
-
-            xcodebuild.destination(scenario.destination)
-            xcodebuild.arguments.append("test")
-            try xcodebuild.run(workflow: workflow)            
+            try build(workflow: workflow)
+            try parse()
         } catch {
             completion(.failure(error))
         }
+    }
+
+    // MARK: - Parse
+
+    private func build(workflow: Workflow) throws {
+        if !xcodebuild.arguments.contains(prefix: "-testPlan") {
+            xcodebuild.arguments.append("-testLanguage \(scenario.language)")
+            xcodebuild.arguments.append("-testRegion \(scenario.locale)")
+        }
+        xcodebuild.destination(scenario.destination)
+        xcodebuild.arguments.append("test")
+        try xcodebuild.run(workflow: workflow)
+    }
+
+    private func parse() throws {
+        let testDirectory = try buildSettings.derivedDataTestDirectory()
+
+        let options = AttachmentExportOptions(
+            addTestScreenshotsDirectory: true,
+            divideByTargetModel: true,
+            divideByTargetOS: true,
+            divideByTestPlanConfig: true,
+            divideByLanguage: true,
+            divideByRegion: true,
+            divideByTest: true,
+            xcresulttoolCompatability: .init(),
+            testSummaryFilter: { _ in true },
+            activitySummaryFilter: { _ in true },
+            attachmentFilter: { _ in true }
+        )
+
+        let xcresultPath = "/Users/khoa/XcodeProject2/Puma/Example/DerivedData/TestPuma/Logs/Test/Test-TestAppUITests-2019.12.15_21-02-11-+0100.xcresult"
+
+        try XCPParser().extractAttachments(
+            xcresultPath: xcresultPath,
+            destination: savePath,
+            options: options
+        )
     }
 }
