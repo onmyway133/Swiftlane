@@ -67,7 +67,7 @@ func testDrive() {
                 .init(
                     destination: .init(
                         platform: Destination.Platform.iOSSimulator,
-                        name: Destination.Name.iPhone11,
+                        name: Destination.Name.iPhone11Pro,
                         os: Destination.OS.iOS13_2_2
                     ),
                     language: Language.ja,
