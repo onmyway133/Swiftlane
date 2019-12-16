@@ -8,7 +8,7 @@
 import Foundation
 import PumaCore
 
-public class IncreaseBuildNumber: UsesAgvtool {
+public class IncreaseBuildNumber {
     public var isEnabled = true
     public var agvtool = Agvtool()
 
@@ -18,7 +18,7 @@ public class IncreaseBuildNumber: UsesAgvtool {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            try runAgvtool(workflow: workflow)
+            try agvtool.run(workflow: workflow)
         }
     }
 }

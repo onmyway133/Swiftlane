@@ -5,10 +5,20 @@
 //  Created by khoa on 10/12/2019.
 //
 
-import Foundation
+import PumaCore
 
 public struct Xcodebuild {
     var arguments: [String] = []
+
+    @discardableResult
+    func run(workflow: Workflow) throws -> String {
+        return try CommandLine().runBash(
+            workflow: workflow,
+            program: "xcodebuild",
+            arguments: arguments,
+            processHandler: XcodeBuildProcessHandler()
+        )
+    }
 }
 
 public extension Xcodebuild {
@@ -52,12 +62,12 @@ public extension Xcodebuild {
         arguments.append("-destination \(string)")
     }
 
-    mutating func derivedDataPath(_ url: URL) {
-        arguments.append("-derivedDataPath \(url.path)")
+    mutating func derivedData(_ path: String) {
+        arguments.append("-derivedDataPath \(path)")
     }
 
-    mutating func testPlan(_ url: URL) {
-        let path = url.path.removingFileExtension("xctestplan")
+    mutating func testPlan(_ path: String) {
+        let path = path.removingFileExtension("xctestplan")
         arguments.append("-testplan \(path)")
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RunScript: UsesCommandLine {
+public class RunScript {
     public var isEnabled = true
     public var script: String?
 
@@ -18,7 +18,7 @@ public class RunScript: UsesCommandLine {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             if let script = script, !script.isEmpty {
-                try runBash(workflow: workflow, program: "", arguments: [script])
+                try CommandLine().runBash(workflow: workflow, program: "", arguments: [script])
             }
         }
     }

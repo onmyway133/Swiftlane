@@ -7,12 +7,16 @@
 
 import Foundation
 import PumaCore
+import Files
 
-public class Screenshot: UsesXcodeBuild {
+public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
-    public var saveDirectory: URL = URL(fileURLWithPath: ".")
-    public private(set) var scenarios = [Scenario]()
+    public var saveDirectory: String = "."
+
+    private var scenarios = [Scenario]()
+    private var appScheme: String = ""
+    internal var uiTestScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -23,19 +27,67 @@ extension Screenshot: Task {
     public var name: String { "Screenshot" }
 
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        Deps.console.note("Please use UITest scheme")
+        do {
+            try Folder.createFolderIfNeeded(path: saveDirectory)
+            let getBuildSettings = GetBuildSettings(xcodebuild: xcodebuild)
+            let buildSettings = try getBuildSettings.run(workflow: workflow, appScheme: appScheme)
 
-        let subTasks: [SubTask] = scenarios.map({ scenario in
-            var xcodebuild = self.xcodebuild
-            xcodebuild.derivedDataPath(saveDirectory)
-            return SubTask(scenario: scenario, xcodebuild: xcodebuild)
-        })
+            let subTasks: [SubTask] = scenarios.map({ scenario in
+                return SubTask(
+                    scenario: scenario,
+                    task: self,
+                    buildSettings: buildSettings
+                )
+            })
 
-        Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
+            Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
+        } catch {
+            completion(.failure(error))
+        }
     }
 }
 
 public extension Screenshot {
+    func configure(
+        project: String,
+        appScheme: String,
+        uiTestScheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        self.appScheme = appScheme
+        self.uiTestScheme = uiTestScheme
+
+        xcodebuild.project(project)
+        xcodebuild.scheme(uiTestScheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
+    }
+
+    func configure(
+        workspace: String,
+        appScheme: String,
+        uiTestScheme: String,
+        configuration: String = Configuration.debug,
+        sdk: String = Sdk.iPhoneSimulator,
+        usesModernBuildSystem: Bool = true
+    ) {
+        self.appScheme = appScheme
+        self.uiTestScheme = uiTestScheme
+
+        xcodebuild.workspace(workspace)
+        xcodebuild.scheme(uiTestScheme)
+        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.usesModernBuildSystem(enabled: true)
+    }
+
+    func testPlan(_ path: String) {
+        xcodebuild.testPlan(path)
+    }
+
     func add(scenarios: [Scenario]) {
         self.scenarios.append(contentsOf: scenarios)
     }

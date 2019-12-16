@@ -7,16 +7,16 @@
 
 import Foundation
 
-/// Any task that uses command line
-public protocol UsesCommandLine: AnyObject {}
+public struct CommandLine {
+    public init() {}
 
-public extension UsesCommandLine {
-    func runBash(
+    @discardableResult
+    public func runBash(
         workflow: Workflow,
         program: String,
         arguments: [String],
         processHandler: ProcessHandler = DefaultProcessHandler()
-    ) throws {
+    ) throws -> String {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
         Deps.console.highlight(command)
@@ -25,15 +25,16 @@ public extension UsesCommandLine {
         process.launchPath = "/bin/bash"
         process.arguments = ["-c", command]
 
-        try runProcess(process, workflow: workflow, processHandler: processHandler)
+        return try runProcess(process, workflow: workflow, processHandler: processHandler)
     }
 
-    func runProcess(
+    @discardableResult
+    public func runProcess(
         _ process: Process,
         workflow: Workflow,
         processHandler: ProcessHandler = DefaultProcessHandler()
-    ) throws {
+    ) throws -> String {
         process.apply(workflow: workflow)
-        try process.run(processHandler: processHandler)
+        return try process.run(processHandler: processHandler)
     }
 }

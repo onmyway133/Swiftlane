@@ -1,11 +1,10 @@
-//
-//  main.swift
-//  TestPuma
-//
-//  Created by khoa on 30/11/2019.
-//  Copyright © 2019 Khoa Pham. All rights reserved.
-//
+## Try Puma
 
+To see Puma in action, head over to [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), there is a TestPuma Command Line Tool macOS project with a `main.swift`.
+
+You need to tweak the `teamId` and options according to your project.
+
+```swift
 import Foundation
 import Puma
 import PumaCore
@@ -82,3 +81,5 @@ func testDrive() {
 }
 
 testDrive()
+```
+
