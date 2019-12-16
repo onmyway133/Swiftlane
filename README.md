@@ -32,5 +32,6 @@ Unlike other command line tool that you need to understand lots of command line 
 
 Puma is in its early development, we need your help.
 
-
+## License
+Puma is released under the MIT license. See [LICENSE](LICENSE) for details.
 
