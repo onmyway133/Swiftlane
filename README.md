@@ -9,7 +9,7 @@ Puma is a set of build utilities to automate mobile application development and 
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
 - Reuse awesome Swift scripting dependencies from Swift community
 
-Puma is intended to be used as a Swift library. Just import in your Swift script file and run. There's no additional configuration file, your Swift script file is the source of truth. 
+Unlike other command line tool that you need to understand lots of command line arguments, Puma is intended to be used as a Swift library. Just import in your Swift script file and run. There's no additional configuration file, your Swift script file is the source of truth. With auto completion and type safety, you are ensured to do the right things in Puma.
 
 ## Documentation
 
