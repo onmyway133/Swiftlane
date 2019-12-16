@@ -2,7 +2,7 @@
 
 ### Create UITest scheme
 
-Puma leverages UITest scheme to take screenshot. You are also encourage to use test plan feature of Xcode 11, but not required.
+Puma leverages UITest scheme to take screenshot. You are also encouraged to use test plan feature of Xcode 11, but not required.
 
 Use a simple `takeScreenshot` below to take screenshot, remember to specify life time to keep always
 

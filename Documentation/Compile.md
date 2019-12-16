@@ -4,7 +4,7 @@ Head over to [Swift Package Manager usage](https://github.com/apple/swift-packag
 
 There's an already created [ManualCompile](https://github.com/pumaswift/Puma/tree/develop/Example/TestApp/ManualCompile) for your reference.
 
-Step 1: In your project folder, run these to create Swift Package Manager structure. Create another folder called, for example ManulCompile to keep our script.
+Step 1: In your project folder, run these to create Swift Package Manager structure. Create another folder called, for example ManualCompile to keep our script.
 
 ```sh
 mkdir ManualCompile
