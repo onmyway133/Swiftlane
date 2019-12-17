@@ -13,8 +13,8 @@ public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
-    internal var saveDirectory: String = "."
-    internal var uiTestScheme: String = ""
+    var saveDirectory: String = "."
+    var uiTestScheme: String = ""
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""

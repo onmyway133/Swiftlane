@@ -76,3 +76,21 @@ public extension Xcodebuild {
         arguments.append("-archivePath \(path)")
     }
 }
+
+extension Xcodebuild {
+    mutating func archivePath(_ path: String, scheme: String) {
+        let path = normalize(exportPath: path, scheme: scheme)
+            .surroundingWithQuotes()
+        arguments.append("-archivePath \(path)")
+    }
+}
+
+extension Xcodebuild {
+    func normalize(exportPath: String, scheme: String) -> String {
+        guard exportPath.hasSuffix(".xcarchive") else {
+            return exportPath
+        }
+
+        return exportPath.addingPath(scheme, fileExtension: ".xcarchive")
+    }
+}

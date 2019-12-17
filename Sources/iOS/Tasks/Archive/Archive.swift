@@ -38,7 +38,7 @@ public extension Archive {
     ) {
         xcodebuild.project(project)
         xcodebuild.scheme(scheme)
-        xcodebuild.archivePath(archivePath)
+        xcodebuild.archivePath(archivePath, scheme: scheme)
     }
 
     func configure(
@@ -48,6 +48,6 @@ public extension Archive {
     ) {
         xcodebuild.workspace(workspace)
         xcodebuild.scheme(scheme)
-        xcodebuild.archivePath(archivePath)
+        xcodebuild.archivePath(archivePath, scheme: scheme)
     }
 }
