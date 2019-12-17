@@ -50,7 +50,7 @@ extension Screenshot: Task {
 
 public extension Screenshot {
     func configure(
-        project: String,
+        projectType: ProjectType,
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
@@ -61,25 +61,7 @@ public extension Screenshot {
         self.uiTestScheme = uiTestScheme
         self.saveDirectory = saveDirectory
 
-        xcodebuild.project(project)
-        xcodebuild.scheme(uiTestScheme)
-        xcodebuild.configuration(Configuration.debug)
-        xcodebuild.sdk(Sdk.iPhoneSimulator)
-    }
-
-    func configure(
-        workspace: String,
-        appScheme: String,
-        uiTestScheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        saveDirectory: String
-    ) {
-        self.appScheme = appScheme
-        self.uiTestScheme = uiTestScheme
-        self.saveDirectory = saveDirectory
-
-        xcodebuild.workspace(workspace)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)

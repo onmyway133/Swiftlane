@@ -32,21 +32,11 @@ extension Archive: Task {
 
 public extension Archive {
     func configure(
-        project: String,
+        projectType: ProjectType,
         scheme: String,
         archivePath: String
     ) {
-        xcodebuild.project(project)
-        xcodebuild.scheme(scheme)
-        xcodebuild.archivePath(archivePath, scheme: scheme)
-    }
-
-    func configure(
-        workspace: String,
-        scheme: String,
-        archivePath: String
-    ) {
-        xcodebuild.workspace(workspace)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
         xcodebuild.archivePath(archivePath, scheme: scheme)
     }

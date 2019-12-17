@@ -36,24 +36,12 @@ extension Test: Task {
 
 public extension Test {
     func configure(
-        project: String,
+        projectType: ProjectType,
         scheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator
     ) {
-        xcodebuild.project(project)
-        xcodebuild.scheme(scheme)
-        xcodebuild.configuration(configuration)
-        xcodebuild.sdk(sdk)
-    }
-
-    func configure(
-        workspace: String,
-        scheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator
-    ) {
-        xcodebuild.workspace(workspace)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
         xcodebuild.configuration(configuration)
         xcodebuild.sdk(sdk)

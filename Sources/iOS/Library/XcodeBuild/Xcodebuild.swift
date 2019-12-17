@@ -22,6 +22,15 @@ public struct Xcodebuild {
 }
 
 public extension Xcodebuild {
+    mutating func projectType(_ projectType: ProjectType) {
+        switch projectType {
+        case .project(let name):
+            project(name)
+        case .workspace(let name):
+            workspace(name)
+        }
+    }
+
     mutating func project(_ name: String) {
         let normalizedName = name
             .addingFileExtension("xcodeproj")

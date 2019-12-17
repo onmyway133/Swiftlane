@@ -32,7 +32,7 @@ extension ExportArchive: Task {
 
 public extension ExportArchive {
     func configure(
-        project: String,
+        projectType: ProjectType,
         scheme: String,
         archivePath: String,
         optionsPlist: OptionsPlist,
@@ -40,22 +40,7 @@ public extension ExportArchive {
     ) {
         self.optionsPlist = optionsPlist
 
-        xcodebuild.project(project)
-        xcodebuild.scheme(scheme)
-        xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, scheme: scheme)
-    }
-
-    func configure(
-        workspace: String,
-        scheme: String,
-        archivePath: String,
-        optionsPlist: OptionsPlist,
-        exportDirectory: String
-    ) {
-        self.optionsPlist = optionsPlist
-
-        xcodebuild.workspace(workspace)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
         xcodebuild.exportPath(exportDirectory)
         xcodebuild.archivePath(archivePath, scheme: scheme)

@@ -31,13 +31,13 @@ func testDrive() {
 
         Build {
             $0.isEnabled = false
-            $0.configure(project: "TestApp", scheme: "TestApp")
+            $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.buildsForTesting = true
         }
 
         Test {
             $0.isEnabled = false
-            $0.configure(project: "TestApp", scheme: "TestApp")
+            $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.testsWithoutBuilding = true
             $0.destination(.init(
                 platform: Destination.Platform.iOSSimulator,
@@ -48,7 +48,7 @@ func testDrive() {
 
         Screenshot {
             $0.configure(
-                project: "TestApp",
+                projectType: .project("TestApp"),
                 appScheme: "TestApp",
                 uiTestScheme: "TestAppUITests",
                 saveDirectory: "/Users/khoa/Downloads/PumaScreenshots"
