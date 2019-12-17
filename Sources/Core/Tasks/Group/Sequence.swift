@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 /// Run tasks sequentially
 public class Sequence: Task {

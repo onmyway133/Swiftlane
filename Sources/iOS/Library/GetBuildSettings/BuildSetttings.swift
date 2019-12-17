@@ -19,14 +19,12 @@ public struct BuildSettings {
         self.map = map
     }
 
-    public func value(forKey key: Key) -> String? {
-        return map[key.rawValue]
+    public func value(forKey key: Key) throws -> String {
+        return try map[key.rawValue].unwrapOrThrow(PumaError.invalid)
     }
 
     public func derivedDataDirectory() throws -> String {
-        guard let buildDirectory = self.value(forKey: .buildDirectory) else {
-            throw PumaError.invalid
-        }
+        let buildDirectory = try self.value(forKey: .buildDirectory)
 
         // project_name|workspace_name / Build / Products / Debug-iphonesimulator
         return URL(fileURLWithPath: buildDirectory)

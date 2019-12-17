@@ -8,7 +8,7 @@
 import PumaCore
 
 public struct Xcodebuild {
-    var arguments: [String] = []
+    public var arguments: [String] = []
 
     @discardableResult
     func run(workflow: Workflow) throws -> String {

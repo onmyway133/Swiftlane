@@ -53,8 +53,7 @@ public extension Screenshot {
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
+        sdk: String = Sdk.iPhoneSimulator
     ) {
         self.appScheme = appScheme
         self.uiTestScheme = uiTestScheme
@@ -63,7 +62,6 @@ public extension Screenshot {
         xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
     func configure(
@@ -71,8 +69,7 @@ public extension Screenshot {
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
+        sdk: String = Sdk.iPhoneSimulator
     ) {
         self.appScheme = appScheme
         self.uiTestScheme = uiTestScheme
@@ -81,7 +78,6 @@ public extension Screenshot {
         xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
     func testPlan(_ path: String) {
