@@ -26,7 +26,7 @@ extension ExportArchive: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             try applyOptionsPlist()
-            xcodebuild.arguments.append("exportArchive")
+            xcodebuild.arguments.append("-exportArchive")
             try xcodebuild.run(workflow: workflow)
         }
     }
@@ -45,7 +45,7 @@ private extension ExportArchive {
 
     func makePlist(_ options: ExportOptions) throws -> String {
         let file = try Folder.temporary
-            .createSubfolder(named: "Puma")
+            .createSubfolderIfNeeded(withName: "Puma")
             .createFile(named: "\(UUID().uuidString).plist")
 
             let content =
@@ -79,6 +79,6 @@ public extension ExportArchive {
         xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
         xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, scheme: scheme)
+        xcodebuild.archivePath(archivePath, name: scheme)
     }
 }

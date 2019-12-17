@@ -80,11 +80,6 @@ public extension Xcodebuild {
         arguments.append("-testplan \(path)")
     }
 
-    mutating func archivePath(_ path: String) {
-        let path = path.surroundingWithQuotes()
-        arguments.append("-archivePath \(path)")
-    }
-
     mutating func exportPath(_ path: String) {
         let path = path.surroundingWithQuotes()
         arguments.append("-exportPath \(path)")
@@ -94,24 +89,24 @@ public extension Xcodebuild {
         let path = path.surroundingWithQuotes()
         arguments.append("-exportOptionsPlist \(path)")
     }
-
-
 }
 
 extension Xcodebuild {
-    mutating func archivePath(_ path: String, scheme: String) {
-        let path = normalize(exportPath: path, scheme: scheme)
+    /// Specifies the directory where any created archives will be placed, or the archive that should be exported
+    /// Require an absolute path to the .xcarchive
+    mutating func archivePath(_ path: String, name: String) {
+        let path = normalize(archivePath: path, name: name)
             .surroundingWithQuotes()
         arguments.append("-archivePath \(path)")
     }
 }
 
 extension Xcodebuild {
-    func normalize(exportPath: String, scheme: String) -> String {
-        guard exportPath.hasSuffix(".xcarchive") else {
-            return exportPath
+    func normalize(archivePath: String, name: String) -> String {
+        guard archivePath.hasSuffix(".xcarchive") else {
+            return archivePath
         }
 
-        return exportPath.addingPath(scheme, fileExtension: ".xcarchive")
+        return archivePath.addingPath(name, fileExtension: ".xcarchive")
     }
 }

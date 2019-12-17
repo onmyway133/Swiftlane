@@ -38,6 +38,6 @@ public extension Archive {
     ) {
         xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
-        xcodebuild.archivePath(archivePath, scheme: scheme)
+        xcodebuild.archivePath(archivePath, name: scheme)
     }
 }
