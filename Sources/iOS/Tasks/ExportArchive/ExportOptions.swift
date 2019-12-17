@@ -14,7 +14,13 @@ public extension ExportArchive {
     }
 
     struct ExportOptions {
+        /// The Developer Portal team to use for this export.
+        /// Defaults to the team used to build the archive.
         let teamId: String
+        /// Describes how Xcode should export the archive.
+        /// Available options: app-store, validation, package, ad-hoc, enterprise, development, developer-id,
+        /// and mac-application. The list of options varies based on the type of archive.
+        /// Defaults to development.
         let method: String
 
         public init(teamId: String, method: String) {
