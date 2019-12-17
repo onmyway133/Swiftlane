@@ -8,12 +8,25 @@
 import Foundation
 
 public extension ExportArchive {
-    public enum OptionsPlist {
+    enum OptionsPlist {
         case plistPath(String)
-        case options(Options)
+        case options(ExportOptions)
     }
 
-    public struct Options {
-        
+    struct ExportOptions {
+        let teamId: String
+        let method: String
+
+        public init(teamId: String, method: String) {
+            self.teamId = teamId
+            self.method = method
+        }
+    }
+
+    struct ExportMethod {
+        public static let appStore = "app-store"
+        public static let inHouse = "enterprise"
+        public static let adHoc = "ad-hoc"
+        public static let development = "development"
     }
 }
