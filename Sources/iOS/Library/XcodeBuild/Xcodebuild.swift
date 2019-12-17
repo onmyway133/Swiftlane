@@ -89,6 +89,13 @@ public extension Xcodebuild {
         let path = path.surroundingWithQuotes()
         arguments.append("-exportPath \(path)")
     }
+
+    mutating func exportOptionsPlist(_ path: String) {
+        let path = path.surroundingWithQuotes()
+        arguments.append("-exportOptionsPlist \(path)")
+    }
+
+
 }
 
 extension Xcodebuild {
