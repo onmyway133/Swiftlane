@@ -4,6 +4,7 @@ import PumaCore
 public class Build {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
+    public var buildsForTesting: Bool = false
     
     public init(_ closure: (Build) -> Void = { _ in }) {
         closure(self)
@@ -15,7 +16,12 @@ extension Build: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            xcodebuild.arguments.append("build")
+            if buildsForTesting {
+                xcodebuild.arguments.append("build-for-testing")
+            } else {
+                xcodebuild.arguments.append("build")
+            }
+
             try xcodebuild.run(workflow: workflow)
         }
     }
@@ -50,11 +56,7 @@ public extension Build {
         xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
-    func buildsForTesting(enabled: Bool) {
-        if enabled {
-            xcodebuild.arguments.append("build-for-testing")
-        } else {
-            xcodebuild.arguments.remove("build-for-testing")
-        }
+    func destination(_ destination: Destination) {
+        xcodebuild.destination(destination)
     }
 }

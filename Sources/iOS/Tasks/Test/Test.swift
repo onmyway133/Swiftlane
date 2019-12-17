@@ -12,6 +12,7 @@ import Combine
 public class Test {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
+    public var testsWithoutBuilding: Bool = false
 
     public init(_ closure: (Test) -> Void = { _ in }) {
         closure(self)
@@ -23,7 +24,12 @@ extension Test: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            xcodebuild.arguments.append("test")
+            if testsWithoutBuilding {
+                xcodebuild.arguments.append("test-without-building")
+            } else {
+                xcodebuild.arguments.append("test")
+            }
+
             try xcodebuild.run(workflow: workflow)
         }
     }
