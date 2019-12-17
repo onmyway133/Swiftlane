@@ -75,6 +75,11 @@ public extension Xcodebuild {
         let path = path.surroundingWithQuotes()
         arguments.append("-archivePath \(path)")
     }
+
+    mutating func exportPath(_ path: String) {
+        let path = path.surroundingWithQuotes()
+        arguments.append("-exportPath \(path)")
+    }
 }
 
 extension Xcodebuild {

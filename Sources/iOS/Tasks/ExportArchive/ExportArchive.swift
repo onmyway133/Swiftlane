@@ -12,7 +12,6 @@ public class ExportArchive {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
-    private var exportDirectory: String = "."
     private var optionsPlist: OptionsPlist = .plistPath("")
 
     public init(_ closure: (ExportArchive) -> Void = { _ in }) {
@@ -40,10 +39,10 @@ public extension ExportArchive {
         exportDirectory: String
     ) {
         self.optionsPlist = optionsPlist
-        self.exportDirectory = exportDirectory
 
         xcodebuild.project(project)
         xcodebuild.scheme(scheme)
+        xcodebuild.exportPath(exportDirectory)
         xcodebuild.archivePath(archivePath, scheme: scheme)
     }
 
@@ -55,10 +54,10 @@ public extension ExportArchive {
         exportDirectory: String
     ) {
         self.optionsPlist = optionsPlist
-        self.exportDirectory = exportDirectory
 
         xcodebuild.workspace(workspace)
         xcodebuild.scheme(scheme)
+        xcodebuild.exportPath(exportDirectory)
         xcodebuild.archivePath(archivePath, scheme: scheme)
     }
 }
