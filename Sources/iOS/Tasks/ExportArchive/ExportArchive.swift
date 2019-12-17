@@ -69,7 +69,6 @@ private extension ExportArchive {
 public extension ExportArchive {
     func configure(
         projectType: ProjectType,
-        scheme: String,
         archivePath: String,
         optionsPlist: OptionsPlist,
         exportDirectory: String
@@ -77,8 +76,7 @@ public extension ExportArchive {
         self.optionsPlist = optionsPlist
 
         xcodebuild.projectType(projectType)
-        xcodebuild.scheme(scheme)
         xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, name: scheme)
+        xcodebuild.archivePath(archivePath, name: projectType.name)
     }
 }

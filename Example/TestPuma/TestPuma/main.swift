@@ -88,10 +88,9 @@ func testDrive() {
         ExportArchive {
             $0.configure(
                 projectType: .project("TestApp"),
-                scheme: "TestApp",
                 archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
                 optionsPlist: .options(.init(
-                    teamId: "",
+                    teamId: "ABC123",
                     method: ExportArchive.ExportMethod.development)
                 ),
                 exportDirectory: "/Users/khoa/Downloads"
