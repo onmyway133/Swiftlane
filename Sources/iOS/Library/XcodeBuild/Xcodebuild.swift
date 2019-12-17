@@ -70,4 +70,9 @@ public extension Xcodebuild {
         let path = path.removingFileExtension("xctestplan")
         arguments.append("-testplan \(path)")
     }
+
+    mutating func archivePath(_ path: String) {
+        let path = path.surroundingWithQuotes()
+        arguments.append("-archivePath \(path)")
+    }
 }
