@@ -75,6 +75,24 @@ func testDrive() {
                 )
             ])
         }
+
+        Archive {
+            $0.configure(
+                projectType: .project("TestApp"),
+                scheme: "TestApp",
+                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive"
+            )
+        }
+
+        ExportArchive {
+            $0.configure(
+                projectType: .project("TestApp"),
+                scheme: "TestApp",
+                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
+                optionsPlist: .options(.init(teamId: "", method: ExportArchive.ExportMethod.development)),
+                exportDirectory: "/Users/khoa/Downloads"
+            )
+        }
     }
 
     workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
