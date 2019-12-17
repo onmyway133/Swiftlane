@@ -1,6 +1,6 @@
 //
 //  Folder+Extension.swift
-//  PumaCore
+//  Puma
 //
 //  Created by khoa on 15/12/2019.
 //

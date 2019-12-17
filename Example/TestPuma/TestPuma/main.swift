@@ -50,9 +50,9 @@ func testDrive() {
             $0.configure(
                 project: "TestApp",
                 appScheme: "TestApp",
-                uiTestScheme: "TestAppUITests"
+                uiTestScheme: "TestAppUITests",
+                saveDirectory: "/Users/khoa/Downloads/PumaScreenshots"
             )
-            $0.saveDirectory = "/Users/khoa/Downloads/PumaScreenshots"
 
             $0.add(scenarios: [
                 .init(

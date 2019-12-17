@@ -1,6 +1,6 @@
 //
 //  Sequence.swift
-//  PumaCore
+//  Puma
 //
 //  Created by khoa on 12/12/2019.
 //

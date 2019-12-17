@@ -1,6 +1,6 @@
 //
 //  Optional+Extensions.swift
-//  PumaCore
+//  Puma
 //
 //  Created by khoa on 17/12/2019.
 //

@@ -12,11 +12,12 @@ import Files
 public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
-    public var saveDirectory: String = "."
+
+    internal var saveDirectory: String = "."
+    internal var uiTestScheme: String = ""
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
-    internal var uiTestScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -53,10 +54,12 @@ public extension Screenshot {
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator
+        sdk: String = Sdk.iPhoneSimulator,
+        saveDirectory: String
     ) {
         self.appScheme = appScheme
         self.uiTestScheme = uiTestScheme
+        self.saveDirectory = saveDirectory
 
         xcodebuild.project(project)
         xcodebuild.scheme(uiTestScheme)
@@ -69,10 +72,12 @@ public extension Screenshot {
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator
+        sdk: String = Sdk.iPhoneSimulator,
+        saveDirectory: String
     ) {
         self.appScheme = appScheme
         self.uiTestScheme = uiTestScheme
+        self.saveDirectory = saveDirectory
 
         xcodebuild.workspace(workspace)
         xcodebuild.scheme(uiTestScheme)
