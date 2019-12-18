@@ -1,6 +1,6 @@
 //
 //  Deps.swift
-//  PumaCore
+//  Puma
 //
 //  Created by khoa on 30/11/2019.
 //

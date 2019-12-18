@@ -1,12 +1,11 @@
 //
 //  Sequence.swift
-//  PumaCore
+//  Puma
 //
 //  Created by khoa on 12/12/2019.
 //
 
 import Foundation
-import Combine
 
 /// Run tasks sequentially
 public class Sequence: Task {

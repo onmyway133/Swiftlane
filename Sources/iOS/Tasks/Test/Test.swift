@@ -7,11 +7,11 @@
 
 import Foundation
 import PumaCore
-import Combine
 
 public class Test {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
+    public var testsWithoutBuilding: Bool = false
 
     public init(_ closure: (Test) -> Void = { _ in }) {
         closure(self)
@@ -23,7 +23,12 @@ extension Test: Task {
 
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
-            xcodebuild.arguments.append("test")
+            if testsWithoutBuilding {
+                xcodebuild.arguments.append("test-without-building")
+            } else {
+                xcodebuild.arguments.append("test")
+            }
+
             try xcodebuild.run(workflow: workflow)
         }
     }
@@ -31,31 +36,15 @@ extension Test: Task {
 
 public extension Test {
     func configure(
-        project: String,
+        projectType: ProjectType,
         scheme: String,
         configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
+        sdk: String = Sdk.iPhoneSimulator
     ) {
-        xcodebuild.project(project)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(scheme)
-        xcodebuild.configuration(Configuration.debug)
-        xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
-    }
-
-    func configure(
-        workspace: String,
-        scheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
-    ) {
-        xcodebuild.workspace(workspace)
-        xcodebuild.scheme(scheme)
-        xcodebuild.configuration(Configuration.debug)
-        xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
+        xcodebuild.configuration(configuration)
+        xcodebuild.sdk(sdk)
     }
 
     func destination(_ destination: Destination) {
@@ -64,13 +53,5 @@ public extension Test {
 
     func testPlan(_ path: String) {
         xcodebuild.testPlan(path)
-    }
-
-    func testsWithoutBuilding(enabled: Bool) {
-        if enabled {
-            xcodebuild.arguments.append("test-without-building")
-        } else {
-            xcodebuild.arguments.remove("test-without-building")
-        }
     }
 }

@@ -27,4 +27,9 @@ public extension String {
     func surroundingWithQuotes() -> String {
         return "'\(self)'"
     }
+
+    func addingPath(_ name: String, fileExtension: String) -> String {
+        let url = URL(fileURLWithPath: self)
+        return url.appendingPathComponent(name).appendingPathExtension(fileExtension).path
+    }
 }

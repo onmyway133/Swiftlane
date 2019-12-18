@@ -8,7 +8,7 @@
 import PumaCore
 
 public struct Xcodebuild {
-    var arguments: [String] = []
+    public var arguments: [String] = []
 
     @discardableResult
     func run(workflow: Workflow) throws -> String {
@@ -22,6 +22,15 @@ public struct Xcodebuild {
 }
 
 public extension Xcodebuild {
+    mutating func projectType(_ projectType: ProjectType) {
+        switch projectType {
+        case .project(let name):
+            project(name)
+        case .workspace(let name):
+            workspace(name)
+        }
+    }
+
     mutating func project(_ name: String) {
         let normalizedName = name
             .addingFileExtension("xcodeproj")
@@ -69,5 +78,35 @@ public extension Xcodebuild {
     mutating func testPlan(_ path: String) {
         let path = path.removingFileExtension("xctestplan")
         arguments.append("-testplan \(path)")
+    }
+
+    mutating func exportPath(_ path: String) {
+        let path = path.surroundingWithQuotes()
+        arguments.append("-exportPath \(path)")
+    }
+
+    mutating func exportOptionsPlist(_ path: String) {
+        let path = path.surroundingWithQuotes()
+        arguments.append("-exportOptionsPlist \(path)")
+    }
+}
+
+extension Xcodebuild {
+    /// Specifies the directory where any created archives will be placed, or the archive that should be exported
+    /// Require an absolute path to the .xcarchive
+    mutating func archivePath(_ path: String, name: String) {
+        let path = normalize(archivePath: path, name: name)
+            .surroundingWithQuotes()
+        arguments.append("-archivePath \(path)")
+    }
+}
+
+extension Xcodebuild {
+    func normalize(archivePath: String, name: String) -> String {
+        guard archivePath.hasSuffix(".xcarchive") else {
+            return archivePath
+        }
+
+        return archivePath.addingPath(name, fileExtension: ".xcarchive")
     }
 }

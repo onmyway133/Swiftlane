@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 /// Workflow is a group of tasks
 public class Workflow {

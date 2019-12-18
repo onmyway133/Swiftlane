@@ -12,11 +12,12 @@ import Files
 public class Screenshot {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
-    public var saveDirectory: String = "."
+
+    var saveDirectory: String = "."
+    var uiTestScheme: String = ""
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
-    internal var uiTestScheme: String = ""
 
     public init(_ closure: (Screenshot) -> Void = { _ in }) {
         closure(self)
@@ -49,39 +50,21 @@ extension Screenshot: Task {
 
 public extension Screenshot {
     func configure(
-        project: String,
+        projectType: ProjectType,
         appScheme: String,
         uiTestScheme: String,
         configuration: String = Configuration.debug,
         sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
+        saveDirectory: String
     ) {
         self.appScheme = appScheme
         self.uiTestScheme = uiTestScheme
+        self.saveDirectory = saveDirectory
 
-        xcodebuild.project(project)
+        xcodebuild.projectType(projectType)
         xcodebuild.scheme(uiTestScheme)
         xcodebuild.configuration(Configuration.debug)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
-    }
-
-    func configure(
-        workspace: String,
-        appScheme: String,
-        uiTestScheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        usesModernBuildSystem: Bool = true
-    ) {
-        self.appScheme = appScheme
-        self.uiTestScheme = uiTestScheme
-
-        xcodebuild.workspace(workspace)
-        xcodebuild.scheme(uiTestScheme)
-        xcodebuild.configuration(Configuration.debug)
-        xcodebuild.sdk(Sdk.iPhoneSimulator)
-        xcodebuild.usesModernBuildSystem(enabled: true)
     }
 
     func testPlan(_ path: String) {

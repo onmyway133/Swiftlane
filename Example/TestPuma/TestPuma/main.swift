@@ -31,14 +31,14 @@ func testDrive() {
 
         Build {
             $0.isEnabled = false
-            $0.configure(project: "TestApp", scheme: "TestApp")
-            $0.buildsForTesting(enabled: true)
+            $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
+            $0.buildsForTesting = true
         }
 
         Test {
             $0.isEnabled = false
-            $0.configure(project: "TestApp", scheme: "TestApp")
-            $0.testsWithoutBuilding(enabled: true)
+            $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
+            $0.testsWithoutBuilding = true
             $0.destination(.init(
                 platform: Destination.Platform.iOSSimulator,
                 name: Destination.Name.iPhone11,
@@ -47,12 +47,13 @@ func testDrive() {
         }
 
         Screenshot {
+            $0.isEnabled = false
             $0.configure(
-                project: "TestApp",
+                projectType: .project("TestApp"),
                 appScheme: "TestApp",
-                uiTestScheme: "TestAppUITests"
+                uiTestScheme: "TestAppUITests",
+                saveDirectory: "/Users/khoa/Downloads/PumaScreenshots"
             )
-            $0.saveDirectory = "/Users/khoa/Downloads/PumaScreenshots"
 
             $0.add(scenarios: [
                 .init(
@@ -74,6 +75,26 @@ func testDrive() {
                     locale: Locale.ja
                 )
             ])
+        }
+
+        Archive {
+            $0.configure(
+                projectType: .project("TestApp"),
+                scheme: "TestApp",
+                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive"
+            )
+        }
+
+        ExportArchive {
+            $0.configure(
+                projectType: .project("TestApp"),
+                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
+                optionsPlist: .options(.init(
+                    teamId: "ABC123",
+                    method: ExportArchive.ExportMethod.development)
+                ),
+                exportDirectory: "/Users/khoa/Downloads"
+            )
         }
     }
 
