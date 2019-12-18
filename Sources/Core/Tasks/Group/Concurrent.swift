@@ -30,6 +30,7 @@ public class Concurrent: Task {
     public func run(workflow: Workflow, completion: @escaping (Result<(), Error>) -> Void) {
         var runTaskCount = 0
         let taskCount = tasks.count
+        let semaphore = DispatchSemaphore(value: 0)
 
         tasks.forEach { task in
             Deps.console.newLine()
@@ -39,9 +40,12 @@ public class Concurrent: Task {
                     runTaskCount += 1
                     if runTaskCount == taskCount {
                         completion(.success(()))
+                        semaphore.signal()
                     }
                 }
             })
         }
+
+        semaphore.wait()
     }
 }
