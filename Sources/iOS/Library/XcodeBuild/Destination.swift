@@ -15,6 +15,11 @@ public struct Destination {
     public struct Platform {
         public static let iOSS = "iOS"
         public static let iOSSimulator = "iOS Simulator"
+        public static let tvOS = "tvOS"
+        public static let tvOSSimulator = "tvOS Simulator"
+        public static let watchOS = "watchOS"
+        public static let watchOSSimulator = "watchOS Simulator"
+        public static let macOS = "OS X"
     }
     
     public struct Name {
