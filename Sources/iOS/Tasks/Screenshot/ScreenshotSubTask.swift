@@ -36,6 +36,7 @@ extension Screenshot.SubTask: Task {
         do {
             try build(workflow: workflow)
             try parse()
+            completion(.success(()))
         } catch {
             completion(.failure(error))
         }
