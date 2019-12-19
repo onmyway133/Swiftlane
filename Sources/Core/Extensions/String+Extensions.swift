@@ -32,4 +32,9 @@ public extension String {
         let url = URL(fileURLWithPath: self)
         return url.appendingPathComponent(name).appendingPathExtension(fileExtension).path
     }
+
+    func hasFileExtension(_ fileExtension: String) -> Bool {
+        let url = URL(fileURLWithPath: self)
+        return url.pathExtension == fileExtension
+    }
 }

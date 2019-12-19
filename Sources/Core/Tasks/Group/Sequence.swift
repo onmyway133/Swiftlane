@@ -26,7 +26,13 @@ public class Sequence: Task {
     }
 
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        runFirst(tasks: tasks, workflow: workflow, completion: completion)
+        let semaphore = DispatchSemaphore(value: 0)
+        runFirst(tasks: tasks, workflow: workflow, completion: { result in
+            completion(result)
+            semaphore.signal()
+        })
+
+        semaphore.wait()
     }
 
     private func runFirst(tasks: [Task], workflow: Workflow, completion: @escaping TaskCompletion) {

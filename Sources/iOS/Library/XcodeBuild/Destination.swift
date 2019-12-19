@@ -13,7 +13,13 @@ public struct Destination {
     public let os: String?
     
     public struct Platform {
+        public static let iOSS = "iOS"
         public static let iOSSimulator = "iOS Simulator"
+        public static let tvOS = "tvOS"
+        public static let tvOSSimulator = "tvOS Simulator"
+        public static let watchOS = "watchOS"
+        public static let watchOSSimulator = "watchOS Simulator"
+        public static let macOS = "OS X"
     }
     
     public struct Name {
@@ -33,8 +39,8 @@ public struct Destination {
     public init(
         platform: String = Platform.iOSSimulator,
         name: String = Name.iPhoneX,
-        os: String? = nil) {
-
+        os: String? = nil
+    ) {
         self.platform = platform
         self.name = name
         self.os = os
@@ -42,21 +48,23 @@ public struct Destination {
 }
 
 public extension Destination {
+    static let genericiOS = "generic/platform=iOS"
+}
+
+public extension Destination {
     func toString() -> String {
-        let map: [String: String?] = [
-            "platform": platform,
-            "name": name,
-            "OS": os
-        ]
-        
-        return map
-            .compactMap({ key, value in
-                guard let value = value else {
-                    return nil
-                }
-            
-                return "\(key)=\(value)"
-            })
-            .joined(separator: ",")
+        var array: [String] = []
+        array.append(contentsOf: [
+            "platform=\(platform)",
+            "name=\(name)"
+        ])
+
+        if let os = os {
+            array.append(
+                "OS=\(os)"
+            )
+        }
+
+        return array.joined(separator: ",")
     }
 }

@@ -103,10 +103,10 @@ extension Xcodebuild {
 
 extension Xcodebuild {
     func normalize(archivePath: String, name: String) -> String {
-        guard archivePath.hasSuffix(".xcarchive") else {
+        guard !archivePath.hasFileExtension("xcarchive") else {
             return archivePath
         }
 
-        return archivePath.addingPath(name, fileExtension: ".xcarchive")
+        return archivePath.addingPath(name, fileExtension: "xcarchive")
     }
 }
