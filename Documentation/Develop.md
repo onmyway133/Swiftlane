@@ -1,6 +1,30 @@
-## Try Puma
+## Developing Puma
 
-To see Puma in action, head over to [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), there is a TestPuma Command Line Tool macOS project with a `main.swift`.
+To develop Puma, head over to [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), there is a TestPuma Command Line Tool macOS project with a `main.swift`.
+
+In Example folder, ther is a worksapce TestPuma, it contains
+
+- TestPuma project: this is a macOS command line project to create executable
+- Puma project
+- TestApp: the test iOS app
+
+### Generate Puma project
+
+Since Swift Package Manager contains only sources, in order to work with Xcode, run the following command to generate Puma project
+
+```sh
+swift package generate-xcodeproj
+```
+
+### Run TestPuma
+
+Open `Example/TestPuma.xcworkspace`, the Puma project has already been included. Select TestPuma scheme, in order to run
+
+- You need to sign TestPuma target, the easiest way is to check Automatic Signing and select a team
+- You need to sign all frameworks in Puma project. 
+
+
+### Play around
 
 You need to tweak the `teamId` and options according to your project.
 

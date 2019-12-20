@@ -1,5 +1,7 @@
 ## How to compile Puma from source
 
+Normally you should just use the TestPuma inside Example folder to quickly test drive Puma. But if you want to compile it from source using Swift Package Manager command line tool, then follow
+
 Head over to [Swift Package Manager usage](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md) to create an executable.
 
 There's an already created [ManualCompile](https://github.com/pumaswift/Puma/tree/develop/Example/TestApp/ManualCompile) for your reference.

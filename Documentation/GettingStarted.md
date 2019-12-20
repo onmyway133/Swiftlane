@@ -74,6 +74,28 @@ swift build
 swift run
 ```
 
+## Task and Workflow
+
+The core of Puma is `Task`. When you call `run` above, it actually uses `Workflow`, which is a group of tasks. `Workflow` is intended for cases where you need to run tasks for multiple projects.
+
+```swif
+run {
+    Build
+    Test
+}
+```
+
+is the same as
+
+```swift
+let workflow = Workflow {
+    Build
+    Test
+}
+
+workflow.run()
+```
+
 ## Frameworks inside Puma
 
 Puma is declared as a library, and it has some dependencies
