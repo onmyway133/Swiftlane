@@ -37,4 +37,13 @@ public extension String {
         let url = URL(fileURLWithPath: self)
         return url.pathExtension == fileExtension
     }
+
+    func hasPattern(_ pattern: String) throws -> Bool {
+        let regex = try NSRegularExpression(pattern: pattern)
+        return regex.firstMatch(
+            in: self,
+            options: [],
+            range: NSRange(self.startIndex..., in: self)
+        ) != nil
+    }
 }
