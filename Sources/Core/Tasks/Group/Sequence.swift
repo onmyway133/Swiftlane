@@ -54,15 +54,18 @@ public class Sequence: Task {
         Deps.console.newLine()
         Deps.console.title("🚀 \(first.name)")
 
+        workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in
             switch result {
             case .success:
+                workflow.summarizer.track(task: first, finishAt: Deps.date())
                 self.runFirst(
                     tasks: tasks.removingFirst(),
                     workflow: workflow,
                     completion: completion
                 )
             case .failure(let error):
+                workflow.summarizer.track(task: first, error: error)
                 completion(.failure(error))
             }
         })

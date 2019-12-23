@@ -13,7 +13,7 @@ public class Workflow {
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
-    private let summarizer = Summarizer()
+    let summarizer = Summarizer()
 
     public init() {
         self.name = "Workflow"

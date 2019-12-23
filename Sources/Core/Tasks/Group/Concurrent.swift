@@ -35,8 +35,17 @@ public class Concurrent: Task {
         tasks.forEach { task in
             Deps.console.newLine()
             Deps.console.title("🚀 \(task.name)")
-            task.run(workflow: workflow, completion: { _ in
+
+            workflow.summarizer.track(task: task, startAt: Deps.date())
+            task.run(workflow: workflow, completion: { result in
                 self.serialQueue.async {
+                    switch result {
+                    case .success:
+                        workflow.summarizer.track(task: task, finishAt: Deps.date())
+                    case .failure(let error):
+                        workflow.summarizer.track(task: task, error: error)
+                    }
+
                     runTaskCount += 1
                     if runTaskCount == taskCount {
                         completion(.success(()))
