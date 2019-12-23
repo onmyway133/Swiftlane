@@ -40,13 +40,13 @@ public class Workflow {
         summarizer.showTasks()
 
         Sequence(tasks: tasks).run(workflow: self, completion: { result in
-            self.summarizer.showSummary()
-
             switch result {
             case .success:
+                self.summarizer.showSummary()
                 completion(.success(()))
             case .failure(let error):
                 self.handle(error: error)
+                self.summarizer.showSummary()
                 completion(.failure(error))
             }
         })
