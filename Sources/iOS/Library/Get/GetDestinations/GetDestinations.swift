@@ -10,7 +10,7 @@ import PumaCore
 public class GetDestinations {
     public init() {}
 
-    public func getDestinations(workflow: Workflow) throws -> [Destination] {
+    public func getAvailable(workflow: Workflow) throws -> [Destination] {
         let string = try CommandLine().runBash(
             workflow: workflow,
             program: "instruments",

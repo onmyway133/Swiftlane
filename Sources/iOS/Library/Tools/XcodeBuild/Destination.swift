@@ -8,10 +8,13 @@
 import Foundation
 
 public struct Destination {
-    public let platform: String
-    public let name: String
-    public let os: String?
-    
+    public enum Kind: Equatable {
+        case withId(name: String, id: String)
+        case withoutId(name: String, platform: String, os: String)
+    }
+
+    public let kind: Kind
+
     public struct Platform {
         public static let iOSS = "iOS"
         public static let iOSSimulator = "iOS Simulator"
@@ -35,15 +38,20 @@ public struct Destination {
         public static let iOS13_1 = "13.1"
         public static let iOS13_2_2 = "13.2.2"
     }
+
+    public init(
+        name: String = Name.iPhoneX,
+        platform: String = Platform.iOSSimulator,
+        os: String
+    ) {
+        self.kind = .withoutId(name: name, platform: platform, os: os)
+    }
     
     public init(
-        platform: String = Platform.iOSSimulator,
-        name: String = Name.iPhoneX,
-        os: String? = nil
+        name: String,
+        id: String
     ) {
-        self.platform = platform
-        self.name = name
-        self.os = os
+        self.kind = .withId(name: name, id: id)
     }
 }
 
@@ -54,15 +62,19 @@ public extension Destination {
 public extension Destination {
     func toString() -> String {
         var array: [String] = []
-        array.append(contentsOf: [
-            "platform=\(platform)",
-            "name=\(name)"
-        ])
 
-        if let os = os {
-            array.append(
-                "OS=\(os)"
-            )
+        switch kind {
+        case .withId(let name, let id):
+            array.append(contentsOf: [
+                "name=\(name)",
+                "name=\(id)"
+            ])
+        case .withoutId(let name, let platform, let os):
+            array.append(contentsOf: [
+                "name=\(name)",
+                "platform=\(platform)",
+                "OS=\(os)",
+            ])
         }
 
         return array.joined(separator: ",")
