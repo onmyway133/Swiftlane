@@ -16,7 +16,7 @@ public struct Destination {
     public let kind: Kind
 
     public struct Platform {
-        public static let iOSS = "iOS"
+        public static let iOS = "iOS"
         public static let iOSSimulator = "iOS Simulator"
         public static let tvOS = "tvOS"
         public static let tvOSSimulator = "tvOS Simulator"

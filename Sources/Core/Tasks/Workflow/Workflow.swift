@@ -16,6 +16,11 @@ public class Workflow {
     private let beforeSummarizer = BeforeSummarizer()
     private let afterSummarizer = AfterSummerizer()
 
+    public init() {
+        self.name = "Workflow"
+        self.tasks = []
+    }
+
     public init(name: String, tasks: [Task]) {
         self.name = name
         self.tasks = tasks

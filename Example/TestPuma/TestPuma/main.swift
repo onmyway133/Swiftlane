@@ -24,6 +24,8 @@ func testDrive() {
             $0.versionNumberForAllTargets("1.1")
         }
 
+        ShowAvailableDestinations()
+
         SetBuildNumber {
             $0.isEnabled = false
             $0.buildNumberForAllTargets("2")
@@ -40,8 +42,8 @@ func testDrive() {
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.testsWithoutBuilding = true
             $0.destination(.init(
-                platform: Destination.Platform.iOSSimulator,
                 name: Destination.Name.iPhone11,
+                platform: Destination.Platform.iOSSimulator,
                 os: Destination.OS.iOS13_2_2
             ))
         }
@@ -58,8 +60,8 @@ func testDrive() {
             $0.add(scenarios: [
                 .init(
                     destination: .init(
-                        platform: Destination.Platform.iOSSimulator,
                         name: Destination.Name.iPhone11,
+                        platform: Destination.Platform.iOSSimulator,
                         os: Destination.OS.iOS13_2_2
                     ),
                     language: Language.en_US,
@@ -67,8 +69,8 @@ func testDrive() {
                 ),
                 .init(
                     destination: .init(
-                        platform: Destination.Platform.iOSSimulator,
                         name: Destination.Name.iPhone11Pro,
+                        platform: Destination.Platform.iOSSimulator,
                         os: Destination.OS.iOS13_2_2
                     ),
                     language: Language.ja,
