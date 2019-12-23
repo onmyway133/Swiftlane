@@ -36,7 +36,25 @@ public class Summarizer {
         Deps.console.newLine()
     }
 
-    public func showSummary() {        
+    public func showSummary() {
+        Deps.console.header("Summary")
+
+        records.enumerated().forEach { index, record in
+            var duration: TimeInterval = 0
+            var symbol: String = "☑️"
+
+            if let startAt = record.startAt, let finishAt = record.finishAt {
+                duration = finishAt.timeIntervalSince1970 - startAt.timeIntervalSince1970
+                symbol = "✅"
+            } else if record.error != nil {
+                symbol = "❌"
+            }
+
+            let timeString = parse(seconds: duration)
+            Deps.console.text("  \(index + 1). \(symbol) \(record.task.name) (\(timeString))")
+        }
+
+        Deps.console.newLine()
     }
 
     // MARK: - Track
@@ -57,5 +75,12 @@ public class Summarizer {
 
     func findRecord(task: Task) -> Record? {
         return records.first(where: { $0.task === task })
+    }
+
+    private func parse(seconds: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: seconds) ?? "0s"
     }
 }

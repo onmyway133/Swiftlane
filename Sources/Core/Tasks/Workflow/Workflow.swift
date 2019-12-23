@@ -40,6 +40,8 @@ public class Workflow {
         summarizer.showTasks()
 
         Sequence(tasks: tasks).run(workflow: self, completion: { result in
+            self.summarizer.showSummary()
+
             switch result {
             case .success:
                 completion(.success(()))
