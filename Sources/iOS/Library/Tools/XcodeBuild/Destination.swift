@@ -67,7 +67,7 @@ public extension Destination {
         case .withId(let name, let id):
             array.append(contentsOf: [
                 "name=\(name)",
-                "name=\(id)"
+                "id=\(id)"
             ])
         case .withoutId(let name, let platform, let os):
             array.append(contentsOf: [

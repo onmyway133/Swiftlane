@@ -11,13 +11,15 @@ public class GetDestinations {
     public init() {}
 
     public func getAvailable(workflow: Workflow) throws -> [Destination] {
+        let processHandler = DefaultProcessHandler(filter: { $0.starts(with: "name=") })
         let string = try CommandLine().runBash(
             workflow: workflow,
             program: "xcrun instruments",
             arguments: [
                 "-s",
                 "devices"
-            ]
+            ],
+            processHandler: processHandler
         )
 
         // Ex: iPad Air (11.0.1) [7A5EAD29-D870-49FB-9A9B-C81079620AC9] (Simulator)
