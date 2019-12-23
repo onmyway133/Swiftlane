@@ -30,10 +30,8 @@ public class Summarizer {
     public func showTasks() {
         Deps.console.header("Tasks to run")
         records.enumerated().forEach({ index, record in
-            var text = "  \(index + 1). \(record.task.name)"
-            if !record.task.isEnabled {
-                text += " (👎)"
-            }
+            let symbol = record.task.isEnabled ? "✅" : "☑️"
+            let text = "  \(index + 1). \(symbol) \(record.task.name)"
             Deps.console.text(text)
         })
 
