@@ -75,7 +75,7 @@ public class GetDestinations {
             return Destination.Platform.watchOS
         } else if name.starts(with: "Apple TV") {
             return Destination.Platform.tvOS
-        } else if name.contains("Macbook") {
+        } else if name.containsIgnoringCase("mac") {
             return Destination.Platform.macOS
         } else {
             return Destination.Platform.iOS
