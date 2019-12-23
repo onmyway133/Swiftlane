@@ -13,8 +13,7 @@ public class Workflow {
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
-    private let beforeSummarizer = BeforeSummarizer()
-    private let afterSummarizer = AfterSummerizer()
+    private let summarizer = Summarizer()
 
     public init() {
         self.name = "Workflow"
@@ -37,7 +36,9 @@ public class Workflow {
     }
 
     public func run(completion: @escaping TaskCompletion = { _ in }) {
-        beforeSummarizer.on(tasks: tasks)
+        summarizer.update(tasks: tasks)
+        summarizer.showTasks()
+
         Sequence(tasks: tasks).run(workflow: self, completion: { result in
             switch result {
             case .success:
