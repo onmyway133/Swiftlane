@@ -10,8 +10,8 @@ import Foundation
 public class Summarizer {
     public class Record {
         public let task: Task
-        public var startTime: Date?
-        public var finishTime: Date?
+        public var startAt: Date?
+        public var finishAt: Date?
         public var error: Error?
 
         public init(task: Task) {
@@ -34,5 +34,28 @@ public class Summarizer {
         })
 
         Deps.console.newLine()
+    }
+
+    public func showSummary() {        
+    }
+
+    // MARK: - Track
+
+    public func track(task: Task, startAt: Date) {
+        findRecord(task: task)?.startAt = startAt
+    }
+
+    public func track(task: Task, finishAt: Date) {
+        findRecord(task: task)?.finishAt = finishAt
+    }
+
+    public func track(task: Task, error: Error) {
+        findRecord(task: task)?.error = error
+    }
+
+    //  MARK: - Private
+
+    func findRecord(task: Task) -> Record? {
+        return records.first(where: { $0.task === task })
     }
 }
