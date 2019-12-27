@@ -10,6 +10,7 @@ import Foundation
 import PumaCore
 
 public class Build {
+    public var name = "Build"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public var buildsForTesting: Bool = false
@@ -20,8 +21,6 @@ public class Build {
 }
 
 extension Build: Task {
-    public var name: String { "Build" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             if buildsForTesting {

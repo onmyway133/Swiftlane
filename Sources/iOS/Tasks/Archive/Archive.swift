@@ -10,6 +10,7 @@ import Foundation
 import PumaCore
 
 public class Archive {
+    public var name: String = "Archive"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public var archivePath: String = ""
@@ -20,8 +21,6 @@ public class Archive {
 }
 
 extension Archive: Task {
-    public var name: String { "Archive" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             xcodebuild.arguments.append("archive")

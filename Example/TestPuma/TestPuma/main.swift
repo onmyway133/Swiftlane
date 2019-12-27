@@ -12,7 +12,7 @@ import PumaCore
 import PumaiOS
 
 func testDrive() {
-    let workflow = Workflow(name: "TestApp") {
+    let workflow = Workflow {
         PrintWorkingDirectory()
 
         RunScript {

@@ -10,6 +10,7 @@ import PumaCore
 import Files
 
 public class ExportArchive {
+    public var name: String = "Export archive"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
@@ -21,8 +22,6 @@ public class ExportArchive {
 }
 
 extension ExportArchive: Task {
-    public var name: String { "Export archive to ipa" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             try applyOptionsPlist()

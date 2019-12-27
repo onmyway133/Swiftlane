@@ -9,29 +9,21 @@ import Foundation
 
 /// Workflow is a group of tasks
 public class Workflow {
-    public let name: String
+    public var name: String = "Workflow"
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
     let summarizer = Summarizer()
 
-    public init() {
-        self.name = "Workflow"
-        self.tasks = []
-    }
-
-    public init(name: String, tasks: [Task]) {
-        self.name = name
+    public init(tasks: [Task] = []) {
         self.tasks = tasks
     }
 
-    public init(name: String, @TaskBuilder builder: () -> [Task]) {
-        self.name = name
+    public init(@TaskBuilder builder: () -> [Task]) {
         self.tasks = builder()
     }
 
-    public init(name: String, @TaskBuilder builder: () -> Task) {
-        self.name = name
+    public init(@TaskBuilder builder: () -> Task) {
         self.tasks = [builder()]
     }
 

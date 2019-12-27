@@ -9,6 +9,7 @@ import Foundation
 import PumaCore
 
 public class Test {
+    public var name: String = "Test"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
     public var testsWithoutBuilding: Bool = false
@@ -19,8 +20,6 @@ public class Test {
 }
 
 extension Test: Task {
-    public var name: String { "Test" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
         with(completion) {
             if testsWithoutBuilding {
