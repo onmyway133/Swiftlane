@@ -31,6 +31,22 @@ extension ExportArchive: Task {
     }
 }
 
+public extension ExportArchive {
+    func configure(
+        projectType: ProjectType,
+        archivePath: String,
+        optionsPlist: OptionsPlist,
+        exportDirectory: String
+    ) {
+        self.optionsPlist = optionsPlist
+
+        xcodebuild.projectType(projectType)
+        xcodebuild.exportPath(exportDirectory)
+        xcodebuild.archivePath(archivePath, name: projectType.name)
+    }
+}
+
+
 private extension ExportArchive {
     func applyOptionsPlist() throws {
         switch optionsPlist {
@@ -63,19 +79,4 @@ private extension ExportArchive {
             try file.write(string: content)
             return file.path
         }
-}
-
-public extension ExportArchive {
-    func configure(
-        projectType: ProjectType,
-        archivePath: String,
-        optionsPlist: OptionsPlist,
-        exportDirectory: String
-    ) {
-        self.optionsPlist = optionsPlist
-
-        xcodebuild.projectType(projectType)
-        xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, name: projectType.name)
-    }
 }
