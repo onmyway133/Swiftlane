@@ -9,4 +9,5 @@ import Foundation
 
 public struct Deps {
     public static var console = Console()
+    public static var date: () -> Date = { Date() }
 }

@@ -23,6 +23,10 @@ public extension String {
             return self
         }
     }
+
+    func containsIgnoringCase(_ find: String) -> Bool {
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
     
     func surroundingWithQuotes() -> String {
         return "'\(self)'"
@@ -38,12 +42,19 @@ public extension String {
         return url.pathExtension == fileExtension
     }
 
-    func hasPattern(_ pattern: String) throws -> Bool {
+    func matches(pattern: String) throws -> [String] {
         let regex = try NSRegularExpression(pattern: pattern)
-        return regex.firstMatch(
-            in: self,
-            options: [],
-            range: NSRange(self.startIndex..., in: self)
-        ) != nil
+        let results = regex.matches(in: self, options: [], range: NSRange(self.startIndex..., in: self))
+        return results.compactMap({ result in
+            if let range = Range(result.range, in: self) {
+                return String(self[range])
+            } else {
+                return nil
+            }
+        })
+    }
+
+    func hasPattern(pattern: String) throws -> Bool {
+        return try !matches(pattern: pattern).isEmpty
     }
 }
