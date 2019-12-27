@@ -1,3 +1,11 @@
+//
+//  GetDestinationsTests.swift
+//  Puma
+//
+//  Created by khoa on 27/12/2019.
+//
+
+
 import XCTest
 @testable import Puma
 @testable import PumaiOS

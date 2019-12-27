@@ -21,8 +21,11 @@ public class Summarizer {
 
     public var records = [Record]()
 
+    public init() {}
+
     public func update(tasks: [Task]) {
-        self.records = tasks.map({
+        let accumulatedTasks: [Task] = tasks.flatMap({ accumulateTasks(in: $0) })
+        self.records = accumulatedTasks.map({
             Record(task: $0)
         })
     }
@@ -74,6 +77,16 @@ public class Summarizer {
     }
 
     //  MARK: - Private
+
+    private func accumulateTasks(in task: Task) -> [Task]  {
+        if let sequence = task as? Sequence {
+            return sequence.tasks.flatMap({ accumulateTasks(in: $0) })
+        } else if let concurrent = task as? Concurrent {
+            return concurrent.tasks.flatMap({ accumulateTasks(in: $0) })
+        } else {
+            return [task]
+        }
+    }
 
     func findRecord(task: Task) -> Record? {
         return records.first(where: { $0.task === task })

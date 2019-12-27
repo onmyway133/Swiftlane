@@ -11,7 +11,7 @@ public typealias TaskCompletion = (Result<(), Error>) -> Void
 
 public protocol Task: AnyObject {
     var name: String { get }
-    var isEnabled: Bool { get set }
+    var isEnabled: Bool { get }
     func run(workflow: Workflow, completion: @escaping TaskCompletion)
 }
 
