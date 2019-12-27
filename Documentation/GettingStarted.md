@@ -96,6 +96,20 @@ let workflow = Workflow {
 workflow.run()
 ```
 
+## Extend Puma
+
+At the core of Puma sits the `Task` protocol, every task has a name and an action.
+
+```swift
+public typealias TaskCompletion = (Result<(), Error>) -> Void
+
+public protocol Task: AnyObject {
+    var name: String { get }
+    var isEnabled: Bool { get }
+    func run(workflow: Workflow, completion: @escaping TaskCompletion)
+}
+```
+
 ## Frameworks inside Puma
 
 Puma is declared as a library, and it has some dependencies
