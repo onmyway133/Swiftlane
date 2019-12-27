@@ -62,65 +62,40 @@ private extension ExportArchive {
             .createSubfolderIfNeeded(withName: "Puma")
             .createFile(named: "\(UUID().uuidString).plist")
 
-        let generator = PlistGenerator()
-        let records = generator.records(from: options)
-        let xml = generator.generateXml(records)
+        let generator = XmlGenerator()
+        let xml = generator.generateXml(self.items(from: options))
         try file.write(string: xml)
-        return file.path}
-}
-
-class PlistGenerator {
-    struct Record {
-        let key: String
-        let value: String
-        let type: String
-
-        func toLines() -> [String] {
-            return [
-                "<key>\(key)</key>",
-                "<\(type)>\(value)</\(type)>"
-            ] as [String]
-        }
+        return file.path
     }
 
-    func records(from options: ExportArchive.ExportOptions) -> [Record] {
-        var records = [Record]()
+    func items(from options: ExportArchive.ExportOptions) -> [XmlItem] {
+        var items = [XmlItem]()
 
-        records.append(Record(key: "method", value: options.method, type: "string"))
+        items.append(Xml.Record(key: "method", value: options.method, type: "string"))
 
         switch options.signing {
         case .manual(let manualSigning):
-            records.append(contentsOf: [
-                Record(key: "signingStyle", value: "automatic", type: "string"),
-                Record(key: "teamID", value: manualSigning.teamId, type: "string"),
-                Record(key: "signingCertificate", value: manualSigning.certificate, type: "string")
+            items.append(contentsOf: [
+                Xml.Record(key: "signingStyle", value: "automatic", type: "string"),
+                Xml.Record(key: "teamID", value: manualSigning.teamId, type: "string"),
+                Xml.Record(key: "signingCertificate", value: manualSigning.certificate, type: "string")
             ])
 
-            manualSigning.provisioningProfiles.forEach { profile in
-                records.append(Record(key: profile.bundleId, value: profile.nameOrUuid, type: "string"))
-            }
+            items.append(
+                Xml.Dict(
+                    key: "provisioningProfiles",
+                    items: manualSigning.provisioningProfiles.map({ profile in
+                        Xml.Record(key: profile.bundleId, value: profile.nameOrUuid, type: "string")
+                    })
+                )
+            )
         case .automatic(let automaticSigning):
-            records.append(contentsOf: [
-                Record(key: "signingStyle", value: "manual", type: "string"),
-                Record(key: "teamID", value: automaticSigning.teamId, type: "string")
+            items.append(contentsOf: [
+                Xml.Record(key: "signingStyle", value: "manual", type: "string"),
+                Xml.Record(key: "teamID", value: automaticSigning.teamId, type: "string")
             ])
         }
 
-        return records
-    }
-
-    func generateXml(_ records: [Record]) -> String {
-        let content = records.flatMap({ $0.toLines() }).joined(separator: "\n")
-        let xml =
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    \(content)
-</dict>
-</plist>
-"""
-        return xml
+        return items
     }
 }

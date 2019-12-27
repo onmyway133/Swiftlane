@@ -28,15 +28,6 @@ public extension ExportArchive {
         /// Defaults to development.
         let method: String
 
-        /// For non-App Store exports, should Xcode re-compile the app from bitcode?
-        /// Defaults to YES.
-        let compileBitcode: Bool = true
-
-        /// Determines whether the app is exported locally or uploaded to Apple.
-        /// Options are export or upload. The available options vary based on the selected distribution method.
-        /// Defaults to export.
-        let destination: String = "export"
-
         public init(method: String, signing: Signing) {
             self.signing = signing
             self.method = method
