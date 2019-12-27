@@ -10,22 +10,21 @@ import Foundation
 import PumaCore
 
 public class SetBuildNumber {
+    public var name: String = "Set build number"
     public var isEnabled = true
     public var agvtool = Agvtool()
 
     public init(_ closure: (SetBuildNumber) -> Void = { _ in }) {
         closure(self)
     }
-
-    public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
-            try agvtool.run(workflow: workflow)
-        }
-    }
 }
 
 extension SetBuildNumber: Task {
-    public var name: String { "Set build number" }
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        handleTryCatch(completion) {
+            try agvtool.run(workflow: workflow)
+        }
+    }
 }
 
 public extension SetBuildNumber {

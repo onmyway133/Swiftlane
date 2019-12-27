@@ -14,14 +14,3 @@ public protocol Task: AnyObject {
     var isEnabled: Bool { get }
     func run(workflow: Workflow, completion: @escaping TaskCompletion)
 }
-
-public extension Task {
-    func with(_ completion: TaskCompletion, _ job: () throws -> Void) {
-        do {
-            try job()
-            completion(.success(()))
-        } catch {
-            completion(.failure(error))
-        }
-    }
-}

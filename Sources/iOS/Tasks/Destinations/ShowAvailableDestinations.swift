@@ -10,6 +10,7 @@ import PumaCore
 import Files
 
 public class ShowAvailableDestinations {
+    public var name: String = "Show available destinations"
     public var isEnabled = true
 
     public init(_ closure: (ShowAvailableDestinations) -> Void = { _ in }) {
@@ -18,10 +19,8 @@ public class ShowAvailableDestinations {
 }
 
 extension ShowAvailableDestinations: Task {
-    public var name: String { "Show available destinations" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             let getDestinations = GetDestinations()
             let destinations = try getDestinations.getAvailable(workflow: workflow)
             destinations.forEach { destination in

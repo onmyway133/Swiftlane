@@ -21,7 +21,7 @@ public class Test {
 
 extension Test: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             if testsWithoutBuilding {
                 xcodebuild.arguments.append("test-without-building")
             } else {

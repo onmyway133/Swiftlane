@@ -22,7 +22,7 @@ public class Build {
 
 extension Build: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             if buildsForTesting {
                 xcodebuild.arguments.append("build-for-testing")
             } else {

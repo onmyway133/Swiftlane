@@ -23,7 +23,7 @@ public class ExportArchive {
 
 extension ExportArchive: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             try applyOptionsPlist()
             xcodebuild.arguments.append("-exportArchive")
             try xcodebuild.run(workflow: workflow)

@@ -22,7 +22,7 @@ public class Archive {
 
 extension Archive: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             xcodebuild.arguments.append("archive")
             try xcodebuild.run(workflow: workflow)
         }

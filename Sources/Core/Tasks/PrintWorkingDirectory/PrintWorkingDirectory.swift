@@ -18,7 +18,7 @@ public class PrintWorkingDirectory {
 
 extension PrintWorkingDirectory: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             let process = Process()
             process.launchPath = "/bin/pwd"
 
