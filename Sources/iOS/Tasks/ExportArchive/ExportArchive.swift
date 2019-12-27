@@ -93,9 +93,12 @@ class PlistGenerator {
             records.append(contentsOf: [
                 Record(key: "signingStyle", value: "automatic", type: "string"),
                 Record(key: "teamID", value: manualSigning.teamId, type: "string"),
-                Record(key: "AppBundleID", value: manualSigning.bundleId, type: "string"),
                 Record(key: "signingCertificate", value: manualSigning.certificate, type: "string")
             ])
+
+            manualSigning.provisioningProfiles.forEach { profile in
+                records.append(Record(key: profile.bundleId, value: profile.nameOrUuid, type: "string"))
+            }
         case .automatic(let automaticSigning):
             records.append(contentsOf: [
                 Record(key: "signingStyle", value: "manual", type: "string"),
