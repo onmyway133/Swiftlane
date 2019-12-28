@@ -26,6 +26,19 @@ extension ExportArchive: Task {
         handleTryCatch(completion) {
             try applyOptionsPlist()
             xcodebuild.arguments.append("-exportArchive")
+
+            switch optionsPlist {
+            case .options(let options):
+                switch options.signing {
+                case .automatic:
+                    xcodebuild.arguments.append("-allowProvisioningUpdates")
+                default:
+                    break
+                }
+            default:
+                break
+            }
+
             try xcodebuild.run(workflow: workflow)
         }
     }

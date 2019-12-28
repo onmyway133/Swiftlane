@@ -24,7 +24,7 @@ public struct XmlString: XmlItem {
         return [
             "<key>\(key)</key>",
             "<string>\(value)</string>"
-            ] as [String]
+        ] as [String]
     }
 }
 
@@ -42,7 +42,7 @@ public struct XmlBool: XmlItem {
         return [
             "<key>\(key)</key>",
             "\(string)"
-            ] as [String]
+        ] as [String]
     }
 }
 
