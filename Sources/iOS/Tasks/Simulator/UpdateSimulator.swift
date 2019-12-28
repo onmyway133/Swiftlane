@@ -25,8 +25,8 @@ extension UpdateSimulator: Task {
         handleTryCatch(completion) {
             let getDestinations = GetDestinations()
             if let destination = self.destination,
-                let id = try getDestinations.findId(workflow: workflow, destination: destination) {
-                simclt.arguments.insert(id, at: 1)
+                let udid = try getDestinations.findUdid(workflow: workflow, destination: destination) {
+                simclt.arguments.insert(udid, at: 1)
             } else {
                 throw PumaError.invalid
             }

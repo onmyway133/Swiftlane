@@ -45,21 +45,20 @@ public class GetDestinations {
                     return  nil
                 }
 
-                var destination = Destination(
+                return Destination(
                     name: withOS.device.name,
                     platform: platform,
-                    os: os
+                    os: os,
+                    udid: withOS.device.udid
                 )
-                destination.id = withOS.device.uuid
-                return destination
             })
 
         return destinations
     }
 
-    func findId(workflow: Workflow, destination: Destination) throws -> String? {
+    func findUdid(workflow: Workflow, destination: Destination) throws -> String? {
         let availableDestinations = try self.getAvailable(workflow: workflow)
-        return availableDestinations.first(where: { $0 == destination })?.id
+        return availableDestinations.first(where: { $0 == destination })?.udid
     }
 
     // MARK: - Private
@@ -77,7 +76,11 @@ public class GetDestinations {
 
     // com.apple.CoreSimulator.SimRuntime.iOS-13-2
     private func os(withOS: DeviceWithOS) throws -> String? {
-        return try withOS.os.matches(pattern: #"(-\d+)+"#).first
+        guard let string = try withOS.os.matches(pattern: #"(-\d+)+"#).first else {
+            return nil
+        }
+
+        return string.dropFirst().replacingOccurrences(of: "-", with: ".")
     }
 }
 
@@ -88,7 +91,7 @@ private struct Response: Decodable {
 private struct Device: Decodable {
     let state: String
     let name: String
-    let uuid: String
+    let udid: String
     let isAvailable: Bool
 }
 

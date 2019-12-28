@@ -25,10 +25,10 @@ extension BootSimulator: Task {
         handleTryCatch(completion) {
             let getDestinations = GetDestinations()
             if let destination = self.destination,
-                let id = try getDestinations.findId(workflow: workflow, destination: destination) {
+                let udid = try getDestinations.findUdid(workflow: workflow, destination: destination) {
                 simclt.arguments.append(contentsOf: [
                     "boot",
-                    id
+                    udid
                 ])
             } else {
                 throw PumaError.invalid

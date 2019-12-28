@@ -8,14 +8,10 @@
 import Foundation
 
 public struct Destination: Equatable {
-    public enum Kind: Equatable {
-        case withId(name: String, id: String)
-        case withoutId(name: String, platform: String, os: String)
-    }
-
-    public let kind: Kind
-    /// If present, got from GetDestinations
-    var id: String?
+    public let name: String
+    public let platform: String
+    public let os: String
+    public let udid: String?
 
     public struct Platform {
         public static let iOS = "iOS"
@@ -44,18 +40,13 @@ public struct Destination: Equatable {
     public init(
         name: String = Name.iPhoneX,
         platform: String = Platform.iOSSimulator,
-        os: String
+        os: String,
+        udid: String? = nil
     ) {
-        self.kind = .withoutId(name: name, platform: platform, os: os)
-        self.id = nil
-    }
-    
-    public init(
-        name: String,
-        id: String
-    ) {
-        self.kind = .withId(name: name, id: id)
-        self.id = id
+        self.name = name
+        self.platform = platform
+        self.os = os
+        self.udid = udid
     }
 }
 
@@ -67,19 +58,11 @@ public extension Destination {
     func toString() -> String {
         var array: [String] = []
 
-        switch kind {
-        case .withId(let name, let id):
-            array.append(contentsOf: [
-                "name=\(name)",
-                "id=\(id)"
-            ])
-        case .withoutId(let name, let platform, let os):
-            array.append(contentsOf: [
-                "name=\(name)",
-                "platform=\(platform)",
-                "OS=\(os)",
-            ])
-        }
+        array.append(contentsOf: [
+            "name=\(name)",
+            "platform=\(platform)",
+            "OS=\(os)",
+        ])
 
         return array.joined(separator: ",")
     }
