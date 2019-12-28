@@ -7,13 +7,15 @@
 
 import Foundation
 
-public struct Destination {
+public struct Destination: Equatable {
     public enum Kind: Equatable {
         case withId(name: String, id: String)
         case withoutId(name: String, platform: String, os: String)
     }
 
     public let kind: Kind
+    /// If present, got from GetDestinations
+    let id: String?
 
     public struct Platform {
         public static let iOS = "iOS"
@@ -45,6 +47,7 @@ public struct Destination {
         os: String
     ) {
         self.kind = .withoutId(name: name, platform: platform, os: os)
+        self.id = nil
     }
     
     public init(
@@ -52,6 +55,7 @@ public struct Destination {
         id: String
     ) {
         self.kind = .withId(name: name, id: id)
+        self.id = id
     }
 }
 

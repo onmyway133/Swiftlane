@@ -9,7 +9,7 @@ import Foundation
 
 /// Run tasks concurrently
 public class Concurrent: Task {
-    public let name: String = "Concurrent"
+    public var name: String = "Concurrent"
     public var isEnabled = true
     public let tasks: [Task]
 

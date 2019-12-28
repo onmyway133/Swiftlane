@@ -34,6 +34,11 @@ public class GetDestinations {
         return destinations
     }
 
+    func findId(workflow: Workflow, destination: Destination) throws -> String? {
+        let availableDestinations = try self.getAvailable(workflow: workflow)
+        return availableDestinations.first(where: { $0 == destination })?.id
+    }
+
     func parse(_ line: String) -> Destination? {
         guard var id = try? line.matches(pattern: #"\[.+\]"#).first else {
             return nil

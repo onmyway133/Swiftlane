@@ -13,6 +13,8 @@ public class UpdateSimulator {
     public var isEnabled = true
     public var simclt = Simclt()
 
+    private var destination: Destination?
+
     public init(_ closure: (UpdateSimulator) -> Void = { _ in }) {
         closure(self)
     }
@@ -21,6 +23,14 @@ public class UpdateSimulator {
 extension UpdateSimulator: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
+            let getDestinations = GetDestinations()
+            if let destination = self.destination,
+                let id = try getDestinations.findId(workflow: workflow, destination: destination) {
+                simclt.arguments.insert(id, at: 1)
+            } else {
+                throw PumaError.invalid
+            }
+
             try simclt.run(workflow: workflow)
         }
     }
@@ -49,7 +59,7 @@ public extension UpdateSimulator {
     }
 
     func updateStatusBar(
-        device: String = Destination.Name.iPhoneX,
+        destination: Destination,
         time: String = "9:41",
         dataNetwork: DateNetwork = .wifi,
         wifiMode: WifiMode = .active,
@@ -61,7 +71,6 @@ public extension UpdateSimulator {
     ) {
         simclt.arguments.append(contentsOf: [
             "status_bar",
-            device,
             "override",
             "--time", time,
             "--dataNetwork", dataNetwork.rawValue,
