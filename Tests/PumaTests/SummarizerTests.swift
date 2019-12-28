@@ -12,8 +12,8 @@ import XCTest
 @testable import PumaCore
 
 private class MockTask: Task {
-    let name = "Mock task"
-    let isEnabled: Bool = true
+    var name = "Mock task"
+    var isEnabled: Bool = true
     func run(workflow: Workflow, completion: @escaping TaskCompletion) {}
 }
 

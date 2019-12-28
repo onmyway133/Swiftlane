@@ -33,12 +33,23 @@ public class GetDestinations {
             return value.map({ DeviceWithOS(device: $0, os: key) })
         })
 
-        let destinations: [Destination] = devicesWithOS
+        let destinations: [Destination] = try devicesWithOS
             .filter({ withOS in
                 return withOS.device.isAvailable
             })
-            .map({ withOS in
-                var destination = Destination(name: withOS.device.name, platform: "", os: "")
+            .compactMap({ withOS in
+                guard
+                    let platform = self.platform(withOS: withOS),
+                    let os = try self.os(withOS: withOS)
+                else {
+                    return  nil
+                }
+
+                var destination = Destination(
+                    name: withOS.device.name,
+                    platform: platform,
+                    os: os
+                )
                 destination.id = withOS.device.uuid
                 return destination
             })
@@ -49,6 +60,24 @@ public class GetDestinations {
     func findId(workflow: Workflow, destination: Destination) throws -> String? {
         let availableDestinations = try self.getAvailable(workflow: workflow)
         return availableDestinations.first(where: { $0 == destination })?.id
+    }
+
+    // MARK: - Private
+
+    private func platform(withOS: DeviceWithOS) -> String? {
+        let list: [String] = [
+            Destination.Platform.iOS,
+            Destination.Platform.watchOS,
+            Destination.Platform.macOS,
+            Destination.Platform.tvOS,
+        ]
+
+        return list.first(where: { withOS.os.contains($0) })
+    }
+
+    // com.apple.CoreSimulator.SimRuntime.iOS-13-2
+    private func os(withOS: DeviceWithOS) throws -> String? {
+        return try withOS.os.matches(pattern: #"(-\d+)+"#).first
     }
 }
 
