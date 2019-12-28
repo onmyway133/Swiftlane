@@ -31,6 +31,11 @@ func testDrive() {
             $0.buildNumberForAllTargets("3")
         }
 
+        BootSimulator {
+            $0.isEnabled = false
+            $0.boot(destination: .init(name: "iPhone 8 Plus", platform: "iOS", os: "13.2"))
+        }
+
         Build {
             $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")

@@ -58,7 +58,9 @@ public class GetDestinations {
 
     func findUdid(workflow: Workflow, destination: Destination) throws -> String? {
         let availableDestinations = try self.getAvailable(workflow: workflow)
-        return availableDestinations.first(where: { $0 == destination })?.udid
+        return availableDestinations.first(where: {
+            $0.name == destination.name && $0.platform == destination.platform && $0.os == destination.os
+        })?.udid
     }
 
     // MARK: - Private
