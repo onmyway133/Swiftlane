@@ -96,6 +96,7 @@ private extension ExportArchive {
             ])
         }
 
+        items.append(contentsOf: options.more)
         return items
     }
 }

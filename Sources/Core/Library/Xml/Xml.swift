@@ -1,23 +1,29 @@
 //
 //  Xml.swift
-//  PumaiOS
+//  PumaCore
 //
 //  Created by khoa on 28/12/2019.
 //
 
 import Foundation
 
-protocol XmlItem {
+public protocol XmlItem {
     func toLines() -> [String]
 }
 
-class Xml {
-    struct Record: XmlItem {
-        let key: String
-        let value: String
-        let type: String
+public class Xml {
+    public struct Record: XmlItem {
+        public let key: String
+        public let value: String
+        public let type: String
 
-        func toLines() -> [String] {
+        public init(key: String, value: String, type: String) {
+            self.key = key
+            self.value = value
+            self.type = type
+        }
+
+        public func toLines() -> [String] {
             return [
                 "<key>\(key)</key>",
                 "<\(type)>\(value)</\(type)>"
@@ -25,11 +31,16 @@ class Xml {
         }
     }
 
-    struct Dict: XmlItem {
-        let key: String
-        let items: [XmlItem]
+    public struct Dict: XmlItem {
+        public let key: String
+        public let items: [XmlItem]
 
-        func toLines() -> [String] {
+        public init(key: String, items: [XmlItem]) {
+            self.key = key
+            self.items = items
+        }
+
+        public func toLines() -> [String] {
             var lines = [String]()
             lines.append("<dict>")
             lines.append(contentsOf: items.flatMap({ $0.toLines() }))
@@ -40,8 +51,9 @@ class Xml {
     }
 }
 
-class XmlGenerator {
-    func generateXml(_ items: [XmlItem]) -> String {
+public class XmlGenerator {
+    public init() {}
+    public func generateXml(_ items: [XmlItem]) -> String {
         let content = items.flatMap({ $0.toLines() }).joined(separator: "\n")
         let xml =
 """

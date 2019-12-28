@@ -28,9 +28,13 @@ public extension ExportArchive {
         /// Defaults to development.
         let method: String
 
-        public init(method: String, signing: Signing) {
+        /// Allow adding more options in form of xml
+        let more: [XmlItem]
+
+        public init(method: String, signing: Signing, more: [XmlItem] = []) {
             self.signing = signing
             self.method = method
+            self.more = more
         }
     }
 
