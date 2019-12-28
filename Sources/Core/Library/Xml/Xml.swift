@@ -11,43 +11,57 @@ public protocol XmlItem {
     func toLines() -> [String]
 }
 
-public class Xml {
-    public struct Record: XmlItem {
-        public let key: String
-        public let value: String
-        public let type: String
+public struct XmlString: XmlItem {
+    public let key: String
+    public let value: String
 
-        public init(key: String, value: String, type: String) {
-            self.key = key
-            self.value = value
-            self.type = type
-        }
-
-        public func toLines() -> [String] {
-            return [
-                "<key>\(key)</key>",
-                "<\(type)>\(value)</\(type)>"
-            ] as [String]
-        }
+    public init(key: String, value: String) {
+        self.key = key
+        self.value = value
     }
 
-    public struct Dict: XmlItem {
-        public let key: String
-        public let items: [XmlItem]
+    public func toLines() -> [String] {
+        return [
+            "<key>\(key)</key>",
+            "<string>\(value)</string>"
+            ] as [String]
+    }
+}
 
-        public init(key: String, items: [XmlItem]) {
-            self.key = key
-            self.items = items
-        }
+public struct XmlBool: XmlItem {
+    public let key: String
+    public let value: Bool
 
-        public func toLines() -> [String] {
-            var lines = [String]()
-            lines.append("<dict>")
-            lines.append(contentsOf: items.flatMap({ $0.toLines() }))
-            lines.append("</dict>")
+    public init(key: String, value: Bool) {
+        self.key = key
+        self.value = value
+    }
 
-            return lines
-        }
+    public func toLines() -> [String] {
+        let string = value ? "<true/>" : "<false/>"
+        return [
+            "<key>\(key)</key>",
+            "\(string)"
+            ] as [String]
+    }
+}
+
+public struct XmlDict: XmlItem {
+    public let key: String
+    public let items: [XmlItem]
+
+    public init(key: String, items: [XmlItem]) {
+        self.key = key
+        self.items = items
+    }
+
+    public func toLines() -> [String] {
+        var lines = [String]()
+        lines.append("<dict>")
+        lines.append(contentsOf: items.flatMap({ $0.toLines() }))
+        lines.append("</dict>")
+
+        return lines
     }
 }
 
@@ -56,15 +70,15 @@ public class XmlGenerator {
     public func generateXml(_ items: [XmlItem]) -> String {
         let content = items.flatMap({ $0.toLines() }).joined(separator: "\n")
         let xml =
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    \(content)
-</dict>
-</plist>
-"""
+        """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+        \(content)
+        </dict>
+        </plist>
+        """
         return xml
     }
 }

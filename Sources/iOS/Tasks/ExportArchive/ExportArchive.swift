@@ -71,28 +71,28 @@ private extension ExportArchive {
     func items(from options: ExportArchive.ExportOptions) -> [XmlItem] {
         var items = [XmlItem]()
 
-        items.append(Xml.Record(key: "method", value: options.method, type: "string"))
+        items.append(XmlString(key: "method", value: options.method))
 
         switch options.signing {
         case .manual(let manualSigning):
             items.append(contentsOf: [
-                Xml.Record(key: "signingStyle", value: "automatic", type: "string"),
-                Xml.Record(key: "teamID", value: manualSigning.teamId, type: "string"),
-                Xml.Record(key: "signingCertificate", value: manualSigning.certificate, type: "string")
+                XmlString(key: "signingStyle", value: "manual"),
+                XmlString(key: "teamID", value: manualSigning.teamId),
+                XmlString(key: "signingCertificate", value: manualSigning.certificate)
             ])
 
             items.append(
-                Xml.Dict(
+                XmlDict(
                     key: "provisioningProfiles",
                     items: manualSigning.provisioningProfiles.map({ profile in
-                        Xml.Record(key: profile.bundleId, value: profile.nameOrUuid, type: "string")
+                        XmlString(key: profile.bundleId, value: profile.nameOrUuid)
                     })
                 )
             )
         case .automatic(let automaticSigning):
             items.append(contentsOf: [
-                Xml.Record(key: "signingStyle", value: "manual", type: "string"),
-                Xml.Record(key: "teamID", value: automaticSigning.teamId, type: "string")
+                XmlString(key: "signingStyle", value: "automatic"),
+                XmlString(key: "teamID", value: automaticSigning.teamId)
             ])
         }
 

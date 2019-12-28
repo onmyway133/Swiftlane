@@ -49,7 +49,7 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.isEnabled = true
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
@@ -80,7 +80,6 @@ func testDrive() {
         }
 
         Archive {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
@@ -89,7 +88,6 @@ func testDrive() {
         }
 
         ExportArchive {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
