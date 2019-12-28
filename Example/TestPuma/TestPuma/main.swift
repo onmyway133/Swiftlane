@@ -96,7 +96,9 @@ func testDrive() {
                 optionsPlist: .options(
                     .init(
                         method: ExportArchive.ExportMethod.development,
-                        signing: .automatic(.init(teamId: "ABC1245"))
+                        signing: .automatic(
+                            .init(teamId: ProcessInfo().environment["teamId"]!)
+                        )
                     )
                 ),
                 exportDirectory: Directory.downloads.path
