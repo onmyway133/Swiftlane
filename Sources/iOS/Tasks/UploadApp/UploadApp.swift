@@ -31,15 +31,18 @@ public extension UploadApp {
     /// to generate app specific password
     func authenticate(username: String, password: String) {
         altool.arguments.append(contentsOf: [
-            "--username", username,
-            "--password", password
+            "--username", username.surroundingWithQuotes(),
+            "--password", password.surroundingWithQuotes()
         ])
     }
 
-    func upload(ipaPath: String) {
+    /// Specify the platform of the file
+    /// osx | ios | appletvos
+    func upload(ipaPath: String, fileType: String = "ios") {
         altool.arguments.append(contentsOf: [
             "--upload-app",
-            "--file", ipaPath
+            "--file", ipaPath.surroundingWithQuotes(),
+            "--type", fileType
         ])
     }
 }

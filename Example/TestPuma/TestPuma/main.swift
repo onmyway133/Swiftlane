@@ -27,8 +27,8 @@ func testDrive() {
         ShowAvailableDestinations()
 
         SetBuildNumber {
-            $0.isEnabled = false
-            $0.buildNumberForAllTargets("2")
+            $0.isEnabled = true
+            $0.buildNumberForAllTargets("3")
         }
 
         Build {
