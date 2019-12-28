@@ -56,7 +56,7 @@ func testDrive() {
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
                 uiTestScheme: "TestAppUITests",
-                saveDirectory: "/Users/khoa/Downloads/PumaScreenshots"
+                saveDirectory: Directory.downloads.appendingPathComponent("PumaScreenshots").path
             )
 
             $0.add(scenarios: [
@@ -85,26 +85,37 @@ func testDrive() {
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
-                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive"
+                archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path
             )
         }
 
         ExportArchive {
             $0.configure(
                 projectType: .project("TestApp"),
-                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
+                archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path,
                 optionsPlist: .options(
                     .init(
                         method: ExportArchive.ExportMethod.development,
                         signing: .automatic(.init(teamId: "ABC1245"))
                     )
                 ),
-                exportDirectory: "/Users/khoa/Downloads"
+                exportDirectory: Directory.downloads.path
+            )
+        }
+
+        UploadApp {
+            $0.authenticate(
+                username: ProcessInfo().environment["username"]!,
+                password: ProcessInfo().environment["password"]!
+            )
+
+            $0.upload(
+                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
             )
         }
     }
 
-    workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
+    workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
     workflow.run()
 }
 
