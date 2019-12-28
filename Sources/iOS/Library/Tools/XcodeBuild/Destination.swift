@@ -15,7 +15,7 @@ public struct Destination: Equatable {
 
     public let kind: Kind
     /// If present, got from GetDestinations
-    let id: String?
+    var id: String?
 
     public struct Platform {
         public static let iOS = "iOS"
