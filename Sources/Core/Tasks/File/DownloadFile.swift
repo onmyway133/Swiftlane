@@ -38,6 +38,7 @@ extension DownloadFile: Task {
             do {
                 try Folder.createFolderIfNeeded(path: to.folderPath())
                 try data.write(to: URL(fileURLWithPath: to))
+                completion(.success(()))
             } catch {
                 completion(.failure(error))
             }

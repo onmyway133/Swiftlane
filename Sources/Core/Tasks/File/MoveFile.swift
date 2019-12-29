@@ -32,6 +32,7 @@ extension MoveFile: Task {
             try Folder.createFolderIfNeeded(path: to.folderPath())
             try File(path: from).move(to: Folder(path: to.folderPath()))
             try File(path: to).rename(to: to.lastPathComponent(), keepExtension: false)
+            completion(.success(()))
         } catch {
             completion(.failure(error))
         }
