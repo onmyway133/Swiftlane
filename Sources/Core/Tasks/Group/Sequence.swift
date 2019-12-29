@@ -9,7 +9,7 @@ import Foundation
 
 /// Run tasks sequentially
 public class Sequence: Task {
-    public let name: String = "Sequence"
+    public var name: String = "Sequence"
     public var isEnabled = true
     public let tasks: [Task]
 

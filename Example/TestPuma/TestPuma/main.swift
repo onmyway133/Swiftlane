@@ -12,7 +12,7 @@ import PumaCore
 import PumaiOS
 
 func testDrive() {
-    let workflow = Workflow(name: "TestApp") {
+    let workflow = Workflow {
         PrintWorkingDirectory()
 
         RunScript {
@@ -27,8 +27,13 @@ func testDrive() {
         ShowAvailableDestinations()
 
         SetBuildNumber {
+            $0.isEnabled = true
+            $0.buildNumberForAllTargets("3")
+        }
+
+        BootSimulator {
             $0.isEnabled = false
-            $0.buildNumberForAllTargets("2")
+            $0.boot(destination: .init(name: "iPhone 8 Plus", platform: "iOS", os: "13.2"))
         }
 
         Build {
@@ -41,20 +46,22 @@ func testDrive() {
             $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.testsWithoutBuilding = true
-            $0.destination(.init(
-                name: Destination.Name.iPhone11,
-                platform: Destination.Platform.iOSSimulator,
-                os: Destination.OS.iOS13_2_2
-            ))
+            $0.destination(
+                .init(
+                    name: Destination.Name.iPhone11,
+                    platform: Destination.Platform.iOSSimulator,
+                    os: Destination.OS.iOS13_2_2
+                )
+            )
         }
 
         Screenshot {
-            $0.isEnabled = true
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
                 uiTestScheme: "TestAppUITests",
-                saveDirectory: "/Users/khoa/Downloads/PumaScreenshots"
+                saveDirectory: Directory.downloads.appendingPathComponent("PumaScreenshots").path
             )
 
             $0.add(scenarios: [
@@ -80,29 +87,42 @@ func testDrive() {
         }
 
         Archive {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
-                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive"
+                archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path
             )
         }
 
         ExportArchive {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
-                archivePath: "/Users/khoa/Downloads/TestApp.xcarchive",
-                optionsPlist: .options(.init(
-                    teamId: "ABC123",
-                    method: ExportArchive.ExportMethod.development)
+                archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path,
+                optionsPlist: .options(
+                    .init(
+                        method: ExportArchive.ExportMethod.development,
+                        signing: .automatic(
+                            .init(teamId: ProcessInfo().environment["teamId"]!)
+                        )
+                    )
                 ),
-                exportDirectory: "/Users/khoa/Downloads"
+                exportDirectory: Directory.downloads.path
+            )
+        }
+
+        UploadApp {
+            $0.authenticate(
+                username: ProcessInfo().environment["username"]!,
+                password: ProcessInfo().environment["password"]!
+            )
+
+            $0.upload(
+                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
             )
         }
     }
 
-    workflow.workingDirectory = "/Users/khoa/XcodeProject2/Puma/Example/TestApp"
+    workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
     workflow.run()
 }
 

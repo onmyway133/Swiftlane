@@ -12,7 +12,7 @@ import Files
 
 public extension Screenshot {
     class SubTask {
-        public let name: String
+        public var name: String
         public var isEnabled = true
         public let scenario: Scenario
         public let buildSettings: BuildSettings

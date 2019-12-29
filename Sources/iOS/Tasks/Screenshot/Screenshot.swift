@@ -10,6 +10,7 @@ import PumaCore
 import Files
 
 public class Screenshot {
+    public var name: String = "Screenshot"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
@@ -25,8 +26,6 @@ public class Screenshot {
 }
 
 extension Screenshot: Task {
-    public var name: String { "Screenshot" }
-
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         do {
             try Folder.createFolderIfNeeded(path: saveDirectory)

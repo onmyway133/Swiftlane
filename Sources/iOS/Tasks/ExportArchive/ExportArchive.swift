@@ -10,6 +10,7 @@ import PumaCore
 import Files
 
 public class ExportArchive {
+    public var name: String = "Export archive"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
@@ -21,14 +22,40 @@ public class ExportArchive {
 }
 
 extension ExportArchive: Task {
-    public var name: String { "Export archive to ipa" }
-
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        with(completion) {
+        handleTryCatch(completion) {
             try applyOptionsPlist()
             xcodebuild.arguments.append("-exportArchive")
+
+            switch optionsPlist {
+            case .options(let options):
+                switch options.signing {
+                case .automatic:
+                    xcodebuild.arguments.append("-allowProvisioningUpdates")
+                default:
+                    break
+                }
+            default:
+                break
+            }
+
             try xcodebuild.run(workflow: workflow)
         }
+    }
+}
+
+public extension ExportArchive {
+    func configure(
+        projectType: ProjectType,
+        archivePath: String,
+        optionsPlist: OptionsPlist,
+        exportDirectory: String
+    ) {
+        self.optionsPlist = optionsPlist
+
+        xcodebuild.projectType(projectType)
+        xcodebuild.exportPath(exportDirectory)
+        xcodebuild.archivePath(archivePath, name: projectType.name)
     }
 }
 
@@ -48,35 +75,41 @@ private extension ExportArchive {
             .createSubfolderIfNeeded(withName: "Puma")
             .createFile(named: "\(UUID().uuidString).plist")
 
-            let content =
-"""
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>method</key>
-    <string>\(options.method)</string>
-    <key>teamID</key>
-    <string>\(options.teamId)</string>
-</dict>
-</plist>
-"""
-            try file.write(string: content)
-            return file.path
+        let generator = XmlGenerator()
+        let xml = generator.generateXml(self.items(from: options))
+        try file.write(string: xml)
+        return file.path
+    }
+
+    func items(from options: ExportArchive.ExportOptions) -> [XmlItem] {
+        var items = [XmlItem]()
+
+        items.append(XmlString(key: "method", value: options.method))
+
+        switch options.signing {
+        case .manual(let manualSigning):
+            items.append(contentsOf: [
+                XmlString(key: "signingStyle", value: "manual"),
+                XmlString(key: "teamID", value: manualSigning.teamId),
+                XmlString(key: "signingCertificate", value: manualSigning.certificate)
+            ])
+
+            items.append(
+                XmlDict(
+                    key: "provisioningProfiles",
+                    items: manualSigning.provisioningProfiles.map({ profile in
+                        XmlString(key: profile.bundleId, value: profile.nameOrUuid)
+                    })
+                )
+            )
+        case .automatic(let automaticSigning):
+            items.append(contentsOf: [
+                XmlString(key: "signingStyle", value: "automatic"),
+                XmlString(key: "teamID", value: automaticSigning.teamId)
+            ])
         }
-}
 
-public extension ExportArchive {
-    func configure(
-        projectType: ProjectType,
-        archivePath: String,
-        optionsPlist: OptionsPlist,
-        exportDirectory: String
-    ) {
-        self.optionsPlist = optionsPlist
-
-        xcodebuild.projectType(projectType)
-        xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, name: projectType.name)
+        items.append(contentsOf: options.more)
+        return items
     }
 }

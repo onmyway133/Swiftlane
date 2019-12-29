@@ -10,18 +10,7 @@ import Foundation
 public typealias TaskCompletion = (Result<(), Error>) -> Void
 
 public protocol Task: AnyObject {
-    var name: String { get }
+    var name: String { get set }
     var isEnabled: Bool { get set }
     func run(workflow: Workflow, completion: @escaping TaskCompletion)
-}
-
-public extension Task {
-    func with(_ completion: TaskCompletion, _ job: () throws -> Void) {
-        do {
-            try job()
-            completion(.success(()))
-        } catch {
-            completion(.failure(error))
-        }
-    }
 }

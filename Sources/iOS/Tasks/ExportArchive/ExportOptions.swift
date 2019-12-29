@@ -5,7 +5,7 @@
 //  Created by khoa on 17/12/2019.
 //
 
-import Foundation
+import PumaCore
 
 public extension ExportArchive {
     enum OptionsPlist {
@@ -14,18 +14,27 @@ public extension ExportArchive {
     }
 
     struct ExportOptions {
-        /// The Developer Portal team to use for this export.
-        /// Defaults to the team used to build the archive.
-        let teamId: String
+        /// The signing style to use when re-signing the app for distribution.
+        /// Options are manual or automatic.
+        /// Apps that were automatically signed when archived can be signed manually
+        /// or automatically during distribution, and default to automatic.
+        /// Apps that were manually signed when archived must be manually signed during distribtion,
+        /// so the value of signingStyle is ignored.
+        let signing: Signing
+
         /// Describes how Xcode should export the archive.
-        /// Available options: app-store, validation, package, ad-hoc, enterprise, development, developer-id,
-        /// and mac-application. The list of options varies based on the type of archive.
+        /// Available options: app-store, validation, ad-hoc, package, enterprise, development, developer-id, and mac-application.
+        /// The list of options varies based on the type of archive.
         /// Defaults to development.
         let method: String
 
-        public init(teamId: String, method: String) {
-            self.teamId = teamId
+        /// Allow adding more options in form of xml
+        let more: [XmlItem]
+
+        public init(method: String, signing: Signing, more: [XmlItem] = []) {
+            self.signing = signing
             self.method = method
+            self.more = more
         }
     }
 

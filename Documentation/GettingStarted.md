@@ -96,6 +96,20 @@ let workflow = Workflow {
 workflow.run()
 ```
 
+## Extend Puma
+
+At the core of Puma sits the `Task` protocol, every task has a name and an action.
+
+```swift
+public typealias TaskCompletion = (Result<(), Error>) -> Void
+
+public protocol Task: AnyObject {
+    var name: String { get }
+    var isEnabled: Bool { get }
+    func run(workflow: Workflow, completion: @escaping TaskCompletion)
+}
+```
+
 ## Frameworks inside Puma
 
 Puma is declared as a library, and it has some dependencies
@@ -121,7 +135,9 @@ Contains iOS related tasks.
 - Test: test workspace or project
 - Archive: archive to xcarchive
 - ExportArchive: export archive into .ipa
-- Screenshot: automate screenshot capturing, you can specify device, sdk, version, language and locale. It also supports test plan in Xcode 11
+- [Screenshot](Tasks/Screenshot.md): automate screenshot capturing, you can specify device, sdk, version, language and locale. It also supports test plan in Xcode 11
+- UploadApp: upload, notarize, validate app with AppStore
+- ShowDestinations: show all available destinations when building and testi g
 
 ### PumaAndroid
 

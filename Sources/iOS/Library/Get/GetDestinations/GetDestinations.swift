@@ -6,6 +6,7 @@
 //
 
 import PumaCore
+import Foundation
 
 public class GetDestinations {
     public init() {}
@@ -14,71 +15,89 @@ public class GetDestinations {
         let processHandler = DefaultProcessHandler(filter: { $0.starts(with: "name=") })
         let string = try CommandLine().runBash(
             workflow: workflow,
-            program: "xcrun instruments",
+            program: "xcrun simctl",
             arguments: [
-                "-s",
-                "devices"
+                "list",
+                "devices",
+                "-j"
             ],
             processHandler: processHandler
         )
 
-        // Ex: iPad Air (11.0.1) [7A5EAD29-D870-49FB-9A9B-C81079620AC9] (Simulator)
-        let destinations: [Destination] = try string
-            .split(separator: "\n")
-            .map({ String($0) })
-            .filter({ try $0.hasPattern(pattern: #"\[.+\]"#) })
-            .compactMap({ (line) -> Destination? in
-                parse(line)
+        guard let data = string.data(using: .utf8) else {
+            throw PumaError.invalid
+        }
+
+        let response: Response = try JSONDecoder().decode(Response.self, from: data)
+        let devicesWithOS: [DeviceWithOS] = response.devices.flatMap({ key, value in
+            return value.map({ DeviceWithOS(device: $0, os: key) })
+        })
+
+        let destinations: [Destination] = try devicesWithOS
+            .filter({ withOS in
+                return withOS.device.isAvailable
+            })
+            .compactMap({ withOS in
+                guard
+                    let platform = self.platform(withOS: withOS),
+                    let os = try self.os(withOS: withOS)
+                else {
+                    return  nil
+                }
+
+                return Destination(
+                    name: withOS.device.name,
+                    platform: platform,
+                    os: os,
+                    udid: withOS.device.udid
+                )
             })
 
         return destinations
     }
 
-    func parse(_ line: String) -> Destination? {
-        guard var id = try? line.matches(pattern: #"\[.+\]"#).first else {
-            return nil
-        }
-
-        var line = line
-        line = line.replacingOccurrences(of: id, with: "")
-        id = id
-            .replacingOccurrences(of: "[", with: "")
-            .replacingOccurrences(of: "]", with: "")
-
-        let isSimulator = line.contains("(Simulator)")
-        line = line.replacingOccurrences(of: "(Simulator)", with: "")
-
-        var os = (try? line.matches(pattern: #"\((\d+\.)?(\d+\.)?(\*|\d+)\)"#).first) ?? ""
-        let name = line
-            .replacingOccurrences(of: os, with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-
-        os = os.replacingOccurrences(of: "(", with: "")
-            .replacingOccurrences(of: ")", with: "")
-
-        let device = self.device(name: name)
-
-        if os.isEmpty {
-            return Destination(name: name, id: id)
-        } else {
-            let platform = isSimulator ? "\(device) Simulator" : device
-            return Destination(name: name, platform: platform, os: os)
-        }
+    func findUdid(workflow: Workflow, destination: Destination) throws -> String? {
+        let availableDestinations = try self.getAvailable(workflow: workflow)
+        return availableDestinations.first(where: {
+            $0.name == destination.name && $0.platform == destination.platform && $0.os == destination.os
+        })?.udid
     }
 
     // MARK: - Private
 
-    private func device(name: String) -> String {
-        if name.starts(with: "iPad") || name.starts(with: "iPhone") {
-            return Destination.Platform.iOS
-        } else if name.starts(with: "Apple Watch") {
-            return Destination.Platform.watchOS
-        } else if name.starts(with: "Apple TV") {
-            return Destination.Platform.tvOS
-        } else if name.containsIgnoringCase("mac") {
-            return Destination.Platform.macOS
-        } else {
-            return Destination.Platform.iOS
-        }
+    private func platform(withOS: DeviceWithOS) -> String? {
+        let list: [String] = [
+            Destination.Platform.iOS,
+            Destination.Platform.watchOS,
+            Destination.Platform.macOS,
+            Destination.Platform.tvOS,
+        ]
+
+        return list.first(where: { withOS.os.contains($0) })
     }
+
+    // com.apple.CoreSimulator.SimRuntime.iOS-13-2
+    private func os(withOS: DeviceWithOS) throws -> String? {
+        guard let string = try withOS.os.matches(pattern: #"(-\d+)+"#).first else {
+            return nil
+        }
+
+        return string.dropFirst().replacingOccurrences(of: "-", with: ".")
+    }
+}
+
+private struct Response: Decodable {
+    let devices: [String: [Device]]
+}
+
+private struct Device: Decodable {
+    let state: String
+    let name: String
+    let udid: String
+    let isAvailable: Bool
+}
+
+private struct DeviceWithOS {
+    let device: Device
+    let os: String
 }
