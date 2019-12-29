@@ -8,48 +8,12 @@
 import Foundation
 
 public extension String {
-    func addingFileExtension(_ fileExtension: String) -> String {
-        if contains(fileExtension) {
-            return self
-        } else {
-            return "\(self).\(fileExtension)"
-        }
-    }
-
-    func removingFileExtension(_ fileExtension: String) -> String {
-        if contains(fileExtension) {
-            return replacingOccurrences(of: ".\(fileExtension)", with: "")
-        } else {
-            return self
-        }
-    }
-
     func containsIgnoringCase(_ find: String) -> Bool {
         return self.range(of: find, options: .caseInsensitive) != nil
     }
     
     func surroundingWithQuotes() -> String {
         return "'\(self)'"
-    }
-
-    func addingPath(_ name: String, fileExtension: String) -> String {
-        let url = URL(fileURLWithPath: self)
-        return url.appendingPathComponent(name).appendingPathExtension(fileExtension).path
-    }
-
-    func folderPath() -> String {
-        let url = URL(fileURLWithPath: self)
-        return url.deletingLastPathComponent().path
-    }
-
-    func lastPathComponent() -> String {
-        let url = URL(fileURLWithPath: self)
-        return url.lastPathComponent
-    }
-
-    func hasFileExtension(_ fileExtension: String) -> Bool {
-        let url = URL(fileURLWithPath: self)
-        return url.pathExtension == fileExtension
     }
 
     func matches(pattern: String) throws -> [String] {
@@ -66,5 +30,41 @@ public extension String {
 
     func hasPattern(pattern: String) throws -> Bool {
         return try !matches(pattern: pattern).isEmpty
+    }
+}
+
+// URL like
+public extension String {
+    func ensuringPathExtension(_ pathExtension: String, name: String) -> String {
+        if hasPathExtension(pathExtension) {
+            return self
+        } else {
+            return URL(fileURLWithPath: self).appendingPathComponent(name).appendingPathExtension(pathExtension).path
+        }
+    }
+
+    func folderPath() -> String {
+        return URL(fileURLWithPath: self).deletingLastPathComponent().path
+    }
+
+    func hasPathExtension(_ pathExtension: String) -> Bool {
+        let url = URL(fileURLWithPath: self)
+        return url.pathExtension == pathExtension
+    }
+
+    func lastPathComponent() -> String {
+        return URL(fileURLWithPath: self).lastPathComponent
+    }
+
+    func appendingPathExtension(_ pathExtension: String) -> String {
+        return URL(fileURLWithPath: self).appendingPathExtension(pathExtension).path
+    }
+
+    func deletingPathExtension(_ pathExtension: String) -> String {
+        if hasPathExtension(pathExtension) {
+            return URL(fileURLWithPath: pathExtension).deletingPathExtension().path
+        } else {
+            return self
+        }
     }
 }

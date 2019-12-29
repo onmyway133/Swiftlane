@@ -33,14 +33,14 @@ public extension Xcodebuild {
 
     mutating func project(_ name: String) {
         let normalizedName = name
-            .addingFileExtension("xcodeproj")
+            .appendingPathExtension("xcodeproj")
             .surroundingWithQuotes()
         arguments.append("-project \(normalizedName)")
     }
 
     mutating func workspace(_ name: String) {
         let normalizedName = name
-            .addingFileExtension("xcworkspace")
+            .appendingPathExtension("xcworkspace")
             .surroundingWithQuotes()
 
         arguments.append("-workspace \(normalizedName)")
@@ -76,7 +76,7 @@ public extension Xcodebuild {
     }
 
     mutating func testPlan(_ path: String) {
-        let path = path.removingFileExtension("xctestplan")
+        let path = path.deletingPathExtension("xctestplan")
         arguments.append("-testplan \(path)")
     }
 
@@ -103,10 +103,6 @@ extension Xcodebuild {
 
 extension Xcodebuild {
     func normalize(archivePath: String, name: String) -> String {
-        guard !archivePath.hasFileExtension("xcarchive") else {
-            return archivePath
-        }
-
-        return archivePath.addingPath(name, fileExtension: "xcarchive")
+        return archivePath.ensuringPathExtension("xcarchive", name: name)
     }
 }
