@@ -57,12 +57,18 @@ public extension String {
     }
 
     func appendingPathExtension(_ pathExtension: String) -> String {
-        return URL(fileURLWithPath: self).appendingPathExtension(pathExtension).path
+        // Don't use URL(fileURLWithPath:) as it resolves around executable working directory
+        if hasPathExtension(pathExtension) {
+            return self
+        } else {
+            return "\(self).\(pathExtension)"
+        }
     }
 
     func deletingPathExtension(_ pathExtension: String) -> String {
+        // Don't use URL(fileURLWithPath:) as it resolves around executable working directory
         if hasPathExtension(pathExtension) {
-            return URL(fileURLWithPath: pathExtension).deletingPathExtension().path
+            return replacingOccurrences(of: ".\(pathExtension)", with: "")
         } else {
             return self
         }

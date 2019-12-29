@@ -56,7 +56,6 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",

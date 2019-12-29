@@ -40,7 +40,7 @@ extension Screenshot: Task {
                 )
             })
 
-            Concurrent(tasks: subTasks).run(workflow: workflow, completion: completion)
+            Sequence(tasks: subTasks).run(workflow: workflow, completion: completion)
         } catch {
             completion(.failure(error))
         }

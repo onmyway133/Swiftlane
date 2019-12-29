@@ -13,8 +13,6 @@ public class Sequence: Task {
     public var isEnabled = true
     public let tasks: [Task]
 
-    private let checkQueue = DispatchQueue(label: "SerialQueue")
-
     public init(tasks: [Task]) {
         self.tasks = tasks
     }
@@ -58,19 +56,17 @@ public class Sequence: Task {
 
         workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in
-            self.checkQueue.async {
-                switch result {
-                case .success:
-                    workflow.summarizer.track(task: first, finishAt: Deps.date())
-                    self.runFirst(
-                        tasks: tasks.removingFirst(),
-                        workflow: workflow,
-                        completion: completion
-                    )
-                case .failure(let error):
-                    workflow.summarizer.track(task: first, error: error)
-                    completion(.failure(error))
-                }
+            switch result {
+            case .success:
+                workflow.summarizer.track(task: first, finishAt: Deps.date())
+                self.runFirst(
+                    tasks: tasks.removingFirst(),
+                    workflow: workflow,
+                    completion: completion
+                )
+            case .failure(let error):
+                workflow.summarizer.track(task: first, error: error)
+                completion(.failure(error))
             }
         })
     }
