@@ -37,6 +37,16 @@ public extension String {
         return url.appendingPathComponent(name).appendingPathExtension(fileExtension).path
     }
 
+    func folderPath() -> String {
+        let url = URL(fileURLWithPath: self)
+        return url.deletingLastPathComponent().path
+    }
+
+    func lastPathComponent() -> String {
+        let url = URL(fileURLWithPath: self)
+        return url.lastPathComponent
+    }
+
     func hasFileExtension(_ fileExtension: String) -> Bool {
         let url = URL(fileURLWithPath: self)
         return url.pathExtension == fileExtension
