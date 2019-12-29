@@ -126,6 +126,8 @@ Contains the core utilities, Task protocol and some core tasks
 - RunScript: run arbitrary shell script
 - Sequence: run sub tasks in sequence
 - Concurrent: run sub tasks in parallel
+- DownloadFile: Download and save file
+- MoveFile: Move file to another location
 
 ### PumaiOS
 
