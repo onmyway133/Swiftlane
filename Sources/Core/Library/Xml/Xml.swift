@@ -81,4 +81,19 @@ public class XmlGenerator {
         """
         return xml
     }
+
+    public func xmlItems(dictionary: [String: Any]) -> [XmlItem] {
+        return dictionary.flatMap({ (key, value) -> [XmlItem] in
+            switch value {
+            case let string as String:
+                return [XmlString(key: key, value: string)]
+            case let bool as Bool:
+                return [XmlBool(key: key, value: bool)]
+            case let nestedDictionary as [String: Any]:
+                return xmlItems(dictionary: nestedDictionary)
+            default:
+                return []
+            }
+        })
+    }
 }

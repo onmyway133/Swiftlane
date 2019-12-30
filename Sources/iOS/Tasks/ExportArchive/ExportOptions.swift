@@ -29,12 +29,12 @@ public extension ExportArchive {
         let method: String
 
         /// Allow adding more options in form of xml
-        let more: [XmlItem]
+        let additionalParameters: [String: Any]
 
-        public init(method: String, signing: Signing, more: [XmlItem] = []) {
+        public init(method: String, signing: Signing, additionalParameters: [String: Any] = [:]) {
             self.signing = signing
             self.method = method
-            self.more = more
+            self.additionalParameters = additionalParameters
         }
     }
 

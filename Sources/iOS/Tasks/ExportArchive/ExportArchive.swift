@@ -109,7 +109,8 @@ private extension ExportArchive {
             ])
         }
 
-        items.append(contentsOf: options.more)
+        let generator = XmlGenerator()
+        items.append(contentsOf: generator.xmlItems(dictionary: options.additionalParameters))
         return items
     }
 }

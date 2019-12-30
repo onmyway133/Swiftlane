@@ -24,17 +24,20 @@ public extension Slack {
         let channel: String
         let text: String
         let username: String?
+        let additionalParameters: [String: String]
 
         public init(
             token: String,
             channel: String,
             text: String,
-            username: String
+            username: String?,
+            additionalParameters: [String: String] = [:]
         ) {
             self.token = token
             self.channel = channel
             self.text = text
             self.username = username
+            self.additionalParameters = additionalParameters
         }
     }
 
@@ -82,6 +85,12 @@ private class MessageSender {
             URLQueryItem(name: "text", value: message.text),
             URLQueryItem(name: "pretty", value: "1")
         ]
+
+        message.additionalParameters.forEach {
+            components?.queryItems?.append(
+                URLQueryItem(name: $0, value: $1)
+            )
+        }
 
         if let username = message.username {
             components?.queryItems?.append(
