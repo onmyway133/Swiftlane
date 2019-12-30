@@ -13,7 +13,8 @@ public class Concurrent: Task {
     public var isEnabled = true
     public let tasks: [Task]
 
-    private let serialQueue = DispatchQueue(label: "InternalSerialQueue")
+    private let runQueue = DispatchQueue(label: "ConcurrentQueue", attributes: .concurrent)
+    private let checkQueue = DispatchQueue(label: "SerialQueue")
 
     public init(tasks: [Task]) {
         self.tasks = tasks
@@ -37,22 +38,24 @@ public class Concurrent: Task {
             Deps.console.title("🚀 \(task.name)")
 
             workflow.summarizer.track(task: task, startAt: Deps.date())
-            task.run(workflow: workflow, completion: { result in
-                self.serialQueue.async {
-                    switch result {
-                    case .success:
-                        workflow.summarizer.track(task: task, finishAt: Deps.date())
-                    case .failure(let error):
-                        workflow.summarizer.track(task: task, error: error)
-                    }
+            self.runQueue.async {
+                task.run(workflow: workflow, completion: { result in
+                    self.checkQueue.async {
+                        switch result {
+                        case .success:
+                            workflow.summarizer.track(task: task, finishAt: Deps.date())
+                        case .failure(let error):
+                            workflow.summarizer.track(task: task, error: error)
+                        }
 
-                    runTaskCount += 1
-                    if runTaskCount == taskCount {
-                        completion(.success(()))
-                        semaphore.signal()
+                        runTaskCount += 1
+                        if runTaskCount == taskCount {
+                            completion(.success(()))
+                            semaphore.signal()
+                        }
                     }
-                }
-            })
+                })
+            }
         }
 
         semaphore.wait()
