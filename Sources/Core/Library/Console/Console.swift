@@ -29,6 +29,10 @@ open class Console {
         print("❌ \(text)".foreground.Red)
     }
 
+    open func success(_ text: String) {
+        print("👍 \(text)".foreground.Green)
+    }
+
     open func warn(_ text: String) {
         print("⚠️ \(text)".foreground.Magenta)
     }

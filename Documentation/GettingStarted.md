@@ -128,6 +128,7 @@ Contains the core utilities, Task protocol and some core tasks
 - Concurrent: run sub tasks in parallel
 - DownloadFile: Download and save file
 - MoveFile: Move file to another location
+- [Slack](Tasks/Slack.md): send message as a bot to Slack
 
 ### PumaiOS
 
@@ -149,7 +150,6 @@ Contains Android related tasks. TBD
 
 Contains extra tasks
 
-- Slack: interact with Slack
 - AppStoreConnect: interact with AppStore Connect
 - AppDistribution: interact with Firebase AppDistribution
 - Crashlytics: interact with Firebase Crashlytics

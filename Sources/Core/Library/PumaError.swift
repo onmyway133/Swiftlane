@@ -8,8 +8,15 @@
 import Foundation
 
 public enum PumaError: Error {
-    case unknown
     case invalid
-    case validate(String)
+    case string(String)
     case process(terminationStatus: Int32, output: String, error: String)
+
+    static func from(string: String?) -> PumaError {
+        if let string = string {
+            return PumaError.string(string)
+        } else {
+            return PumaError.invalid
+        }
+    }
 }
