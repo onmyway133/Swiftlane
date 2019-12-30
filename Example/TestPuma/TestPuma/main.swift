@@ -56,6 +56,7 @@ func testDrive() {
         }
 
         Screenshot {
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
@@ -86,6 +87,7 @@ func testDrive() {
         }
 
         Archive {
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
@@ -94,6 +96,7 @@ func testDrive() {
         }
 
         ExportArchive {
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path,
@@ -110,6 +113,7 @@ func testDrive() {
         }
 
         UploadApp {
+            $0.isEnabled = false
             $0.authenticate(
                 username: ProcessInfo().environment["username"]!,
                 password: ProcessInfo().environment["password"]!
@@ -117,6 +121,17 @@ func testDrive() {
 
             $0.upload(
                 ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
+            )
+        }
+
+        Slack {
+            $0.post(
+                message: .init(
+                    token: ProcessInfo().environment["slackBotToken"]!,
+                    channel: "random",
+                    text: "Hello from Puma",
+                    username: "onmyway133"
+                )
             )
         }
     }
