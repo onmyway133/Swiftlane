@@ -48,13 +48,11 @@ func testDrive() {
         }
 
         Build {
-            $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.buildsForTesting = true
         }
 
         Test {
-            $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.testsWithoutBuilding = true
             $0.destination(
@@ -67,7 +65,7 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.isEnabled = false
+            $0.isEnabled = true
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
@@ -98,7 +96,6 @@ func testDrive() {
         }
 
         Archive {
-            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
@@ -115,7 +112,7 @@ func testDrive() {
                     .init(
                         method: ExportArchive.ExportMethod.development,
                         signing: .automatic(
-                            .init(teamId: ProcessInfo().environment["teamId"]!)
+                            .init(teamId: "T78DK947F2")
                         )
                     )
                 ),
@@ -123,22 +120,22 @@ func testDrive() {
             )
         }
 
-        UploadApp {
-            $0.isEnabled = false
-            $0.authenticate(
-                username: ProcessInfo().environment["username"]!,
-                password: ProcessInfo().environment["password"]!
-            )
-
-            $0.upload(
-                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
-            )
-        }
+//        UploadApp {
+//            $0.isEnabled = false
+//            $0.authenticate(
+//                username: ProcessInfo().environment["username"]!,
+//                password: ProcessInfo().environment["password"]!
+//            )
+//
+//            $0.upload(
+//                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
+//            )
+//        }
 
         Slack {
             $0.post(
                 message: .init(
-                    token: ProcessInfo().environment["slackBotToken"]!,
+                    token: "xoxb-721702835698-890815481319-ggqgGgblBfm2joQs1Vj5mSB4",
                     channel: "random",
                     text: "Hello from Puma",
                     username: "onmyway133"

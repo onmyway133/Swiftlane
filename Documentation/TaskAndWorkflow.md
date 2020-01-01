@@ -108,7 +108,7 @@ Contains iOS related tasks.
 - [ExportArchive](Tasks/ExportArchive.md): export archive into .ipa
 - [Screenshot](Tasks/Screenshot.md): automate screenshot capturing, you can specify device, sdk, version, language and locale. It also supports test plan in Xcode 11
 - [UploadApp](Tasks/UploadApp.md): upload, notarize, validate app with AppStore
-- [ShowDestinations](Task/sShowDestination.md): show all available destinations when building and testing
+- [ShowDestinations](Task/ShowDestinations.md): show all available destinations when building and testing
 - [BootSimulator](Tasks/BootSimulator.md): boot simulator
 - [UpdateSimulator](Tasks/UpdateSimulator.md): update statusbar of simulator. This is nifty before taking screenshots
 

@@ -95,6 +95,7 @@ func pumaRoar() {
 - [Develop](Documentation/Develop.md)
 - [Compile Puma from source](Documentation/Compile.md)
 - [Dependencies](Documentation/Dependencies.md)
+- [In the press](InThePress.md)
 - [FAQ](Documentation/FAQ.md)
 
 ## Road map
