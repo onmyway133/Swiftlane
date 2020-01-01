@@ -46,13 +46,17 @@ public class Summarizer {
 
         records.enumerated().forEach { index, record in
             var duration: TimeInterval = 0
-            var symbol: String = "☑️"
+            let symbol: String
 
             if let startAt = record.startAt, let finishAt = record.finishAt {
                 duration = finishAt.timeIntervalSince1970 - startAt.timeIntervalSince1970
-                symbol = "✅"
-            } else if record.error != nil {
-                symbol = "❌"
+                if record.error != nil {
+                    symbol = "❌"
+                } else {
+                    symbol = "✅"
+                }
+            } else {
+                 symbol = "☑️"
             }
 
             let timeString = parse(seconds: duration)
