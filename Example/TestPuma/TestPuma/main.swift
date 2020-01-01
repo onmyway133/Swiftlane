@@ -65,7 +65,7 @@ func testDrive() {
         }
 
         Screenshot {
-            $0.isEnabled = true
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 appScheme: "TestApp",
@@ -96,6 +96,7 @@ func testDrive() {
         }
 
         Archive {
+            $0.isEnabled = false
             $0.configure(
                 projectType: .project("TestApp"),
                 scheme: "TestApp",
@@ -112,7 +113,7 @@ func testDrive() {
                     .init(
                         method: ExportArchive.ExportMethod.development,
                         signing: .automatic(
-                            .init(teamId: "T78DK947F2")
+                            .init(teamId: ProcessInfo().environment["teamId"]!)
                         )
                     )
                 ),
@@ -120,22 +121,22 @@ func testDrive() {
             )
         }
 
-//        UploadApp {
-//            $0.isEnabled = false
-//            $0.authenticate(
-//                username: ProcessInfo().environment["username"]!,
-//                password: ProcessInfo().environment["password"]!
-//            )
-//
-//            $0.upload(
-//                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
-//            )
-//        }
+        UploadApp {
+            $0.isEnabled = false
+            $0.authenticate(
+                username: ProcessInfo().environment["username"]!,
+                password: ProcessInfo().environment["password"]!
+            )
+
+            $0.upload(
+                ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
+            )
+        }
 
         Slack {
             $0.post(
                 message: .init(
-                    token: "xoxb-721702835698-890815481319-ggqgGgblBfm2joQs1Vj5mSB4",
+                    token: ProcessInfo().environment["slackBotToken"]!,
                     channel: "random",
                     text: "Hello from Puma",
                     username: "onmyway133"
