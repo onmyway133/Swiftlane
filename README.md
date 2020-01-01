@@ -14,6 +14,7 @@ Unlike other command line tool that you need to understand lots of command line 
 ## Documentation
 
 - [Getting Started](Documentation/GettingStarted.md)
+- [Task and workflow](Documentation/TaskAndWorkflow.md)
 - [Tips and tricks](Documentation/Tips.md)
 - [Develop](Documentation/Develop.md)
 - [Compile Puma from source](Documentation/Compile.md)
