@@ -11,6 +11,82 @@ Unlike other command line tool that you need to understand lots of command line 
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
 - Reuse awesome Swift scripting dependencies from Swift community
 
+```swift
+import Foundation
+import Puma
+import PumaCore
+import PumaiOS
+
+func pumaRoar() {
+    let workflow = Workflow {
+        RunScript {
+            $0.script = "echo 'Hello Puma'"
+        }
+
+        Screenshot {
+            $0.configure(
+                projectType: .project("TestApp"),
+                appScheme: "TestApp",
+                uiTestScheme: "TestAppUITests",
+                saveDirectory: Directory.downloads.appendingPathComponent("PumaScreenshots").path
+            )
+
+            $0.add(scenarios: [
+                .init(
+                    destination: .init(
+                        name: Destination.Name.iPhone11,
+                        platform: Destination.Platform.iOSSimulator,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.en_US,
+                    locale: Locale.en_US
+                ),
+                .init(
+                    destination: .init(
+                        name: Destination.Name.iPhone11Pro,
+                        platform: Destination.Platform.iOSSimulator,
+                        os: Destination.OS.iOS13_2_2
+                    ),
+                    language: Language.ja,
+                    locale: Locale.ja
+                )
+            ])
+        }
+
+        ExportArchive {
+            $0.isEnabled = false
+            $0.configure(
+                projectType: .project("TestApp"),
+                archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path,
+                optionsPlist: .options(
+                    .init(
+                        method: ExportArchive.ExportMethod.development,
+                        signing: .automatic(
+                            .init(teamId: ProcessInfo().environment["teamId"]!)
+                        )
+                    )
+                ),
+                exportDirectory: Directory.downloads.path
+            )
+        }
+
+        Slack {
+            $0.post(
+                message: .init(
+                    token: ProcessInfo().environment["slackBotToken"]!,
+                    channel: "random",
+                    text: "Hello from Puma",
+                    username: "onmyway133"
+                )
+            )
+        }
+    }
+
+    workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject/TestApp").path
+    workflow.run()
+}
+```
+
 ## Documentation
 
 - [Getting Started](Documentation/GettingStarted.md)

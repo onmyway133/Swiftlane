@@ -31,7 +31,7 @@ Directory.downloads
 Directory.applications
 ```
 
-## Configure tasks directory
+## Configure tasks directly
 
 Some tasks like Build, Test, UploadApp uses command line tools like xcodebuild or altool, and they provide convenient configuration methods
 

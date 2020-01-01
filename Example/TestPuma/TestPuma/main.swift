@@ -15,6 +15,17 @@ func testDrive() {
     let workflow = Workflow {
         PrintWorkingDirectory()
 
+        Wait {
+            $0.wait(for: 2)
+        }
+
+        Retry {
+            $0.retry(
+                task: PrintWorkingDirectory(),
+                times: 2
+            )
+        }
+
         RunScript {
             $0.script = "echo 'Hello Puma'"
         }
