@@ -20,9 +20,19 @@ public struct Transporter {
 
         try CommandLine().runBash(
             workflow: workflow,
-            program: "/Applications/Transporter.app/Contents/itms/bin/iTMSTransporter",
+            program: transportPath(),
             arguments: arguments
         )
+    }
+
+    private func transportPath() throws -> String {
+        if Folder.directoryExists(path: "/Applications/Transporter.app") {
+            return "/Applications/Transporter.app/Contents/itms/bin/iTMSTransporter"
+        } else if Folder.directoryExists(path: "/Applications/Xcode.app/Contents/Applications/Application Loader.app/") {
+            return "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/MacOS/itms/bin/iTMSTransporter"
+        } else {
+            throw PumaError.invalid
+        }
     }
 }
 
