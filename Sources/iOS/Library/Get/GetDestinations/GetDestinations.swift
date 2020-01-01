@@ -12,7 +12,6 @@ public class GetDestinations {
     public init() {}
 
     public func getAvailable(workflow: Workflow) throws -> [Destination] {
-        let processHandler = DefaultProcessHandler(filter: { $0.starts(with: "name=") })
         let string = try CommandLine().runBash(
             workflow: workflow,
             program: "xcrun simctl",
@@ -21,7 +20,7 @@ public class GetDestinations {
                 "devices",
                 "-j"
             ],
-            processHandler: processHandler
+            processHandler: DefaultProcessHandler(filter: { $0.starts(with: "name=") })
         )
 
         guard let data = string.data(using: .utf8) else {

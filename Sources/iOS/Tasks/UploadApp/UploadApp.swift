@@ -9,7 +9,7 @@ import Foundation
 import PumaCore
 
 public class UploadApp {
-    public var name: String = "Upload app"
+    public var name: String = "Upload app to AppStore Connect"
     public var isEnabled = true
     public var altool = Altool()
 

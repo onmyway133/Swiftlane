@@ -29,10 +29,10 @@ extension DownloadMetadata: Task {
             }
 
             transporter.arguments.append(contentsOf: [
+                "-m", "lookupMetadata",
                 "-vendor_id", appSKU,
                 "-destination", saveDirectory
             ])
-
 
             try transporter.run(workflow: workflow)
         }
@@ -44,8 +44,8 @@ public extension DownloadMetadata {
     /// to generate app specific password
     func authenticate(username: String, appSpecificPassword: String) {
         transporter.arguments.append(contentsOf: [
-            "--username", username.surroundingWithQuotes(),
-            "--password", appSpecificPassword.surroundingWithQuotes()
+            "-u", username.surroundingWithQuotes(),
+            "-p", appSpecificPassword.surroundingWithQuotes()
         ])
     }
 

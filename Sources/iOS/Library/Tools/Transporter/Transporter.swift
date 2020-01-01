@@ -21,7 +21,8 @@ public struct Transporter {
         try CommandLine().runBash(
             workflow: workflow,
             program: transportPath(),
-            arguments: arguments
+            arguments: arguments,
+            processHandler: DefaultProcessHandler(filter: { !$0.contains("DBG-X:") && !$0.contains("DEBUG:") })
         )
     }
 
