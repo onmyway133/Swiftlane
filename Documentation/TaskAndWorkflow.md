@@ -102,15 +102,15 @@ Contains the core utilities, Task protocol and some core tasks
 
 Contains iOS related tasks.
 
-- Build: build workspace or project
-- Test: test workspace or project
-- Archive: archive to xcarchive
-- ExportArchive: export archive into .ipa
+- [Build](Tasks/Build.md): build workspace or project
+- [Test](Tasks/Test.md): test workspace or project
+- [Archive](Tasks/Archive.md): archive to xcarchive
+- [ExportArchive](Tasks/ExportArchive.md): export archive into .ipa
 - [Screenshot](Tasks/Screenshot.md): automate screenshot capturing, you can specify device, sdk, version, language and locale. It also supports test plan in Xcode 11
-- UploadApp: upload, notarize, validate app with AppStore
-- ShowDestinations: show all available destinations when building and testing
-- BootSimulator: boot simulator
-- UpdateSimulator: update statusbar of simulator. This is nifty before taking screenshots
+- [UploadApp](Tasks/UploadApp.md): upload, notarize, validate app with AppStore
+- [ShowDestinations](Task/sShowDestination.md): show all available destinations when building and testing
+- [BootSimulator](Tasks/BootSimulator.md): boot simulator
+- [UpdateSimulator](Tasks/UpdateSimulator.md): update statusbar of simulator. This is nifty before taking screenshots
 
 ### PumaAndroid
 
