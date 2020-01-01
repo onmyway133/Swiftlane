@@ -14,7 +14,8 @@ public struct Agvtool {
         try CommandLine().runBash(
             workflow: workflow,
             program: "agvtool",
-            arguments: arguments
+            arguments: arguments,
+            processHandler: DefaultProcessHandler(logger: workflow.logger)
         )
     }
 }

@@ -15,7 +15,7 @@ public struct CommandLine {
         workflow: Workflow,
         program: String,
         arguments: [String],
-        processHandler: ProcessHandler = DefaultProcessHandler()
+        processHandler: ProcessHandler
     ) throws -> String {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
@@ -32,7 +32,7 @@ public struct CommandLine {
     public func runProcess(
         _ process: Process,
         workflow: Workflow,
-        processHandler: ProcessHandler = DefaultProcessHandler()
+        processHandler: ProcessHandler
     ) throws -> String {
         process.apply(workflow: workflow)
         return try process.run(processHandler: processHandler)

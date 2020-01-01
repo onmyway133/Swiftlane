@@ -18,7 +18,7 @@ public struct DefaultProcessHandler: ProcessHandler {
     public let filter: Filter
     public let logger: Logger
 
-    public init(logger: Logger = Console(), filter: @escaping Filter = { _ in true }) {
+    public init(logger: Logger, filter: @escaping Filter = { _ in true }) {
         self.filter = filter
         self.logger = logger
     }

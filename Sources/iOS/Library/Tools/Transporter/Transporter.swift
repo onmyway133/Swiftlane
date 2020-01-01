@@ -22,7 +22,10 @@ public struct Transporter {
             workflow: workflow,
             program: transportPath(),
             arguments: arguments,
-            processHandler: DefaultProcessHandler(filter: { !$0.contains("DBG-X:") && !$0.contains("DEBUG:") })
+            processHandler: DefaultProcessHandler(
+                logger: workflow.logger,
+                filter: { !$0.contains("DBG-X:") && !$0.contains("DEBUG:") }
+            )
         )
     }
 

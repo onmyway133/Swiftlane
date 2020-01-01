@@ -20,7 +20,9 @@ public class GetDestinations {
                 "devices",
                 "-j"
             ],
-            processHandler: DefaultProcessHandler(filter: { $0.starts(with: "name=") })
+            processHandler: DefaultProcessHandler(
+                logger: workflow.logger, filter: { $0.starts(with: "name=") }
+            )
         )
 
         guard let data = string.data(using: .utf8) else {

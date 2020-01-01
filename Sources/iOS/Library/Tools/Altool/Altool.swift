@@ -15,7 +15,8 @@ public struct Altool {
         try CommandLine().runBash(
             workflow: workflow,
             program: "xcrun",
-            arguments: ["altool"] + arguments
+            arguments: ["altool"] + arguments,
+            processHandler: DefaultProcessHandler(logger: workflow.logger)
         )
     }
 }

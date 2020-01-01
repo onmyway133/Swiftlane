@@ -22,7 +22,11 @@ extension PrintWorkingDirectory: Task {
             let process = Process()
             process.launchPath = "/bin/pwd"
 
-            try CommandLine().runProcess(process, workflow: workflow)
+            try CommandLine().runProcess(
+                process,
+                workflow: workflow,
+                processHandler: DefaultProcessHandler(logger: workflow.logger)
+            )
         }
     }
 }

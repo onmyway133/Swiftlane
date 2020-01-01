@@ -38,7 +38,7 @@ final class SummarizerTests: XCTestCase {
             }
         }
 
-        let summarizer = Summarizer()
+        let summarizer = Summarizer(logger: Console())
         summarizer.update(tasks: [task])
         XCTAssertEqual(summarizer.records.count, 6)
     }
