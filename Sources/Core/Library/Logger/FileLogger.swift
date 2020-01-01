@@ -21,6 +21,7 @@ extension FileLogger: Logger {
     public func log(_ string: String) {
         print(string)
         loggedString.append(contentsOf: string)
+        loggedString.append("\n")
     }
 
     public func finalize() throws {
@@ -28,7 +29,11 @@ extension FileLogger: Logger {
             throw PumaError.invalid
         }
 
-        try File(path: saveFilePath).write(data: data)
+        try Folder(path: saveFilePath.folderPath()).createFileIfNeeded(
+            withName: saveFilePath.lastPathComponent(),
+            contents: data
+        )
+
         print("Logged file saved to: \(saveFilePath)")
     }
 }

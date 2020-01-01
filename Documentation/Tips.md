@@ -48,5 +48,3 @@ Build {
     $0.xcodebuild.arguments.append(contentsOf: ["--scheme", "TestApp"])
 }
 ```
-
-## Logger

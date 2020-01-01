@@ -91,6 +91,7 @@ Contains iOS related tasks.
 - [ShowDestinations](Task/ShowDestinations.md): show all available destinations when building and testing
 - [BootSimulator](Tasks/BootSimulator.md): boot simulator
 - [UpdateSimulator](Tasks/UpdateSimulator.md): update statusbar of simulator. This is nifty before taking screenshots
+- [DownloadMetadata](Tasks/DownloadMetadata.md): download metadata from AppStore Connect
 
 ### PumaAndroid
 

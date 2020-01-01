@@ -63,5 +63,5 @@ let workflow = Workflow {
     Test()
 }
 
-workflow.logger = FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("log").path)
+workflow.logger = FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("puma.log").path)
 ```
