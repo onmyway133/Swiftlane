@@ -22,7 +22,7 @@ public class Summarizer {
     public var records = [Record]()
     public let logger: Logger
 
-    public init(logger: Logger) {
+    public init(logger: Logger = Console()) {
         self.logger = logger
     }
 
