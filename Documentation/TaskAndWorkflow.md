@@ -88,13 +88,15 @@ The facade, which exposes convenient `run` function, and incudes other framework
 
 Contains the core utilities, Task protocol and some core tasks
 
-- PrintWorkingDirectory: prints the current working directory
-- RunScript: run arbitrary shell script
-- Sequence: run sub tasks in sequence
-- Concurrent: run sub tasks in parallel
-- DownloadFile: Download and save file
-- MoveFile: Move file to another location
+- [PrintWorkingDirectory](Tasks/PrintWorkingDirectory.md): prints the current working directory
+- [RunScript](Tasks/RunScript.md): run arbitrary shell script
+- [Sequence](Tasks/Sequence.md): run sub tasks in sequence
+- [Concurrent](Tasks/Concurrent.md): run sub tasks in parallel
+- [DownloadFile](Tasks/MoveFile.md): Download and save file
+- [MoveFile](Tasks/MoveFile.md): Move file to another location
 - [Slack](Tasks/Slack.md): send message as a bot to Slack
+- [Wait](Tasks/Wait.md): wait for some time before moving to the next task
+- [Retry](Tasks/Retry.md): retry a task n number of times.
 
 ### PumaiOS
 
