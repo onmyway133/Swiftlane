@@ -31,7 +31,7 @@ Directory.downloads
 Directory.applications
 ```
 
-## Configure tasks directory
+## Configure tasks directly
 
 Some tasks like Build, Test, UploadApp uses command line tools like xcodebuild or altool, and they provide convenient configuration methods
 
@@ -46,25 +46,5 @@ In case you want to customize, you can configure on the command line tool direct
 ```swift
 Build {
     $0.xcodebuild.arguments.append(contentsOf: ["--scheme", "TestApp"])
-}
-```
-
-## Disable a task
-
-Some times you want to temporarily disable a task, every task in Puma needs to conform to `Task` protocol, and there is required `isEnabled` property where you can toggle off a task
-
-```swift
-Build {
-    $0.isEnabled = false
-}
-```
-
-## Change name of a task
-
-Every task has a default name, and this name is used when summarizing, to change the name of a task, assign a different name to `name` property
-
-```swift
-Build {
-    $0.name = "Build my awesome app"
 }
 ```

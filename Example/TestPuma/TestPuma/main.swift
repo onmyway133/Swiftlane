@@ -15,6 +15,17 @@ func testDrive() {
     let workflow = Workflow {
         PrintWorkingDirectory()
 
+        Wait {
+            $0.wait(for: 2)
+        }
+
+        Retry {
+            $0.retry(
+                task: PrintWorkingDirectory(),
+                times: 2
+            )
+        }
+
         RunScript {
             $0.script = "echo 'Hello Puma'"
         }
@@ -37,13 +48,11 @@ func testDrive() {
         }
 
         Build {
-            $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.buildsForTesting = true
         }
 
         Test {
-            $0.isEnabled = false
             $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
             $0.testsWithoutBuilding = true
             $0.destination(

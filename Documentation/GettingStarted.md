@@ -4,9 +4,11 @@ Hi! Welcome to Puma, a pure Swift build tool utilities designed to easy mobile a
 
 The recommended way to integrate Puma is via [Swift Package Manager](https://swift.org/package-manager/), although you are free to use any package manager that you like.
 
-## Creating executable
+## Run Puma as standalone executable
 
-With Swift Package Manager, started by creatiing an executable and add Puma as a dependency
+### Creating executable with Swift Package Manager
+
+With Swift Package Manager, started by creating an executable and add Puma as a dependency
 
 ```sh
 mkdir MyBuildTool
@@ -74,84 +76,28 @@ swift build
 swift run
 ```
 
-## Task and Workflow
+### Frameworks inside Puma
 
-The core of Puma is `Task`. When you call `run` above, it actually uses `Workflow`, which is a group of tasks. `Workflow` is intended for cases where you need to run tasks for multiple projects.
+Puma is declared as a library, where Puma is the facade, and it includes some other dependencies. If you use a class or method from a framework, you need to import the correct one.
 
-```swif
-run {
-    Build
-    Test
-}
-```
-
-is the same as
+In the code sample above, we use `run` method from `Puma`, `PrintWorkingDirectory`, `RunScript` from `PumaCore` and `SetVersionNumber`, `SetBuildNumber`, `Build` from `PumaiOS`. This separation of concerns makes it easier to develop and consume, as well as makes extending feasible.
 
 ```swift
-let workflow = Workflow {
-    Build
-    Test
-}
-
-workflow.run()
+import Foundation
+import Puma
+import PumaCore
+import PumaiOS
 ```
 
-## Extend Puma
+- Puma: The facade, which exposes convenient `run` function, and incudes other frameworks
+- PumaCore: Contains the core utilities, Task protocol and some core tasks
+- PumaiOS: Contains iOS related tasks.
+- PumaAndroid: Contains Android related tasks. TBD
+- PumaExtra: Contains extra tasks. TBD
 
-At the core of Puma sits the `Task` protocol, every task has a name and an action.
+For more information, read our [Task and workflow](TaskAndWorkflow.md) guide.
 
-```swift
-public typealias TaskCompletion = (Result<(), Error>) -> Void
+## Run Puma as macOS command line application
 
-public protocol Task: AnyObject {
-    var name: String { get }
-    var isEnabled: Bool { get }
-    func run(workflow: Workflow, completion: @escaping TaskCompletion)
-}
-```
+Another way to consume Puma is via Xcode. Create a macOS commandline application and add Puma via Swift Package Manager in Xcode. This is the same way Puma is developed via [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), for more information, read our [Develop](./Develop.md) guide.
 
-## Frameworks inside Puma
-
-Puma is declared as a library, and it has some dependencies
-
-### Puma
-
-The facade, which exposes convenient `run` function, and incudes other frameworks
-
-### PumaCore
-
-Contains the core utilities, Task protocol and some core tasks
-
-- PrintWorkingDirectory: prints the current working directory
-- RunScript: run arbitrary shell script
-- Sequence: run sub tasks in sequence
-- Concurrent: run sub tasks in parallel
-- DownloadFile: Download and save file
-- MoveFile: Move file to another location
-- [Slack](Tasks/Slack.md): send message as a bot to Slack
-
-### PumaiOS
-
-Contains iOS related tasks.
-
-- Build: build workspace or project
-- Test: test workspace or project
-- Archive: archive to xcarchive
-- ExportArchive: export archive into .ipa
-- [Screenshot](Tasks/Screenshot.md): automate screenshot capturing, you can specify device, sdk, version, language and locale. It also supports test plan in Xcode 11
-- UploadApp: upload, notarize, validate app with AppStore
-- ShowDestinations: show all available destinations when building and testing
-- BootSimulator: boot simulator
-- UpdateSimulator: update statusbar of simulator. This is nifty before taking screenshots
-
-### PumaAndroid
-
-Contains Android related tasks. TBD
-
-### PumaExtra
-
-Contains extra tasks
-
-- AppStoreConnect: interact with AppStore Connect
-- AppDistribution: interact with Firebase AppDistribution
-- Crashlytics: interact with Firebase Crashlytics

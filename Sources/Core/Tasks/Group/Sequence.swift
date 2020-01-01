@@ -56,9 +56,10 @@ public class Sequence: Task {
 
         workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in
+            workflow.summarizer.track(task: first, finishAt: Deps.date())
+
             switch result {
             case .success:
-                workflow.summarizer.track(task: first, finishAt: Deps.date())
                 self.runFirst(
                     tasks: tasks.removingFirst(),
                     workflow: workflow,
