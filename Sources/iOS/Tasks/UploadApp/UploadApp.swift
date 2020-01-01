@@ -35,10 +35,10 @@ public extension UploadApp {
 
     /// For password, go to https://appleid.apple.com/account/manage
     /// to generate app specific password
-    func authenticate(username: String, password: String) {
+    func authenticate(username: String, appSpecificPassword: String) {
         altool.arguments.append(contentsOf: [
             "--username", username.surroundingWithQuotes(),
-            "--password", password.surroundingWithQuotes()
+            "--password", appSpecificPassword.surroundingWithQuotes()
         ])
     }
 

@@ -125,7 +125,7 @@ func testDrive() {
             $0.isEnabled = false
             $0.authenticate(
                 username: ProcessInfo().environment["username"]!,
-                password: ProcessInfo().environment["password"]!
+                appSpecificPassword: ProcessInfo().environment["password"]!
             )
 
             $0.upload(
