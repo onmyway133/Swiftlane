@@ -14,7 +14,7 @@ public struct Transporter {
 
     func run(workflow: Workflow) throws {
         guard Folder.directoryExists(path: "/Applications/Transporter.app") else {
-            Deps.console.warn("You need to install Transporter")
+            workflow.logger.warn("You need to install Transporter")
             throw PumaError.invalid
         }
 

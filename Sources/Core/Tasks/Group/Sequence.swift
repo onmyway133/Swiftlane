@@ -51,8 +51,8 @@ public class Sequence: Task {
             return
         }
 
-        Deps.console.newLine()
-        Deps.console.title("🚀 \(first.name)")
+        workflow.logger.newLine()
+        workflow.logger.title("🚀 \(first.name)")
 
         workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in

@@ -20,8 +20,11 @@ public class Summarizer {
     }
 
     public var records = [Record]()
+    public let logger: Logger
 
-    public init() {}
+    public init(logger: Logger) {
+        self.logger = logger
+    }
 
     public func update(tasks: [Task]) {
         let accumulatedTasks: [Task] = tasks.flatMap({ accumulateTasks(in: $0) })
@@ -31,18 +34,18 @@ public class Summarizer {
     }
 
     public func showTasks() {
-        Deps.console.header("Tasks to run")
+        logger.header("Tasks to run")
         records.enumerated().forEach({ index, record in
             let symbol = record.task.isEnabled ? "✅" : "☑️"
             let text = "  \(index + 1). \(symbol) \(record.task.name)"
-            Deps.console.text(text)
+            logger.text(text)
         })
 
-        Deps.console.newLine()
+        logger.newLine()
     }
 
     public func showSummary() {
-        Deps.console.header("Summary")
+        logger.header("Summary")
 
         records.enumerated().forEach { index, record in
             var duration: TimeInterval = 0
@@ -60,10 +63,10 @@ public class Summarizer {
             }
 
             let timeString = parse(seconds: duration)
-            Deps.console.text("  \(index + 1). \(symbol) \(record.task.name) (\(timeString))")
+            logger.text("  \(index + 1). \(symbol) \(record.task.name) (\(timeString))")
         }
 
-        Deps.console.newLine()
+        logger.newLine()
     }
 
     // MARK: - Track

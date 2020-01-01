@@ -19,7 +19,7 @@ public struct CommandLine {
     ) throws -> String {
         let joinedArguments = arguments.joined(separator: " ")
         let command = "\(program) \(joinedArguments)"
-        Deps.console.highlight(command)
+        workflow.logger.highlight(command)
 
         let process = Process()
         process.launchPath = "/bin/bash"

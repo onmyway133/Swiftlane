@@ -158,6 +158,7 @@ func testDrive() {
     }
 
     workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
+    workflow.logger = FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("log").path)
     workflow.run()
 }
 
