@@ -1,6 +1,6 @@
 ## Workflow
 
-`Workflow` is the executation context, which group and run all tasks sequentially using `Sequence` task. `Workflow` handles error by printing it to the console.
+`Workflow` is the executation context, which groups and runs all tasks sequentially using `Sequence` task. `Workflow` handles error by printing it to the console.
 
 You can use `Workflow` however you like, but it is designed to be used in multiple projects or a project with different build flavors. You can also have 1 `Workflow` for building related tasks, and another `Workflow` for archiving and uploading tasks. 
 
@@ -22,7 +22,7 @@ workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2
 
 ## Summarizer
 
-Workflow has a `Summarizer` where it lists all running tasks when workflow starts, and a summarizer with running duration when workflow finishes. Here are a sample summary.
+Workflow has a `Summarizer` where it lists all running tasks when workflow starts, and a summarizer with running duration when workflow finishes. Here is a sample summary.
 
 ```
   1. ✅ Print working directory (0s)

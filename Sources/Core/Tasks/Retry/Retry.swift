@@ -11,21 +11,17 @@ public class Retry {
     public var name: String = "Retry"
     public var isEnabled = true
 
-    private var task: Task?
-    private var times: UInt = 0
+    private let task: Task
+    private let times: UInt
 
-    public init(_ closure: (Retry) -> Void = { _ in }) {
-        closure(self)
+    public init(times: UInt, @TaskBuilder builder: () -> Task) {
+        self.times = times
+        self.task = builder()
     }
 }
 
 extension Retry: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        guard let task = task else {
-            completion(.failure(PumaError.invalid))
-            return
-        }
-
         run(task: task, times: times, workflow: workflow, completion: completion)
     }
 
@@ -42,12 +38,5 @@ extension Retry: Task {
                 }
             }
         })
-    }
-}
-
-public extension Retry {
-    func retry(task: Task, times: UInt) {
-        self.task = task
-        self.times = times
     }
 }

@@ -19,11 +19,8 @@ func testDrive() {
             $0.wait(for: 2)
         }
 
-        Retry {
-            $0.retry(
-                task: PrintWorkingDirectory(),
-                times: 2
-            )
+        Retry(times: 2) {
+            PrintWorkingDirectory()
         }
 
         RunScript {
