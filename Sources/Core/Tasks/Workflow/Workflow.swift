@@ -13,7 +13,8 @@ public class Workflow {
     public var workingDirectory: String = "."
     public let tasks: [Task]
 
-    let summarizer = Summarizer()
+    public lazy var summarizer = Summarizer(logger: logger)
+    public var logger: Logger = Console()
 
     public init(tasks: [Task] = []) {
         self.tasks = tasks
@@ -41,22 +42,24 @@ public class Workflow {
                 self.summarizer.showSummary()
                 completion(.failure(error))
             }
+
+            try? self.logger.finalize()
         })
     }
 
     public func handle(error: Error) {
         guard let pumaError = error as? PumaError else {
-            Deps.console.error(error.localizedDescription)
+            logger.error(error.localizedDescription)
             return
         }
 
         switch pumaError {
         case .process(let terminationStatus, let output, let error):
             let _ = output
-            Deps.console.error("code \(terminationStatus)")
-            Deps.console.error(error)
+            logger.error("code \(terminationStatus)")
+            logger.error(error)
         default:
-            Deps.console.error(error.localizedDescription)
+            logger.error(error.localizedDescription)
         }
     }
 }

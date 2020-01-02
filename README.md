@@ -98,7 +98,8 @@ func pumaRoar() {
 ## Documentation
 
 - [Getting Started](Documentation/GettingStarted.md)
-- [Task and workflow](Documentation/TaskAndWorkflow.md)
+- [Workflow](Documentation/Workflow.md)
+- [Tasks](Documentation/Tasks.md)
 - [Tips and tricks](Documentation/Tips.md)
 - [Develop](Documentation/Develop.md)
 - [Compile Puma from source](Documentation/Compile.md)

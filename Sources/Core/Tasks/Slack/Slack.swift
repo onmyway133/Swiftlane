@@ -57,9 +57,9 @@ extension Slack: Task {
         sender.send(message: message, completion: { result in
             switch result {
             case .success:
-                Deps.console.success("Posted: \(message.text)")
+                workflow.logger.success("Posted: \(message.text)")
             case .failure(let error):
-                Deps.console.error("Failed: \(error.localizedDescription)")
+                workflow.logger.error("Failed: \(error.localizedDescription)")
             }
             completion(result)
         })

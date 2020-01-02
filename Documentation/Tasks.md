@@ -20,26 +20,6 @@ let workflow = Workflow {
 workflow.run()
 ```
 
-## Workflow
-
-`Workflow` is the executation context, which group and run all tasks sequentially using `Sequence` task. `Workflow` handles error by printing it to the console, it also tracks running tasks in its `Summarizer` so we get summary at the end. 
-
-You can use `Workflow` however you like, but it is designed to be used in multiple projects or a project with different build flavors. You can also have 1 `Workflow` for building related tasks, and another `Workflow` for archiving and uploading tasks. 
-
-`Workflow` has a `name` property where you can use to identify a certain workflow.
-
-By default, all tasks in workflow is related to the current executable running directory, you can change that by configuring `workingDirectory` property.
-
-```swift
-let workflow = Workflow {
-    Build()
-    Test()
-}
-
-workflow.name = "My primary workflow"
-workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
-```
-
 ## Task protocol
 
 At the core of Puma sits the `Task` protocol, every task has a name, isEnabled flag and an action.
@@ -111,6 +91,7 @@ Contains iOS related tasks.
 - [ShowDestinations](Task/ShowDestinations.md): show all available destinations when building and testing
 - [BootSimulator](Tasks/BootSimulator.md): boot simulator
 - [UpdateSimulator](Tasks/UpdateSimulator.md): update statusbar of simulator. This is nifty before taking screenshots
+- [DownloadMetadata](Tasks/DownloadMetadata.md): download metadata from AppStore Connect
 
 ### PumaAndroid
 

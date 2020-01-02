@@ -15,7 +15,8 @@ public struct Simclt {
         try CommandLine().runBash(
             workflow: workflow,
             program: "xcrun",
-            arguments: ["simctl"] + arguments
+            arguments: ["simctl"] + arguments,
+            processHandler: DefaultProcessHandler(logger: workflow.logger)
         )
     }
 }

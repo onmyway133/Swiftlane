@@ -21,7 +21,12 @@ extension RunScript: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
             if let script = script, !script.isEmpty {
-                try CommandLine().runBash(workflow: workflow, program: "", arguments: [script])
+                try CommandLine().runBash(
+                    workflow: workflow,
+                    program: "",
+                    arguments: [script],
+                    processHandler: DefaultProcessHandler(logger: workflow.logger)
+                )
             }
         }
     }

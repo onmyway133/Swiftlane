@@ -34,8 +34,8 @@ public class Concurrent: Task {
         let semaphore = DispatchSemaphore(value: 0)
 
         tasks.forEach { task in
-            Deps.console.newLine()
-            Deps.console.title("🚀 \(task.name)")
+            workflow.logger.newLine()
+            workflow.logger.title("🚀 \(task.name)")
 
             workflow.summarizer.track(task: task, startAt: Deps.date())
             self.runQueue.async {

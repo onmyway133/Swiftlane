@@ -10,7 +10,11 @@ import PumaCore
 import XcbeautifyLib
 
 public struct XcodeBuildProcessHandler: ProcessHandler {
-    public init() {}
+    public let logger: Logger
+
+    public init(logger: Logger = Console()) {
+        self.logger = logger
+    }
 
     public func handle(output data: Data) {
         show(data: data)
@@ -29,6 +33,6 @@ public struct XcodeBuildProcessHandler: ProcessHandler {
             return
         }
 
-        Deps.console.text(line)
+        logger.text(line)
     }
 }

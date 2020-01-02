@@ -30,6 +30,18 @@ func testDrive() {
             $0.script = "echo 'Hello Puma'"
         }
 
+        DownloadMetadata {
+            $0.authenticate(
+                username: ProcessInfo().environment["username"]!,
+                appSpecificPassword: ProcessInfo().environment["password"]!
+            )
+
+            $0.download(
+                appSKU: "com.onmyway133.KeyFighter",
+                saveDirectory: Directory.downloads.path
+            )
+        }
+
         SetVersionNumber {
             $0.isEnabled = false
             $0.versionNumberForAllTargets("1.1")
@@ -125,7 +137,7 @@ func testDrive() {
             $0.isEnabled = false
             $0.authenticate(
                 username: ProcessInfo().environment["username"]!,
-                password: ProcessInfo().environment["password"]!
+                appSpecificPassword: ProcessInfo().environment["password"]!
             )
 
             $0.upload(
@@ -146,6 +158,7 @@ func testDrive() {
     }
 
     workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
+    workflow.logger = FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("puma.log").path)
     workflow.run()
 }
 

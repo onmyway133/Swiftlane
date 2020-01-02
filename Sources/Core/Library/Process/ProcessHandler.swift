@@ -14,10 +14,13 @@ public protocol ProcessHandler {
 
 public struct DefaultProcessHandler: ProcessHandler {
     public typealias Filter = (String) -> Bool
-    public let filter: Filter
 
-    public init(filter: @escaping Filter = { _ in true }) {
+    public let filter: Filter
+    public let logger: Logger
+
+    public init(logger: Logger, filter: @escaping Filter = { _ in true }) {
         self.filter = filter
+        self.logger = logger
     }
 
     public func handle(output data: Data) {
@@ -31,7 +34,7 @@ public struct DefaultProcessHandler: ProcessHandler {
     private func show(data: Data) {
         let text = data.normalizeString()
         if !text.isEmpty && filter(text) {
-            Deps.console.text(text)
+            logger.text(text)
         }
     }
 }

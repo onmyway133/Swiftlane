@@ -24,7 +24,7 @@ extension ShowAvailableDestinations: Task {
             let getDestinations = GetDestinations()
             let destinations = try getDestinations.getAvailable(workflow: workflow)
             destinations.forEach { destination in
-                Deps.console.text(destination.toString())
+                workflow.logger.text(destination.toString())
             }
         }
     }
