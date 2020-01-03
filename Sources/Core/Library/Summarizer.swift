@@ -34,6 +34,8 @@ public class Summarizer {
     }
 
     public func showTasks() {
+        logger.logo()
+//        logger.puma()
         logger.header("Tasks to run")
         records.enumerated().forEach({ index, record in
             let symbol = record.task.isEnabled ? "✅" : "☑️"
