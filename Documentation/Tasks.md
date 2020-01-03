@@ -62,7 +62,7 @@ Puma comes with a bunch of predefined tasks for popular actions, and they are sa
 
 ### Puma
 
-The facade, which exposes convenient `run` function, and incudes other frameworks
+The facade, which exposes convenient `run` function, and includes other frameworks
 
 ### PumaCore
 

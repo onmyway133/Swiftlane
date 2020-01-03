@@ -1,6 +1,6 @@
 ## Workflow
 
-`Workflow` is the executation context, which groups and runs all tasks sequentially using `Sequence` task. `Workflow` handles error by printing it to the console.
+`Workflow` is the execution context, which groups and runs all tasks sequentially using `Sequence` task. `Workflow` handles error by printing it to the console.
 
 You can use `Workflow` however you like, but it is designed to be used in multiple projects or a project with different build flavors. You can also have 1 `Workflow` for building related tasks, and another `Workflow` for archiving and uploading tasks. 
 
