@@ -35,6 +35,7 @@ public struct Destination: Equatable {
         public static let iOS12_2 = "12.2"
         public static let iOS13_1 = "13.1"
         public static let iOS13_2_2 = "13.2.2"
+        public static let iOS13_3 = "13.3"
     }
 
     public init(
