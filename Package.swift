@@ -24,6 +24,10 @@ let package = Package(
         .package(
             url: "https://github.com/ChargePoint/xcparse",
             .upToNextMajor(from : "2.1.0")
+        ),
+        .package(
+            url: "https://github.com/kiliankoe/CLISpinner",
+            .upToNextMajor(from : "0.4.0")
         )
     ],
     targets: [
@@ -48,7 +52,8 @@ let package = Package(
             dependencies: [
                 "PumaCore",
                 "XcbeautifyLib",
-                "XCParseCore"
+                "XCParseCore",
+                "CLISpinner"
             ],
             path: "Sources/iOS"
         ),

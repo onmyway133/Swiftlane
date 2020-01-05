@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "CLISpinner",
+        "repositoryURL": "https://github.com/kiliankoe/CLISpinner",
+        "state": {
+          "branch": null,
+          "revision": "0572232b92ddfd80cbab4ced6973d1c210022968",
+          "version": "0.4.0"
+        }
+      },
+      {
         "package": "Colorizer",
         "repositoryURL": "https://github.com/getGuaka/Colorizer",
         "state": {
@@ -26,6 +35,15 @@
           "branch": null,
           "revision": "6fb29b2378166a30d72120980e1c099c664598de",
           "version": "0.4.1"
+        }
+      },
+      {
+        "package": "Rainbow",
+        "repositoryURL": "https://github.com/onevcat/Rainbow",
+        "state": {
+          "branch": null,
+          "revision": "9c52c1952e9b2305d4507cf473392ac2d7c9b155",
+          "version": "3.1.5"
         }
       },
       {
