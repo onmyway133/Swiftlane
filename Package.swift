@@ -43,7 +43,8 @@ let package = Package(
             name: "PumaCore",
             dependencies: [
                 "Colorizer",
-                "Files"
+                "Files",
+                "CLISpinner"
             ],
             path: "Sources/Core"
         ),
