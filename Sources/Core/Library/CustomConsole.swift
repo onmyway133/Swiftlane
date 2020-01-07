@@ -8,6 +8,7 @@
 import Foundation
 
 public struct CustomConsole {
+    
     public static let pumaLogoAscii = """
                                                                                          
        ...''...                                           ...'''..
@@ -49,7 +50,6 @@ public struct CustomConsole {
                              ....'''''''....
 
 """
-    
     
     public static let pumaTitleAscii = """
                                       
