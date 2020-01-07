@@ -59,6 +59,12 @@ public extension Logger {
     func newLine() {
         log("\n")
     }
+    
+    func newLines(_ n: Int) {
+        for _ in 0..<n {
+            log("\n")
+        }
+    }
 
     func highlight(_ text: String) {
         log(text.foreground.Green)
