@@ -22,13 +22,13 @@ public extension Logger {
 
     func logo() {
         log(String(repeating: "=", count: 60).foreground.Cyan)
-        let text = CustomConsole.pumaLogoAscii
+        let text = ConsoleArt.pumaLogoAscii
         log(text.style.Bold.foreground.Yellow.style.Bold)
     }
     
     func puma() {
         log(String(repeating: "=", count: 60).foreground.Cyan)
-        let text = CustomConsole.pumaTitleAscii
+        let text = ConsoleArt.pumaTitleAscii
         log(text.style.Bold.foreground.Cyan.style.Bold)
     }
     

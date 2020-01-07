@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CustomConsole {
+public struct ConsoleArt {
     
     public static let pumaLogoAscii = """
                                                                                          
