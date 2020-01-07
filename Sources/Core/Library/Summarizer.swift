@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CLISpinner
 
 public class Summarizer {
     public class Record {
@@ -36,14 +37,23 @@ public class Summarizer {
     public func showTasks() {
         logger.logo()
 //        logger.puma()
+        showLoader()
         logger.header("Tasks to run")
         records.enumerated().forEach({ index, record in
             let symbol = record.task.isEnabled ? "✅" : "☑️"
-            let text = "  \(index + 1). \(symbol) \(record.task.name)"
+            let num = index < 9 ? "  \(index + 1)" : " \(index + 1)"
+            let text = " \(num). \(symbol) \(record.task.name)"
             logger.text(text)
         })
 
         logger.newLine()
+    }
+    
+    private func showLoader() {
+        let s = Spinner(pattern: .dots, text: "Loading the tasks...", color: .lightCyan)
+        s.start()
+        sleep(2)
+        s.succeed(text: "Tasks loaded")
     }
 
     public func showSummary() {
