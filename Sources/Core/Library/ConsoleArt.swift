@@ -1,5 +1,5 @@
 //
-//  CustomConsole.swift
+//  ConsoleArt.swift
 //  Basic
 //
 //  Created by Besar Ismaili on 03/01/2020.
