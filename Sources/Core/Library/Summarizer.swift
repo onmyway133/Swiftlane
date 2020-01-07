@@ -37,7 +37,7 @@ public class Summarizer {
     public func showTasks() {
         logger.logo()
 //        logger.puma()
-        showLoader()
+        loadTasksWithAnimation()
         logger.header("Tasks to run")
         records.enumerated().forEach({ index, record in
             let symbol = record.task.isEnabled ? "✅" : "☑️"
@@ -49,7 +49,7 @@ public class Summarizer {
         logger.newLine()
     }
     
-    private func showLoader() {
+    private func loadTasksWithAnimation() {
         let s = Spinner(pattern: .dots, text: "Loading the tasks...", color: .lightCyan)
         s.start()
         sleep(2)
