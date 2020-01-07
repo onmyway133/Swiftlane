@@ -50,6 +50,7 @@ public class Summarizer {
     }
     
     private func loadTasksWithAnimation() {
+        logger.newLines(2)
         let s = Spinner(pattern: .dots, text: "Loading the tasks...", color: .lightCyan)
         s.start()
         sleep(2)
@@ -75,7 +76,8 @@ public class Summarizer {
             }
 
             let timeString = parse(seconds: duration)
-            logger.text("  \(index + 1). \(symbol) \(record.task.name) (\(timeString))")
+            let num = index < 9 ? "  \(index + 1)" : " \(index + 1)"
+            logger.text(" \(num). \(symbol) \(record.task.name) (\(timeString))")
         }
 
         logger.newLine()
