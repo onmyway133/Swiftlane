@@ -35,7 +35,7 @@ public class Concurrent: Task {
 
         tasks.forEach { task in
             workflow.logger.newLine()
-            workflow.logger.title("🚀 \(task.name)")
+            workflow.logger.task(task.name)
 
             workflow.summarizer.track(task: task, startAt: Deps.date())
             self.runQueue.async {

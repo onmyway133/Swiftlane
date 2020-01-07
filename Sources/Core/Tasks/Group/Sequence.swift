@@ -52,7 +52,7 @@ public class Sequence: Task {
         }
 
         workflow.logger.newLine()
-        workflow.logger.title("🚀 \(first.name)")
+        workflow.logger.task(first.name)
 
         workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in
@@ -71,4 +71,5 @@ public class Sequence: Task {
             }
         })
     }
+    
 }
