@@ -14,6 +14,11 @@ public protocol Logger {
 }
 
 public extension Logger {
+    func task(_ text: String) {
+        let task = "[\(getFormattedDate())] 🚀 \(text)"
+        log(task.foreground.Yellow.style.Bold)
+    }
+    
     func header(_ text: String) {
         log(String(repeating: "=", count: 60).foreground.Cyan)
         log(text.style.Bold.foreground.Yellow.style.Bold)
@@ -69,4 +74,12 @@ public extension Logger {
     func highlight(_ text: String) {
         log(text.foreground.Green)
     }
+    
+    func getFormattedDate() -> String {
+        let date = Date()
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "HH:mm:ss"
+        return dateformat.string(from: date)
+    }
+
 }

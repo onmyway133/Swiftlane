@@ -52,7 +52,7 @@ public class Sequence: Task {
         }
 
         workflow.logger.newLine()
-        workflow.logger.title("[\(getFormattedDate())] 🚀 \(first.name)")
+        workflow.logger.task(first.name)
 
         workflow.summarizer.track(task: first, startAt: Deps.date())
         first.run(workflow: workflow, completion: { result in
@@ -72,10 +72,4 @@ public class Sequence: Task {
         })
     }
     
-    func getFormattedDate() -> String {
-        let date = Date()
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "HH:mm:ss"
-        return dateformat.string(from: date)
-    }
 }
