@@ -109,7 +109,6 @@ workflow.run()
 
 - [ ] Auto detect schemes and build settings
 - [ ] Build for Android
-- [ ] Post to chat services like Slack
 - [ ] Interact with the new Appstore Connect API
 - [ ] Integrate with services like Firebase
 - [ ] Capture screenshots
