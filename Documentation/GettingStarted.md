@@ -9,6 +9,7 @@ The recommended way to integrate Puma is via [Swift Package Manager](https://swi
 ### Creating executable with Swift Package Manager
 
 With Swift Package Manager, started by creating an executable and add Puma as a dependency
+Run the following commands in the root dir of your project:
 
 ```sh
 mkdir MyBuildTool
@@ -16,7 +17,23 @@ cd MyBuildTool
 swift package init --type executable
 ```
 
-Inside your `Package.swift`, add Puma as dependencies
+After executing the commands above, you should see this printed out on your terminal:
+
+```sh
+Creating executable package: MyBuildTool
+Creating Package.swift
+Creating README.md
+Creating .gitignore
+Creating Sources/
+Creating Sources/MyBuildTool/main.swift
+Creating Tests/
+Creating Tests/LinuxMain.swift
+Creating Tests/MyBuildToolTests/
+Creating Tests/MyBuildToolTests/MyBuildToolTests.swift
+Creating Tests/MyBuildToolTests/XCTestManifests.swift
+```
+
+Now open your `Package.swift`, add Puma as dependencies
 
 ```swift
 import PackageDescription
@@ -37,6 +54,7 @@ let package = Package(
 ```
 
 Go to MyBuildTool/Sources/MyBuildTool/main.swift and start using tasks from Puma
+Here is an example how to do that:
 
 ```swift
 import Foundation
@@ -95,7 +113,7 @@ import PumaiOS
 - PumaAndroid: Contains Android related tasks. TBD
 - PumaExtra: Contains extra tasks. TBD
 
-For more information, read our [Task and workflow](TaskAndWorkflow.md) guide.
+For more information, read our [Workflow](Workflow.md) guide.
 
 ## Run Puma as macOS command line application
 
