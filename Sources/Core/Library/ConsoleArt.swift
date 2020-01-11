@@ -53,16 +53,16 @@ public struct ConsoleArt {
     
     public static let pumaTitleAscii = """
                                       
-                    8 888888888o   8 8888      88        ,8.       ,8.                   .8.
-                    8 8888    `88. 8 8888      88       ,888.     ,888.                 .888.
-                    8 8888     `88 8 8888      88      .`8888.   .`8888.               :88888.
-                    8 8888     ,88 8 8888      88     ,8.`8888. ,8.`8888.             . `88888.
-                    8 8888.   ,88' 8 8888      88    ,8'8.`8888,8^8.`8888.           .8. `88888.
-                    8 888888888P'  8 8888      88   ,8' `8.`8888' `8.`8888.         .8`8. `88888.
-                    8 8888         8 8888      88  ,8'   `8.`88'   `8.`8888.       .8' `8. `88888.
-                    8 8888         ` 8888     ,8P ,8'     `8.`'     `8.`8888.     .8'   `8. `88888.
-                    8 8888           8888   ,d8P ,8'       `8        `8.`8888.   .888888888. `88888.
-                    8 8888            `Y88888P' ,8'         `         `8.`8888. .8'       `8. `88888.
+                    P PPPPPPPPPo   P PPPP      PP        ,P.       ,P.                   .P.
+                    P PPPP    `PP. P PPPP      PP       ,PPP.     ,PPP.                 .PPP.
+                    P PPPP     `PP P PPPP      PP      .`PPPP.   .`PPPP.               :PPPPP.
+                    P PPPP     ,PP P PPPP      PP     ,P.`PPPP. ,P.`PPPP.             . `PPPPP.
+                    P PPPP.   ,PP' P PPPP      PP    ,P'P.`PPPP,P^P.`PPPP.           .P. `PPPPP.
+                    P PPPPPPPPPP'  P PPPP      PP   ,P' `P.`PPPP' `P.`PPPP.         .P`P. `PPPPP.
+                    P PPPP         P PPPP      PP  ,P'   `P.`PP'   `P.`PPPP.       .P' `P. `PPPPP.
+                    P PPPP         ` PPPP     ,PP ,P'     `P.`'     `P.`PPPP.     .P'   `P. `PPPPP.
+                    P PPPP           PPPP   ,dPP ,P'       `P        `P.`PPPP.   .PPPPPPPPP. `PPPPP.
+                    P PPPP            `YPPPPPP' ,P'         `         `P.`PPPP. .P'       `P. `PPPPP.
 
 """
 }

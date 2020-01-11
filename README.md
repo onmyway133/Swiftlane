@@ -19,6 +19,8 @@ Unlike other command line tool that you need to understand lots of command line 
 
 To see Puma in action, see this [gif](Screenshots/puma.gif)
 
+Below is an example script where it performs the following tasks and finally it posts to slack, for more detailed information check the documentation
+
 ```swift
 import Foundation
 import Puma
@@ -105,14 +107,6 @@ workflow.run()
 - [In the press](Documentation/InThePress.md)
 - [FAQ](Documentation/FAQ.md)
 
-## Road map
-
-- [ ] Auto detect schemes and build settings
-- [ ] Build for Android
-- [ ] Post to chat services like Slack
-- [ ] Interact with the new Appstore Connect API
-- [ ] Integrate with services like Firebase
-- [ ] Capture screenshots
 
 ## Contributing
 
