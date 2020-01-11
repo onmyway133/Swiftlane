@@ -16,16 +16,16 @@ public class Workflow {
     public lazy var summarizer = Summarizer(logger: logger)
     public var logger: Logger = Console()
 
-    public init(tasks: [Task] = []) {
+    required public init(tasks: [Task] = []) {
         self.tasks = tasks
     }
 
-    public init(@TaskBuilder builder: () -> [Task]) {
-        self.tasks = builder()
+    convenience public init(@TaskBuilder builder: () -> [Task]) {
+        self.init(tasks: builder())
     }
 
-    public init(@TaskBuilder builder: () -> Task) {
-        self.tasks = [builder()]
+    convenience public init(@TaskBuilder builder: () -> Task) {
+        self.init(tasks: [builder()])
     }
 
     public func run(completion: @escaping TaskCompletion = { _ in }) {
