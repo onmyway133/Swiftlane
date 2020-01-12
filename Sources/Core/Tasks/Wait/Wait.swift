@@ -24,7 +24,8 @@ extension Wait: Task {
             completion(.success(()))
         })
 
-        RunLoop.current.run()
+        
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: seconds))
     }
 }
 
