@@ -110,3 +110,9 @@ testDrive()
 ## Environment variables and secrets
 
 In the TestPuma workspace, there's TestPuma scheme which is configured on the TestPuma macOS command line target. It is shared which means it gets tracked inside git history. If you run Puma inside Xcode, consider duplicating that TestPuma scheme to another unshared scheme, so you can configure launch arguments and environment variables there.
+
+![](Screenshots/edit_scheme.png)
+
+Pass your environment variables here:
+
+![](Screenshots/add_arguments.png)
