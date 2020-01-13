@@ -21,7 +21,7 @@ swift package generate-xcodeproj
 Open `Example/TestPuma.xcworkspace`, the Puma project has already been included. Select TestPuma scheme, in order to run
 
 - You need to sign TestPuma target, the easiest way is to check Automatic Signing and select a team
-- You need to sign all frameworks in Puma project. 
+- You need to sign all frameworks in Puma project.
 
 
 ### Play around
@@ -111,8 +111,8 @@ testDrive()
 
 In the TestPuma workspace, there's TestPuma scheme which is configured on the TestPuma macOS command line target. It is shared which means it gets tracked inside git history. If you run Puma inside Xcode, consider duplicating that TestPuma scheme to another unshared scheme, so you can configure launch arguments and environment variables there.
 
-![](Screenshots/edit_scheme.png)
+![](../Screenshots/edit_scheme.png)
 
 Pass your environment variables here:
 
-![](Screenshots/add_arguments.png)
+![](../Screenshots/add_arguments.png)
