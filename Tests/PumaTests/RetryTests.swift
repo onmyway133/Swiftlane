@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by skyylex on 13/01/2020.
-//
-
 import Foundation
 import Spek
 import XCTest
