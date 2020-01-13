@@ -10,6 +10,10 @@ let package = Package(
     ],
     dependencies: [
         .package(
+            url: "https://github.com/onmyway133/Spek.git",
+            .upToNextMajor(from: "0.4.0")
+        ),
+        .package(
             url: "https://github.com/thii/xcbeautify.git",
             .upToNextMajor(from: "0.4.1")
         ),
@@ -68,7 +72,8 @@ let package = Package(
         .testTarget(
             name: "PumaTests",
             dependencies: [
-                "Puma"
+                "Puma",
+                "Spek"
             ]
         )
     ]

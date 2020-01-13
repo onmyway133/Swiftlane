@@ -47,6 +47,15 @@
         }
       },
       {
+        "package": "Spek",
+        "repositoryURL": "https://github.com/onmyway133/Spek.git",
+        "state": {
+          "branch": null,
+          "revision": "4c5be65a48bb3f6dd0a199335fb67aa7e6ba1859",
+          "version": "0.4.0"
+        }
+      },
+      {
         "package": "StringScanner",
         "repositoryURL": "https://github.com/getGuaka/StringScanner.git",
         "state": {
