@@ -15,7 +15,7 @@ Unlike other command line tool that you need to understand lots of command line 
 - Simple wrapper around existing tools like xcodebuild, instruments and agvtool
 - Reuse awesome Swift scripting dependencies from Swift community
 
-![](Screenshots/puma.png)
+![](Screenshots/puma_console.png)
 
 To see Puma in action, see this [gif](Screenshots/puma.gif)
 
