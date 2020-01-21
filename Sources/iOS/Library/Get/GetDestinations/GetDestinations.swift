@@ -8,16 +8,10 @@
 import PumaCore
 import Foundation
 
-/// An abstraction over a bash script that executes and prints an output
-public protocol ConsoleCommand {
-    func execute(with: Workflow) -> String?
-}
-
-/// Runs xcrun ang get list of available iOS simulators
-public struct GetListOfDevicesCommand: ConsoleCommand {
-    public init() {}
+/// Runs xcrun and gets list of available simulators
+public struct GetListOfDevicesCommand {
     
-    public func execute(with workflow: Workflow) -> String? {
+    public static func execute(with workflow: Workflow) -> String? {
         return try? CommandLine().runBash(
             workflow: workflow,
             program: "xcrun simctl",
@@ -35,14 +29,15 @@ public struct GetListOfDevicesCommand: ConsoleCommand {
 }
 
 public class GetDestinations {
-    private let consoleCommand: ConsoleCommand
+    public typealias BashCommand = (Workflow) -> String?
+    private let bashCommand: BashCommand
     
-    public init(consoleCommand: ConsoleCommand = GetListOfDevicesCommand()) {
-        self.consoleCommand = consoleCommand
+    public init(bashCommand: @escaping BashCommand = GetListOfDevicesCommand.execute) {
+        self.bashCommand = bashCommand
     }
 
     public func getAvailable(workflow: Workflow) throws -> [Destination] {
-        guard let consoleOutput = consoleCommand.execute(with: workflow) else {
+        guard let consoleOutput = bashCommand(workflow) else {
             throw PumaError.invalid
         }
         
