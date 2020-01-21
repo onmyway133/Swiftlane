@@ -2,7 +2,7 @@
 
 To develop Puma, head over to [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), there is a TestPuma Command Line Tool macOS project with a `main.swift`.
 
-In Example folder, ther is a worksapce TestPuma, it contains
+In Example folder, there is a worksapce TestPuma, it contains
 
 - TestPuma project: this is a macOS command line project to create executable
 - Puma project
