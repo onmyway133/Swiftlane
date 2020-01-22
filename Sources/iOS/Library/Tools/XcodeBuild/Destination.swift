@@ -9,18 +9,27 @@ import Foundation
 
 public struct Destination: Equatable {
     public let name: String
-    public let platform: String
+    public let platform: Platform
     public let os: String
     public let udid: String?
 
-    public struct Platform {
-        public static let iOS = "iOS"
-        public static let iOSSimulator = "iOS Simulator"
-        public static let tvOS = "tvOS"
-        public static let tvOSSimulator = "tvOS Simulator"
-        public static let watchOS = "watchOS"
-        public static let watchOSSimulator = "watchOS Simulator"
-        public static let macOS = "OS X"
+    public enum Platform: String {
+        case iOS = "iOS"
+        case iOSSimulator = "iOS Simulator"
+        case tvOS = "tvOS"
+        case tvOSSimulator = "tvOS Simulator"
+        case watchOS = "watchOS"
+        case watchOSSimulator = "watchOS Simulator"
+        case macOS = "OS X"
+        
+        static var allSupported: [Self] {
+            return [
+                .iOS,
+                .watchOS,
+                .macOS,
+                .tvOS,
+            ]
+        }
     }
     
     public struct Name {
@@ -38,16 +47,22 @@ public struct Destination: Equatable {
         public static let iOS13_3 = "13.3"
     }
 
-    public init(
+    public init?(
         name: String = Name.iPhoneX,
-        platform: String = Platform.iOSSimulator,
+        platform: Platform = .iOSSimulator,
         os: String,
         udid: String? = nil
-    ) {
+    ) { 
         self.name = name
         self.platform = platform
         self.os = os
         self.udid = udid
+    }
+    
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.name == rhs.name &&
+               lhs.platform == rhs.platform &&
+               lhs.os == rhs.os
     }
 }
 
