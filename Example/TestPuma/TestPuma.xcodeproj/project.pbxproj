@@ -33,6 +33,7 @@
 		D237170B23A5814D001F0A2B /* SPMLibc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SPMLibc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168C239318D3005B4779 /* TestPuma */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestPuma; sourceTree = BUILT_PRODUCTS_DIR; };
 		D290168F239318D3005B4779 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D2BF3F9423E397450017EE0D /* TestPuma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestPuma.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 		D290168E239318D3005B4779 /* TestPuma */ = {
 			isa = PBXGroup;
 			children = (
+				D2BF3F9423E397450017EE0D /* TestPuma.entitlements */,
 				D290168F239318D3005B4779 /* main.swift */,
 			);
 			path = TestPuma;
@@ -269,6 +271,7 @@
 		D2901694239318D3005B4779 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestPuma/TestPuma.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78DK947F2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -281,6 +284,7 @@
 		D2901695239318D3005B4779 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TestPuma/TestPuma.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T78DK947F2;
 				ENABLE_HARDENED_RUNTIME = YES;

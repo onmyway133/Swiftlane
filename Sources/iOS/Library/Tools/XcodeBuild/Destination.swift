@@ -47,7 +47,7 @@ public struct Destination: Equatable {
         public static let iOS13_3 = "13.3"
     }
 
-    public init?(
+    public init(
         name: String = Name.iPhoneX,
         platform: Platform = .iOSSimulator,
         os: String,
