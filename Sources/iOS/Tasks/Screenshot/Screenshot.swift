@@ -62,7 +62,7 @@ public extension Screenshot {
 
         xcodebuild.projectType(projectType)
         xcodebuild.scheme(uiTestScheme)
-        xcodebuild.configuration(Configuration.debug)
+        xcodebuild.configuration(configuration)
         xcodebuild.sdk(Sdk.iPhoneSimulator)
     }
 
