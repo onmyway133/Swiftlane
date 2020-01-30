@@ -76,7 +76,7 @@ public extension Destination {
 
         array.append(contentsOf: [
             "name=\(name)",
-            "platform=\(platform)",
+            "platform=\(platform.rawValue)",
             "OS=\(os)",
         ])
 
