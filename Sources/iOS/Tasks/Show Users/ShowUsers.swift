@@ -60,6 +60,10 @@ extension ShowUsers: Task {
         for role in userRoles ?? [] {
             roles += role.rawValue + ","
         }
+        //this removes the last comma
+        if !roles.isEmpty {
+            roles.removeLast()
+        }
         return roles
     }
 }
