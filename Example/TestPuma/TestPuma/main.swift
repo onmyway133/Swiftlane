@@ -26,6 +26,14 @@ func testDrive() {
         RunScript {
             $0.script = "echo 'Hello Puma'"
         }
+        
+        ShowUsers {
+            $0.authenticate(
+                issuerID: ProcessInfo().environment["issuerID"]!,
+                privateKeyID: ProcessInfo().environment["privateKeyID"]!,
+                privateKey: ProcessInfo().environment["privateKey"]!
+            )
+        }
 
         DownloadMetadata {
             $0.authenticate(
