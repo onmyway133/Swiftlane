@@ -23,12 +23,10 @@ public class ShowUsers {
 extension ShowUsers: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
-            
             let group = DispatchGroup()
-            group.enter()
-            
             let provider = APIProvider(configuration: configuration!)
             let endpoint = APIEndpoint.users()
+            group.enter()
             provider.request(endpoint) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -43,7 +41,6 @@ extension ShowUsers: Task {
     }
     
     private func show(_ userResponse: UsersResponse, logger: Logger) {
-        
         for user in userResponse.data {
             if let attributes = user.attributes {
                 let firstName = attributes.firstName

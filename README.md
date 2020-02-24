@@ -31,7 +31,7 @@ let workflow = Workflow {
     RunScript {
         $0.script = "echo 'Hello Puma'"
     }
-    
+
     Screenshot {
         $0.configure(
             projectType: .project("TestApp"),
@@ -39,7 +39,7 @@ let workflow = Workflow {
             uiTestScheme: "TestAppUITests",
             saveDirectory: Directory.downloads.appendingPathComponent("PumaScreenshots").path
         )
-        
+
         $0.add(scenarios: [
             .init(
                 destination: .init(
@@ -61,7 +61,15 @@ let workflow = Workflow {
             )
         ])
     }
-    
+
+    ShowUsers {
+            $0.authenticate(
+                issuerID: ProcessInfo().environment["issuerID"]!,
+                privateKeyID: ProcessInfo().environment["privateKeyID"]!,
+                privateKey: ProcessInfo().environment["privateKey"]!
+            )
+    }
+
     ExportArchive {
         $0.isEnabled = false
         $0.configure(
@@ -78,7 +86,7 @@ let workflow = Workflow {
             exportDirectory: Directory.downloads.path
         )
     }
-    
+
     Slack {
         $0.post(
             message: .init(
@@ -114,4 +122,3 @@ Puma is in its early development, we need your help.
 
 ## License
 Puma is released under the MIT license. See [LICENSE](LICENSE) for details.
-
