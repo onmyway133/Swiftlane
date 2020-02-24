@@ -62,14 +62,6 @@ let workflow = Workflow {
         ])
     }
 
-    ShowUsers {
-            $0.authenticate(
-                issuerID: ProcessInfo().environment["issuerID"]!,
-                privateKeyID: ProcessInfo().environment["privateKeyID"]!,
-                privateKey: ProcessInfo().environment["privateKey"]!
-            )
-    }
-
     ExportArchive {
         $0.isEnabled = false
         $0.configure(
