@@ -57,6 +57,7 @@ public struct XmlDict: XmlItem {
 
     public func toLines() -> [String] {
         var lines = [String]()
+        lines.append("<key>\(key)</key>")
         lines.append("<dict>")
         lines.append(contentsOf: items.flatMap({ $0.toLines() }))
         lines.append("</dict>")
