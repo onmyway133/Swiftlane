@@ -77,7 +77,7 @@ public extension Xcodebuild {
 
     mutating func testPlan(_ path: String) {
         let path = path.deletingPathExtension("xctestplan")
-        arguments.append("-testplan \(path)")
+        arguments.append("-testPlan \(path)")
     }
 
     mutating func exportPath(_ path: String) {
