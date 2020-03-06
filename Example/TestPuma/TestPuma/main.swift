@@ -42,11 +42,10 @@ func testDrive() {
         }
         
         DownloadProfiles {
-            let privateKey = ProcessInfo().environment["privateKey"]!
             $0.authenticate(
                 issuerID: ProcessInfo().environment["issuerId"]!,
                 privateKeyID: ProcessInfo().environment["privateKeyId"]!,
-                privateKey: privateKey
+                privateKey: ProcessInfo().environment["privateKey"]!
             )
             
             $0.download(
