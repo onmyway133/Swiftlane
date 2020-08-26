@@ -26,10 +26,8 @@ func testDrive() {
         RunScript {
             $0.script = "echo 'Hello Puma'"
         }
-        
 
         DownloadMetadata {
-            $0.isEnabled = false
             $0.authenticate(
                 username: ProcessInfo().environment["username"]!,
                 appSpecificPassword: ProcessInfo().environment["password"]!
@@ -40,24 +38,7 @@ func testDrive() {
                 saveDirectory: Directory.downloads.path
             )
         }
-        
-        DownloadProfiles {
-            $0.authenticate(
-                issuerID: ProcessInfo().environment["issuerId"]!,
-                privateKeyID: ProcessInfo().environment["privateKeyId"]!,
-                privateKey: ProcessInfo().environment["privateKey"]!
-            )
-            
-            $0.download(
-                saveDirectory: Directory.downloads.path
-            )
-        }
-        
-        
-        Wait {
-            $0.wait(for: 2)
-        }
-        
+
         SetVersionNumber {
             $0.isEnabled = false
             $0.versionNumberForAllTargets("1.1")
