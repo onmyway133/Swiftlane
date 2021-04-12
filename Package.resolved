@@ -29,21 +29,12 @@
         }
       },
       {
-        "package": "Guaka",
-        "repositoryURL": "https://github.com/nsomar/Guaka.git",
-        "state": {
-          "branch": null,
-          "revision": "6fb29b2378166a30d72120980e1c099c664598de",
-          "version": "0.4.1"
-        }
-      },
-      {
         "package": "Rainbow",
         "repositoryURL": "https://github.com/onevcat/Rainbow",
         "state": {
           "branch": null,
-          "revision": "9c52c1952e9b2305d4507cf473392ac2d7c9b155",
-          "version": "3.1.5"
+          "revision": "626c3d4b6b55354b4af3aa309f998fae9b31a3d9",
+          "version": "3.2.0"
         }
       },
       {
@@ -51,16 +42,16 @@
         "repositoryURL": "https://github.com/onmyway133/Spek.git",
         "state": {
           "branch": null,
-          "revision": "4c5be65a48bb3f6dd0a199335fb67aa7e6ba1859",
-          "version": "0.4.0"
+          "revision": "5d28c801db3c8be5587e48395bc2fd1db917c29b",
+          "version": "0.5.0"
         }
       },
       {
-        "package": "StringScanner",
-        "repositoryURL": "https://github.com/getGuaka/StringScanner.git",
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "de1685ad202cb586d626ed52d6de904dd34189f3",
+          "revision": "831ed5e860a70e745bc1337830af4786b2576881",
           "version": "0.4.1"
         }
       },
@@ -87,8 +78,8 @@
         "repositoryURL": "https://github.com/thii/xcbeautify.git",
         "state": {
           "branch": null,
-          "revision": "61a8f6c7e479f91c895ae92e71cb49b83880965c",
-          "version": "0.7.1"
+          "revision": "21c64495bb3eb9a46ecc9b5eea056d06383eb17c",
+          "version": "0.9.1"
         }
       },
       {
@@ -96,8 +87,8 @@
         "repositoryURL": "https://github.com/ChargePoint/xcparse",
         "state": {
           "branch": null,
-          "revision": "0d05b6912b8d4b016362bd4fe18d32766bbcfc86",
-          "version": "2.1.0"
+          "revision": "61bfe78c55e2e0fc2bc3d3d49add3dbd3829a56b",
+          "version": "2.1.2"
         }
       }
     ]

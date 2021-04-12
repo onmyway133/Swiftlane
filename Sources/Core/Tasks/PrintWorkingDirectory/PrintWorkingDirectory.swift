@@ -11,10 +11,10 @@ public class PrintWorkingDirectory {
     public var name: String = "Print working directory"
     public var isEnabled = true
 
-    public init(_ closure: (PrintWorkingDirectory) -> Void = { _ in }) {
-        closure(self)
-    }
+	public init() { }
 }
+
+// MARK: - Task
 
 extension PrintWorkingDirectory: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {

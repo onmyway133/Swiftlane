@@ -65,25 +65,15 @@ import PumaiOS
 run {
     PrintWorkingDirectory()
     
-    RunScript {
-        $0.script = "echo 'Hello Puma'"
-    }
+    RunScript(script: "echo 'Hello Puma'")
     
-    SetVersionNumber {
-        $0.isEnabled = false
-        $0.versionNumberForAllTargets("1.1")
-    }
+    SetVersionNumber("1.1")
     
-    SetBuildNumber {
-        $0.isEnabled = false
-        $0.buildNumberForAllTargets("2")
-    }
+    SetBuildNumber("2")
     
-    Build {
-        $0.isEnabled = false
-        $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
-        $0.buildsForTesting = true
-    }
+    Build(forTesting: true)
+		.project("TestApp")
+		.scheme("TestApp")
 }
 ```
 

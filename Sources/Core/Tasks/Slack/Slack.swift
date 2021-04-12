@@ -7,15 +7,30 @@
 
 import Foundation
 
+@_functionBuilder
+public struct SlackMessageBuilder {
+	public static func buildBlock(_ messages: Slack.Message...) -> [Slack.Message] {
+		messages
+	}
+}
+
 public class Slack {
     public var name: String = "Send message to Slack"
     public var isEnabled = true
 
-    private var message: Message?
+    private var messages: [Message]
 
-    public init(_ closure: (Slack) -> Void = { _ in }) {
-        closure(self)
-    }
+	required public init(messages: [Message] = []) {
+		self.messages = messages
+	}
+
+	convenience public init(@SlackMessageBuilder builder: () -> [Slack.Message]) {
+		self.init(messages: builder())
+	}
+
+	convenience public init(@SlackMessageBuilder builder: () -> Slack.Message) {
+		self.init(messages: [builder()])
+	}
 }
 
 public extension Slack {
@@ -40,30 +55,39 @@ public extension Slack {
             self.additionalParameters = additionalParameters
         }
     }
-
-    func post(message: Message) {
-        self.message = message
-    }
 }
+
+// MARK: Task
 
 extension Slack: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        guard let message = message else {
-            completion(.failure(PumaError.invalid))
-            return
-        }
-
-        let sender = MessageSender()
-        sender.send(message: message, completion: { result in
-            switch result {
-            case .success:
-                workflow.logger.success("Posted: \(message.text)")
-            case .failure(let error):
-                workflow.logger.error("Failed: \(error.localizedDescription)")
-            }
-            completion(result)
-        })
+		sendNextMessage(sender: MessageSender(), workflow: workflow, completion: completion)
     }
+
+	private func sendNextMessage(sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
+	{
+		guard !messages.isEmpty else {
+			completion(.success(()))
+			return
+		}
+
+		let message = messages.removeFirst()
+		send(message, sender: sender, workflow: workflow, completion: completion)
+	}
+
+	private func send(_ message: Message, sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
+	{
+		sender.send(message: message, completion: { result in
+			switch result {
+			case .success:
+				workflow.logger.success("Posted: \(message.text)")
+				self.sendNextMessage(sender: sender, workflow: workflow, completion: completion)
+			case .failure(let error):
+				workflow.logger.error("Failed: \(error.localizedDescription)")
+				completion(result)
+			}
+		})
+	}
 }
 
 private class MessageSender {

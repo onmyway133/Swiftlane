@@ -11,26 +11,21 @@ public class Wait {
     public var name: String = "Wait"
     public var isEnabled = true
 
-    private var seconds: TimeInterval = 0
+    private let seconds: TimeInterval
 
-    public init(_ closure: (Wait) -> Void = { _ in }) {
-        closure(self)
+	public init(seconds: TimeInterval = 0) {
+		self.seconds = seconds
     }
 }
+
+// MARK: - Task
 
 extension Wait: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
         Timer.scheduledTimer(withTimeInterval: seconds, repeats: false, block: { _ in
             completion(.success(()))
         })
-
         
         RunLoop.current.run(until: Date(timeIntervalSinceNow: seconds))
-    }
-}
-
-public extension Wait {
-    func wait(for seconds: TimeInterval) {
-        self.seconds = seconds
     }
 }

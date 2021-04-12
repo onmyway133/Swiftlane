@@ -3,11 +3,7 @@
 Create `xcarchive`
 
 ```swift
-Archive {
-    $0.configure(
-        projectType: .project("TestApp"),
-        scheme: "TestApp",
-        archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path
-    )
-}
+Archive()
+	.projectType(.project("TestApp"), archivePath: Directory.downloads.appendingPathComponent("TestApp.xcarchive").path)
+	.scheme("TestApp")
 ```

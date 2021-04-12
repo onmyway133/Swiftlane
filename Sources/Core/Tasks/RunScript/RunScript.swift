@@ -10,24 +10,26 @@ import Foundation
 public class RunScript {
     public var name: String = "Run script"
     public var isEnabled = true
-    public var script: String?
 
-    public init(_ closure: (RunScript) -> Void = { _ in }) {
-        closure(self)
-    }
+	private let script: String
+
+	public init(script: String) {
+		self.script = script
+	}
 }
+
+// MARK: - Task
 
 extension RunScript: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
-            if let script = script, !script.isEmpty {
-                try CommandLine().runBash(
-                    workflow: workflow,
-                    program: "",
-                    arguments: [script],
-                    processHandler: DefaultProcessHandler(logger: workflow.logger)
-                )
-            }
+			guard !script.isEmpty else { return }
+			try CommandLine().runBash(
+				workflow: workflow,
+				program: "",
+				arguments: [script],
+				processHandler: DefaultProcessHandler(logger: workflow.logger)
+			)
         }
     }
 }

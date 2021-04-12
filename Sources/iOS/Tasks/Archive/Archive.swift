@@ -13,12 +13,28 @@ public class Archive {
     public var name: String = "Archive"
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
-    public var archivePath: String = ""
 
-    public init(_ closure: (Archive) -> Void = { _ in }) {
-        closure(self)
-    }
+    public init() { }
 }
+
+// MARK: - Modifiers
+
+public extension Archive {
+	func projectType(_ projectType: ProjectType, archivePath path: String? = nil) -> Self {
+		xcodebuild.projectType(projectType)
+		if let path = path {
+			xcodebuild.archivePath(path, name: projectType.name)
+		}
+		return self
+	}
+
+	func scheme(_ scheme: String) -> Self {
+		xcodebuild.scheme(scheme)
+		return self
+	}
+}
+
+// MARK: - Task
 
 extension Archive: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
@@ -26,17 +42,5 @@ extension Archive: Task {
             xcodebuild.arguments.append("archive")
             try xcodebuild.run(workflow: workflow)
         }
-    }
-}
-
-public extension Archive {
-    func configure(
-        projectType: ProjectType,
-        scheme: String,
-        archivePath: String
-    ) {
-        xcodebuild.projectType(projectType)
-        xcodebuild.scheme(scheme)
-        xcodebuild.archivePath(archivePath, name: projectType.name)
     }
 }

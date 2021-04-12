@@ -1,23 +1,20 @@
- ## Update status bar of a simulator
+ ## Configure simulator appearance
 
-`Destination` is used to identifer a simulator, this should be run before taking screenshots
+`UpdateSimulator` can be used to configure the simulator appearance (such as before taking screenshots)
 
  ```swift
-UpdateSimulator {
-    $0.updateStatusBar(
-        destination: .init(
-            name: Destination.Name.iPhoneX,
-            platform: Destination.Platform.iOSSimulator,
-            os: Destination.OS.iOS13_2_2       
-        ),
-        time: "9:41",
-        dataNetwork: .wifi,
-        wifiMode: WifiMode = .active,
-        wifiBars: String = "3",
-        cellularMode: CellularMode = .active,
-        cellularBars: String = "4",
-        batteryState: BatteryState = .charged,
-        batteryLevel: String = "97"
-    )
-}
+let destination = Destination(
+	name: Destination.Name.iPhoneX,
+	platform: Destination.Platform.iOSSimulator,
+	os: Destination.OS.iOS13_2_2       
+)
+UpdateSimulator(destination: destination) 
+	.time("9:41")
+	.dataNetwork(.wifi)
+	.wifiMode(.active)
+	.wifiBars(3)
+	.cellularMode(.active)
+	.cellularBars(4)
+	.batteryState(.charged)
+	.batteryLevel(97)
 ```

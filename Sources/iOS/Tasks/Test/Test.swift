@@ -11,13 +11,55 @@ import PumaCore
 public class Test {
     public var name: String = "Test"
     public var isEnabled = true
-    public var xcodebuild = Xcodebuild()
-    public var testsWithoutBuilding: Bool = false
 
-    public init(_ closure: (Test) -> Void = { _ in }) {
-        closure(self)
-    }
+	private var xcodebuild = Xcodebuild()
+    private let testsWithoutBuilding: Bool
+
+	public init(withoutBuilding: Bool = false) {
+		testsWithoutBuilding = withoutBuilding
+	}
 }
+
+// MARK: - Modifiers
+
+public extension Test {
+	func project(_ name: String) -> Self {
+		xcodebuild.projectType(.project(name))
+		return self
+	}
+
+	func workspace(_ name: String) -> Self {
+		xcodebuild.projectType(.workspace(name))
+		return self
+	}
+
+	func scheme(_ scheme: String) -> Self {
+		xcodebuild.scheme(scheme)
+		return self
+	}
+
+	func configuration(_ configuration: String) -> Self {
+		xcodebuild.configuration(configuration)
+		return self
+	}
+
+	func sdk(_ sdk: String) -> Self {
+		xcodebuild.sdk(sdk)
+		return self
+	}
+
+	func destination(_ destination: Destination) -> Self {
+		xcodebuild.destination(destination)
+		return self
+	}
+
+	func testPlan(_ path: String) -> Self {
+		xcodebuild.testPlan(path)
+		return self
+	}
+}
+
+// MARK: - Task
 
 extension Test: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
@@ -30,27 +72,5 @@ extension Test: Task {
 
             try xcodebuild.run(workflow: workflow)
         }
-    }
-}
-
-public extension Test {
-    func configure(
-        projectType: ProjectType,
-        scheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator
-    ) {
-        xcodebuild.projectType(projectType)
-        xcodebuild.scheme(scheme)
-        xcodebuild.configuration(configuration)
-        xcodebuild.sdk(sdk)
-    }
-
-    func destination(_ destination: Destination) {
-        xcodebuild.destination(destination)
-    }
-
-    func testPlan(_ path: String) {
-        xcodebuild.testPlan(path)
     }
 }

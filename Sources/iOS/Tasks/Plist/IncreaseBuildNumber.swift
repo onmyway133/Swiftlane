@@ -11,26 +11,18 @@ import PumaCore
 public class IncreaseBuildNumber {
     public var name: String = "Increase build number"
     public var isEnabled = true
-    public var agvtool = Agvtool()
 
-    public init(_ closure: (IncreaseBuildNumber) -> Void = { _ in }) {
-        closure(self)
-    }
+	private let agvtool = Agvtool(arguments: ["next-version", "-all"])
+
+	public init() { }
 }
+
+// MARK: - Task
 
 extension IncreaseBuildNumber: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
             try agvtool.run(workflow: workflow)
         }
-    }
-}
-
-public extension IncreaseBuildNumber {
-    func nextVersionForAllTargets() {
-        agvtool.arguments.append(contentsOf: [
-            "next-version",
-            "-all"
-        ])
     }
 }

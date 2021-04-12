@@ -13,19 +13,20 @@ public class BootSimulator {
     public var isEnabled = true
     public var simclt = Simclt()
 
-    private var destination: Destination?
+    private let destination: Destination
 
-    public init(_ closure: (BootSimulator) -> Void = { _ in }) {
-        closure(self)
+	public init(_ destination: Destination) {
+		self.destination = destination
     }
 }
+
+// MARK: - Task
 
 extension BootSimulator: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
             let getDestinations = GetDestinations()
-            if let destination = self.destination,
-                let udid = try getDestinations.findUdid(workflow: workflow, destination: destination) {
+            if let udid = try getDestinations.findUdid(workflow: workflow, destination: destination) {
                 simclt.arguments.append(contentsOf: [
                     "boot",
                     udid
@@ -36,11 +37,5 @@ extension BootSimulator: Task {
 
             try simclt.run(workflow: workflow)
         }
-    }
-}
-
-public extension BootSimulator {
-    func boot(destination: Destination) {
-        self.destination = destination
     }
 }

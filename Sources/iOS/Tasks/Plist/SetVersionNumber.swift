@@ -12,27 +12,21 @@ import PumaCore
 public class SetVersionNumber {
     public var name: String = "Set version number"
     public var isEnabled = true
-    public var agvtool = Agvtool()
 
-    public init(_ closure: (SetVersionNumber) -> Void = { _ in }) {
-        closure(self)
+	private let agvtool: Agvtool
+
+	public init(_ version: String) {
+		agvtool = Agvtool(arguments: ["new-marketing-version", version])
     }
 }
+
+// MARK: - Task
 
 extension SetVersionNumber: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
             try agvtool.run(workflow: workflow)
         }
-    }
-}
-
-public extension SetVersionNumber {
-    func versionNumberForAllTargets(_ version: String) {
-        agvtool.arguments.append(contentsOf: [
-            "new-marketing-version",
-            version
-        ])
     }
 }
 
