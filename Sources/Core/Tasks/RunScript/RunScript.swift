@@ -13,7 +13,7 @@ public class RunScript {
 
 	private let script: String
 
-	public init(script: String) {
+	public init(_ script: String) {
 		self.script = script
 	}
 }

@@ -21,7 +21,7 @@ func testDrive() {
 			PrintWorkingDirectory()
 		}
 
-		RunScript(script: "echo 'Hello Puma'")
+		RunScript("echo 'Hello Puma'")
 			.name("Hello Puma")
 
 		DownloadMetadata(appSKU: "com.onmyway133.KeyFighter", saveDirectory: Directory.downloads.path)

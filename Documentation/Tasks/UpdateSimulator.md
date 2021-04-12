@@ -1,6 +1,6 @@
  ## Configure simulator appearance
 
-`UpdateSimulator` can be used to configure the simulator appearance (such as before taking screenshots)
+`UpdateSimulator` can be used to configure a simulator's status bar appearance (such as before taking screenshots)
 
  ```swift
 let destination = Destination(

@@ -26,8 +26,7 @@ final class WaitTests: XCTestCase {
         let positiveTimeout = 0.2
         
         let workflow = Workflow()
-        let wait = Wait()
-        wait.wait(for: positiveTimeout)
+        let wait = Wait(seconds: positiveTimeout)
         
         let expectation = self.expectation(description: "Expect specified timeout for completion call")
         wait.run(workflow: workflow) { (result) in
