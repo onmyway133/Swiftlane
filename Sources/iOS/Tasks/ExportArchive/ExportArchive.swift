@@ -16,49 +16,49 @@ public class ExportArchive {
 
     private var optionsPlist: OptionsPlist
 
-	public init(options: OptionsPlist = .plistPath("")) {
-		optionsPlist = options
+    public init(options: OptionsPlist = .plistPath("")) {
+        optionsPlist = options
     }
 }
 
 // MARK: - Modifiers
 
 public extension ExportArchive {
-	func projectType(_ projectType: ProjectType, archivePath path: String) -> Self {
-		xcodebuild.projectType(projectType)
-		xcodebuild.archivePath(path, name: projectType.name)
-		return self
-	}
+    func projectType(_ projectType: ProjectType, archivePath path: String) -> Self {
+        xcodebuild.projectType(projectType)
+        xcodebuild.archivePath(path, name: projectType.name)
+        return self
+    }
 
-	func exportPath(_ exportPath: String) -> Self {
-		xcodebuild.exportPath(exportPath)
-		return self
-	}
+    func exportPath(_ exportPath: String) -> Self {
+        xcodebuild.exportPath(exportPath)
+        return self
+    }
 }
 
 // MARK: - Task
 
 extension ExportArchive: Task {
-	public func run(workflow: Workflow, completion: TaskCompletion) {
-		handleTryCatch(completion) {
-			try applyOptionsPlist()
-			xcodebuild.arguments.append("-exportArchive")
+    public func run(workflow: Workflow, completion: TaskCompletion) {
+        handleTryCatch(completion) {
+            try applyOptionsPlist()
+            xcodebuild.arguments.append("-exportArchive")
 
-			switch optionsPlist {
-			case .options(let options):
-				switch options.signing {
-				case .automatic:
-					xcodebuild.arguments.append("-allowProvisioningUpdates")
-				default:
-					break
-				}
-			default:
-				break
-			}
+            switch optionsPlist {
+            case .options(let options):
+                switch options.signing {
+                case .automatic:
+                    xcodebuild.arguments.append("-allowProvisioningUpdates")
+                default:
+                    break
+                }
+            default:
+                break
+            }
 
-			try xcodebuild.run(workflow: workflow)
-		}
-	}
+            try xcodebuild.run(workflow: workflow)
+        }
+    }
 }
 
 private extension ExportArchive {

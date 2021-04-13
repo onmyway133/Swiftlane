@@ -20,18 +20,18 @@ public class Archive {
 // MARK: - Modifiers
 
 public extension Archive {
-	func projectType(_ projectType: ProjectType, archivePath path: String? = nil) -> Self {
-		xcodebuild.projectType(projectType)
-		if let path = path {
-			xcodebuild.archivePath(path, name: projectType.name)
-		}
-		return self
-	}
+    func projectType(_ projectType: ProjectType, archivePath path: String? = nil) -> Self {
+        xcodebuild.projectType(projectType)
+        if let path = path {
+            xcodebuild.archivePath(path, name: projectType.name)
+        }
+        return self
+    }
 
-	func scheme(_ scheme: String) -> Self {
-		xcodebuild.scheme(scheme)
-		return self
-	}
+    func scheme(_ scheme: String) -> Self {
+        xcodebuild.scheme(scheme)
+        return self
+    }
 }
 
 // MARK: - Task

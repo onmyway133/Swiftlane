@@ -4,7 +4,7 @@ Use to move a file to another location, this is nifty to organize build and sign
 
 ```swift
 MoveFile(
-	from: Directory.downloads.appendingPathComponent("cert.md").path,
-	to: Directory.downloads.appendingPathComponent("ProductionCertificate.md").path 
+    from: Directory.downloads.appendingPathComponent("cert.md").path,
+    to: Directory.downloads.appendingPathComponent("ProductionCertificate.md").path 
 )
 ```

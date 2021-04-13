@@ -4,6 +4,6 @@ This task use a script from [Transporter](https://apps.apple.com/us/app/transpor
 
 ```swift
 DownloadMetadata(appSKU: "com.onmyway133.KeyFighter", saveDirectory: Directory.downloads.path)
-	.username(ProcessInfo().environment["username"]!)
+    .username(ProcessInfo().environment["username"]!)
     .password(ProcessInfo().environment["password"]!)
 ```

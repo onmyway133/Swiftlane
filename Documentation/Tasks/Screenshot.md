@@ -28,28 +28,28 @@ Then in Puma, we can use `Screenshot` task
 
 ```swift
 Screenshot()
-	.project("TestApp")
-	.appScheme("TestApp")
+    .project("TestApp")
+    .appScheme("TestApp")
     .uiTestScheme("TestAppUITests")
     .saveDirectory(Directory.downloads.appendingPathComponent("PumaScreenshots").path)
     .scenarios(
-		.init(
-			destination: .init(
-				name: Destination.Name.iPhone11,
-				platform: Destination.Platform.iOSSimulator,
-				os: Destination.OS.iOS13_2_2
-			),
-			language: Language.en_US,
-			locale: Locale.en_US
-		),
-		.init(
-			destination: .init(
-				name: Destination.Name.iPhone11Pro,
-				platform: Destination.Platform.iOSSimulator,
-				os: Destination.OS.iOS13_2_2
-			),
-			language: Language.ja,
-			locale: Locale.ja
-		)
-	)
+        .init(
+            destination: .init(
+                name: Destination.Name.iPhone11,
+                platform: Destination.Platform.iOSSimulator,
+                os: Destination.OS.iOS13_2_2
+            ),
+            language: Language.en_US,
+            locale: Locale.en_US
+        ),
+        .init(
+            destination: .init(
+                name: Destination.Name.iPhone11Pro,
+                platform: Destination.Platform.iOSSimulator,
+                os: Destination.OS.iOS13_2_2
+            ),
+            language: Language.ja,
+            locale: Locale.ja
+        )
+    )
 ```

@@ -13,10 +13,10 @@ public class SetVersionNumber {
     public var name: String = "Set version number"
     public var isEnabled = true
 
-	private let agvtool: Agvtool
+    private let agvtool: Agvtool
 
-	public init(_ version: String) {
-		agvtool = Agvtool(arguments: ["new-marketing-version", version])
+    public init(_ version: String) {
+        agvtool = Agvtool(arguments: ["new-marketing-version", version])
     }
 }
 
@@ -29,4 +29,3 @@ extension SetVersionNumber: Task {
         }
     }
 }
-

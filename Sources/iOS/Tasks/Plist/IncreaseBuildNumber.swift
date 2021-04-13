@@ -12,9 +12,9 @@ public class IncreaseBuildNumber {
     public var name: String = "Increase build number"
     public var isEnabled = true
 
-	private let agvtool = Agvtool(arguments: ["next-version", "-all"])
+    private let agvtool = Agvtool(arguments: ["next-version", "-all"])
 
-	public init() { }
+    public init() { }
 }
 
 // MARK: - Task

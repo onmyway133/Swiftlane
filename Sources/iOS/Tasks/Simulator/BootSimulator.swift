@@ -15,8 +15,8 @@ public class BootSimulator {
 
     private let destination: Destination
 
-	public init(_ destination: Destination) {
-		self.destination = destination
+    public init(_ destination: Destination) {
+        self.destination = destination
     }
 }
 

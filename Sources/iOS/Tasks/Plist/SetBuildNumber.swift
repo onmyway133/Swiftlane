@@ -13,10 +13,10 @@ public class SetBuildNumber {
     public var name: String = "Set build number"
     public var isEnabled = true
 
-	private let agvtool: Agvtool
+    private let agvtool: Agvtool
 
-	public init(_ buildNumber: String) {
-		agvtool = Agvtool(arguments: ["new-version", "-all", buildNumber])
+    public init(_ buildNumber: String) {
+        agvtool = Agvtool(arguments: ["new-version", "-all", buildNumber])
     }
 }
 

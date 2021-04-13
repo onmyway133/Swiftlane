@@ -13,71 +13,71 @@ public class Screenshot {
     public var name: String = "Screenshot"
     public var isEnabled = true
 
-	var xcodebuild = Xcodebuild()
+    var xcodebuild = Xcodebuild()
 
     var saveDirectory: String = "."
-	var uiTestScheme: String = ""
+    var uiTestScheme: String = ""
 
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
 
     public init() {
-		xcodebuild.sdk(Sdk.iPhoneSimulator)
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
     }
 }
 
 // MARK: - Modifiers
 
 public extension Screenshot {
-	func project(_ name: String) -> Self {
-		xcodebuild.projectType(.project(name))
-		return self
-	}
+    func project(_ name: String) -> Self {
+        xcodebuild.projectType(.project(name))
+        return self
+    }
 
-	func workspace(_ name: String) -> Self {
-		xcodebuild.projectType(.workspace(name))
-		return self
-	}
+    func workspace(_ name: String) -> Self {
+        xcodebuild.projectType(.workspace(name))
+        return self
+    }
 
-	func scheme(_ scheme: String) -> Self {
-		xcodebuild.scheme(scheme)
-		return self
-	}
+    func scheme(_ scheme: String) -> Self {
+        xcodebuild.scheme(scheme)
+        return self
+    }
 
-	func uiTestScheme(_ scheme: String) -> Self {
-		uiTestScheme = scheme
-		return self
-	}
+    func uiTestScheme(_ scheme: String) -> Self {
+        uiTestScheme = scheme
+        return self
+    }
 
-	func configuration(_ configuration: String) -> Self {
-		xcodebuild.configuration(configuration)
-		return self
-	}
+    func configuration(_ configuration: String) -> Self {
+        xcodebuild.configuration(configuration)
+        return self
+    }
 
-	func sdk(_ sdk: String) -> Self {
-		xcodebuild.sdk(sdk)
-		return self
-	}
+    func sdk(_ sdk: String) -> Self {
+        xcodebuild.sdk(sdk)
+        return self
+    }
 
-	func appScheme(_ appScheme: String) -> Self {
-		self.appScheme = appScheme
-		return self
-	}
+    func appScheme(_ appScheme: String) -> Self {
+        self.appScheme = appScheme
+        return self
+    }
 
-	func saveDirectory(_ saveDirectory: String) -> Self {
-		self.saveDirectory = saveDirectory
-		return self
-	}
+    func saveDirectory(_ saveDirectory: String) -> Self {
+        self.saveDirectory = saveDirectory
+        return self
+    }
 
-	func testPlan(_ path: String) -> Self {
-		xcodebuild.testPlan(path)
-		return self
-	}
+    func testPlan(_ path: String) -> Self {
+        xcodebuild.testPlan(path)
+        return self
+    }
 
-	func scenarios(_ scenarios: Scenario...) -> Self {
-		self.scenarios.append(contentsOf: scenarios)
-		return self
-	}
+    func scenarios(_ scenarios: Scenario...) -> Self {
+        self.scenarios.append(contentsOf: scenarios)
+        return self
+    }
 }
 
 // MARK: - Task
