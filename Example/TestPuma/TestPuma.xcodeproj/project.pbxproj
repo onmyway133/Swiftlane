@@ -58,6 +58,7 @@
 				D29016C0239318F8005B4779 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D290168D239318D3005B4779 /* Products */ = {
 			isa = PBXGroup;
@@ -273,7 +274,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TestPuma/TestPuma.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T78DK947F2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../.build/checkouts/swift-package-manager/Sources/clibc/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,7 +287,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TestPuma/TestPuma.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T78DK947F2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../.build/checkouts/swift-package-manager/Sources/clibc/include";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -27,15 +27,12 @@ class TestAppUITests: XCTestCase {
 Then in Puma, we can use `Screenshot` task
 
 ```swift
-Screenshot {
-    $0.configure(
-        projectType: .project("TestApp"),
-        appScheme: "TestApp",
-        uiTestScheme: "TestAppUITests",
-        saveDirectory: Directory.downloads.appendingPathComponent("PumaScreenshots").path
-    )
-
-    $0.add(scenarios: [
+Screenshot()
+    .project("TestApp")
+    .appScheme("TestApp")
+    .uiTestScheme("TestAppUITests")
+    .saveDirectory(Directory.downloads.appendingPathComponent("PumaScreenshots").path)
+    .scenarios(
         .init(
             destination: .init(
                 name: Destination.Name.iPhone11,
@@ -54,6 +51,5 @@ Screenshot {
             language: Language.ja,
             locale: Locale.ja
         )
-    ])
-}
+    )
 ```

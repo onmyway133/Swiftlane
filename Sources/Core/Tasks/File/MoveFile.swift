@@ -11,41 +11,25 @@ import Files
 public class MoveFile {
     public var name: String = "Move file"
     public var isEnabled = true
-    public var script: String?
 
-    private var from: String?
-    private var to: String?
+    private let location: String
+    private let destination: String
 
-    public init(_ closure: (MoveFile) -> Void = { _ in }) {
-        closure(self)
+    public init(from location: String, to destination: String) {
+        self.location = location
+        self.destination = destination
     }
 }
 
 extension MoveFile: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
-        guard let from = from, let to = to else {
-            completion(.failure(PumaError.invalid))
-            return
-        }
-
         do {
-            try Folder.createFolderIfNeeded(path: to.folderPath())
-            try File(path: from).move(to: Folder(path: to.folderPath()))
-            try File(path: to).rename(to: to.lastPathComponent(), keepExtension: false)
+            try Folder.createFolderIfNeeded(path: destination.folderPath())
+            try File(path: location).move(to: Folder(path: destination.folderPath()))
+            try File(path: destination).rename(to: destination.lastPathComponent(), keepExtension: false)
             completion(.success(()))
         } catch {
             completion(.failure(error))
         }
-    }
-}
-
-public extension MoveFile {
-    /// Move file to another location
-    /// - Parameters:
-    ///   - fromPath: Full path to source location. For example /Users/me/Downloads/abc.md
-    ///   - toPath: Full path to destination location. For example /Users/me/Downloads/def.md
-    func move(from: String, to: String) {
-        self.from = from
-        self.to = from
     }
 }

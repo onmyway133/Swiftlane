@@ -12,13 +12,50 @@ import PumaCore
 public class Build {
     public var name = "Build"
     public var isEnabled = true
-    public var xcodebuild = Xcodebuild()
-    public var buildsForTesting: Bool = false
-    
-    public init(_ closure: (Build) -> Void = { _ in }) {
-        closure(self)
+
+    private var xcodebuild = Xcodebuild()
+    private let buildsForTesting: Bool
+
+    public init(forTesting: Bool = false) {
+        buildsForTesting = forTesting
     }
 }
+
+// MARK: - Modifiers
+
+public extension Build {
+    func project(_ name: String) -> Self {
+        xcodebuild.projectType(.project(name))
+        return self
+    }
+
+    func workspace(_ name: String) -> Self {
+        xcodebuild.projectType(.workspace(name))
+        return self
+    }
+
+    func scheme(_ scheme: String) -> Self {
+        xcodebuild.scheme(scheme)
+        return self
+    }
+
+    func configuration(_ configuration: String) -> Self {
+        xcodebuild.configuration(configuration)
+        return self
+    }
+
+    func destination(_ destination: Destination) -> Self {
+        xcodebuild.destination(destination)
+        return self
+    }
+
+    func arguments(_ arguments: String...) -> Self {
+        xcodebuild.arguments.append(contentsOf: arguments)
+        return self
+    }
+}
+
+// MARK: - Task
 
 extension Build: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
@@ -31,23 +68,5 @@ extension Build: Task {
 
             try xcodebuild.run(workflow: workflow)
         }
-    }
-}
-
-public extension Build {
-    func configure(
-        projectType: ProjectType,
-        scheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator
-    ) {
-        xcodebuild.projectType(projectType)
-        xcodebuild.scheme(scheme)
-        xcodebuild.configuration(configuration)
-        xcodebuild.sdk(sdk)
-    }
-
-    func destination(_ destination: Destination) {
-        xcodebuild.destination(destination)
     }
 }

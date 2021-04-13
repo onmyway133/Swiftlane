@@ -14,12 +14,29 @@ public class ExportArchive {
     public var isEnabled = true
     public var xcodebuild = Xcodebuild()
 
-    private var optionsPlist: OptionsPlist = .plistPath("")
+    private var optionsPlist: OptionsPlist
 
-    public init(_ closure: (ExportArchive) -> Void = { _ in }) {
-        closure(self)
+    public init(options: OptionsPlist = .plistPath("")) {
+        optionsPlist = options
     }
 }
+
+// MARK: - Modifiers
+
+public extension ExportArchive {
+    func projectType(_ projectType: ProjectType, archivePath path: String) -> Self {
+        xcodebuild.projectType(projectType)
+        xcodebuild.archivePath(path, name: projectType.name)
+        return self
+    }
+
+    func exportPath(_ exportPath: String) -> Self {
+        xcodebuild.exportPath(exportPath)
+        return self
+    }
+}
+
+// MARK: - Task
 
 extension ExportArchive: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
@@ -41,21 +58,6 @@ extension ExportArchive: Task {
 
             try xcodebuild.run(workflow: workflow)
         }
-    }
-}
-
-public extension ExportArchive {
-    func configure(
-        projectType: ProjectType,
-        archivePath: String,
-        optionsPlist: OptionsPlist,
-        exportDirectory: String
-    ) {
-        self.optionsPlist = optionsPlist
-
-        xcodebuild.projectType(projectType)
-        xcodebuild.exportPath(exportDirectory)
-        xcodebuild.archivePath(archivePath, name: projectType.name)
     }
 }
 

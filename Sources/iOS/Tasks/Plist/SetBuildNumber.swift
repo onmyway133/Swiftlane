@@ -12,27 +12,20 @@ import PumaCore
 public class SetBuildNumber {
     public var name: String = "Set build number"
     public var isEnabled = true
-    public var agvtool = Agvtool()
 
-    public init(_ closure: (SetBuildNumber) -> Void = { _ in }) {
-        closure(self)
+    private let agvtool: Agvtool
+
+    public init(_ buildNumber: String) {
+        agvtool = Agvtool(arguments: ["new-version", "-all", buildNumber])
     }
 }
+
+// MARK: - Task
 
 extension SetBuildNumber: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
             try agvtool.run(workflow: workflow)
         }
-    }
-}
-
-public extension SetBuildNumber {
-    func buildNumberForAllTargets(_ number: String) {
-        agvtool.arguments.append(contentsOf: [
-            "new-version",
-            "-all",
-            number
-        ])
     }
 }

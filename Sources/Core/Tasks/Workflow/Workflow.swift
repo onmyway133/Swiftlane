@@ -10,11 +10,12 @@ import Foundation
 /// Workflow is a group of tasks
 public class Workflow {
     public var name: String = "Workflow"
-    public var workingDirectory: String = "."
-    public let tasks: [Task]
 
-    public lazy var summarizer = Summarizer(logger: logger)
-    public var logger: Logger = Console()
+    public private(set) var workingDirectory: String = "."
+    public private(set) lazy var summarizer = Summarizer(logger: logger)
+    public private(set) var logger: Logger = Console()
+
+    private let tasks: [Task]
 
     required public init(tasks: [Task] = []) {
         self.tasks = tasks
@@ -27,8 +28,23 @@ public class Workflow {
     convenience public init(@TaskBuilder builder: () -> Task) {
         self.init(tasks: [builder()])
     }
+}
 
-    public func run(completion: @escaping TaskCompletion = { _ in }) {
+public extension Workflow {
+    func logger(_ logger: Logger) -> Self {
+        self.logger = logger
+        return self
+    }
+
+    func workingDirectory(_ workingDirectory: String) -> Self {
+        self.workingDirectory = workingDirectory
+        return self
+    }
+}
+
+public extension Workflow
+{
+    func run(completion: @escaping TaskCompletion = { _ in }) {
         summarizer.update(tasks: tasks)
         summarizer.showTasks()
 
@@ -47,17 +63,12 @@ public class Workflow {
         })
     }
 
-    public func handle(error: Error) {
-        guard let pumaError = error as? PumaError else {
-            logger.error(error.localizedDescription)
-            return
-        }
-
-        switch pumaError {
-        case .process(let terminationStatus, let output, let error):
-            let _ = output
+    private func handle(error: Error) {
+        switch error {
+        case PumaError.process(let terminationStatus, _, let error):
             logger.error("code \(terminationStatus)")
             logger.error(error)
+
         default:
             logger.error(error.localizedDescription)
         }

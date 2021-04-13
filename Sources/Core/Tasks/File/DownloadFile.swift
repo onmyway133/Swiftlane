@@ -11,25 +11,30 @@ import Files
 public class DownloadFile {
     public var name: String = "Download file"
     public var isEnabled = true
-    public var script: String?
 
-    private var url: URL?
-    private var to: String?
+    private let url: URL
+    private var to: String = "."
 
-    public init(_ closure: (DownloadFile) -> Void = { _ in }) {
-        closure(self)
+    public init(remoteURL: URL) {
+        url = remoteURL
     }
 }
 
+// MARK: - Modifiers
+
+public extension DownloadFile {
+    func destination(_ path: String) -> Self {
+        to = path
+        return self
+    }
+}
+
+// MARK: - Task
+
 extension DownloadFile: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-        guard let url = url, let to = to else {
-            completion(.failure(PumaError.invalid))
-            return
-        }
-
         let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { [to] (data, response, error) in
             guard let data = data else {
                 completion(.failure(error ?? PumaError.invalid))
                 return
@@ -47,15 +52,3 @@ extension DownloadFile: Task {
         task.resume()
     }
 }
-
-public extension DownloadFile {
-    /// Download and save
-    /// - Parameters:
-    ///   - url: url of remote resource
-    ///   - toPath: Full path to destination location. For example /Users/me/Downloads/def.md
-    func download(url: URL, to: String) {
-        self.url = url
-        self.to = to
-    }
-}
-

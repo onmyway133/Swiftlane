@@ -8,16 +8,15 @@ You can use `Workflow` however you like, but it is designed to be used in multip
 
 ## Working directory
 
-By default, all tasks in workflow is related to the current executable running directory, you can change that by configuring `workingDirectory` property.
+By default, all tasks in workflow is related to the current executable running directory, you can change that by using `workingDirectory(_:)` modifier.
 
 ```swift
 let workflow = Workflow {
     Build()
     Test()
 }
-
-workflow.name = "My primary workflow"
-workflow.workingDirectory = Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path
+    .name("My primary workflow")
+    .workingDirectory(Directory.home.appendingPathComponent("XcodeProject2/Puma/Example/TestApp").path)
 ```
 
 ## Summarizer
@@ -62,6 +61,5 @@ let workflow = Workflow {
     Build()
     Test()
 }
-
-workflow.logger = FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("puma.log").path)
+    .logger(FileLogger(saveFilePath: Directory.downloads.appendingPathComponent("puma.log").path))
 ```

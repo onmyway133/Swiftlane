@@ -12,7 +12,8 @@ import Files
 public class Screenshot {
     public var name: String = "Screenshot"
     public var isEnabled = true
-    public var xcodebuild = Xcodebuild()
+
+    var xcodebuild = Xcodebuild()
 
     var saveDirectory: String = "."
     var uiTestScheme: String = ""
@@ -20,10 +21,66 @@ public class Screenshot {
     private var scenarios = [Scenario]()
     private var appScheme: String = ""
 
-    public init(_ closure: (Screenshot) -> Void = { _ in }) {
-        closure(self)
+    public init() {
+        xcodebuild.sdk(Sdk.iPhoneSimulator)
     }
 }
+
+// MARK: - Modifiers
+
+public extension Screenshot {
+    func project(_ name: String) -> Self {
+        xcodebuild.projectType(.project(name))
+        return self
+    }
+
+    func workspace(_ name: String) -> Self {
+        xcodebuild.projectType(.workspace(name))
+        return self
+    }
+
+    func scheme(_ scheme: String) -> Self {
+        xcodebuild.scheme(scheme)
+        return self
+    }
+
+    func uiTestScheme(_ scheme: String) -> Self {
+        uiTestScheme = scheme
+        return self
+    }
+
+    func configuration(_ configuration: String) -> Self {
+        xcodebuild.configuration(configuration)
+        return self
+    }
+
+    func sdk(_ sdk: String) -> Self {
+        xcodebuild.sdk(sdk)
+        return self
+    }
+
+    func appScheme(_ appScheme: String) -> Self {
+        self.appScheme = appScheme
+        return self
+    }
+
+    func saveDirectory(_ saveDirectory: String) -> Self {
+        self.saveDirectory = saveDirectory
+        return self
+    }
+
+    func testPlan(_ path: String) -> Self {
+        xcodebuild.testPlan(path)
+        return self
+    }
+
+    func scenarios(_ scenarios: Scenario...) -> Self {
+        self.scenarios.append(contentsOf: scenarios)
+        return self
+    }
+}
+
+// MARK: - Task
 
 extension Screenshot: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
@@ -44,33 +101,5 @@ extension Screenshot: Task {
         } catch {
             completion(.failure(error))
         }
-    }
-}
-
-public extension Screenshot {
-    func configure(
-        projectType: ProjectType,
-        appScheme: String,
-        uiTestScheme: String,
-        configuration: String = Configuration.debug,
-        sdk: String = Sdk.iPhoneSimulator,
-        saveDirectory: String
-    ) {
-        self.appScheme = appScheme
-        self.uiTestScheme = uiTestScheme
-        self.saveDirectory = saveDirectory
-
-        xcodebuild.projectType(projectType)
-        xcodebuild.scheme(uiTestScheme)
-        xcodebuild.configuration(configuration)
-        xcodebuild.sdk(Sdk.iPhoneSimulator)
-    }
-
-    func testPlan(_ path: String) {
-        xcodebuild.testPlan(path)
-    }
-
-    func add(scenarios: [Scenario]) {
-        self.scenarios.append(contentsOf: scenarios)
     }
 }

@@ -65,25 +65,15 @@ import PumaiOS
 run {
     PrintWorkingDirectory()
     
-    RunScript {
-        $0.script = "echo 'Hello Puma'"
-    }
+    RunScript("echo 'Hello Puma'")
     
-    SetVersionNumber {
-        $0.isEnabled = false
-        $0.versionNumberForAllTargets("1.1")
-    }
+    SetVersionNumber("1.1")
     
-    SetBuildNumber {
-        $0.isEnabled = false
-        $0.buildNumberForAllTargets("2")
-    }
+    SetBuildNumber("2")
     
-    Build {
-        $0.isEnabled = false
-        $0.configure(projectType: .project("TestApp"), scheme: "TestApp")
-        $0.buildsForTesting = true
-    }
+    Build(forTesting: true)
+        .project("TestApp")
+        .scheme("TestApp")
 }
 ```
 
@@ -118,4 +108,3 @@ For more information, read our [Workflow](Workflow.md) guide.
 ## Run Puma as macOS command line application
 
 Another way to consume Puma is via Xcode. Create a macOS command line application and add Puma via Swift Package Manager in Xcode. This is the same way Puma is developed via [TestPuma](https://github.com/pumaswift/Puma/tree/develop/Example/TestPuma), for more information, read our [Develop](./Develop.md) guide.
-

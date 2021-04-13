@@ -4,8 +4,8 @@ The core of Puma is `Task`. When you call `run` method, it actually uses `Workfl
 
 ```swif
 run {
-    Build
-    Test
+    Build()
+    Test()
 }
 ```
 
@@ -13,8 +13,8 @@ is the same as
 
 ```swift
 let workflow = Workflow {
-    Build
-    Test
+    Build()
+    Test()
 }
 
 workflow.run()
@@ -22,7 +22,7 @@ workflow.run()
 
 ## Task protocol
 
-At the core of Puma sits the `Task` protocol, every task has a name, isEnabled flag and an action.
+At the core of Puma sits the `Task` protocol, every task has a `name`, `isEnabled` flag and an action.
 
 ```swift
 public typealias TaskCompletion = (Result<(), Error>) -> Void
@@ -38,22 +38,20 @@ The `workflow` parameter in `run` function acts as the context for all the tasks
 
 ### Disable a task
 
-Some times you want to temporarily disable a task, every task in Puma needs to conform to `Task` protocol, and there is required `isEnabled` property where you can toggle off a task
+Some times you want to temporarily disable a task, every task in Puma needs to conform to `Task` protocol, and there is a modifier `enable(_:)` where you can toggle on/off a task
 
 ```swift
-Build {
-    $0.isEnabled = false
-}
+Build()
+    .enable(false)
 ```
 
 ### Change name of a task
 
-Every task has a default name, and this name is used when summarizing, to change the name of a task, assign a different name to `name` property
+Every task has a default name, and this name is used when summarizing, to change the name of a task, assign a different name using the `name(_:)` modifier
 
 ```swift
-Build {
-    $0.name = "Build my awesome app"
-}
+Build()
+    .name("Build my awesome app")
 ```
 
 ## A bunch of tasks

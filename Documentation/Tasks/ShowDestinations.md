@@ -10,7 +10,5 @@ name=Apple Watch Series 4 - 40mm,platform=watchOS,OS=6.1
 ```
 
 ```swift
-run {
-    ShowAvailableDestinations()
-}
+ShowAvailableDestinations()
 ```

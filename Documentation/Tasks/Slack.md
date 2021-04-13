@@ -6,13 +6,11 @@ Follow [Create a bot for your workspace](https://slack.com/intl/en-no/help/artic
 
 ```swift
 Slack {
-    $0.post(
-        message: .init(
-            token: ProcessInfo().environment["slackBotToken"]!,
-            channel: "random",
-            text: "Hello from Puma",
-            username: "onmyway133"
-        )
+    Slack.Message(
+        token: ProcessInfo().environment["slackBotToken"]!,
+        channel: "random",
+        text: "Hello from Puma",
+        username: "onmyway133"
     )
 }
 ```

@@ -13,10 +13,10 @@ public class ShowAvailableDestinations {
     public var name: String = "Show available destinations"
     public var isEnabled = true
 
-    public init(_ closure: (ShowAvailableDestinations) -> Void = { _ in }) {
-        closure(self)
-    }
+    public init() { }
 }
+
+// MARK: - Task
 
 extension ShowAvailableDestinations: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {

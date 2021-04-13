@@ -3,14 +3,7 @@
 Upload ipa file to AppStore Connect
 
 ```swift
-UploadApp {
-    $0.authenticate(
-        username: ProcessInfo().environment["username"]!,
-        password: ProcessInfo().environment["password"]!
-    )
-
-    $0.upload(
-        ipaPath: Directory.downloads.appendingPathComponent("TestApp.ipa").path
-    )
-}
+UploadApp(path: Directory.downloads.appendingPathComponent("TestApp.ipa").path)
+    .username(ProcessInfo().environment["username"]!)
+    .password(ProcessInfo().environment["password"]!)
 ```
