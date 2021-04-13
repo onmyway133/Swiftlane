@@ -11,11 +11,11 @@ public class RunScript {
     public var name: String = "Run script"
     public var isEnabled = true
 
-	private let script: String
+    private let script: String
 
-	public init(_ script: String) {
-		self.script = script
-	}
+    public init(_ script: String) {
+        self.script = script
+    }
 }
 
 // MARK: - Task
@@ -23,13 +23,13 @@ public class RunScript {
 extension RunScript: Task {
     public func run(workflow: Workflow, completion: TaskCompletion) {
         handleTryCatch(completion) {
-			guard !script.isEmpty else { return }
-			try CommandLine().runBash(
-				workflow: workflow,
-				program: "",
-				arguments: [script],
-				processHandler: DefaultProcessHandler(logger: workflow.logger)
-			)
+            guard !script.isEmpty else { return }
+            try CommandLine().runBash(
+                workflow: workflow,
+                program: "",
+                arguments: [script],
+                processHandler: DefaultProcessHandler(logger: workflow.logger)
+            )
         }
     }
 }

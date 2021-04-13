@@ -16,13 +16,17 @@ public protocol Task: AnyObject {
 }
 
 public extension Task {
-	func enable(_ isEnabled: Bool) -> Self {
-		self.isEnabled = isEnabled
-		return self
-	}
+    func enable(_ isEnabled: Bool) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
 
-	func name(_ name: String) -> Self {
-		self.name = name
-		return self
-	}
+    func name(_ name: String) -> Self {
+        self.name = name
+        return self
+    }
+
+    func retry(_ times: UInt) -> Retry {
+        return Retry(times: times) { self }
+    }
 }

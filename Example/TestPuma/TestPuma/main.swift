@@ -17,9 +17,8 @@ func testDrive() {
 
 		Wait(seconds: 2)
 
-		Retry(times: 2) {
-			PrintWorkingDirectory()
-		}
+		PrintWorkingDirectory()
+			.retry(2)
 
 		RunScript("echo 'Hello Puma'")
 			.name("Hello Puma")

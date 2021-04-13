@@ -11,7 +11,7 @@ public class PrintWorkingDirectory {
     public var name: String = "Print working directory"
     public var isEnabled = true
 
-	public init() { }
+    public init() { }
 }
 
 // MARK: - Task

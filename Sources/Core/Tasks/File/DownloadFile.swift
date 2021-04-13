@@ -13,20 +13,20 @@ public class DownloadFile {
     public var isEnabled = true
 
     private let url: URL
-	private var to: String = "."
+    private var to: String = "."
 
-	public init(remoteURL: URL) {
-		url = remoteURL
-	}
+    public init(remoteURL: URL) {
+        url = remoteURL
+    }
 }
 
 // MARK: - Modifiers
 
 public extension DownloadFile {
-	func destination(_ path: String) -> Self {
-		to = path
-		return self
-	}
+    func destination(_ path: String) -> Self {
+        to = path
+        return self
+    }
 }
 
 // MARK: - Task

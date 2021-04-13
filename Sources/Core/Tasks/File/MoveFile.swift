@@ -15,10 +15,10 @@ public class MoveFile {
     private let location: String
     private let destination: String
 
-	public init(from location: String, to destination: String) {
-		self.location = location
-		self.destination = destination
-	}
+    public init(from location: String, to destination: String) {
+        self.location = location
+        self.destination = destination
+    }
 }
 
 extension MoveFile: Task {

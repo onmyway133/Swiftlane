@@ -13,8 +13,8 @@ public class Wait {
 
     private let seconds: TimeInterval
 
-	public init(seconds: TimeInterval = 0) {
-		self.seconds = seconds
+    public init(seconds: TimeInterval = 0) {
+        self.seconds = seconds
     }
 }
 
@@ -25,7 +25,7 @@ extension Wait: Task {
         Timer.scheduledTimer(withTimeInterval: seconds, repeats: false, block: { _ in
             completion(.success(()))
         })
-        
+
         RunLoop.current.run(until: Date(timeIntervalSinceNow: seconds))
     }
 }

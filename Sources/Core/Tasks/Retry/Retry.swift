@@ -11,13 +11,12 @@ public class Retry {
     public var name: String = "Retry"
     public var isEnabled = true
 
-    private let task: Task?
+    private let task: Task
     private let times: UInt
 
-    public init(times: UInt, @TaskBuilder builder: () -> [Task]) {
+    public init(times: UInt, builder: () -> Task) {
         self.times = times
-		// TODO: Allow for multiple tasks?
-		self.task = builder().first
+        self.task = builder()
     }
 }
 
@@ -25,12 +24,7 @@ public class Retry {
 
 extension Retry: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-		guard let task = task else {
-			completion(.failure(PumaError.invalid))
-			return
-		}
-
-		run(task: task, times: times, workflow: workflow, completion: completion)
+        run(task: task, times: times, workflow: workflow, completion: completion)
     }
 
     private func run(task: Task, times: UInt, workflow: Workflow, completion: @escaping TaskCompletion) {
@@ -40,7 +34,7 @@ extension Retry: Task {
                 completion(.success(()))
             case .failure(let error):
                 if times > 0 {
-					// TODO: Log errors to logger before retrying?
+                    workflow.logger.log("Retry encountered an error and will retry for \(times-1) more time(s): \(error.localizedDescription)")
                     self.run(task: task, times: times - 1, workflow: workflow, completion: completion)
                 } else {
                     completion(.failure(error))

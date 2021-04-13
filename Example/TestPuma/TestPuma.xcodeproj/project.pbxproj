@@ -58,6 +58,7 @@
 				D29016C0239318F8005B4779 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D290168D239318D3005B4779 /* Products */ = {
 			isa = PBXGroup;

@@ -9,9 +9,9 @@ import Foundation
 
 @_functionBuilder
 public struct SlackMessageBuilder {
-	public static func buildBlock(_ messages: Slack.Message...) -> [Slack.Message] {
-		messages
-	}
+    public static func buildBlock(_ messages: Slack.Message...) -> [Slack.Message] {
+        messages
+    }
 }
 
 public class Slack {
@@ -20,17 +20,17 @@ public class Slack {
 
     private var messages: [Message]
 
-	required public init(messages: [Message] = []) {
-		self.messages = messages
-	}
+    required public init(messages: [Message] = []) {
+        self.messages = messages
+    }
 
-	convenience public init(@SlackMessageBuilder builder: () -> [Slack.Message]) {
-		self.init(messages: builder())
-	}
+    convenience public init(@SlackMessageBuilder builder: () -> [Slack.Message]) {
+        self.init(messages: builder())
+    }
 
-	convenience public init(@SlackMessageBuilder builder: () -> Slack.Message) {
-		self.init(messages: [builder()])
-	}
+    convenience public init(@SlackMessageBuilder builder: () -> Slack.Message) {
+        self.init(messages: [builder()])
+    }
 }
 
 public extension Slack {
@@ -61,33 +61,33 @@ public extension Slack {
 
 extension Slack: Task {
     public func run(workflow: Workflow, completion: @escaping TaskCompletion) {
-		sendNextMessage(sender: MessageSender(), workflow: workflow, completion: completion)
+        sendNextMessage(sender: MessageSender(), workflow: workflow, completion: completion)
     }
 
-	private func sendNextMessage(sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
-	{
-		guard !messages.isEmpty else {
-			completion(.success(()))
-			return
-		}
+    private func sendNextMessage(sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
+    {
+        guard !messages.isEmpty else {
+            completion(.success(()))
+            return
+        }
 
-		let message = messages.removeFirst()
-		send(message, sender: sender, workflow: workflow, completion: completion)
-	}
+        let message = messages.removeFirst()
+        send(message, sender: sender, workflow: workflow, completion: completion)
+    }
 
-	private func send(_ message: Message, sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
-	{
-		sender.send(message: message, completion: { result in
-			switch result {
-			case .success:
-				workflow.logger.success("Posted: \(message.text)")
-				self.sendNextMessage(sender: sender, workflow: workflow, completion: completion)
-			case .failure(let error):
-				workflow.logger.error("Failed: \(error.localizedDescription)")
-				completion(result)
-			}
-		})
-	}
+    private func send(_ message: Message, sender: MessageSender, workflow: Workflow, completion: @escaping TaskCompletion)
+    {
+        sender.send(message: message, completion: { result in
+            switch result {
+            case .success:
+                workflow.logger.success("Posted: \(message.text)")
+                self.sendNextMessage(sender: sender, workflow: workflow, completion: completion)
+            case .failure(let error):
+                workflow.logger.error("Failed: \(error.localizedDescription)")
+                completion(result)
+            }
+        })
+    }
 }
 
 private class MessageSender {
