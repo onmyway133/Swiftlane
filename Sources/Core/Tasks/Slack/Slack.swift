@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct SlackMessageBuilder {
     public static func buildBlock(_ messages: Slack.Message...) -> [Slack.Message] {
         messages

@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct TaskBuilder {
     public static func buildBlock(_ tasks: Task...) -> [Task] {
         tasks

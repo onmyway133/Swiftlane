@@ -8,10 +8,10 @@
 
 // https://github.com/ChargePoint/xcparse/blob/master/Sources/xcparse/XCPParser.swift
 
-import Basic
 import Foundation
-import SPMUtility
 import XCParseCore
+import TSCUtility
+import TSCBasic
 
 extension Foundation.URL {
     func fileExistsAsDirectory() -> Bool {

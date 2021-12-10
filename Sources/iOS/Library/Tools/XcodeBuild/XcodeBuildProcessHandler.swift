@@ -27,7 +27,7 @@ public struct XcodeBuildProcessHandler: ProcessHandler {
     private func show(data: Data) {
         guard
             !data.isEmpty,
-            let line = XcbeautifyLib.Parser().parse(line: data.normalizeString()),
+            let line = XcbeautifyLib.Parser().parse(line: data.normalizeString(), additionalLines: { nil }),
             !line.isEmpty
         else {
             return

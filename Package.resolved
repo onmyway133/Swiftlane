@@ -51,26 +51,17 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "831ed5e860a70e745bc1337830af4786b2576881",
-          "version": "0.4.1"
+          "revision": "e1465042f195f374b94f915ba8ca49de24300a0d",
+          "version": "1.0.2"
         }
       },
       {
-        "package": "llbuild",
-        "repositoryURL": "https://github.com/apple/swift-llbuild.git",
+        "package": "swift-tools-support-core",
+        "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
         "state": {
           "branch": null,
-          "revision": "f73b84bc1525998e5e267f9d830c1411487ac65e",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "SwiftPM",
-        "repositoryURL": "https://github.com/apple/swift-package-manager.git",
-        "state": {
-          "branch": null,
-          "revision": "9abcc2260438177cecd7cf5185b144d13e74122b",
-          "version": "0.5.0"
+          "revision": "3b6b97d612b56e25d80d0807f5bc38ea08b7bdf3",
+          "version": "0.2.3"
         }
       },
       {
@@ -78,8 +69,8 @@
         "repositoryURL": "https://github.com/thii/xcbeautify.git",
         "state": {
           "branch": null,
-          "revision": "21c64495bb3eb9a46ecc9b5eea056d06383eb17c",
-          "version": "0.9.1"
+          "revision": "d818e734052c6cf373aa6aa0456ef6e69149975a",
+          "version": "0.10.2"
         }
       },
       {
@@ -87,8 +78,8 @@
         "repositoryURL": "https://github.com/ChargePoint/xcparse",
         "state": {
           "branch": null,
-          "revision": "61bfe78c55e2e0fc2bc3d3d49add3dbd3829a56b",
-          "version": "2.1.2"
+          "revision": "61eca4cbf823b2cde444287477b7fcefdc9a116a",
+          "version": "2.2.1"
         }
       }
     ]
