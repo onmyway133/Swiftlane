@@ -37,6 +37,10 @@ public struct Args {
         }
     }
 
+    public mutating func flag(_ key: String) {
+        map[key] = ""
+    }
+
     func toString() -> String {
         let mapString = map
             .map { key, value in
@@ -48,7 +52,7 @@ public struct Args {
                     return "\(key) \(value)" // key value
                 }
             }
-            .sorted(by: <)
+            .sorted(by: sortArguments)
             .joined(separator: " ")
 
         let mapMultipleString = mapMultiple
@@ -63,12 +67,22 @@ public struct Args {
                             return "\(key) \(value)" // key value
                         }
                     }
-                    .sorted(by: <)
+                    .sorted(by: sortArguments)
                     .joined(separator: " ")
             }
-            .sorted(by: <)
+            .sorted(by: sortArguments)
             .joined(separator: " ")
 
         return [mapString, mapMultipleString].joined(separator: " ")
     }
+
+    // Ensure non-hyphen arguments come first
+    private func sortArguments(_ l: String, r: String) -> Bool {
+        switch (l.hasPrefix("-"), r.hasPrefix("-")) {
+        case (true, false): return false
+        case (false, true): return true
+        default: return l < r
+        }
+    }
 }
+

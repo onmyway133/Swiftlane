@@ -8,10 +8,11 @@ final class SwiftlaneTests: XCTestCase {
         args["-key2"] = "=value2"
         args[multiple: "-key3"] = "value3"
         args[multiple: "-key4"] = "=value4"
+        args.flag("build")
 
         XCTAssertEqual(
             args.toString(),
-            "-key1 value1 -key2=value2 -key3 value3 -key4=value4"
+            "build -key1 value1 -key2=value2 -key3 value3 -key4=value4"
         )
     }
 
@@ -20,7 +21,5 @@ final class SwiftlaneTests: XCTestCase {
         build.project("MyApp")
         build.scheme("Staging")
         build.configuration(.release)
-
-        try await build.run()
     }
 }

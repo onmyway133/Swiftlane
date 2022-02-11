@@ -8,5 +8,9 @@
 import Foundation
 
 public struct Workflow {
-    public var directory: URL?
+    public init() {}
+
+    public var directoryUrl: URL?
+    public var project: String?
+    public var workspace: String?
 }

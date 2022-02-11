@@ -12,5 +12,6 @@ public struct Settings {
 
     public var env = Environment()
     public var fs = FileSystem()
-    public var console = Console()
+    public var cs = Console()
+    public var cli = CommandLine()
 }
