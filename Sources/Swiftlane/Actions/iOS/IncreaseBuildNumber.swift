@@ -1,5 +1,5 @@
 //
-//  SetBuildNumber.swift
+//  IncreaseBuildNumber.swift
 //  Swiftlane
 //
 //  Created by Khoa on 11/02/2022.
@@ -7,20 +7,17 @@
 
 import Foundation
 
-public final class SetBuildNumber {
-    public let number: String
+public final class IncreseBuildNumber {
     public var workflow: Workflow?
 
-    public init(number: String) {
-        self.number = number
-    }
+    public init() {}
 
     public func run() async throws {
-        Settings.default.cs.action("Set build number")
+        Settings.default.cs.action("Increase build number")
 
         try Settings.default.cli.run(
             program: "agvtool",
-            argument: ["new-version", "-all", number].joined(separator: " "),
+            argument: ["next-version", "-all"].joined(separator: " "),
             currentDirectoryURL: workflow?.directory
         )
     }
