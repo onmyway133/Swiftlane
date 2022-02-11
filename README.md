@@ -51,7 +51,8 @@ func deployMyAwesomeApp() async throws {
 ### iOS
 - [x] Build: build project
 - [x] Test: test project
-- [ ] Archive: archive project
+- [x] Archive: archive project
+- [ ] ExportArchive: export archive
 - [x] SetBuildNumber: set build number
 - [x] SetVersion: set version
 - [x] IncreaseBuildNumber: increase build number

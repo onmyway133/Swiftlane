@@ -23,3 +23,10 @@ final class SwiftlaneTests: XCTestCase {
         build.configuration(.release)
     }
 }
+
+final class FileSystemTests: XCTestCase {
+    func testCurrentDirectory() async throws {
+        let fs = FileSystem()
+        _ = try await fs.currentDirectory()
+    }
+}

@@ -15,13 +15,14 @@ public final class Build {
     public init() {}
 
     public func run() async throws {
+        Settings.default.cs.action("Build")
+
         if buildsForTesting {
             args.flag("build")
         } else {
             args.flag("build-for-testing")
         }
 
-        Settings.default.cs.action("Build")
         _ = try Settings.default.cli.run(
             program: "xcodebuild",
             argument: args.toString(),

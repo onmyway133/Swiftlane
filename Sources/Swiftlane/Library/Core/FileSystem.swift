@@ -22,8 +22,20 @@ public struct FileSystem {
         try data.write(to: toFile)
     }
 
-    static func homeDirectory() -> URL {
+    func homeDirectory() -> URL {
         FileManager.default.homeDirectoryForCurrentUser
+    }
+
+    func currentDirectory() async throws -> URL {
+        let process = Process()
+        process.launchPath = "/bin/pwd"
+
+        let string = try Settings.default.cli.run(process: process)
+        guard let url = URL(string: string) else {
+            throw SwiftlaneError.invalid("url")
+        }
+
+        return url
     }
 }
 
