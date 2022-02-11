@@ -81,7 +81,7 @@ public struct CommandLine {
         // and then read the data back out.
         return try outputQueue.sync {
             if process.terminationStatus != 0 {
-                throw Error.process(
+                throw SwiftlaneError.process(
                     terminationStatus: process.terminationStatus,
                     error: errorData.toString()
                 )

@@ -59,7 +59,7 @@ public struct Slack {
         }
 
         guard let requestUrl = components?.url else {
-            throw Error.invalid("url")
+            throw SwiftlaneError.invalid("url")
         }
 
         var request = URLRequest(url: requestUrl)
