@@ -20,6 +20,8 @@ public struct Download {
     }
 
     public func run() async throws {
+        Settings.default.cs.action("Download")
+
         let (data, _) = try await URLSession.shared.data(from: url)
         try await Settings.default.fs.save(data: data, toFile: toFile)
     }

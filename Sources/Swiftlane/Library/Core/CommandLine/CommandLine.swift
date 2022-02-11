@@ -12,6 +12,7 @@ public struct CommandLine {
     func run(
         program: String,
         argument: String,
+        currentDirectoryURL: URL? = nil,
         processHandler: ProcessHandler = DefaultProcessHandler()
     ) throws -> String {
         let command = "\(program) \(argument)"
@@ -20,6 +21,7 @@ public struct CommandLine {
         let process = Process()
         process.launchPath = "/bin/bash"
         process.arguments = ["-c", command]
+        process.currentDirectoryURL = currentDirectoryURL
 
         return try run(
             process: process,

@@ -9,6 +9,7 @@ import Foundation
 
 public struct RunScript {
     public let script: String
+    public var workflow: Workflow?
 
     public init(script: String) {
         self.script = script
@@ -18,6 +19,7 @@ public struct RunScript {
         let process = Process()
         process.launchPath = "/bin/bash"
         process.arguments = [script]
+        process.currentDirectoryURL = workflow?.directory
 
         Settings.default.cs.highlight(script)
         return try Settings.default.cli.run(process: process)

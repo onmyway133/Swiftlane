@@ -10,6 +10,7 @@ import Foundation
 public final class Test {
     public var args = Args()
     public var testsWithoutBuilding = false
+    public var workflow: Workflow?
 
     public init() {}
 
@@ -24,6 +25,7 @@ public final class Test {
         _ = try Settings.default.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
+            currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()
         )
     }

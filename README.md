@@ -46,7 +46,9 @@ func deployMyAwesomeApp() async throws {
 ### iOS
 - [x] Build: build project
 - [x] Test: test project
-- [x] Archive: archive project
+- [ ] Archive: archive project
+- [x] SetBuildNumber: set build number
+- [x] SetVersion: set version
 - [ ] TestFlight: deploy to testFlight
 - [ ] AppCenter: deploy to AppCenter
 - [ ] FetchProvisioningProfiles: fetch provisioning profile
