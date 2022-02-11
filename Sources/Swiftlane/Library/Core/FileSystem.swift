@@ -21,6 +21,10 @@ public struct FileSystem {
         try Folder.createFolderIfNeeded(url: toFile.folderUrl)
         try data.write(to: toFile)
     }
+
+    static func homeDirectory() -> URL {
+        FileManager.default.homeDirectoryForCurrentUser
+    }
 }
 
 extension Folder {

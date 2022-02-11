@@ -20,13 +20,18 @@ Swiftlane is intended to be used as a Swift Package. Simply import it into your 
 import Swiftlane
 
 func deployMyAwesomeApp() async throws {
+    var workflow = Workflow()
+    workflow.directory = Settings.default.fs.homeDirectory.appendingPathComponent("Projects")
+    
     let build = Build()
     build.project("MyAwesomeApp")
     build.scheme("Production")
     build.configuration(.release)
+    build.workflow = workflow
     try await build.run()
     
     let archive = Archive()
+    archive.workflow = workflow
     // configure action
     try await archive.run()
     
