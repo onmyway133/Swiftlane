@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Colorizer",
+        "repositoryURL": "https://github.com/getGuaka/Colorizer",
+        "state": {
+          "branch": null,
+          "revision": "2ccc99bf1715e73c4139e8d40b6e6b30be975586",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "Files",
+        "repositoryURL": "https://github.com/JohnSundell/Files.git",
+        "state": {
+          "branch": null,
+          "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
+          "version": "4.2.0"
+        }
+      },
+      {
+        "package": "Spek",
+        "repositoryURL": "https://github.com/onmyway133/Spek.git",
+        "state": {
+          "branch": null,
+          "revision": "5d28c801db3c8be5587e48395bc2fd1db917c29b",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
+        "state": {
+          "branch": null,
+          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "swift-tools-support-core",
+        "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
+        "state": {
+          "branch": null,
+          "revision": "3b6b97d612b56e25d80d0807f5bc38ea08b7bdf3",
+          "version": "0.2.3"
+        }
+      },
+      {
+        "package": "xcbeautify",
+        "repositoryURL": "https://github.com/thii/xcbeautify.git",
+        "state": {
+          "branch": null,
+          "revision": "b14660cc03d96889d2144265fbca471ea0076e40",
+          "version": "0.11.0"
+        }
+      },
+      {
+        "package": "xcparse",
+        "repositoryURL": "https://github.com/ChargePoint/xcparse",
+        "state": {
+          "branch": null,
+          "revision": "61eca4cbf823b2cde444287477b7fcefdc9a116a",
+          "version": "2.2.1"
+        }
+      },
+      {
+        "package": "XMLCoder",
+        "repositoryURL": "https://github.com/MaxDesiatov/XMLCoder.git",
+        "state": {
+          "branch": null,
+          "revision": "f30119af03996939cc4f54e0bf0dda9f88a84da5",
+          "version": "0.13.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
