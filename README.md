@@ -70,6 +70,15 @@ func deployMyAwesomeApp() async throws {
 - [x] MoveFile: move file
 - [x] CopyFile: copy file
 
+## Settings
+
+Configurations via `Settings.default`
+
+- Console: log to console
+- FileSystem: interact with file system
+- Environment: read environment values
+- CommandLine: run command line tools
+
 ## License
 Swiftlane is released under the MIT license. See LICENSE for details.
 
