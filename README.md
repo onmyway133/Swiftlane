@@ -41,6 +41,35 @@ func deployMyAwesomeApp() async throws {
 }
 ```
 
+## Actions
+
+### iOS
+- [x] Build: build project
+- [x] Test: test project
+- [x] Archive: archive project
+- [ ] TestFlight: deploy to testFlight
+- [ ] AppCenter: deploy to AppCenter
+- [ ] FetchProvisioningProfiles: fetch provisioning profile
+- [ ] GenerateIcon: generate app icon set
+- [ ] Screenshot: take screenshot
+- [ ] Frame: frame screenshot
+
+### macOS
+- [ ] Notarize: notarize project
+- [ ] MakeDMG: package as DMG
+- [ ] Sparkle: update Spackle Appcast file
+
+### Standard
+- [x] Slack: send message to a Slack channel
+- [x] RunScript: run arbitrary script
+- [x] PrintWorkingDirectory: print current working directory
+- [ ] UploadS3: upload to S3
+- [ ] Download: download files
+
+### File
+- [x] MoveFile: move file
+- [x] CopyFile: copy file
+
 ## License
 Swiftlane is released under the MIT license. See LICENSE for details.
 
