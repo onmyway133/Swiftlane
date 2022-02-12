@@ -72,7 +72,9 @@ func deployMyAwesomeApp() async throws {
 - [x] RunScript: run arbitrary script
 - [x] PrintWorkingDirectory: print current working directory
 - [ ] UploadS3: upload to S3
-- [ ] Download: download files
+- [ ] UploadAppCenter: upload to AppCenter
+- [ ] UploadSetapp: upload to Setapp
+- [x] Download: download file
 
 ### File
 - [x] MoveFile: move file
