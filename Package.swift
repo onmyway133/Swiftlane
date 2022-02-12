@@ -28,6 +28,10 @@ let package = Package(
         .package(
             url: "https://github.com/ChargePoint/xcparse",
             .upToNextMajor(from : "2.2.1")
+        ),
+        .package(
+            url: "https://github.com/AvdLee/appstoreconnect-swift-sdk",
+            .upToNextMajor(from: "1.7.0")
         )
     ],
     targets: [

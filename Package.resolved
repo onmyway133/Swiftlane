@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AppStoreConnect-Swift-SDK",
+        "repositoryURL": "https://github.com/AvdLee/appstoreconnect-swift-sdk",
+        "state": {
+          "branch": null,
+          "revision": "6961347904eaad966f6eedc3b605f685dac429f8",
+          "version": "1.7.0"
+        }
+      },
+      {
         "package": "Colorizer",
         "repositoryURL": "https://github.com/getGuaka/Colorizer.git",
         "state": {
