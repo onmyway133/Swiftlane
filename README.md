@@ -56,15 +56,14 @@ func deployMyAwesomeApp() async throws {
 - [x] SetBuildNumber: set build number
 - [x] SetVersion: set version
 - [x] IncreaseBuildNumber: increase build number
-- [ ] TestFlight: deploy to testFlight
+- [x] AppStore Connect: use appstoreconnect-swift-sdk
 - [ ] AppCenter: deploy to AppCenter
-- [ ] FetchProvisioningProfiles: fetch provisioning profile
 - [ ] GenerateIcon: generate app icon set
 - [ ] Screenshot: take screenshot
 - [ ] Frame: frame screenshot
 
 ### macOS
-- [ ] Notarize: notarize project
+- [x] Notarize: notarize project
 - [ ] MakeDMG: package as DMG
 - [ ] Sparkle: update Spackle Appcast file
 
@@ -87,6 +86,11 @@ Configurations via `Settings.default`
 - FileSystem: interact with file system
 - Environment: read environment values
 - CommandLine: run command line tools
+
+## Credit
+
+- Notarize: refactor from https://github.com/Mortennn/Notarize
+- AppStore Connect: piggy back on https://github.com/AvdLee/appstoreconnect-swift-sdk
 
 ## License
 Swiftlane is released under the MIT license. See LICENSE for details.

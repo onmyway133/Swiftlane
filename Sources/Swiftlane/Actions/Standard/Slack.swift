@@ -8,21 +8,34 @@
 import Foundation
 
 public struct Slack {
-    struct Message {
+    public struct Credential {
         let token: String
+
+        public init(token: String) {
+            self.token = token
+        }
+    }
+
+    let credential: Credential
+
+    public init(credential: Credential) {
+        self.credential = credential
+    }
+}
+
+public extension Slack {
+    struct Message {
         let channel: String
         let text: String
         let username: String?
         let additionalParameters: [String: String]
 
         public init(
-            token: String,
             channel: String,
             text: String,
             username: String?,
             additionalParameters: [String: String] = [:]
         ) {
-            self.token = token
             self.channel = channel
             self.text = text
             self.username = username
@@ -40,7 +53,7 @@ public struct Slack {
 
         var components = URLComponents(url: baseUrl, resolvingAgainstBaseURL: false)
         components?.queryItems = [
-            URLQueryItem(name: "token", value: message.token),
+            URLQueryItem(name: "token", value: credential.token),
             URLQueryItem(name: "channel", value: message.channel),
             URLQueryItem(name: "text", value: message.text),
             URLQueryItem(name: "pretty", value: "1")

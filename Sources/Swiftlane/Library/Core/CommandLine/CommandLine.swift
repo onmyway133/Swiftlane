@@ -19,7 +19,7 @@ public struct CommandLine {
         Settings.default.cs.highlight(command)
 
         let process = Process()
-        process.launchPath = "/bin/bash"
+        process.executableURL = URL(fileURLWithPath: "/bin/bash")
         process.arguments = ["-c", command]
         process.currentDirectoryURL = currentDirectoryURL
 
@@ -83,8 +83,8 @@ public struct CommandLine {
         // and then read the data back out.
         return try outputQueue.sync {
             if process.terminationStatus != 0 {
-                throw SwiftlaneError.process(
-                    terminationStatus: process.terminationStatus,
+                throw SwiftlaneError.code(
+                    process.terminationStatus,
                     error: errorData.toString()
                 )
             }

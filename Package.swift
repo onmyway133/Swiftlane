@@ -4,7 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "Swiftlane",
-    platforms: [.macOS("12.0")],
+    platforms: [
+        .macOS("12.0")
+    ],
     products: [
         .library(name: "Swiftlane", targets: ["Swiftlane"])
     ],
@@ -32,6 +34,10 @@ let package = Package(
         .package(
             url: "https://github.com/AvdLee/appstoreconnect-swift-sdk",
             .upToNextMajor(from: "1.7.0")
+        ),
+        .package(
+            url: "https://github.com/drmohundro/SWXMLHash.git",
+            .upToNextMajor(from: "6.0.0")
         )
     ],
     targets: [
@@ -41,7 +47,12 @@ let package = Package(
                 .product(name: "XCParseCore", package: "xcparse"),
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
-                "Colorizer"
+                "Rainbow",
+                .product(
+                    name: "AppStoreConnect-Swift-SDK",
+                    package: "appstoreconnect-swift-sdk"
+                ),
+                "SWXMLHash"
             ],
             path: "Sources"
         ),

@@ -9,6 +9,5 @@ import Foundation
 
 public enum SwiftlaneError: Swift.Error {
     case invalid(String)
-    case missingArgument(String)
-    case process(terminationStatus: Int32, error: String)
+    case code(Int32, error: String)
 }
