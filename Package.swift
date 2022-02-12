@@ -14,12 +14,12 @@ let package = Package(
             .upToNextMajor(from: "0.4.0")
         ),
         .package(
-            url: "https://github.com/thii/xcbeautify.git",
+            url: "https://github.com/tuist/xcbeautify",
             .upToNextMajor(from: "0.11.0")
         ),
         .package(
-            url: "https://github.com/getGuaka/Colorizer",
-            .upToNextMajor(from: "0.2.0")
+            url: "https://github.com/onevcat/Rainbow",
+            .upToNextMajor(from: "4.0.1")
         ),
         .package(
             url: "https://github.com/JohnSundell/Files.git",

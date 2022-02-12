@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Colorizer
+import Rainbow
 
 public struct Console {
     func action(_ name: String) {

@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Colorizer",
-        "repositoryURL": "https://github.com/getGuaka/Colorizer",
+        "repositoryURL": "https://github.com/getGuaka/Colorizer.git",
         "state": {
           "branch": null,
           "revision": "2ccc99bf1715e73c4139e8d40b6e6b30be975586",
@@ -17,6 +17,15 @@
           "branch": null,
           "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
           "version": "4.2.0"
+        }
+      },
+      {
+        "package": "Rainbow",
+        "repositoryURL": "https://github.com/onevcat/Rainbow",
+        "state": {
+          "branch": null,
+          "revision": "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
+          "version": "4.0.1"
         }
       },
       {
@@ -48,7 +57,7 @@
       },
       {
         "package": "xcbeautify",
-        "repositoryURL": "https://github.com/thii/xcbeautify.git",
+        "repositoryURL": "https://github.com/tuist/xcbeautify",
         "state": {
           "branch": null,
           "revision": "b14660cc03d96889d2144265fbca471ea0076e40",
