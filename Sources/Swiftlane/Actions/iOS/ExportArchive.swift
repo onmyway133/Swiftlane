@@ -10,21 +10,11 @@ import Foundation
 public final class ExportArchive {
     public var args = Args()
     public var workflow: Workflow?
-    public var toFile: URL?
-    public var optionFile: URL?
 
     public init() {}
 
     public func run() async throws {
         args.flag("-exportArchive")
-
-        if let toFile = toFile {
-            args["-exportPath"] = toFile.path
-        }
-
-        if let optionFile = optionFile {
-            args["-exportOptionPlist"] = optionFile.path
-        }
 
         _ = try Settings.default.cli.run(
             program: "xcodebuild",
@@ -32,6 +22,15 @@ public final class ExportArchive {
             currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()
         )
+    }
+
+    public func exportPath(_ ipaFile: URL) {
+        args["-exportPath"] = ipaFile.path
+            .appendingPathExtension(".ipa")
+    }
+
+    public func exportOptionPlist(_ plistFile: URL) {
+        args["-exportOptionPlist"] = plistFile.path
     }
 }
 

@@ -173,4 +173,17 @@ public enum Xcodebuild {
 
         public static let genericiOS = Destination(rawValue: "generic/platform=iOS")
     }
+
+    public struct ExportMethod {
+        public let rawValue: String
+
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        public static let appStore = ExportMethod(rawValue: "app-store")
+        public static let inHouse = ExportMethod(rawValue: "enterprise")
+        public static let adHoc = ExportMethod(rawValue: "ad-hoc")
+        public static let development = ExportMethod(rawValue: "development")
+    }
 }
