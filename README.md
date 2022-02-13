@@ -52,14 +52,14 @@ func deployMyAwesomeApp() async throws {
 - [x] Build: build project
 - [x] Test: test project
 - [x] Archive: archive project
-- [ ] ExportArchive: export archive
+- [x] ExportArchive: export archive
 - [x] SetBuildNumber: set build number
 - [x] SetVersion: set version
 - [x] IncreaseBuildNumber: increase build number
 - [x] AppStore Connect: use appstoreconnect-swift-sdk
-- [ ] AppCenter: deploy to AppCenter
+- [x] GetBuildSettings: get project build settings
 - [ ] GenerateIcon: generate app icon set
-- [ ] Screenshot: take screenshot
+- [x] Screenshot: take screenshot
 - [ ] Frame: frame screenshot
 
 ### macOS

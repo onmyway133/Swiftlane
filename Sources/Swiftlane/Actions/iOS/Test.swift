@@ -29,6 +29,13 @@ public final class Test {
             currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()
         )
+
+        _ = try Settings.default.cli.run(
+            program: "xcodebuild",
+            argument: args.toString(),
+            currentDirectoryURL: workflow?.directory,
+            processHandler: XcodeBuildProcessHandler()
+        )
     }
 }
 

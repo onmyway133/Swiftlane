@@ -13,6 +13,11 @@ public protocol ProcessHandler {
     func handle(error data: Data)
 }
 
+struct NoProcessHandler: ProcessHandler {
+    func handle(output data: Data) {}
+    func handle(error data: Data) {}
+}
+
 public struct DefaultProcessHandler: ProcessHandler {
     public typealias Filter = (String) -> Bool
 

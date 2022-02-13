@@ -37,6 +37,10 @@ public struct FileSystem {
 
         return url
     }
+
+    func downloadsDirectory() -> URL {
+        homeDirectory().appendingPathComponent("Downloads")
+    }
 }
 
 extension Folder {

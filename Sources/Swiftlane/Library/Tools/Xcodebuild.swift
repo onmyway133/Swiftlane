@@ -72,7 +72,11 @@ public extension UseXcodebuild {
             .surroundingWithQuotes()
     }
 
-    func destination(platform: Xcodebuild.Platform, name: String, os: Xcodebuild.OS = .latest) {
+    func destination(
+        platform: Xcodebuild.Platform,
+        name: String,
+        os: Xcodebuild.OS = .latest
+    ) {
         let map: [String: String] = [
             "name": name,
             "platform": platform.rawValue,
@@ -86,22 +90,13 @@ public extension UseXcodebuild {
             .surroundingWithQuotes()
     }
 
-    func derivedData(_ path: String) {
-        args["-derivedDataPath"] = path
+    func derivedData(_ folder: URL) {
+        args["-derivedDataPath"] = folder.path
     }
 
-    func testPlan(_ path: String) {
-        args["-testPlan"] = path
+    func testPlan(_ file: URL) {
+        args["-testPlan"] = file.path
             .deletingPathExtension("xctestplan")
-    }
-
-    func exportPath(_ path: String) {
-        args["-exportPath"] = path
-            .surroundingWithQuotes()
-    }
-
-    func exportOptionsPlist(_ path: String) {
-        args["-exportOptionsPlist"] = path
     }
 }
 

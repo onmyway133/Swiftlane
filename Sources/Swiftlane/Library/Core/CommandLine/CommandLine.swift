@@ -13,7 +13,7 @@ public struct CommandLine {
         program: String,
         argument: String,
         currentDirectoryURL: URL? = nil,
-        processHandler: ProcessHandler = DefaultProcessHandler()
+        processHandler: ProcessHandler = NoProcessHandler()
     ) throws -> String {
         let command = "\(program) \(argument)"
         Settings.default.cs.highlight(command)
@@ -32,7 +32,7 @@ public struct CommandLine {
     @discardableResult
     func run(
         process: Process,
-        processHandler: ProcessHandler = DefaultProcessHandler()
+        processHandler: ProcessHandler = NoProcessHandler()
     ) throws -> String {
         let outputQueue = DispatchQueue(label: "Process.Queue")
 
