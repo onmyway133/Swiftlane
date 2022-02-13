@@ -61,6 +61,9 @@ func deployMyAwesomeApp() async throws {
 - [ ] GenerateIcon: generate app icon set
 - [x] Screenshot: take screenshot
 - [ ] Frame: frame screenshot
+- [x] UploadASC: upload IPA to AppStore Connect
+- [ ] BootSimulator: boot a simulator
+- [ ] UpdateSimulator: update simulator
 
 ### macOS
 - [x] Notarize: notarize project
