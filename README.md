@@ -3,7 +3,7 @@
 Swiftlane contains a set of build utilities to speed up iOS and macOS development and deployment
 
 There's no additional configuration file, your Swift script file is the source of truth. With auto 
-completion and type safety, you are ensured to do the right things in Puma.
+completion and type safety, you are ensured to do the right things in Swiftlane.
 
 - Swiftlane and its dependencies are written in pure Swift, making it easy to read and contribute.
 - Use latest Swift features like async/await to enable declarative syntax
