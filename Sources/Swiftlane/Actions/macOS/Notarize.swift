@@ -8,24 +8,17 @@
 import Foundation
 import SWXMLHash
 
-public struct Notarize {
-    public struct Credential {
-        let username: String
-        let password: String
+public final class Notarize: UseALTool {
+    public var args = Args()
 
-        public init(
-            username: String,
-            password: String
-        ) {
-            self.username = username
-            self.password = password
-        }
-    }
+    public init() {}
 
-    let credential: Credential
-
-    public init(credential: Credential) {
-        self.credential = credential
+    public func credential(
+        username: String,
+        password: String
+    ) {
+        args["--username"] = username
+        args["--password"] = password
     }
 }
 
@@ -37,13 +30,11 @@ public extension Notarize {
     ) async throws {
         Settings.default.cs.action("Notarize")
 
-        var args = Args()
+        var args = self.args
         args.flag("altool")
         args.flag("--notarize-app")
         args["-t"] = "osx"
         args["--output-format"] = "xml"
-        args["--username"] = credential.username
-        args["--password"] = credential.password
         args["--file"] = packageFile.path
         args["--primary-bundle-id"] = bundleId
 
@@ -111,11 +102,9 @@ public extension Notarize {
     }
 
     private func fetchInfo(uuid: String) async throws -> String {
-        var args = Args()
+        var args = self.args
         args.flag("altool")
         args["--notarization-info"] = uuid
-        args["--username"] = credential.username
-        args["--password"] = credential.password
         args["-output-format"] = "xml"
 
         return try Settings.default.cli.run(
