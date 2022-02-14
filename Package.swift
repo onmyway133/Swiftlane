@@ -47,7 +47,7 @@ let package = Package(
                 .product(name: "XCParseCore", package: "xcparse"),
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
-                "Rainbow",
+                .product(name: "Rainbow", package: "Rainbow"),
                 .product(name: "AppStoreConnect", package: "AppStoreConnect"),
                 "SWXMLHash"
             ],
