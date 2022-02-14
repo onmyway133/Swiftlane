@@ -32,12 +32,12 @@ let package = Package(
             .upToNextMajor(from : "2.2.1")
         ),
         .package(
-            url: "https://github.com/AvdLee/appstoreconnect-swift-sdk",
-            .upToNextMajor(from: "1.7.0")
-        ),
-        .package(
             url: "https://github.com/drmohundro/SWXMLHash.git",
             .upToNextMajor(from: "6.0.0")
+        ),
+        .package(
+            url: "https://github.com/onmyway133/AppStoreConnect",
+            from: "0.0.3"
         )
     ],
     targets: [
@@ -48,10 +48,7 @@ let package = Package(
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
                 "Rainbow",
-                .product(
-                    name: "AppStoreConnect-Swift-SDK",
-                    package: "appstoreconnect-swift-sdk"
-                ),
+                "AppStoreConnect",
                 "SWXMLHash"
             ],
             path: "Sources"

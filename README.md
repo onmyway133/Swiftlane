@@ -56,7 +56,7 @@ func deployMyAwesomeApp() async throws {
 - [x] SetBuildNumber: set build number
 - [x] SetVersion: set version
 - [x] IncreaseBuildNumber: increase build number
-- [x] AppStore Connect: use appstoreconnect-swift-sdk
+- [x] AppStore Connect: use https://github.com/onmyway133/AppStoreConnect
 - [x] GetBuildSettings: get project build settings
 - [ ] GenerateIcon: generate app icon set
 - [x] Screenshot: take screenshot
@@ -95,7 +95,6 @@ Configurations via `Settings.default`
 ## Credit
 
 - Notarize: refactor from https://github.com/Mortennn/Notarize
-- AppStore Connect: piggy back on https://github.com/AvdLee/appstoreconnect-swift-sdk
 
 ## License
 Swiftlane is released under the MIT license. See LICENSE for details.

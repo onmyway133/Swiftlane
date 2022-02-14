@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "AppStoreConnect-Swift-SDK",
-        "repositoryURL": "https://github.com/AvdLee/appstoreconnect-swift-sdk",
+        "package": "AppStoreConnect",
+        "repositoryURL": "https://github.com/onmyway133/AppStoreConnect",
         "state": {
           "branch": null,
-          "revision": "6961347904eaad966f6eedc3b605f685dac429f8",
-          "version": "1.7.0"
+          "revision": "4fa448ba5c6d81e9c9d087273f38272a697fc109",
+          "version": "0.0.3"
         }
       },
       {
@@ -26,6 +26,33 @@
           "branch": null,
           "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
           "version": "4.2.0"
+        }
+      },
+      {
+        "package": "Get",
+        "repositoryURL": "https://github.com/kean/Get",
+        "state": {
+          "branch": null,
+          "revision": "068b400e3850f0953ec25d11d3a3893c4538ffd5",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "jwt-kit",
+        "repositoryURL": "https://github.com/vapor/jwt-kit",
+        "state": {
+          "branch": null,
+          "revision": "1822bb0abf0a31a4b5078ec19061c548835253b5",
+          "version": "4.3.0"
+        }
+      },
+      {
+        "package": "NaiveDate",
+        "repositoryURL": "https://github.com/kean/NaiveDate",
+        "state": {
+          "branch": null,
+          "revision": "08fad5d02e9117f6cea96096c5951e445aa710b1",
+          "version": "1.0.0"
         }
       },
       {
@@ -56,6 +83,15 @@
         }
       },
       {
+        "package": "swift-crypto",
+        "repositoryURL": "https://github.com/apple/swift-crypto.git",
+        "state": {
+          "branch": null,
+          "revision": "a8911e0fadc25aef1071d582355bd1037a176060",
+          "version": "2.0.4"
+        }
+      },
+      {
         "package": "swift-tools-support-core",
         "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
         "state": {
@@ -71,6 +107,15 @@
           "branch": null,
           "revision": "6469881a3f30417c5bb02404ea4b69207f297592",
           "version": "6.0.0"
+        }
+      },
+      {
+        "package": "URLQueryEncoder",
+        "repositoryURL": "https://github.com/kean/URLQueryEncoder",
+        "state": {
+          "branch": null,
+          "revision": "4cc975d4d075d0e62699a796a08284e217d4ee93",
+          "version": "0.2.0"
         }
       },
       {
