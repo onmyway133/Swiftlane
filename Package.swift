@@ -37,7 +37,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/onmyway133/AppStoreConnect",
-            .upToNextMajor(from: "0.0.3")
+            .upToNextMajor(from: "0.0.4")
         )
     ],
     targets: [
