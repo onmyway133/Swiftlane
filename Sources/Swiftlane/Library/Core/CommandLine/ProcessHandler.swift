@@ -38,7 +38,7 @@ public struct DefaultProcessHandler: ProcessHandler {
     private func show(data: Data) {
         let text = data.toString()
         if !text.isEmpty && filter(text) {
-            Settings.default.cs.text(text)
+            Settings.cs.text(text)
         }
     }
 }

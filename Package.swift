@@ -37,7 +37,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/onmyway133/AppStoreConnect",
-            from: "0.0.3"
+            .upToNextMajor(from: "0.0.3")
         )
     ],
     targets: [
@@ -48,7 +48,7 @@ let package = Package(
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
                 "Rainbow",
-                "AppStoreConnect",
+                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
                 "SWXMLHash"
             ],
             path: "Sources"

@@ -16,9 +16,9 @@ public final class SetVersion {
     }
 
     public func run() async throws {
-        Settings.default.cs.action("Set version")
+        Settings.cs.action("Set version")
 
-        try Settings.default.cli.run(
+        try Settings.cli.run(
             program: "agvtool",
             argument: ["new-marketing-version", version].joined(separator: " "),
             currentDirectoryURL: workflow?.directory

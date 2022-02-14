@@ -28,7 +28,7 @@ public extension Notarize {
         bundleId: String,
         ascProvider: String?
     ) async throws {
-        Settings.default.cs.action("Notarize")
+        Settings.cs.action("Notarize")
 
         var args = self.args
         args.flag("altool")
@@ -42,7 +42,7 @@ public extension Notarize {
             args["-asc-provider"] = ascProvider
         }
 
-        let xmlString = try Settings.default.cli.run(
+        let xmlString = try Settings.cli.run(
             program: "xcrun",
             argument: args.toString()
         )
@@ -52,11 +52,11 @@ public extension Notarize {
 
         switch status {
         case "success":
-            Settings.default.cs.success("Notarize succeeded")
+            Settings.cs.success("Notarize succeeded")
             try await staple(packageFile: packageFile)
         case "invalid":
-            Settings.default.cs.error("Notarize failed")
-            Settings.default.cs.highlight("UUID: \(uuid)")
+            Settings.cs.error("Notarize failed")
+            Settings.cs.highlight("UUID: \(uuid)")
             throw SwiftlaneError.invalid("notarize")
         default:
             throw SwiftlaneError.invalid("notarize")
@@ -79,9 +79,9 @@ public extension Notarize {
         var status = ""
         while status.isEmpty || status == "in progress" {
             if status.isEmpty {
-                Settings.default.cs.text("Checking status")
+                Settings.cs.text("Checking status")
             } else {
-                Settings.default.cs.text("Notarizing")
+                Settings.cs.text("Notarizing")
             }
 
             sleep(30)
@@ -90,7 +90,7 @@ public extension Notarize {
             do {
                 info = try await fetchInfo(uuid: uuid)
             } catch {
-                Settings.default.cs.error("Failed to get status")
+                Settings.cs.error("Failed to get status")
             }
 
             if let s = parseStatus(info: info) {
@@ -107,7 +107,7 @@ public extension Notarize {
         args["--notarization-info"] = uuid
         args["-output-format"] = "xml"
 
-        return try Settings.default.cli.run(
+        return try Settings.cli.run(
             program: "xcrun",
             argument: args.toString()
         )
@@ -136,7 +136,7 @@ public extension Notarize {
         args.flag("stapler")
         args["staple"] = packageFile.path
 
-        try Settings.default.cli.run(
+        try Settings.cli.run(
             program: "xcrun",
             argument: args.toString()
         )

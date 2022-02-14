@@ -13,9 +13,9 @@ public final class IncreseBuildNumber {
     public init() {}
 
     public func run() async throws {
-        Settings.default.cs.action("Increase build number")
+        Settings.cs.action("Increase build number")
 
-        try Settings.default.cli.run(
+        try Settings.cli.run(
             program: "agvtool",
             argument: ["next-version", "-all"].joined(separator: " "),
             currentDirectoryURL: workflow?.directory

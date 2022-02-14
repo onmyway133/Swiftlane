@@ -16,7 +16,7 @@ public struct CommandLine {
         processHandler: ProcessHandler = NoProcessHandler()
     ) throws -> String {
         let command = "\(program) \(argument)"
-        Settings.default.cs.highlight(command)
+        Settings.cs.highlight(command)
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/bin/bash")

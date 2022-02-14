@@ -30,7 +30,7 @@ public extension UploadASC {
 
         args["--file"] = ipaFile.path
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcrun",
             argument: args.toString(),
             processHandler: DefaultProcessHandler()

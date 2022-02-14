@@ -29,6 +29,6 @@ public struct XcodeBuildProcessHandler: ProcessHandler {
             return
         }
 
-        Settings.default.cs.text(line)
+        Settings.cs.text(line)
     }
 }

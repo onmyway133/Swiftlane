@@ -16,7 +16,7 @@ public final class GetBuildSettings {
     public func run() async throws -> BuildSettings {
         args.flag("-showBuildSettings")
 
-        let string = try Settings.default.cli.run(
+        let string = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory

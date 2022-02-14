@@ -21,7 +21,7 @@ import Swiftlane
 
 func deployMyAwesomeApp() async throws {
     var workflow = Workflow()
-    workflow.directory = Settings.default.fs.homeDirectory.appendingPathComponent("Projects")
+    workflow.directory = Settings.fs.homeDirectory.appendingPathComponent("Projects")
     
     let build = Build()
     build.project("MyAwesomeApp")

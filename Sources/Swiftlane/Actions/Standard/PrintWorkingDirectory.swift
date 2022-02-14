@@ -13,11 +13,11 @@ public class PrintWorkingDirectory {
     public init() { }
 
     public func run() async throws {
-        Settings.default.cs.action("Print working directory")
+        Settings.cs.action("Print working directory")
 
         let process = Process()
         process.launchPath = "/bin/pwd"
 
-        try Settings.default.cli.run(process: process)
+        try Settings.cli.run(process: process)
     }
 }

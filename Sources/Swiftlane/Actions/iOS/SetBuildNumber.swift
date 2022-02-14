@@ -16,9 +16,9 @@ public final class SetBuildNumber {
     }
 
     public func run() async throws {
-        Settings.default.cs.action("Set build number")
+        Settings.cs.action("Set build number")
 
-        try Settings.default.cli.run(
+        try Settings.cli.run(
             program: "agvtool",
             argument: ["new-version", "-all", number].joined(separator: " "),
             currentDirectoryURL: workflow?.directory

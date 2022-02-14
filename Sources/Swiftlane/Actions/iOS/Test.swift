@@ -15,7 +15,7 @@ public final class Test {
     public init() {}
 
     public func run() async throws {
-        Settings.default.cs.action("Test")
+        Settings.cs.action("Test")
 
         if testsWithoutBuilding {
             args.flag("test-without-building")
@@ -23,14 +23,14 @@ public final class Test {
             args.flag("test")
         }
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()
         )
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,

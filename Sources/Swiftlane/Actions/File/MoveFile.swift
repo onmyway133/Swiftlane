@@ -21,8 +21,8 @@ public struct MoveFile {
     }
 
     public func run() async throws {
-        Settings.default.cs.action("Move file")
+        Settings.cs.action("Move file")
 
-        try await Settings.default.fs.move(fromFile: fromFile, toFile: toFile)
+        try await Settings.fs.move(fromFile: fromFile, toFile: toFile)
     }
 }

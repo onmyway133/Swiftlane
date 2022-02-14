@@ -14,10 +14,10 @@ public final class Archive {
     public init() {}
 
     public func run() async throws {
-        Settings.default.cs.action("Archive")
+        Settings.cs.action("Archive")
 
         args.flag("archive")
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,

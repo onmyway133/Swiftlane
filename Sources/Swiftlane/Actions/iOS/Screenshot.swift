@@ -35,7 +35,7 @@ public final class Screenshot {
     private func runUITest() async throws {
         args.flag("test")
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,
@@ -58,7 +58,7 @@ public final class Screenshot {
             attachmentFilter: { _ in true }
         )
 
-        let destination = saveFolder ?? Settings.default.fs.downloadsDirectory()
+        let destination = saveFolder ?? Settings.fs.downloadsDirectory()
         try XCPParser().extractAttachments(
             xcresultPath: xcresultPath(),
             destination: destination.path,

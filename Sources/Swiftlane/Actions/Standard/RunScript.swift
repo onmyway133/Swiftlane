@@ -21,7 +21,7 @@ public struct RunScript {
         process.arguments = [script]
         process.currentDirectoryURL = workflow?.directory
 
-        Settings.default.cs.highlight(script)
-        return try Settings.default.cli.run(process: process)
+        Settings.cs.highlight(script)
+        return try Settings.cli.run(process: process)
     }
 }

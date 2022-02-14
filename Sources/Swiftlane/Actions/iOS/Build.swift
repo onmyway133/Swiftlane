@@ -15,7 +15,7 @@ public final class Build {
     public init() {}
 
     public func run() async throws {
-        Settings.default.cs.action("Build")
+        Settings.cs.action("Build")
 
         if buildsForTesting {
             args.flag("build")
@@ -23,7 +23,7 @@ public final class Build {
             args.flag("build-for-testing")
         }
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,

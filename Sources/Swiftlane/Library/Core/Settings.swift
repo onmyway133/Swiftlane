@@ -8,10 +8,8 @@
 import Foundation
 
 public struct Settings {
-    public static var `default` = Settings()
-
-    public var env = Environment()
-    public var fs = FileSystem()
-    public var cs = Console()
-    public var cli = CommandLine()
+    public static var env = Environment()
+    public static var fs = FileSystem()
+    public static var cs = Console()
+    public static var cli = CommandLine()
 }

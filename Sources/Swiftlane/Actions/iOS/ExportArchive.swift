@@ -16,7 +16,7 @@ public final class ExportArchive {
     public func run() async throws {
         args.flag("-exportArchive")
 
-        _ = try Settings.default.cli.run(
+        _ = try Settings.cli.run(
             program: "xcodebuild",
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,
