@@ -10,7 +10,7 @@ import AppStoreConnect
 public struct ASC {
     public let client: AppStoreConnect.Client
 
-    public init(credential: AppStoreConnect.Credential) {
-        self.client = AppStoreConnect.Client(credential: credential)
+    public init(credential: AppStoreConnect.Credential) throws {
+        self.client = try AppStoreConnect.Client(credential: credential)
     }
 }
