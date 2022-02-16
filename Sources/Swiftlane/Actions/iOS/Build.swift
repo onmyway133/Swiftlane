@@ -18,9 +18,9 @@ public final class Build {
         Settings.cs.action("Build")
 
         if buildsForTesting {
-            args.flag("build")
-        } else {
             args.flag("build-for-testing")
+        } else {
+            args.flag("build")
         }
 
         _ = try Settings.cli.run(

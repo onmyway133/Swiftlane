@@ -19,7 +19,7 @@ public struct CommandLine {
         Settings.cs.highlight(command)
 
         let process = Process()
-        process.executableURL = URL(fileURLWithPath: "/bin/bash")
+        process.launchPath = "/bin/bash"
         process.arguments = ["-c", command]
         process.currentDirectoryURL = currentDirectoryURL
 

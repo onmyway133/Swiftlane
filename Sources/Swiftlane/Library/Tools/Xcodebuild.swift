@@ -41,6 +41,10 @@ public extension UseXcodebuild {
         args["-UseModernBuildSystem"] = enabled.toYesNo()
     }
 
+    func allowProvisioningUpdates() {
+        args.flag("-allowProvisioningUpdates")
+    }
+
     func destination(_ destination: Xcodebuild.Destination) {
         args["-destination"] = destination.rawValue
             .surroundingWithQuotes()
@@ -80,7 +84,7 @@ public extension UseXcodebuild {
         let map: [String: String] = [
             "name": name,
             "platform": platform.rawValue,
-            "os": os.rawValue
+            "OS": os.rawValue
         ]
         let name = map.compactMap { key, value in
             "\(key)=\(value)"

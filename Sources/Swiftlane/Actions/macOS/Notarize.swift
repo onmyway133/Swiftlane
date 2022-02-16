@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SWXMLHash
+import SwiftyXMLParser
 
 public final class Notarize: UseALTool {
     public var args = Args()
@@ -64,10 +64,9 @@ public extension Notarize {
     }
 
     private func parseUUID(from xmlString: String) throws -> String {
-        let xml = XMLHash.config { _ in }
-            .parse(xmlString)
-
-        guard let uuid = xml["plist"]["dict"]["dict"]["string"].element?.text
+        guard
+            let xml = try? XML.parse(xmlString),
+            let uuid = xml["plist", "dict", "dict", "string"].text
         else {
             throw SwiftlaneError.invalid("uuid")
         }
@@ -93,7 +92,7 @@ public extension Notarize {
                 Settings.cs.error("Failed to get status")
             }
 
-            if let s = parseStatus(info: info) {
+            if let s = parseStatus(xmlString: info) {
                 status = s
             }
         }
@@ -113,15 +112,16 @@ public extension Notarize {
         )
     }
 
-    private func parseStatus(info: String) -> String? {
-        let xml = XMLHash.config { _ in }
-            .parse(info)
-        let items = xml["plist"]["dict"]["dict"].children
+    private func parseStatus(xmlString: String) -> String? {
+        guard
+            let xml = try? XML.parse(xmlString),
+            let items = xml["plist", "dict", "dict"].all
+        else { return nil }
 
         for item in items.enumerated() {
-            guard let text = item.element.element?.text else { continue }
+            guard let text = item.element.text else { continue }
             if text == "Status",
-                let status = items[item.offset + 1].element?.text {
+               let status = items[item.offset + 1].text {
                 return status
             } else {
                 return nil

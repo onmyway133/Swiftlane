@@ -22,11 +22,11 @@ public struct FileSystem {
         try data.write(to: toFile)
     }
 
-    func homeDirectory() -> URL {
+    public func homeDirectory() -> URL {
         FileManager.default.homeDirectoryForCurrentUser
     }
 
-    func currentDirectory() async throws -> URL {
+    public func currentDirectory() async throws -> URL {
         let process = Process()
         process.launchPath = "/bin/pwd"
 

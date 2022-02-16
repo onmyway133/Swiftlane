@@ -8,5 +8,9 @@
 import Foundation
 
 public struct Environment {
-    
+    public subscript(_ key: String) -> String? {
+        get {
+            ProcessInfo.processInfo.environment[key]
+        }
+    }
 }

@@ -12,10 +12,6 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/onmyway133/Spek.git",
-            .upToNextMajor(from: "0.4.0")
-        ),
-        .package(
             url: "https://github.com/tuist/xcbeautify",
             .upToNextMajor(from: "0.11.0")
         ),
@@ -32,12 +28,12 @@ let package = Package(
             .upToNextMajor(from : "2.2.1")
         ),
         .package(
-            url: "https://github.com/drmohundro/SWXMLHash.git",
-            .upToNextMajor(from: "6.0.0")
+            url: "https://github.com/yahoojapan/SwiftyXMLParser",
+            .upToNextMajor(from: "5.6.0")
         ),
         .package(
             url: "https://github.com/onmyway133/AppStoreConnect",
-            .upToNextMajor(from: "0.0.4")
+            .upToNextMajor(from: "0.0.8")
         )
     ],
     targets: [
@@ -47,17 +43,16 @@ let package = Package(
                 .product(name: "XCParseCore", package: "xcparse"),
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
-                .product(name: "Rainbow", package: "Rainbow"),
-                .product(name: "AppStoreConnect", package: "AppStoreConnect"),
-                "SWXMLHash"
+                "Rainbow",
+                "AppStoreConnect",
+                "SwiftyXMLParser"
             ],
             path: "Sources"
         ),
         .testTarget(
             name: "SwiftlaneTests",
             dependencies: [
-                "Swiftlane",
-                "Spek"
+                "Swiftlane"
             ]
         )
     ]

@@ -14,35 +14,51 @@ completion and type safety, you are ensured to do the right things in Swiftlane.
 
 ## How to use
 
-Swiftlane is intended to be used as a Swift Package. Simply import it into your Swift script file
+Swiftlane is intended to be used as a Swift Package. Please consult `Examples` folder for ways to integrate
+
+- CLI: make a macOS Command Line Tool project
+- Script: make an executable Swift Package
 
 ```swift
 import Swiftlane
+import AppStoreConnect
 
-func deployMyAwesomeApp() async throws {
-    var workflow = Workflow()
-    workflow.directory = Settings.fs.homeDirectory.appendingPathComponent("Projects")
-    
-    let build = Build()
-    build.project("MyAwesomeApp")
-    build.scheme("Production")
-    build.configuration(.release)
-    build.workflow = workflow
-    try await build.run()
-    
-    let archive = Archive()
-    archive.workflow = workflow
-    // configure action
-    try await archive.run()
-    
-    let testflight = Testflight()
-    // configure action
-    try await testflight.run() 
-    
-    let slack = Slack()
-    slack.send(
-        message: Slack.Message(text: "Deploy complete")
-    ) 
+@main
+struct Script {
+    static func main() async throws {
+        try await deployMyApp()
+    }
+
+    private static func deployMyApp() async throws {
+        var workflow = Workflow()
+        workflow.directory = Settings.fs
+            .homeDirectory()
+            .appendingPathComponent("Projects/swiftlane/Examples/MyApp")
+
+        let build = Build()
+        build.project("MyApp")
+        build.allowProvisioningUpdates()
+        build.destination(platform: .iOSSimulator, name: "iPhone 13")
+        build.workflow = workflow
+        try await build.run()
+
+        guard
+            let issuerId = Settings.env["ASC_ISSUER_ID"],
+            let privateKeyId = Settings.env["ASC_PRIVATE_KEY_ID"],
+            let privateKey = Settings.env["ASC_PRIVATE_KEY"]
+        else { return }
+
+        let asc = try ASC(
+            credential: AppStoreConnect.Credential(
+                issuerId: issuerId,
+                privateKeyId: privateKeyId,
+                privateKey: privateKey
+            )
+        )
+
+        try await asc.fetchCertificates()
+        try await asc.fetchProvisioningProfiles()
+    }
 }
 ```
 

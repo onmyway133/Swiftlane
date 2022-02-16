@@ -18,7 +18,7 @@ extension String {
     }
 
     func appendingPathExtension(_ ext: String) -> String {
-        guard hasSuffix(ext) else {
+        guard !hasSuffix(ext) else {
             return self
         }
 
