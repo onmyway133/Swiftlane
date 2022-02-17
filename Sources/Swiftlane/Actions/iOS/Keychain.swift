@@ -89,10 +89,47 @@ public struct Keychain {
             argument: args.toString()
         )
     }
+
+    public func addToSearchablePaths() async throws {
+        var paths = try await searchablePaths()
+        guard !paths.contains(path) else { return }
+
+        paths.append(path)
+
+        var args = Args()
+        args.flag("list-keychains")
+        args["-s"] = paths
+            .map { $0.rawValue.path }
+            .map { "\"\($0)\"" }
+            .joined(separator: "\n")
+
+        try Settings.cli.run(
+            program: "security",
+            argument: args.toString()
+        )
+    }
+
+    public func searchablePaths() async throws -> [Path] {
+        var args = Args()
+        args.flag("list-keychains")
+        args["-d"] = "user"
+
+        let string = try Settings.cli.run(
+            program: "security",
+            argument: args.toString()
+        )
+
+        return string
+            .split(separator: "\n")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .map { $0.replacingOccurrences(of: "\"", with: "") }
+            .compactMap { URL(string: $0) }
+            .map { Path(rawValue: $0) }
+    }
 }
 
 public extension Keychain {
-    struct Path {
+    struct Path: Equatable {
         public var rawValue: URL
         public init(rawValue: URL) {
             self.rawValue = rawValue

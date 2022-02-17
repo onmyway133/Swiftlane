@@ -27,7 +27,7 @@ struct Script {
         build.allowProvisioningUpdates()
         build.destination(platform: .iOSSimulator, name: "iPhone 13")
         build.workflow = workflow
-        try await build.run()
+//        try await build.run()
 
         guard
             let issuerId = Settings.env["ASC_ISSUER_ID"],
@@ -43,23 +43,23 @@ struct Script {
             )
         )
 
-        /*
         let keychain = try await Keychain.create(
             path: Keychain.Path(
                 rawValue: Settings.fs
                     .downloadsDirectory
-                    .appendingPathComponent("custom.keychain")),
-            password: "keychain_password"
+                    .appendingPathComponent("k1.keychain")),
+            password: "abc"
         )
         try await keychain.unlock()
+        try await keychain.addToSearchablePaths()
         try await keychain.import(
             certificateFile: Settings.fs
                 .downloadsDirectory
                 .appendingPathComponent("abcpass.p12"),
             certificatePassword: "123"
         )
-         */
 
+        /*
         let appCenter = AppCenter()
         try await appCenter.upload(
             appId: "",
@@ -67,5 +67,6 @@ struct Script {
             token: "",
             distributionGroup: ""
         )
+        */
     }
 }
