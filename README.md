@@ -110,14 +110,12 @@ struct Script {
 - [ ] UploadAppCenter: upload to AppCenter
 - [ ] UploadSetapp: upload to Setapp
 - [x] Download: download file
-
-### File
 - [x] MoveFile: move file
 - [x] CopyFile: copy file
 
 ## Settings
 
-Configurations via `Settings.default`
+Configurations via `Settings`
 
 - Console: log to console
 - FileSystem: interact with file system
