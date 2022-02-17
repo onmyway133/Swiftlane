@@ -31,8 +31,9 @@ public struct Keychain {
         }
 
         var args = Args()
-        args["create-keychain"] = path.rawValue.path.surroundingWithQuotes()
+        args.flag("create-keychain")
         args["-p"] = password.surroundingWithQuotes()
+        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
 
         try Settings.cli.run(
             program: "security",
@@ -47,8 +48,9 @@ public struct Keychain {
 
     public func unlock() async throws {
         var args = Args()
-        args["unlock-keychain"] = path.rawValue.path.surroundingWithQuotes()
+        args.flag("unlock-keychain")
         args["-p"] = password.surroundingWithQuotes()
+        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
 
         try Settings.cli.run(
             program: "security",

@@ -10,6 +10,7 @@ import Foundation
 public struct Args {
     private var map: [String: String] = [:]
     private var mapMultiple: [String: Set<String>] = [:]
+    public var suffix: [String] = []
 
     public subscript(_ key: String) -> String? {
         get {
@@ -73,7 +74,7 @@ public struct Args {
             .sorted(by: sortArguments)
             .joined(separator: " ")
 
-        return [mapString, mapMultipleString].joined(separator: " ")
+        return ([mapString, mapMultipleString] + suffix).joined(separator: " ")
     }
 
     // Ensure non-hyphen arguments come first
