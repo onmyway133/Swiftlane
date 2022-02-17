@@ -101,7 +101,7 @@ public struct Keychain {
         args["-s"] = paths
             .map { $0.rawValue.path }
             .map { "\"\($0)\"" }
-            .joined(separator: "\n")
+            .joined(separator: " ")
 
         try Settings.cli.run(
             program: "security",

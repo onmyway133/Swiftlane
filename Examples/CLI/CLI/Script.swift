@@ -47,7 +47,7 @@ struct Script {
             path: Keychain.Path(
                 rawValue: Settings.fs
                     .downloadsDirectory
-                    .appendingPathComponent("k1.keychain")),
+                    .appendingPathComponent("k3.keychain")),
             password: "abc"
         )
         try await keychain.unlock()
