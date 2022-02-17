@@ -78,6 +78,16 @@ public struct Keychain {
             argument: args.toString()
         )
     }
+    
+    public func delete() async throws {
+        var args = Args()
+        args.flag("delete-keychain")
+        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
+        try Settings.cli.run(
+            program: "security",
+            argument: args.toString()
+        )
+    }
 }
 
 public extension Keychain {

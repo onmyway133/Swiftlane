@@ -108,6 +108,7 @@ struct Script {
 
 - [x] Create custom keychain
 - [x] Unlock keychain
+- [x] Delete keychain
 - [x] Import certificate into keychain
 
 #### Simulator 
