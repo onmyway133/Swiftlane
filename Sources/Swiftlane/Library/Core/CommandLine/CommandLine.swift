@@ -8,6 +8,19 @@
 import Foundation
 
 public struct CommandLine {
+    func exists(program: String) -> Bool {
+        do {
+            let result = try run(
+                program: program,
+                argument: "-v"
+            )
+
+            return !result.contains("not found")
+        } catch {
+            return false
+        }
+    }
+
     @discardableResult
     func run(
         program: String,

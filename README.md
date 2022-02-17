@@ -134,6 +134,7 @@ struct Script {
 - [x] Download: download file
 - [x] MoveFile: move file
 - [x] CopyFile: copy file
+- [x] AppCenter: use appcenter-cli
 
 ## Settings
 

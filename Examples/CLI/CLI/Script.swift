@@ -59,5 +59,13 @@ struct Script {
             certificatePassword: "123"
         )
          */
+
+        let appCenter = AppCenter()
+        try await appCenter.upload(
+            appId: "",
+            ipaFile: URL(string: "/Downloads")!,
+            token: "",
+            distributionGroup: ""
+        )
     }
 }
