@@ -109,6 +109,8 @@ struct Script {
 - [x] Create custom keychain
 - [x] Unlock keychain
 - [x] Delete keychain
+- [x] List searchable keychain paths
+- [x] Add keychain to searchable paths
 - [x] Import certificate into keychain
 
 #### Simulator 
