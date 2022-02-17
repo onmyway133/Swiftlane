@@ -9,6 +9,7 @@ import Foundation
 
 public protocol UseXcodebuild: AnyObject {
     var args: Args { get set }
+    var workflow: Workflow? { get }
 }
 
 public extension UseXcodebuild {
@@ -101,6 +102,18 @@ public extension UseXcodebuild {
     func testPlan(_ file: URL) {
         args["-testPlan"] = file.path
             .deletingPathExtension("xctestplan")
+    }
+
+    func xcodebuild() -> String {
+        guard
+            let xcodeApp = workflow?.xcodeApp
+        else {
+            return "xcodebuild"
+        }
+
+        return xcodeApp
+            .appendingPathComponent("Contents/Developer/usr/bin/xcodebuild")
+            .path
     }
 }
 

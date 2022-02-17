@@ -26,10 +26,6 @@ public struct FileSystem {
         FileManager.default.fileExists(atPath: url.path)
     }
 
-    public func homeDirectory() -> URL {
-        FileManager.default.homeDirectoryForCurrentUser
-    }
-
     public func currentDirectory() async throws -> URL {
         let process = Process()
         process.launchPath = "/bin/pwd"
@@ -42,14 +38,32 @@ public struct FileSystem {
         return url
     }
 
-    public func downloadsDirectory() -> URL {
-        homeDirectory()
+    public var homeDirectory: URL {
+        FileManager.default.homeDirectoryForCurrentUser
+    }
+
+    public var downloadsDirectory: URL {
+        homeDirectory
             .appendingPathComponent("Downloads")
     }
 
-    public func keychainsDirectory() -> URL {
-        homeDirectory()
-            .appendingPathComponent("Library/Keychains")
+    public var libraryDirectory: URL {
+        homeDirectory
+            .appendingPathComponent("Library")
+    }
+
+    public var applicationsDirectory: URL {
+        URL(string: "/Applications")!
+    }
+
+    public var keychainsDirectory: URL {
+        libraryDirectory
+            .appendingPathComponent("Keychains")
+    }
+
+    public var provisioningProfilesDirectory: URL {
+        libraryDirectory
+            .appendingPathComponent("MobileDevice/Provisioning Profiles")
     }
 }
 

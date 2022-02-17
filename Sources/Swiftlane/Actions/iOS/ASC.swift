@@ -82,4 +82,21 @@ public extension ASC {
 
         try data.write(to: toFile.ensuringExtension("cer"))
     }
+
+    func install(
+        profile: Profile
+    ) async throws {
+        guard
+            let uuid = profile.attributes?.uuid
+        else {
+            throw SwiftlaneError.invalid("uuid")
+        }
+
+        try await save(
+            profile: profile,
+            toFile: Settings.fs.provisioningProfilesDirectory
+                .appendingPathComponent(uuid)
+                .appendingPathExtension("mobileprovision")
+        )
+    }
 }

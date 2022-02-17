@@ -24,7 +24,7 @@ public final class Build {
         }
 
         _ = try Settings.cli.run(
-            program: "xcodebuild",
+            program: xcodebuild(),
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()

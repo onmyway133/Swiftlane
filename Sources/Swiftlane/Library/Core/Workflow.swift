@@ -9,6 +9,7 @@ import Foundation
 
 public struct Workflow {
     public var directory: URL?
+    public var xcodeApp: URL?
 
     public init() {}
 }

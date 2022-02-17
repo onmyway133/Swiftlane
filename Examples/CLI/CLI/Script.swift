@@ -18,15 +18,16 @@ struct Script {
     private static func deployMyApp() async throws {
         var workflow = Workflow()
         workflow.directory = Settings.fs
-            .homeDirectory()
+            .homeDirectory
             .appendingPathComponent("XcodeProject2/swiftlane/Examples/MyApp")
+        workflow.xcodeApp = Settings.fs.applicationsDirectory.appendingPathComponent("Xcode.app")
 
         let build = Build()
         build.project("MyApp")
         build.allowProvisioningUpdates()
         build.destination(platform: .iOSSimulator, name: "iPhone 13")
         build.workflow = workflow
-//        try await build.run()
+        try await build.run()
 
         guard
             let issuerId = Settings.env["ASC_ISSUER_ID"],
@@ -42,19 +43,21 @@ struct Script {
             )
         )
 
+        /*
         let keychain = try await Keychain.create(
             path: Keychain.Path(
                 rawValue: Settings.fs
-                    .downloadsDirectory()
+                    .downloadsDirectory
                     .appendingPathComponent("custom.keychain")),
             password: "keychain_password"
         )
         try await keychain.unlock()
         try await keychain.import(
             certificateFile: Settings.fs
-                .downloadsDirectory()
+                .downloadsDirectory
                 .appendingPathComponent("abcpass.p12"),
             certificatePassword: "123"
         )
+         */
     }
 }

@@ -89,7 +89,7 @@ public extension Keychain {
 
         public static var login: Path {
             Path(
-                rawValue: Settings.fs.keychainsDirectory()
+                rawValue: Settings.fs.keychainsDirectory
                     .appendingPathComponent("login.keychain")
             )
         }

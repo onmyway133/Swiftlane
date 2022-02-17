@@ -18,7 +18,7 @@ public final class Archive {
 
         args.flag("archive")
         _ = try Settings.cli.run(
-            program: "xcodebuild",
+            program: xcodebuild(),
             argument: args.toString(),
             currentDirectoryURL: workflow?.directory,
             processHandler: XcodeBuildProcessHandler()

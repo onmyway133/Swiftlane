@@ -58,7 +58,7 @@ public final class Screenshot {
             attachmentFilter: { _ in true }
         )
 
-        let destination = saveFolder ?? Settings.fs.downloadsDirectory()
+        let destination = saveFolder ?? Settings.fs.downloadsDirectory
         try XCPParser().extractAttachments(
             xcresultPath: xcresultPath(),
             destination: destination.path,
