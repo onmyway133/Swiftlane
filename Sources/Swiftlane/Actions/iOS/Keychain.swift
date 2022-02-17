@@ -33,7 +33,7 @@ public struct Keychain {
         var args = Args()
         args.flag("create-keychain")
         args["-p"] = password.surroundingWithQuotes()
-        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
+        args.flag(path.rawValue.path.surroundingWithQuotes())
 
         try Settings.cli.run(
             program: "security",
@@ -50,7 +50,7 @@ public struct Keychain {
         var args = Args()
         args.flag("unlock-keychain")
         args["-p"] = password.surroundingWithQuotes()
-        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
+        args.flag(path.rawValue.path.surroundingWithQuotes())
 
         try Settings.cli.run(
             program: "security",
@@ -82,7 +82,8 @@ public struct Keychain {
     public func delete() async throws {
         var args = Args()
         args.flag("delete-keychain")
-        args.suffix = [path.rawValue.path.surroundingWithQuotes()]
+        args.flag(path.rawValue.path.surroundingWithQuotes())
+
         try Settings.cli.run(
             program: "security",
             argument: args.toString()

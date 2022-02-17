@@ -8,43 +8,65 @@
 import Foundation
 
 public struct Args {
-    private var map: [String: String] = [:]
-    private var mapMultiple: [String: Set<String>] = [:]
-    public var suffix: [String] = []
+    private struct Pair {
+        let key: String
+        var value: String
+    }
+
+    private var pairs: [Pair] = []
 
     public subscript(_ key: String) -> String? {
         get {
-            map[key]
-        }
-        set {
-            map[key] = newValue
-        }
-    }
-
-    public subscript(multiple key: String) -> String? {
-        get {
-            if let set = mapMultiple[key] {
-                return set.map { $0 }.joined(separator: " ")
+            if let pair = pairs.first(where: { $0.key == key }) {
+                return pair.value
             } else {
                 return nil
             }
         }
         set {
             if let newValue = newValue {
-                var set = mapMultiple[key] ?? Set<String>()
-                set.insert(newValue)
-                mapMultiple[key] = set
+                if let index = pairs.firstIndex(where: { $0.key == key }) {
+                    var pair = pairs[index]
+                    pair.value = newValue
+                    pairs[index] = pair
+                } else {
+                    let pair = Pair(key: key, value: newValue)
+                    pairs.append(pair)
+                }
+            } else {
+                pairs.removeAll(where: { $0.key == key })
+            }
+        }
+    }
+
+    public subscript(multiple key: String) -> String? {
+        get {
+            if let pair = pairs.first(where: { $0.key == key }) {
+                return pair.value
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let newValue = newValue {
+                let pair = Pair(key: key, value: newValue)
+                pairs.append(pair)
+            } else {
+                pairs.removeAll(where: { $0.key == key })
             }
         }
     }
 
     public mutating func flag(_ key: String) {
-        map[key] = ""
+        self[key] = ""
     }
 
     func toString() -> String {
-        let mapString = map
-            .map { key, value in
+        pairs
+            .map { pair in
+                let key = pair.key
+                let value = pair.value
+
                 if value.hasPrefix("=") {
                     return "\(key)\(value)" // key=value
                 } else if value.isEmpty {
@@ -53,37 +75,7 @@ public struct Args {
                     return "\(key) \(value)" // key value
                 }
             }
-            .sorted(by: sortArguments)
             .joined(separator: " ")
-
-        let mapMultipleString = mapMultiple
-            .compactMap { key, set in
-                guard !set.isEmpty else { return nil }
-
-                return set
-                    .map { (value: String) -> String in
-                        if value.hasPrefix("=") {
-                            return "\(key)\(value)" // key=value
-                        } else {
-                            return "\(key) \(value)" // key value
-                        }
-                    }
-                    .sorted(by: sortArguments)
-                    .joined(separator: " ")
-            }
-            .sorted(by: sortArguments)
-            .joined(separator: " ")
-
-        return ([mapString, mapMultipleString] + suffix).joined(separator: " ")
-    }
-
-    // Ensure non-hyphen arguments come first
-    private func sortArguments(_ l: String, r: String) -> Bool {
-        switch (l.hasPrefix("-"), r.hasPrefix("-")) {
-        case (true, false): return false
-        case (false, true): return true
-        default: return l < r
-        }
     }
 }
 
