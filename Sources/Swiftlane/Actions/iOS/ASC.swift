@@ -6,6 +6,7 @@
 //
 
 import AppStoreConnect
+import Foundation
 
 public struct ASC {
     public let client: AppStoreConnect.Client
@@ -52,5 +53,33 @@ public extension ASC {
         let request = Paths.profiles.get(parameters: params)
         let response = try await client.apiClient.send(request)
         return response.value
+    }
+
+    func save(
+        profile: Profile,
+        toFile: URL
+    ) async throws {
+        guard
+            let string = profile.attributes?.profileContent,
+            let data = Data(base64Encoded: string, options: .ignoreUnknownCharacters)
+        else {
+            throw SwiftlaneError.invalid("profile")
+        }
+
+        try data.write(to: toFile.ensuringExtension("mobileprovision"))
+    }
+
+    func save(
+        certificate: Certificate,
+        toFile: URL
+    ) async throws {
+        guard
+            let string = certificate.attributes?.certificateContent,
+            let data = Data(base64Encoded: string, options: .ignoreUnknownCharacters)
+        else {
+            throw SwiftlaneError.invalid("certificate")
+        }
+
+        try data.write(to: toFile.ensuringExtension("cer"))
     }
 }

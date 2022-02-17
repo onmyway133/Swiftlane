@@ -7,6 +7,7 @@
 
 import Swiftlane
 import AppStoreConnect
+import Foundation
 
 @main
 struct Script {
@@ -41,7 +42,20 @@ struct Script {
             )
         )
 
-        let certificates = try await asc.fetchCertificates()
-        let profiles = try await asc.fetchProvisioningProfiles()
+        let keychain = try await Keychain.create(
+            path: Keychain.Path(
+                rawValue: Settings.fs
+                    .downloadsDirectory()
+                    .appendingPathComponent("custom.keychain")),
+            password: "keychain_password"
+        )
+        try await keychain.unlock()
+        try await keychain.import(
+            certificateFile: Settings.fs
+                .downloadsDirectory()
+                .appendingPathComponent("abcpass.p12"),
+            certificatePassword: "123"
+        )
     }
 }
+

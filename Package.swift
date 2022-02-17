@@ -43,7 +43,6 @@ let package = Package(
                 .product(name: "XCParseCore", package: "xcparse"),
                 .product(name: "XcbeautifyLib", package: "xcbeautify"),
                 "Files",
-                "Rainbow",
                 "AppStoreConnect",
                 "SwiftyXMLParser"
             ],

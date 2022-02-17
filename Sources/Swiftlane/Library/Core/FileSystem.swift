@@ -22,6 +22,10 @@ public struct FileSystem {
         try data.write(to: toFile)
     }
 
+    func exists(url: URL) -> Bool {
+        FileManager.default.fileExists(atPath: url.path)
+    }
+
     public func homeDirectory() -> URL {
         FileManager.default.homeDirectoryForCurrentUser
     }
@@ -38,8 +42,14 @@ public struct FileSystem {
         return url
     }
 
-    func downloadsDirectory() -> URL {
-        homeDirectory().appendingPathComponent("Downloads")
+    public func downloadsDirectory() -> URL {
+        homeDirectory()
+            .appendingPathComponent("Downloads")
+    }
+
+    public func keychainsDirectory() -> URL {
+        homeDirectory()
+            .appendingPathComponent("Library/Keychains")
     }
 }
 

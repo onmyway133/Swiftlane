@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Rainbow
 
 public struct Console {
     func action(_ name: String) {

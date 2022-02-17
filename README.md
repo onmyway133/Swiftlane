@@ -78,8 +78,24 @@ struct Script {
 - [x] Screenshot: take screenshot
 - [ ] Frame: frame screenshot
 - [x] UploadASC: upload IPA to AppStore Connect
-- [ ] BootSimulator: boot a simulator
-- [ ] UpdateSimulator: update simulator
+
+#### ASC
+
+- [x] Fetch certificates
+- [x] Fetch provisioning profiles
+- [x] Save certificates into file system
+- [x] Save profiles into file system
+
+#### Keychain
+
+- [x] Create custom keychain
+- [x] Unlock keychain
+- [x] Import certificate into keychain
+
+#### Simulator 
+
+- [ ] Boot a simulator
+- [ ] Update and style  simulator
 
 ### macOS
 - [x] Notarize: notarize project
