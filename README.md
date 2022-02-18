@@ -103,6 +103,9 @@ struct Script {
 - [x] Save certificates into file system
 - [x] Save profiles into file system
 - [x] Install provisioning profile
+- [x] Fetch TestFlight versions
+- [x] Fetch TestFlight builds
+- [x] Fetch latest TestFlight build number
 
 #### Keychain
 
@@ -131,9 +134,8 @@ struct Script {
 - [x] Slack: send message to a Slack channel
 - [x] RunScript: run arbitrary script
 - [x] PrintWorkingDirectory: print current working directory
-- [ ] UploadS3: upload to S3
-- [ ] UploadAppCenter: upload to AppCenter
-- [ ] UploadSetapp: upload to Setapp
+- [ ] S3: upload to S3
+- [ ] Setapp: upload to Setapp
 - [x] Download: download file
 - [x] MoveFile: move file
 - [x] CopyFile: copy file
