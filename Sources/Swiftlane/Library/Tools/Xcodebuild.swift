@@ -15,13 +15,13 @@ public protocol UseXcodebuild: AnyObject {
 public extension UseXcodebuild {
     func project(_ name: String) {
         args["-project"] = name
-            .appendingPathExtension("xcodeproj")
+            .ensuringPathExtension("xcodeproj")
             .surroundingWithQuotes()
     }
 
     func workspace(_ name: String) {
         args["-workspace"] = name
-            .appendingPathExtension("xcworkspace")
+            .ensuringPathExtension("xcworkspace")
             .surroundingWithQuotes()
     }
 

@@ -36,7 +36,12 @@ public final class ExportArchive {
 
     public func exportPath(_ ipaFile: URL) {
         args["-exportPath"] = ipaFile.path
-            .appendingPathExtension(".ipa")
+            .ensuringPathExtension(".ipa")
+    }
+
+    public func archivePath(_ archiveFile: URL) {
+        args["-archivePath"] = archiveFile.path
+            .ensuringPathExtension(".xcarchive")
     }
 
     public func exportOptionPlist(_ plistFile: URL) {

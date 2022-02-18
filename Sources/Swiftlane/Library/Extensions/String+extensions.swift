@@ -17,7 +17,7 @@ extension String {
         return "'\(self)'"
     }
 
-    func appendingPathExtension(_ ext: String) -> String {
+    func ensuringPathExtension(_ ext: String) -> String {
         guard !hasSuffix(ext) else {
             return self
         }

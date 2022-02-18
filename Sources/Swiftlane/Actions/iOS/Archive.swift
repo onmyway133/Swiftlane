@@ -25,12 +25,9 @@ public final class Archive {
         )
     }
 
-    public func archivePath(_ folderUrl: URL, name: String) {
-        args["-archivePath"] = folderUrl
-            .appendingPathComponent(name)
-            .path
-            .appendingPathExtension("xcarchive")
-            .surroundingWithQuotes()
+    public func archivePath(_ archiveFile: URL) {
+        args["-archivePath"] = archiveFile.path
+            .ensuringPathExtension(".xcarchive")
     }
 }
 
