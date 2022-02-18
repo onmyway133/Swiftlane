@@ -43,6 +43,11 @@ struct Script {
             )
         )
 
+        let buildNumber = try await asc.fetchLatestTestFlightBuildNumber(
+            filterVersion: "2.8.9",
+            filterApp: "1503446680"
+        )
+
         let keychain = try await Keychain.create(
             path: Keychain.Path(
                 rawValue: Settings.fs
@@ -50,6 +55,7 @@ struct Script {
                     .appendingPathComponent("k3.keychain")),
             password: "abc"
         )
+        /*
         try await keychain.unlock()
         try await keychain.addToSearchablePaths()
         try await keychain.import(
@@ -58,6 +64,7 @@ struct Script {
                 .appendingPathComponent("abcpass.p12"),
             certificatePassword: "123"
         )
+        */
 
         /*
         let appCenter = AppCenter()

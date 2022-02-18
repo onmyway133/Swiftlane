@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  Settings.swift
+//  Swiftlane
 //
 //  Created by Khoa on 11/02/2022.
 //
