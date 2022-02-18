@@ -16,10 +16,6 @@ let package = Package(
             .upToNextMajor(from: "0.11.0")
         ),
         .package(
-            url: "https://github.com/onevcat/Rainbow",
-            .upToNextMajor(from: "4.0.1")
-        ),
-        .package(
             url: "https://github.com/JohnSundell/Files.git",
             .upToNextMajor(from : "4.2.0")
         ),

@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/onmyway133/AppStoreConnect",
         "state": {
           "branch": null,
-          "revision": "c8378fc0a36dd77fa0e406f10abb0e54cb5e3053",
+          "revision": "f8e0a73d6a9f7a4c59de47f532a63c79ceb6ee18",
           "version": "0.0.8"
         }
       },
@@ -53,15 +53,6 @@
           "branch": null,
           "revision": "08fad5d02e9117f6cea96096c5951e445aa710b1",
           "version": "1.0.0"
-        }
-      },
-      {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/onevcat/Rainbow",
-        "state": {
-          "branch": null,
-          "revision": "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
-          "version": "4.0.1"
         }
       },
       {
