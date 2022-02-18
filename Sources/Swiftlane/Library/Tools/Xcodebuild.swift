@@ -186,11 +186,16 @@ public enum Xcodebuild {
         public static let genericiOS = Destination(rawValue: "generic/platform=iOS")
     }
 
-    public struct ExportMethod {
+    public struct ExportMethod: Encodable {
         public let rawValue: String
 
         public init(rawValue: String) {
             self.rawValue = rawValue
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            try container.encode(rawValue)
         }
 
         public static let appStore = ExportMethod(rawValue: "app-store")
