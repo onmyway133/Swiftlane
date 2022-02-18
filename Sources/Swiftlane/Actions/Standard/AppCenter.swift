@@ -8,30 +8,50 @@
 import Foundation
 
 public struct AppCenter {
-    public init() {}
+    public struct Credential {
+        let token: String
 
-    public func upload(
+        public init(token: String) {
+            self.token = token
+        }
+    }
+
+    let credential: Credential
+
+    public init(credential: Credential) {
+        self.credential = credential
+    }
+}
+
+public extension AppCenter {
+    func upload(
         appId: String,
         ipaFile: URL,
-        token: String,
-        distributionGroup: String
+        distributionGroup: String?
     ) async throws {
-        guard Settings.cli.exists(program: "appcenter") else {
-            Settings.cs.warn("appcenter not found")
-            Settings.cs.text("Install via https://github.com/microsoft/appcenter-cli")
-            throw SwiftlaneError.invalid("appcenter")
-        }
+        try ensureAppCenterCLI()
 
         var args = Args()
+        args["--token"] = credential.token
         args["-f"] = ipaFile.path
         args["-a"] = appId
-        args["--token"] = token
-        args["-g"] = distributionGroup
+
+        if let distributionGroup = distributionGroup {
+            args["-g"] = distributionGroup
+        }
 
         _ = try Settings.cli.run(
             program: "appcenter",
             argument: args.toString(),
             processHandler: DefaultProcessHandler()
         )
+    }
+
+    private func ensureAppCenterCLI() throws {
+        guard Settings.cli.exists(program: "appcenter") else {
+            Settings.cs.warn("appcenter not found")
+            Settings.cs.text("Install via https://github.com/microsoft/appcenter-cli")
+            throw SwiftlaneError.invalid("appcenter")
+        }
     }
 }

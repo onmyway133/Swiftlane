@@ -38,6 +38,10 @@ public struct FileSystem {
         return url
     }
 
+    public var temporaryDirectory: URL {
+        FileManager.default.temporaryDirectory
+    }
+
     public var homeDirectory: URL {
         FileManager.default.homeDirectoryForCurrentUser
     }
