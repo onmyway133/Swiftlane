@@ -86,9 +86,6 @@ struct Script {
 - [x] Test: test project
 - [x] Archive: archive project
 - [x] ExportArchive: export archive
-- [x] SetBuildNumber: set build number
-- [x] SetVersion: set version
-- [x] IncreaseBuildNumber: increase build number
 - [x] AppStore Connect: use https://github.com/onmyway133/AppStoreConnect
 - [x] GetBuildSettings: get project build settings
 - [ ] GenerateIcon: generate app icon set
@@ -106,6 +103,12 @@ struct Script {
 - [x] Fetch TestFlight versions
 - [x] Fetch TestFlight builds
 - [x] Fetch latest TestFlight build number
+
+#### Project
+
+- [x] Set version
+- [x] Set build number
+- [x] Increment build number
 
 #### Keychain
 
