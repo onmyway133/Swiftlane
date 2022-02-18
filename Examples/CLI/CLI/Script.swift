@@ -29,6 +29,10 @@ struct Script {
         build.workflow = workflow
 //        try await build.run()
 
+        let export = ExportArchive()
+        export.exportOptions = ExportArchive.ExportOptions()
+        export.exportOptions?.method = .adHoc
+
         guard
             let issuerId = Settings.env["ASC_ISSUER_ID"],
             let privateKeyId = Settings.env["ASC_PRIVATE_KEY_ID"],

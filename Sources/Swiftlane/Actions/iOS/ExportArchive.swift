@@ -39,16 +39,30 @@ public final class ExportArchive {
     }
 
     private func useExportOptions(exportOptions: ExportOptions) throws {
-        let builder = PlistBuilder(
-            dict: PlistDict(nodes: [
-                PlistString(key: "teamID", value: exportOptions.teamId),
-                PlistString(key: "method", value: exportOptions.method.rawValue),
-                PlistBool(key: "uploadSymbols", value: exportOptions.uploadSymbols),
-                PlistBool(key: "uploadBitcode", value: exportOptions.uploadBitcode)
-            ])
-        )
+        let dict = PlistDict {
+            PlistBool(key: "uploadSymbols", value: exportOptions.uploadSymbols)
+            PlistBool(key: "uploadBitcode", value: exportOptions.uploadBitcode)
+            PlistBool(key: "compileBitcode", value: exportOptions.compileBitcode)
+            PlistString(key: "signingStyle", value: exportOptions.signingStyle.rawValue)
 
-        let string = builder.toString()
+            if let teamId = exportOptions.teamId {
+                PlistString(key: "teamID", value: teamId)
+            }
+
+            if let signingCertificate = exportOptions.signingCertificate {
+                PlistString(key: "signingCertificate", value: signingCertificate)
+            }
+
+            if let profiles = exportOptions.provisioningProfiles {
+                PlistDict(key: "provisioningProfiles") {
+                    for profile in profiles {
+                        PlistString(key: profile.bundleId, value: profile.profileName)
+                    }
+                }
+            }
+        }
+
+        let string = dict.toPlistString()
         let plistFile = Settings.fs.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
             .appendingPathExtension("plist")
@@ -60,11 +74,33 @@ public final class ExportArchive {
 extension ExportArchive: UseXcodebuild {}
 public extension ExportArchive {
     struct ExportOptions {
+        public enum SigningStyle: String {
+            case manual = "manual"
+            case automatic = "automatic"
+        }
+
+        public struct ProvisioningProfile {
+            let bundleId: String
+            let profileName: String
+
+            public init(
+                bundleId: String,
+                profileName: String
+            ) {
+                self.bundleId = bundleId
+                self.profileName = profileName
+            }
+        }
+
         public init() {}
 
         public var method: Xcodebuild.ExportMethod = .appStore
-        public var teamId: String = ""
+        public var signingStyle: SigningStyle = .automatic
+        public var teamId: String?
         public var uploadSymbols: Bool = true
         public var uploadBitcode: Bool = true
+        public var compileBitcode: Bool = true
+        public var signingCertificate: String?
+        public var provisioningProfiles: [ProvisioningProfile]?
     }
 }

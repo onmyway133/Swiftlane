@@ -7,19 +7,39 @@
 
 import Foundation
 
-struct PlistBuilder {
-    let dict: PlistDict
+@resultBuilder
+enum PlistBuilder {
+    static func buildBlock(_ components: PlistNode...) -> [PlistNode] {
+        components
+    }
 
-    func toString() -> String {
-        let content = dict.toLines().joined(separator: "\n")
-        return
-"""
-<?Plist version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-\(content)
-</plist>
-"""
+    static func buildBlock(_ components: [PlistNode]...) -> [PlistNode] {
+        components.flatMap { $0 }
+    }
+
+
+    static func buildEither(first component: [PlistNode]) -> [PlistNode] {
+        component
+    }
+
+    static func buildEither(second component: [PlistNode]) -> [PlistNode] {
+        component
+    }
+
+    static func buildOptional(_ component: [PlistNode]?) -> [PlistNode] {
+        component ?? []
+    }
+
+    static func buildExpression(_ expression: PlistNode) -> [PlistNode] {
+        [expression]
+    }
+
+    static func buildExpression(_ expression: [PlistNode]) -> [PlistNode] {
+        expression
+    }
+
+    static func buildArray(_ components: [[PlistNode]]) -> [PlistNode] {
+        components.flatMap { $0 }
     }
 }
 
@@ -66,6 +86,11 @@ struct PlistDict: PlistNode {
     var key: String?
     var nodes: [PlistNode]
 
+    init(key: String? = nil, @PlistBuilder _ builder: () -> [PlistNode]) {
+        self.key = key
+        self.nodes = builder()
+    }
+
     func toLines() -> [String] {
         var lines = [String]()
         if let key = key {
@@ -81,5 +106,17 @@ struct PlistDict: PlistNode {
         lines.append("</dict>")
 
         return lines
+    }
+
+    func toPlistString() -> String {
+        let content = toLines().joined(separator: "\n")
+        return
+"""
+<?Plist version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+\(content)
+</plist>
+"""
     }
 }
