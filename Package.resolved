@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/onmyway133/AppStoreConnect",
         "state": {
           "branch": null,
-          "revision": "08dfb1979021cddefe83300325ccb2fa1f1f5078",
-          "version": "0.0.4"
+          "revision": "f8e0a73d6a9f7a4c59de47f532a63c79ceb6ee18",
+          "version": "0.0.8"
         }
       },
       {
@@ -56,24 +56,6 @@
         }
       },
       {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/onevcat/Rainbow",
-        "state": {
-          "branch": null,
-          "revision": "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
-          "version": "4.0.1"
-        }
-      },
-      {
-        "package": "Spek",
-        "repositoryURL": "https://github.com/onmyway133/Spek.git",
-        "state": {
-          "branch": null,
-          "revision": "5d28c801db3c8be5587e48395bc2fd1db917c29b",
-          "version": "0.5.0"
-        }
-      },
-      {
         "package": "swift-argument-parser",
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
@@ -101,12 +83,12 @@
         }
       },
       {
-        "package": "SWXMLHash",
-        "repositoryURL": "https://github.com/drmohundro/SWXMLHash.git",
+        "package": "SwiftyXMLParser",
+        "repositoryURL": "https://github.com/yahoojapan/SwiftyXMLParser",
         "state": {
           "branch": null,
-          "revision": "6469881a3f30417c5bb02404ea4b69207f297592",
-          "version": "6.0.0"
+          "revision": "d7a1d23f04c86c1cd2e8f19247dd15d74e0ea8be",
+          "version": "5.6.0"
         }
       },
       {
@@ -123,8 +105,8 @@
         "repositoryURL": "https://github.com/tuist/xcbeautify",
         "state": {
           "branch": null,
-          "revision": "b14660cc03d96889d2144265fbca471ea0076e40",
-          "version": "0.11.0"
+          "revision": "66c5e32dacca5f07c26c0c6cbe01c6796fcc6149",
+          "version": "0.12.0"
         }
       },
       {

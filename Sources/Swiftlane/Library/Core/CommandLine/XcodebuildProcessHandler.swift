@@ -18,12 +18,10 @@ public struct XcodeBuildProcessHandler: ProcessHandler {
     }
 
     private func show(data: Data) {
+        let parser = XcbeautifyLib.Parser(additionalLines: { nil })
         guard
             !data.isEmpty,
-            let line = XcbeautifyLib.Parser().parse(
-                line: data.toString(),
-                additionalLines: { nil }
-            ),
+            let line = parser.parse(line: data.toString()),
             !line.isEmpty
         else {
             return
