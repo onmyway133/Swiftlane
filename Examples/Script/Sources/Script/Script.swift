@@ -10,17 +10,11 @@ import AppStoreConnect
 
 @main
 public struct Script {
-    mutating func run() throws {
-        Task {
-            do {
-                try await deployMyApp()
-            } catch {
-                print(error)
-            }
-        }
+    static func main() async throws {
+        try await deployMyApp()
     }
 
-    private func deployMyApp() async throws {
+    private static func deployMyApp() async throws {
         var workflow = Workflow()
         workflow.directory = Settings.fs
             .homeDirectory()
