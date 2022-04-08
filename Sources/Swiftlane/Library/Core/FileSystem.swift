@@ -31,9 +31,7 @@ public struct FileSystem {
         process.launchPath = "/bin/pwd"
 
         let string = try Settings.cli.run(process: process)
-        guard let url = URL(string: string) else {
-            throw SwiftlaneError.invalid("url")
-        }
+        let url = URL(fileURLWithPath: string)
 
         return url
     }

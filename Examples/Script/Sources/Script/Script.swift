@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Script.swift
 //  Script
 //
 //  Created by Khoa on 16/02/2022.
@@ -10,21 +10,16 @@ import AppStoreConnect
 
 @main
 public struct Script {
-    mutating func run() throws {
-        Task {
-            do {
-                try await deployMyApp()
-            } catch {
-                print(error)
-            }
-        }
+    static func main() async throws {
+        try await deployMyApp()
     }
 
-    private func deployMyApp() async throws {
+    private static func deployMyApp() async throws {
         var workflow = Workflow()
-        workflow.directory = Settings.fs
-            .homeDirectory()
-            .appendingPathComponent("XcodeProject2/swiftlane/Examples/MyApp")
+        workflow.directory = try await Settings.fs
+            .currentDirectory()
+            .deletingLastPathComponent()
+            .appendingPathComponent("MyApp")
 
         let build = Build()
         build.project("MyApp")

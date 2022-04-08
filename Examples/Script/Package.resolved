@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/onmyway133/AppStoreConnect",
         "state": {
           "branch": null,
-          "revision": "08dfb1979021cddefe83300325ccb2fa1f1f5078",
-          "version": "0.0.4"
+          "revision": "f8e0a73d6a9f7a4c59de47f532a63c79ceb6ee18",
+          "version": "0.0.8"
         }
       },
       {
@@ -53,15 +53,6 @@
           "branch": null,
           "revision": "08fad5d02e9117f6cea96096c5951e445aa710b1",
           "version": "1.0.0"
-        }
-      },
-      {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/onevcat/Rainbow",
-        "state": {
-          "branch": null,
-          "revision": "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
-          "version": "4.0.1"
         }
       },
       {
@@ -114,8 +105,8 @@
         "repositoryURL": "https://github.com/tuist/xcbeautify",
         "state": {
           "branch": null,
-          "revision": "b14660cc03d96889d2144265fbca471ea0076e40",
-          "version": "0.11.0"
+          "revision": "66c5e32dacca5f07c26c0c6cbe01c6796fcc6149",
+          "version": "0.12.0"
         }
       },
       {
