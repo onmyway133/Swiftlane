@@ -16,9 +16,10 @@ public struct Script {
 
     private static func deployMyApp() async throws {
         var workflow = Workflow()
-        workflow.directory = Settings.fs
-            .homeDirectory
-            .appendingPathComponent("XcodeProject2/swiftlane/Examples/MyApp")
+        workflow.directory = try await Settings.fs
+            .currentDirectory()
+            .deletingLastPathComponent()
+            .appendingPathComponent("MyApp")
 
         let build = Build()
         build.project("MyApp")
