@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Script.swift
 //  Script
 //
 //  Created by Khoa on 16/02/2022.
