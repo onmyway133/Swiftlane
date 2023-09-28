@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/kean/Get",
         "state": {
           "branch": null,
-          "revision": "068b400e3850f0953ec25d11d3a3893c4538ffd5",
-          "version": "0.5.0"
+          "revision": "b1137bf8315479cddc79fcb04d9db7bc8117e16f",
+          "version": "0.8.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/vapor/jwt-kit",
         "state": {
           "branch": null,
-          "revision": "1822bb0abf0a31a4b5078ec19061c548835253b5",
-          "version": "4.3.0"
+          "revision": "9e929d925434b91857661bcd455d1bd53f00bf22",
+          "version": "4.13.0"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
-          "version": "1.0.3"
+          "revision": "8f4d2753f0e4778c76d5f05ad16c74f707390531",
+          "version": "1.2.3"
         }
       },
       {
@@ -69,8 +69,17 @@
         "repositoryURL": "https://github.com/apple/swift-crypto.git",
         "state": {
           "branch": null,
-          "revision": "a8911e0fadc25aef1071d582355bd1037a176060",
-          "version": "2.0.4"
+          "revision": "60f13f60c4d093691934dc6cfdf5f508ada1f894",
+          "version": "2.6.0"
+        }
+      },
+      {
+        "package": "swift-system",
+        "repositoryURL": "https://github.com/apple/swift-system.git",
+        "state": {
+          "branch": null,
+          "revision": "836bc4557b74fe6d2660218d56e3ce96aff76574",
+          "version": "1.1.1"
         }
       },
       {
@@ -78,8 +87,8 @@
         "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
         "state": {
           "branch": null,
-          "revision": "3b6b97d612b56e25d80d0807f5bc38ea08b7bdf3",
-          "version": "0.2.3"
+          "revision": "0b77e67c484e532444ceeab60119b8536f8cd648",
+          "version": "0.3.0"
         }
       },
       {
@@ -96,8 +105,8 @@
         "repositoryURL": "https://github.com/kean/URLQueryEncoder",
         "state": {
           "branch": null,
-          "revision": "4cc975d4d075d0e62699a796a08284e217d4ee93",
-          "version": "0.2.0"
+          "revision": "4ce950479707ea109f229d7230ec074a133b15d7",
+          "version": "0.2.1"
         }
       },
       {
@@ -105,8 +114,8 @@
         "repositoryURL": "https://github.com/tuist/xcbeautify",
         "state": {
           "branch": null,
-          "revision": "66c5e32dacca5f07c26c0c6cbe01c6796fcc6149",
-          "version": "0.12.0"
+          "revision": "a996cc125e45afb9f2d77cacc5710f3595bcdd07",
+          "version": "1.0.0"
         }
       },
       {
@@ -114,8 +123,8 @@
         "repositoryURL": "https://github.com/ChargePoint/xcparse",
         "state": {
           "branch": null,
-          "revision": "61eca4cbf823b2cde444287477b7fcefdc9a116a",
-          "version": "2.2.1"
+          "revision": "5ec59315a5d752e560ab09080a4821244c279038",
+          "version": "2.3.1"
         }
       },
       {
@@ -123,8 +132,8 @@
         "repositoryURL": "https://github.com/MaxDesiatov/XMLCoder.git",
         "state": {
           "branch": null,
-          "revision": "f30119af03996939cc4f54e0bf0dda9f88a84da5",
-          "version": "0.13.1"
+          "revision": "b1e944cbd0ef33787b13f639a5418d55b3bed501",
+          "version": "0.17.1"
         }
       }
     ]
