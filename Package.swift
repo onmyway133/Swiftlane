@@ -13,7 +13,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/tuist/xcbeautify",
-            .upToNextMajor(from: "0.12.0")
+            .upToNextMajor(from: "1.0.0")
         ),
         .package(
             url: "https://github.com/JohnSundell/Files.git",
